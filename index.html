@@ -717,8 +717,7 @@ footer {
 /* ── RESPONSIVE ── */
 @media (max-width: 1024px) {
   section { padding: 80px 40px; }
-  .hero { min-height: 80vh; }
-  .hero-left { padding: 60px 32px; max-width: 100%; }
+
   .opp-grid, .about-grid, .team-grid, .terms-grid { grid-template-columns: 1fr; gap: 40px; }
   .ps-grid, .vision-grid, .reasons-grid, .biz-model-cards, .revenue-grid, .perks-grid { grid-template-columns: 1fr; }
   .market-stats { grid-template-columns: 1fr 1fr; }
@@ -809,7 +808,8 @@ footer {
       </div>
     </div>
     <div>
-      <div class="ps-grid" style="border-radius:12px;">
+      <img src="images/drone-aerial.png" alt="EVII Mission Hills — aerial view at the I-405 corridor" style="width:100%;border-radius:12px;object-fit:cover;max-height:420px;margin-bottom:2px;">
+      <div class="ps-grid" style="border-radius:12px;margin-top:2px;">
         <div class="ps-card problem">
           <div class="ps-card-label">The Problem</div>
           <h3>Charging Sucks Right Now</h3>
@@ -847,31 +847,34 @@ footer {
   <div class="section-body">
     <p>EV Initiative is building a network of destination charging hubs — each one a landmark, each one its own investment. Three tiers. One brand. A growing advertising network that compounds in value as every new location comes online.</p>
   </div>
-  <div class="vision-grid" style="margin-top:60px;border-radius:16px;overflow:hidden;">
+  <img src="images/three-hubs.png" alt="EV Initiative — three hub tiers" style="width:100%;border-radius:16px;object-fit:contain;margin-top:48px;background:transparent;">
+
+  <div class="vision-grid" style="margin-top:16px;border-radius:16px;overflow:hidden;">
     <div class="tier-card">
-      <div class="tier-badge">Mini-Hub</div>
-      <div class="tier-name">Compact</div>
+      <div class="tier-badge">Express Hub</div>
+      <div class="tier-name">North Hills</div>
       <div class="tier-stalls">8 Charging Stalls</div>
-      <div class="tier-desc">Urban format with robotic vending, digital screens, and Tesla Supercharger integration. Full EV Initiative Advertising Network reach.</div>
-      <div class="tier-example">Example: Nordhoff location</div>
+      <div class="tier-desc">0.4 miles from the 405 on Sepulveda — one of the most packed, lively urban corridors in the Valley. Dense residential and commercial demand. Robotic vending, digital screens, full EV Initiative Advertising Network reach.</div>
+      <div class="tier-example">15325 Nordhoff St, North Hills, CA 91343</div>
     </div>
     <div class="tier-card featured">
       <div class="tier-badge">Hub — This Offering</div>
       <div class="tier-name">Mission Hills</div>
       <div class="tier-stalls">19 Charging Stalls</div>
-      <div class="tier-desc">Full destination footprint. Food trailer partnerships, robotic barista, premium washrooms, commissary, and maximum advertising reach. Six revenue streams from one address.</div>
-      <div class="tier-example">15555 San Fernando Mission Blvd, LA</div>
+      <div class="tier-desc">At the foot of the 405, flanked by the 118 and I-5. The highest-traffic EV corridor in the San Fernando Valley. Full destination experience: robot barista, food trailer, washrooms, commissary, six revenue streams from one address.</div>
+      <div class="tier-example">15555 San Fernando Mission Blvd, Mission Hills, CA 91345</div>
     </div>
     <div class="tier-card">
-      <div class="tier-badge">Village Hub</div>
-      <div class="tier-name">Flagship</div>
+      <div class="tier-badge">Flagship Hub</div>
+      <div class="tier-name">Granada Hills</div>
       <div class="tier-stalls">50+ Charging Stalls</div>
-      <div class="tier-desc">Multi-tenant real estate with grocery, fitness, restaurants, and specialty retail. Full canopy coverage. Maximum revenue across every stream.</div>
-      <div class="tier-example">Example: Balboa location</div>
+      <div class="tier-desc">Under 500 feet from the 405, at the intersection of Balboa Blvd and Rinaldi St — two major Valley arteries. Granada Hills leads the region in EV adoption. Multi-tenant footprint with grocery, fitness, restaurants, and full canopy coverage.</div>
+      <div class="tier-example">11500 Balboa Blvd, Granada Hills, CA 91344</div>
     </div>
   </div>
-  <div style="margin-top:40px;font-size:15px;color:var(--text-muted);max-width:700px;line-height:1.7;">
-    Next in the pipeline: <strong style="color:var(--text);">Woodland Hills, Marina Del Rey, Orange County.</strong> Long-term: national. Each new location expands the EV Initiative Advertising Network — more screens, more reach, compounding value for every investor in every hub.
+  <div style="margin-top:40px;padding:32px;background:var(--bg);border-radius:12px;border-left:3px solid var(--green);">
+    <p style="font-size:16px;color:var(--text);font-weight:500;margin-bottom:8px;">Los Angeles needs more charging infrastructure. We build destinations people choose to come back to — not just out of utility.</p>
+    <p style="font-size:14px;color:var(--text-muted);margin:0;">Next in the pipeline: Woodland Hills, Marina Del Rey, Orange County. Long-term: national. Each new location expands the EV Initiative Advertising Network — more screens, more reach, compounding value for every investor in every hub.</p>
   </div>
 </section>
 
@@ -1002,6 +1005,9 @@ footer {
     <div class="section-label">Business Model</div>
     <h3 style="font-family:'Bebas Neue';font-size:36px;color:#fff;margin-bottom:8px;">One Site. One Corporation.<br>One Cap Table.</h3>
     <p style="font-size:16px;color:var(--text-muted);margin-bottom:40px;max-width:600px;">You invest in this address — not a fund, not a portfolio.</p>
+    <div style="margin-bottom:2px;border-radius:12px;overflow:hidden;">
+      <img src="images/mission-entrance.jpg" alt="EVII Mission Hills — entrance render at night" style="width:100%;max-height:480px;object-fit:cover;object-position:center 40%;display:block;">
+    </div>
     <div class="biz-model-cards">
       <div class="biz-card">
         <div class="biz-icon">⚡</div>
@@ -1029,6 +1035,9 @@ footer {
 <section id="revenue">
   <div class="section-label">Revenue Model</div>
   <h2 class="section-title">Six Ways This Asset<br>Earns. Every Day.</h2>
+  <div style="border-radius:12px;overflow:hidden;margin-bottom:2px;">
+    <img src="images/charging-amenities.png" alt="Tesla Superchargers, amenity building, and Nourishment Zone food trailer" style="width:100%;max-height:380px;object-fit:cover;object-position:center;display:block;background:#0a0a0a;">
+  </div>
   <div class="revenue-grid">
     <div class="rev-card">
       <div class="rev-num">01 /</div>
@@ -1179,6 +1188,25 @@ footer {
 </section>
 
 <div class="divider"></div>
+
+<!-- VIDEO SECTION -->
+<div style="position:relative;height:520px;overflow:hidden;background:#000;">
+  <div style="position:absolute;inset:0;z-index:0;pointer-events:none;">
+    <iframe
+      src="https://www.youtube-nocookie.com/embed/RI956OiYbYc?autoplay=1&mute=1&loop=1&playlist=RI956OiYbYc&controls=0&showinfo=0&rel=0&modestbranding=1&playsinline=1&disablekb=1&fs=0&iv_load_policy=3"
+      frameborder="0"
+      allow="autoplay; encrypted-media; fullscreen"
+      allowfullscreen
+      style="position:absolute;top:50%;left:50%;transform:translate(-50%,-50%);width:177.78vh;min-width:100%;height:56.25vw;min-height:100%;opacity:0.7;">
+    </iframe>
+  </div>
+  <div style="position:absolute;inset:0;background:linear-gradient(to bottom, rgba(10,10,10,0.3) 0%, rgba(10,10,10,0.5) 60%, var(--bg) 100%);z-index:1;"></div>
+  <div style="position:absolute;inset:0;background:linear-gradient(to top, transparent 0%, rgba(10,10,10,0.2) 100%);z-index:1;"></div>
+  <div style="position:relative;z-index:2;height:100%;display:flex;flex-direction:column;align-items:center;justify-content:center;text-align:center;padding:0 24px;">
+    <div style="font-size:11px;font-weight:500;letter-spacing:0.16em;text-transform:uppercase;color:var(--green);margin-bottom:16px;">Experience-Driven Charging™</div>
+    <div style="font-family:'Bebas Neue',sans-serif;font-size:clamp(36px,5vw,72px);color:#fff;line-height:1;max-width:700px;">"High-End EV Charging,<br><span style="color:var(--green);">Enabling the Next Generation"</span></div>
+  </div>
+</div>
 
 <!-- CTA -->
 <section id="cta">
