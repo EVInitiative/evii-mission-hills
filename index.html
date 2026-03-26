@@ -711,7 +711,7 @@ input[type=number]{-moz-appearance:textfield;}
     <p style="font-size:16px;color:rgba(255,255,255,0.7);margin-bottom:16px;max-width:800px;">In the 20th century, the gas station corner lot built generational wealth. <strong style="color:#fff;">That transition is happening again, right now.</strong> The investors who move early will own the corners.</p>
     <p style="font-size:16px;color:rgba(255,255,255,0.7);max-width:800px;">This window is open. It will not stay open long.</p>
   </div>
-  <div style="margin-top:48px;border-radius:16px;overflow:hidden;">
+  <div class="reveal-on-scroll" style="margin-top:48px;border-radius:16px;overflow:hidden;opacity:0;transform:translateY(40px);transition:opacity 0.8s ease,transform 0.8s ease;">
     <img src="images/trade-map.png" alt="EVII Mission Hills Trade Map" style="width:100%;display:block;border-radius:16px;">
   </div>
 </section>
@@ -738,7 +738,7 @@ input[type=number]{-moz-appearance:textfield;}
   <div class="section-label">Destination Ecosystem</div>
   <h2 class="section-title">Designed to Maximize<br>Revenue Per Session.</h2>
   <div class="section-body"><p>A 20-40 minute charging session is a predictable, captive window. Mission Hills is engineered to monetize every minute of it.</p></div>
-  <div style="margin-top:48px;border-radius:16px;overflow:hidden;">
+  <div class="reveal-on-scroll" style="margin-top:48px;border-radius:16px;overflow:hidden;opacity:0;transform:translateY(40px);transition:opacity 0.8s ease,transform 0.8s ease;">
     <img src="images/mission-hills-bw-canopy.png" alt="EVII Mission Hills hub with iconic canopy" style="width:100%;display:block;border-radius:16px;object-fit:contain;background:#0a0a0a;">
   </div>
   <div style="display:grid;grid-template-columns:repeat(3,1fr);gap:2px;margin-top:48px;border-radius:12px;overflow:hidden;">
@@ -815,9 +815,16 @@ input[type=number]{-moz-appearance:textfield;}
 <!-- DIGITAL INFRASTRUCTURE -->
 <section id="digital" style="background:var(--bg-card);">
   <div class="section-label">Digital Infrastructure</div>
-  <h2 class="section-title">The Starbucks Rewards<br>Model. For EV Charging.</h2>
-  <div class="section-body">
-    <p>Starbucks Rewards is one of the most profitable loyalty programs in history. It doesn't just bring people back — it gets them to <strong>preload money, order ahead, and spend more per visit</strong>. Mission Hills runs the same playbook.</p>
+  <div style="display:flex;align-items:center;gap:40px;flex-wrap:wrap;">
+    <div style="flex:1;min-width:280px;">
+      <h2 class="section-title" style="margin-bottom:24px;">The Starbucks Rewards<br>Model. For EV Charging.</h2>
+      <div class="section-body">
+        <p>Starbucks Rewards is one of the most profitable loyalty programs in history. It doesn't just bring people back — it gets them to <strong>preload money, order ahead, and spend more per visit</strong>. Mission Hills runs the same playbook.</p>
+      </div>
+    </div>
+    <div class="reveal-on-scroll" style="flex-shrink:0;max-width:280px;opacity:0;transform:translateY(40px);transition:opacity 0.8s ease,transform 0.8s ease;">
+      <img src="images/evi-rewards.png" alt="EV Initiative Rewards App" style="width:100%;border-radius:16px;filter:drop-shadow(0 8px 32px rgba(46,204,113,0.2));">
+    </div>
   </div>
 
   <div style="display:grid;grid-template-columns:1fr 1fr;gap:2px;margin-top:48px;border-radius:12px;overflow:hidden;">
@@ -900,7 +907,7 @@ input[type=number]{-moz-appearance:textfield;}
 <section id="business-model" style="background:var(--bg);">
   <div class="section-label">Business Model</div>
   <h2 class="section-title">One Site. One Corporation.<br>One Cap Table.</h2>
-  <div style="margin-top:48px;border-radius:16px;overflow:hidden;">
+  <div class="reveal-on-scroll" style="margin-top:48px;border-radius:16px;overflow:hidden;opacity:0;transform:translateY(40px);transition:opacity 0.8s ease,transform 0.8s ease;">
     <img src="images/mission-hills-jan29.png" alt="EVII Mission Hills construction progress January 2025" style="width:100%;display:block;border-radius:16px;object-fit:cover;max-height:420px;object-position:center;">
   </div>
   <div style="display:grid;grid-template-columns:1fr 1fr 1fr;gap:2px;margin-top:48px;border-radius:12px;overflow:hidden;">
@@ -1430,6 +1437,17 @@ var barIO = new IntersectionObserver(function(entries){
 },{threshold:0.3});
 var revBars = document.getElementById('revBars');
 if(revBars) barIO.observe(revBars);
+
+// ── SCROLL REVEAL (parallax-style fade-up for images/elements) ──
+var revealIO = new IntersectionObserver(function(entries){
+  entries.forEach(function(e){
+    if(!e.isIntersecting) return;
+    revealIO.unobserve(e.target);
+    e.target.style.opacity = '1';
+    e.target.style.transform = 'translateY(0)';
+  });
+},{threshold:0.15});
+document.querySelectorAll('.reveal-on-scroll').forEach(function(el){ revealIO.observe(el); });
 
 // ── PARALLAX HERO VIDEO ────────────────────────────────────
 var videoBg = document.querySelector('.video-bg-wrapper');
