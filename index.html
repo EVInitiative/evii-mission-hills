@@ -946,7 +946,7 @@ input[type=number]{-moz-appearance:textfield;}
         <label style="font-size:12px;letter-spacing:0.1em;text-transform:uppercase;color:var(--text-dim);display:block;margin-bottom:12px;">Investment Amount</label>
         <div style="display:flex;align-items:center;gap:0;background:var(--bg-card);border:1px solid var(--border);border-radius:10px;overflow:hidden;">
           <span style="padding:14px 16px;font-size:18px;color:var(--text-muted);font-family:'DM Mono',monospace;">$</span>
-          <input type="number" id="calcInput" value="1000" min="300" max="1000000" step="100"
+          <input type="number" id="calcInput" value="300" min="300" max="1000000" step="100"
             style="flex:1;background:transparent;border:none;outline:none;padding:14px 8px;font-size:20px;font-family:'DM Mono',monospace;color:#fff;font-weight:500;">
         </div>
       </div>
@@ -1328,6 +1328,7 @@ function fmt(n){
 
 function calcUpdate(){
   var inv = parseFloat(document.getElementById('calcInput').value)||0;
+  if(inv < 300) inv = 300;
   var sc = scenarios[calcScenario];
   var yld = yields[calcScenario];
   var shares = Math.floor(inv / 2.50);
