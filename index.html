@@ -172,8 +172,8 @@ footer{background:var(--bg);padding:48px 80px;display:flex;align-items:center;ju
 .sp-modal-inner{position:relative;width:90%;max-width:400px;max-height:85vh;aspect-ratio:9/16;}
 .sp-modal-inner iframe{width:100%;height:100%;border:0;border-radius:16px;}
 .sp-close{position:fixed;top:16px;right:16px;width:44px;height:44px;border-radius:50%;background:#1a1a1a;border:1px solid rgba(255,255,255,0.2);color:#fff;font-size:22px;cursor:pointer;display:flex;align-items:center;justify-content:center;z-index:10001;}
-.fab-overlay{position:fixed;inset:0;z-index:500;opacity:0;pointer-events:none;transition:opacity 0.25s;}
-.fab-overlay.open{opacity:1;pointer-events:all;}
+.fab-overlay{position:fixed;inset:0;z-index:500;background:rgba(0,0,0,0.5);display:none;}
+.fab-overlay.open{display:block;}
 
 /* MILESTONE */
 .milestone{display:flex;align-items:flex-start;gap:20px;padding:20px 0;border-bottom:1px solid var(--border);}
