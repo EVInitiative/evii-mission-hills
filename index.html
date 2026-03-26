@@ -167,13 +167,6 @@ footer{background:var(--bg);padding:48px 80px;display:flex;align-items:center;ju
 .fab-items.open .fab-item:nth-child(14){transition-delay:0.39s;}
 /* MEDIA / SOCIAL PROOF */
 /* SOCIAL PROOF */
-.sp-wrap{position:relative;height:380px;margin-top:48px;}
-.sp-scroll{position:absolute;top:0;left:0;right:0;bottom:0;display:flex;gap:16px;overflow-x:scroll;overflow-y:hidden;-webkit-overflow-scrolling:touch;scrollbar-width:none;padding-right:40px;overscroll-behavior-x:contain;touch-action:pan-x pan-y;}
-.sp-scroll::-webkit-scrollbar{display:none;}
-.sp-card{flex:0 0 auto;width:200px;height:100%;border-radius:12px;overflow:hidden;position:relative;cursor:pointer;}
-.sp-card img{width:100%;height:100%;object-fit:cover;display:block;}
-.sp-play{position:absolute;top:50%;left:50%;transform:translate(-50%,-50%);width:56px;height:56px;background:rgba(46,204,113,0.9);border-radius:50%;display:flex;align-items:center;justify-content:center;font-size:20px;color:#000;pointer-events:none;}
-.sp-card:active .sp-play{background:var(--green);transform:translate(-50%,-50%) scale(0.95);}
 #spModal{display:none;position:fixed;inset:0;z-index:9999;background:rgba(0,0,0,0.92);backdrop-filter:blur(8px);justify-content:center;align-items:center;}
 #spModal.open{display:flex;}
 .sp-modal-inner{position:relative;width:90%;max-width:400px;max-height:85vh;aspect-ratio:9/16;}
@@ -210,8 +203,7 @@ footer{background:var(--bg);padding:48px 80px;display:flex;align-items:center;ju
   /* all 2-col grids go 1-col */
   .ps-grid,.team-grid,.terms-grid{grid-template-columns:1fr;}
   .revenue-grid{grid-template-columns:1fr 1fr;}
-  .sp-wrap{height:320px!important;}
-  .sp-card{width:170px!important;}
+  .sp-card{flex:0 0 170px!important;}
   /* inline style grids — override via class */
   .reg-d-banner{flex-direction:column;padding:24px;}
   footer{padding:32px 28px;flex-direction:column;align-items:flex-start;}
@@ -244,8 +236,7 @@ footer{background:var(--bg);padding:48px 80px;display:flex;align-items:center;ju
   .ps-grid{grid-template-columns:1fr;}
   .ps-card{padding:28px 20px;}
   .pull-quote{font-size:clamp(22px,6vw,32px);}
-  .sp-wrap{height:280px!important;}
-  .sp-card{width:150px!important;}
+  .sp-card{flex:0 0 150px!important;}
   /* revenue */
   .revenue-grid{grid-template-columns:1fr;}
   /* returns — all inline grids override */
@@ -547,23 +538,17 @@ input[type=number]{-moz-appearance:textfield;}
 <section id="media" style="background:var(--bg-card);overflow:visible;">
   <div class="section-label">Social Proof</div>
   <h2 class="section-title">3,436 Investors Didn't<br>Wait. Neither Should You.</h2>
-    <div class="sp-wrap">
-      <div class="sp-scroll" id="spScroll">
-        <div class="sp-card" data-v="_HpUz3-kvU4"><img src="https://img.youtube.com/vi/_HpUz3-kvU4/hqdefault.jpg" alt=""><div class="sp-play">▶</div></div>
-        <div class="sp-card" data-v="0eqst26wrX0"><img src="https://img.youtube.com/vi/0eqst26wrX0/hqdefault.jpg" alt=""><div class="sp-play">▶</div></div>
-        <div class="sp-card" data-v="k-i6RPw9Uls"><img src="https://img.youtube.com/vi/k-i6RPw9Uls/hqdefault.jpg" alt=""><div class="sp-play">▶</div></div>
-        <div class="sp-card" data-v="KH3nezRDahw"><img src="https://img.youtube.com/vi/KH3nezRDahw/hqdefault.jpg" alt=""><div class="sp-play">▶</div></div>
-        <div class="sp-card" data-v="DDrIk4f_HQM"><img src="https://img.youtube.com/vi/DDrIk4f_HQM/hqdefault.jpg" alt=""><div class="sp-play">▶</div></div>
-        <div class="sp-card" data-v="-J63w5K5Jfw"><img src="https://img.youtube.com/vi/-J63w5K5Jfw/hqdefault.jpg" alt=""><div class="sp-play">▶</div></div>
-        <div class="sp-card" data-v="pijrLXKU7tM"><img src="https://img.youtube.com/vi/pijrLXKU7tM/hqdefault.jpg" alt=""><div class="sp-play">▶</div></div>
-        <div class="sp-card" data-v="uGsQo36Y-WM"><img src="https://img.youtube.com/vi/uGsQo36Y-WM/hqdefault.jpg" alt=""><div class="sp-play">▶</div></div>
+    <div style="width:100%;overflow:hidden;margin-top:48px;">
+      <div id="spScroll" style="display:flex;gap:16px;overflow-x:scroll;-webkit-overflow-scrolling:touch;padding-bottom:20px;">
+        <div class="sp-card" onclick="spOpen('_HpUz3-kvU4')" style="flex:0 0 200px;border-radius:12px;overflow:hidden;position:relative;cursor:pointer;"><img src="https://img.youtube.com/vi/_HpUz3-kvU4/hqdefault.jpg" style="width:100%;aspect-ratio:9/16;object-fit:cover;display:block;pointer-events:none;"><div style="position:absolute;top:50%;left:50%;transform:translate(-50%,-50%);width:56px;height:56px;background:rgba(46,204,113,0.9);border-radius:50%;display:flex;align-items:center;justify-content:center;font-size:20px;color:#000;pointer-events:none;">▶</div></div>
+        <div class="sp-card" onclick="spOpen('0eqst26wrX0')" style="flex:0 0 200px;border-radius:12px;overflow:hidden;position:relative;cursor:pointer;"><img src="https://img.youtube.com/vi/0eqst26wrX0/hqdefault.jpg" style="width:100%;aspect-ratio:9/16;object-fit:cover;display:block;pointer-events:none;"><div style="position:absolute;top:50%;left:50%;transform:translate(-50%,-50%);width:56px;height:56px;background:rgba(46,204,113,0.9);border-radius:50%;display:flex;align-items:center;justify-content:center;font-size:20px;color:#000;pointer-events:none;">▶</div></div>
+        <div class="sp-card" onclick="spOpen('k-i6RPw9Uls')" style="flex:0 0 200px;border-radius:12px;overflow:hidden;position:relative;cursor:pointer;"><img src="https://img.youtube.com/vi/k-i6RPw9Uls/hqdefault.jpg" style="width:100%;aspect-ratio:9/16;object-fit:cover;display:block;pointer-events:none;"><div style="position:absolute;top:50%;left:50%;transform:translate(-50%,-50%);width:56px;height:56px;background:rgba(46,204,113,0.9);border-radius:50%;display:flex;align-items:center;justify-content:center;font-size:20px;color:#000;pointer-events:none;">▶</div></div>
+        <div class="sp-card" onclick="spOpen('KH3nezRDahw')" style="flex:0 0 200px;border-radius:12px;overflow:hidden;position:relative;cursor:pointer;"><img src="https://img.youtube.com/vi/KH3nezRDahw/hqdefault.jpg" style="width:100%;aspect-ratio:9/16;object-fit:cover;display:block;pointer-events:none;"><div style="position:absolute;top:50%;left:50%;transform:translate(-50%,-50%);width:56px;height:56px;background:rgba(46,204,113,0.9);border-radius:50%;display:flex;align-items:center;justify-content:center;font-size:20px;color:#000;pointer-events:none;">▶</div></div>
+        <div class="sp-card" onclick="spOpen('DDrIk4f_HQM')" style="flex:0 0 200px;border-radius:12px;overflow:hidden;position:relative;cursor:pointer;"><img src="https://img.youtube.com/vi/DDrIk4f_HQM/hqdefault.jpg" style="width:100%;aspect-ratio:9/16;object-fit:cover;display:block;pointer-events:none;"><div style="position:absolute;top:50%;left:50%;transform:translate(-50%,-50%);width:56px;height:56px;background:rgba(46,204,113,0.9);border-radius:50%;display:flex;align-items:center;justify-content:center;font-size:20px;color:#000;pointer-events:none;">▶</div></div>
+        <div class="sp-card" onclick="spOpen('-J63w5K5Jfw')" style="flex:0 0 200px;border-radius:12px;overflow:hidden;position:relative;cursor:pointer;"><img src="https://img.youtube.com/vi/-J63w5K5Jfw/hqdefault.jpg" style="width:100%;aspect-ratio:9/16;object-fit:cover;display:block;pointer-events:none;"><div style="position:absolute;top:50%;left:50%;transform:translate(-50%,-50%);width:56px;height:56px;background:rgba(46,204,113,0.9);border-radius:50%;display:flex;align-items:center;justify-content:center;font-size:20px;color:#000;pointer-events:none;">▶</div></div>
+        <div class="sp-card" onclick="spOpen('pijrLXKU7tM')" style="flex:0 0 200px;border-radius:12px;overflow:hidden;position:relative;cursor:pointer;"><img src="https://img.youtube.com/vi/pijrLXKU7tM/hqdefault.jpg" style="width:100%;aspect-ratio:9/16;object-fit:cover;display:block;pointer-events:none;"><div style="position:absolute;top:50%;left:50%;transform:translate(-50%,-50%);width:56px;height:56px;background:rgba(46,204,113,0.9);border-radius:50%;display:flex;align-items:center;justify-content:center;font-size:20px;color:#000;pointer-events:none;">▶</div></div>
+        <div class="sp-card" onclick="spOpen('uGsQo36Y-WM')" style="flex:0 0 200px;border-radius:12px;overflow:hidden;position:relative;cursor:pointer;"><img src="https://img.youtube.com/vi/uGsQo36Y-WM/hqdefault.jpg" style="width:100%;aspect-ratio:9/16;object-fit:cover;display:block;pointer-events:none;"><div style="position:absolute;top:50%;left:50%;transform:translate(-50%,-50%);width:56px;height:56px;background:rgba(46,204,113,0.9);border-radius:50%;display:flex;align-items:center;justify-content:center;font-size:20px;color:#000;pointer-events:none;">▶</div></div>
       </div>
-    </div>
-
-    <!-- Video popup modal -->
-    <div id="spModal">
-      <button class="sp-close" id="spClose">✕</button>
-      <div class="sp-modal-inner"><iframe id="spFrame" src="" allow="autoplay;encrypted-media" allowfullscreen></iframe></div>
     </div>
 </section>
 
@@ -1546,40 +1531,25 @@ document.querySelectorAll('a[href^="#"]').forEach(function(a){
   });
 });
 
-// ── SOCIAL PROOF VIDEO POPUP ──
-(function(){
-  var modal = document.getElementById('spModal');
-  var frame = document.getElementById('spFrame');
-  var close = document.getElementById('spClose');
-  var scroll = document.getElementById('spScroll');
-  if(!modal||!frame||!close||!scroll) return;
-
-  var scrollStart = 0;
-  scroll.addEventListener('touchstart', function(){ scrollStart = scroll.scrollLeft; }, {passive:true});
-
-  // Open: tap on card (only if scroll didn't move)
-  document.querySelectorAll('.sp-card').forEach(function(c){
-    c.addEventListener('click', function(){
-      if(Math.abs(scroll.scrollLeft - scrollStart) > 10) return;
-      var v = c.getAttribute('data-v');
-      if(!v) return;
-      frame.src = 'https://www.youtube-nocookie.com/embed/'+v+'?autoplay=1&rel=0&playsinline=1';
-      modal.classList.add('open');
-      document.body.style.overflow = 'hidden';
-    });
-  });
-
-  // Close
-  function closeModal(){
-    frame.src = '';
-    modal.classList.remove('open');
-    document.body.style.overflow = '';
-  }
-  close.addEventListener('click', function(e){ e.stopPropagation(); closeModal(); });
-  modal.addEventListener('click', function(e){ if(e.target === modal) closeModal(); });
-  document.addEventListener('keydown', function(e){ if(e.key==='Escape') closeModal(); });
-})();
+// ── SOCIAL PROOF ──
+function spOpen(id){
+  var m=document.getElementById('spModal'),f=document.getElementById('spFrame');
+  f.src='https://www.youtube-nocookie.com/embed/'+id+'?autoplay=1&rel=0&playsinline=1';
+  m.classList.add('open');
+  document.body.style.overflow='hidden';
+}
+function spClose(){
+  var m=document.getElementById('spModal'),f=document.getElementById('spFrame');
+  f.src='';m.classList.remove('open');
+  document.body.style.overflow='';
+}
+document.addEventListener('keydown',function(e){if(e.key==='Escape')spClose();});
 </script>
 
+<!-- VIDEO POPUP (outside all sections) -->
+<div id="spModal" onclick="spClose()">
+  <button class="sp-close" onclick="event.stopPropagation();spClose()">✕</button>
+  <div class="sp-modal-inner" onclick="event.stopPropagation()"><iframe id="spFrame" src="" allow="autoplay;encrypted-media" allowfullscreen></iframe></div>
+</div>
 </body>
 </html>
