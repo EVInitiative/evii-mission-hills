@@ -31,7 +31,9 @@ nav{position:sticky;top:0;z-index:100;background:rgba(10,10,10,0.92);backdrop-fi
 .video-bg-wrapper{position:absolute;inset:0;overflow:hidden;pointer-events:none;z-index:0;}
 .video-bg-wrapper::after{content:'';position:absolute;inset:0;background:linear-gradient(to right,rgba(10,10,10,0.88) 0%,rgba(10,10,10,0.6) 50%,rgba(10,10,10,0.3) 100%);z-index:2;}
 .video-bg-wrapper::before{content:'';position:absolute;inset:0;background:linear-gradient(to bottom,transparent 60%,var(--bg) 100%);z-index:3;}
-.video-bg-wrapper iframe{position:absolute;top:50%;left:50%;transform:translate(-50%,-50%);width:177.78vh;min-width:100%;height:56.25vw;min-height:100%;opacity:0.9;z-index:1;}
+.video-bg-wrapper iframe{position:absolute;top:0;left:0;width:100%;height:100%;opacity:0.9;z-index:1;border:0;}
+@media (orientation:portrait){.video-bg-wrapper iframe{top:50%;left:50%;transform:translate(-50%,-50%);width:auto;height:100%;aspect-ratio:16/9;min-height:100%;min-width:100%;}}
+@media (orientation:landscape){.video-bg-wrapper iframe{top:50%;left:50%;transform:translate(-50%,-50%);width:100%;height:auto;aspect-ratio:16/9;min-width:100%;min-height:100%;}}
 .hero-left{position:relative;z-index:2;padding:80px 60px 80px 80px;max-width:780px;}
 .hero-badge{display:inline-flex;align-items:center;gap:8px;background:rgba(46,204,113,0.1);border:1px solid rgba(46,204,113,0.3);color:var(--green);font-size:12px;font-weight:500;letter-spacing:0.12em;text-transform:uppercase;padding:6px 14px;border-radius:100px;margin-bottom:32px;box-shadow:0 0 14px rgba(46,204,113,0.15);}
 .hero-badge::before{content:'';width:6px;height:6px;background:var(--green);border-radius:50%;animation:pulse 2s infinite;}
@@ -675,7 +677,6 @@ input[type=number]{-moz-appearance:textfield;}
     <div class="term-row"><span class="term-label">Security Type</span><span class="term-value">Common Equity</span></div>
     <div class="term-row"><span class="term-label">Issuer</span><span class="term-value">EVII Mission Hills, Inc. (CA Corp)</span></div>
     <div class="term-row"><span class="term-label">Offering</span><span class="term-value highlight">Reg CF — Open to All Investors</span></div>
-    <div class="term-row"><span class="term-label">Equity Offered</span><span class="term-value highlight">30% of EVII Mission Hills, Inc.</span></div>
     <div class="term-row"><span class="term-label">Share Price</span><span class="term-value highlight">$2.50/share</span></div>
     <div class="term-row"><span class="term-label">Minimum Investment</span><span class="term-value">$300</span></div>
     <div class="term-row"><span class="term-label">Dividends</span><span class="term-value highlight">Semiannual from Operating Profits</span></div>
