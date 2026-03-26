@@ -1001,8 +1001,8 @@ input[type=number]{-moz-appearance:textfield;}
       <div>
         <label style="font-size:12px;letter-spacing:0.1em;text-transform:uppercase;color:var(--text-dim);display:block;margin-bottom:12px;">Scenario</label>
         <div class="scenario-wrap" style="display:flex;gap:2px;border-radius:8px;overflow:visible;">
-          <button class="scenario-btn active" id="sc-low" onclick="setScenario('low')">Conservative</button>
-          <button class="scenario-btn" id="sc-base" onclick="setScenario('base')">Base</button>
+          <button class="scenario-btn" id="sc-low" onclick="setScenario('low')">Conservative</button>
+          <button class="scenario-btn active" id="sc-base" onclick="setScenario('base')">Base</button>
           <button class="scenario-btn" id="sc-high" onclick="setScenario('high')">Upside</button>
         </div>
       </div>
@@ -1284,7 +1284,7 @@ function closeFab(){
 
 <script>
 // ── INVESTMENT CALCULATOR ──────────────────────────────────
-var calcScenario = 'low';
+var calcScenario = 'base';
 var scenarios = {
   low:  { irr: 52.3, mult: 6.5,  distRate: 0.0846 },
   base: { irr: 69.2, mult: 8.15, distRate: 0.133  },
