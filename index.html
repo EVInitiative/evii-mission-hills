@@ -165,8 +165,10 @@ footer{background:var(--bg);padding:48px 80px;display:flex;align-items:center;ju
 .fab-items.open .fab-item:nth-child(12){transition-delay:0.33s;}
 .fab-items.open .fab-item:nth-child(13){transition-delay:0.36s;}
 .fab-items.open .fab-item:nth-child(14){transition-delay:0.39s;}
-/* MEDIA */
-.media-thumb{position:relative;cursor:pointer;overflow:hidden;border-radius:12px;transition:transform 0.2s,box-shadow 0.2s;}
+/* MEDIA / SOCIAL PROOF */
+.media-scroll{scrollbar-width:none;}
+.media-scroll::-webkit-scrollbar{display:none;}
+.media-thumb{position:relative;cursor:pointer;overflow:hidden;border-radius:12px;transition:transform 0.2s,box-shadow 0.2s;flex:0 0 200px;scroll-snap-align:start;}
 .media-thumb:hover{transform:translateY(-4px);box-shadow:0 8px 30px rgba(46,204,113,0.2);}
 .media-play{position:absolute;top:50%;left:50%;transform:translate(-50%,-50%);width:56px;height:56px;background:rgba(46,204,113,0.9);border-radius:50%;display:flex;align-items:center;justify-content:center;font-size:20px;color:#000;transition:transform 0.2s,background 0.2s;pointer-events:none;}
 .media-thumb:hover .media-play{transform:translate(-50%,-50%) scale(1.1);background:var(--green);}
@@ -201,7 +203,7 @@ footer{background:var(--bg);padding:48px 80px;display:flex;align-items:center;ju
   /* all 2-col grids go 1-col */
   .ps-grid,.team-grid,.terms-grid{grid-template-columns:1fr;}
   .revenue-grid{grid-template-columns:1fr 1fr;}
-  .media-grid{grid-template-columns:repeat(2,1fr)!important;gap:12px!important;}
+  .media-thumb{flex:0 0 160px!important;}
   /* inline style grids — override via class */
   .reg-d-banner{flex-direction:column;padding:24px;}
   footer{padding:32px 28px;flex-direction:column;align-items:flex-start;}
@@ -531,25 +533,41 @@ input[type=number]{-moz-appearance:textfield;}
   </div>
 </section>
 
-<!-- MEDIA -->
+<!-- SOCIAL PROOF -->
 <section id="media" style="background:var(--bg-card);">
-  <div class="section-label">Media</div>
-  <h2 class="section-title">See It In Action.</h2>
-  <div style="display:grid;grid-template-columns:repeat(4,1fr);gap:16px;margin-top:48px;" class="media-grid">
+  <div class="section-label">Social Proof</div>
+  <h2 class="section-title">5,100+ People Didn't<br>Wait. Neither Should You.</h2>
+  <div class="media-scroll" style="display:flex;gap:16px;margin-top:48px;overflow-x:auto;scroll-snap-type:x mandatory;-webkit-overflow-scrolling:touch;padding-bottom:16px;">
     <div class="media-thumb" onclick="openVideoModal('_HpUz3-kvU4')">
-      <img src="https://img.youtube.com/vi/_HpUz3-kvU4/hqdefault.jpg" alt="EV Initiative Video 1" style="width:100%;aspect-ratio:9/16;object-fit:cover;border-radius:12px;display:block;">
+      <img src="https://img.youtube.com/vi/_HpUz3-kvU4/hqdefault.jpg" alt="EV Initiative Video" style="width:100%;aspect-ratio:9/16;object-fit:cover;border-radius:12px;display:block;">
       <div class="media-play">▶</div>
     </div>
     <div class="media-thumb" onclick="openVideoModal('0eqst26wrX0')">
-      <img src="https://img.youtube.com/vi/0eqst26wrX0/hqdefault.jpg" alt="EV Initiative Video 2" style="width:100%;aspect-ratio:9/16;object-fit:cover;border-radius:12px;display:block;">
+      <img src="https://img.youtube.com/vi/0eqst26wrX0/hqdefault.jpg" alt="EV Initiative Video" style="width:100%;aspect-ratio:9/16;object-fit:cover;border-radius:12px;display:block;">
       <div class="media-play">▶</div>
     </div>
     <div class="media-thumb" onclick="openVideoModal('k-i6RPw9Uls')">
-      <img src="https://img.youtube.com/vi/k-i6RPw9Uls/hqdefault.jpg" alt="EV Initiative Video 3" style="width:100%;aspect-ratio:9/16;object-fit:cover;border-radius:12px;display:block;">
+      <img src="https://img.youtube.com/vi/k-i6RPw9Uls/hqdefault.jpg" alt="EV Initiative Video" style="width:100%;aspect-ratio:9/16;object-fit:cover;border-radius:12px;display:block;">
       <div class="media-play">▶</div>
     </div>
     <div class="media-thumb" onclick="openVideoModal('KH3nezRDahw')">
-      <img src="https://img.youtube.com/vi/KH3nezRDahw/hqdefault.jpg" alt="EV Initiative Video 4" style="width:100%;aspect-ratio:9/16;object-fit:cover;border-radius:12px;display:block;">
+      <img src="https://img.youtube.com/vi/KH3nezRDahw/hqdefault.jpg" alt="EV Initiative Video" style="width:100%;aspect-ratio:9/16;object-fit:cover;border-radius:12px;display:block;">
+      <div class="media-play">▶</div>
+    </div>
+    <div class="media-thumb" onclick="openVideoModal('DDrIk4f_HQM')">
+      <img src="https://img.youtube.com/vi/DDrIk4f_HQM/hqdefault.jpg" alt="EV Initiative Video" style="width:100%;aspect-ratio:9/16;object-fit:cover;border-radius:12px;display:block;">
+      <div class="media-play">▶</div>
+    </div>
+    <div class="media-thumb" onclick="openVideoModal('-J63w5K5Jfw')">
+      <img src="https://img.youtube.com/vi/-J63w5K5Jfw/hqdefault.jpg" alt="EV Initiative Video" style="width:100%;aspect-ratio:9/16;object-fit:cover;border-radius:12px;display:block;">
+      <div class="media-play">▶</div>
+    </div>
+    <div class="media-thumb" onclick="openVideoModal('pijrLXKU7tM')">
+      <img src="https://img.youtube.com/vi/pijrLXKU7tM/hqdefault.jpg" alt="EV Initiative Video" style="width:100%;aspect-ratio:9/16;object-fit:cover;border-radius:12px;display:block;">
+      <div class="media-play">▶</div>
+    </div>
+    <div class="media-thumb" onclick="openVideoModal('uGsQo36Y-WM')">
+      <img src="https://img.youtube.com/vi/uGsQo36Y-WM/hqdefault.jpg" alt="EV Initiative Video" style="width:100%;aspect-ratio:9/16;object-fit:cover;border-radius:12px;display:block;">
       <div class="media-play">▶</div>
     </div>
   </div>
@@ -1208,7 +1226,7 @@ input[type=number]{-moz-appearance:textfield;}
 <div class="fab-wrap" id="fabWrap">
   <div class="fab-items" id="fabItems">
     <a href="#opportunity" class="fab-item" onclick="closeFab()"><span>The Opportunity</span></a>
-    <a href="#media" class="fab-item" onclick="closeFab()"><span>Media</span></a>
+    <a href="#media" class="fab-item" onclick="closeFab()"><span>Social Proof</span></a>
     <a href="#revenue" class="fab-item" onclick="closeFab()"><span>Revenue Model</span></a>
     <a href="#returns" class="fab-item" onclick="closeFab()"><span>Returns &amp; Dividends</span></a>
     <a href="#investment" class="fab-item" onclick="closeFab()"><span>Investment Terms</span></a>
