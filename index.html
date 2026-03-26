@@ -145,7 +145,8 @@ footer{background:var(--bg);padding:48px 80px;display:flex;align-items:center;ju
 .fab-btn{width:52px;height:52px;border-radius:50%;background:var(--green);border:none;cursor:pointer;display:flex;align-items:center;justify-content:center;color:#000;box-shadow:0 4px 20px rgba(46,204,113,0.45);transition:transform 0.2s,box-shadow 0.2s,background 0.2s;flex-shrink:0;}
 .fab-btn:hover{transform:scale(1.08);}
 .fab-btn.open{background:#fff;}
-.fab-items{display:flex;flex-direction:column;align-items:flex-end;gap:6px;pointer-events:none;}
+.fab-items{display:flex;flex-direction:column;align-items:flex-end;gap:6px;pointer-events:none;max-height:calc(100vh - 100px);overflow-y:auto;overflow-x:hidden;-webkit-overflow-scrolling:touch;scrollbar-width:none;}
+.fab-items::-webkit-scrollbar{display:none;}
 .fab-item{display:flex;align-items:center;justify-content:flex-end;text-decoration:none;pointer-events:none;opacity:0;transform:translateY(10px);transition:opacity 0.18s ease,transform 0.18s ease;}
 .fab-item span{background:#1a1a1a;color:var(--text-muted);font-family:'DM Sans',sans-serif;font-size:13px;padding:8px 16px;border-radius:100px;border:1px solid var(--border);white-space:nowrap;transition:background 0.15s,color 0.15s;box-shadow:0 2px 12px rgba(0,0,0,0.4);}
 .fab-item:hover span{background:var(--green);color:#000;border-color:var(--green);}
