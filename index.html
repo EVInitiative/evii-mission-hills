@@ -31,7 +31,7 @@ nav{position:sticky;top:0;z-index:100;background:rgba(10,10,10,0.92);backdrop-fi
 .video-bg-wrapper::before{content:'';position:absolute;inset:0;background:linear-gradient(to bottom,transparent 60%,var(--bg) 100%);z-index:3;}
 .video-bg-wrapper iframe{position:absolute;top:50%;left:50%;transform:translate(-50%,-50%);width:177.78vh;min-width:100%;height:56.25vw;min-height:100%;opacity:0.9;z-index:1;}
 .hero-left{position:relative;z-index:2;padding:80px 60px 80px 80px;max-width:780px;}
-.hero-badge{display:inline-flex;align-items:center;gap:8px;background:rgba(46,204,113,0.1);border:1px solid rgba(46,204,113,0.3);color:var(--green);font-size:12px;font-weight:500;letter-spacing:0.12em;text-transform:uppercase;padding:6px 14px;border-radius:100px;margin-bottom:32px;}
+.hero-badge{display:inline-flex;align-items:center;gap:8px;background:rgba(46,204,113,0.1);border:1px solid rgba(46,204,113,0.3);color:var(--green);font-size:12px;font-weight:500;letter-spacing:0.12em;text-transform:uppercase;padding:6px 14px;border-radius:100px;margin-bottom:32px;box-shadow:0 0 14px rgba(46,204,113,0.15);}
 .hero-badge::before{content:'';width:6px;height:6px;background:var(--green);border-radius:50%;animation:pulse 2s infinite;}
 @keyframes pulse{0%,100%{opacity:1;}50%{opacity:0.3;}}
 .hero h1{font-family:'Bebas Neue',sans-serif;font-size:clamp(52px,6vw,88px);line-height:0.95;color:#fff;margin-bottom:24px;}
@@ -39,8 +39,8 @@ nav{position:sticky;top:0;z-index:100;background:rgba(10,10,10,0.92);backdrop-fi
 .hero-sub{font-size:18px;color:var(--text-muted);max-width:480px;margin-bottom:40px;line-height:1.6;}
 .hero-sub strong{color:var(--text);font-weight:500;}
 .hero-actions{display:flex;gap:12px;flex-wrap:wrap;margin-bottom:60px;}
-.btn-primary{background:var(--green);color:#000;padding:14px 32px;border-radius:100px;font-weight:600;font-size:15px;text-decoration:none;display:inline-flex;align-items:center;gap:8px;transition:all 0.2s;}
-.btn-primary:hover{background:#fff;transform:translateY(-2px);}
+.btn-primary{background:var(--green);color:#000;padding:14px 32px;border-radius:100px;font-weight:600;font-size:15px;text-decoration:none;display:inline-flex;align-items:center;gap:8px;transition:all 0.2s;box-shadow:0 0 20px rgba(46,204,113,0.25),0 0 6px rgba(46,204,113,0.15);}
+.btn-primary:hover{background:#fff;transform:translateY(-2px);box-shadow:0 0 28px rgba(46,204,113,0.4),0 0 10px rgba(46,204,113,0.2);}
 .btn-secondary{background:transparent;color:var(--text);padding:14px 32px;border-radius:100px;font-weight:500;font-size:15px;text-decoration:none;border:1px solid var(--border);transition:all 0.2s;}
 .btn-secondary:hover{border-color:var(--green);color:var(--green);}
 .hero-stats{display:grid;grid-template-columns:repeat(3,1fr);gap:1px;background:var(--border);border:1px solid var(--border);border-radius:12px;overflow:hidden;}
@@ -124,14 +124,19 @@ footer{background:var(--bg);padding:48px 80px;display:flex;align-items:center;ju
 .iw-security{display:flex;justify-content:space-between;align-items:center;padding:0 0 12px;font-size:13px;color:#333;border-bottom:1px solid #f0f0f0;}
 .iw-tags{display:flex;flex-wrap:wrap;gap:8px;padding:14px 20px;border-bottom:1px solid #f0f0f0;}
 .iw-tag{font-size:12px;font-weight:500;padding:5px 12px;border-radius:100px;border:1px solid #ddd;color:#333;background:#fafafa;}
-.iw-tag.green{background:#e8f5ee;border-color:#2ECC71;color:#1a7a3f;}
+.iw-tag.green{background:#e8f5ee;border-color:#2ECC71;color:#1a7a3f;box-shadow:0 0 8px rgba(46,204,113,0.2);}
 .iw-actions{padding:14px 20px 16px;display:flex;flex-direction:column;gap:8px;}
-.iw-btn-invest{background:#111;color:#fff;border:none;border-radius:8px;padding:13px;font-family:'DM Sans',sans-serif;font-size:14px;font-weight:600;cursor:pointer;transition:background 0.2s;width:100%;}
-.iw-btn-invest:hover{background:#2ECC71;}
+.iw-btn-invest{background:#111;color:#fff;border:none;border-radius:8px;padding:13px;font-family:'DM Sans',sans-serif;font-size:14px;font-weight:600;cursor:pointer;transition:all 0.2s;width:100%;}
+.iw-btn-invest:hover{background:#2ECC71;box-shadow:0 0 16px rgba(46,204,113,0.3);}
 .iw-btn-row{display:grid;grid-template-columns:1fr 1fr;gap:8px;}
 .iw-btn-sec{background:transparent;border:1px solid #ddd;border-radius:8px;padding:10px;font-family:'DM Sans',sans-serif;font-size:12px;font-weight:500;color:#555;cursor:pointer;transition:all 0.15s;}
 .iw-btn-sec:hover{border-color:#2ECC71;color:#1a7a3f;}
 @media(max-width:1200px){.invest-widget{display:none;}}
+/* mobile inline widget */
+.invest-widget-mobile{display:none;background:#fff;border-radius:16px;box-shadow:0 4px 24px rgba(0,0,0,0.3);overflow:hidden;margin:0 auto;max-width:400px;}
+@media(max-width:1200px){.invest-widget-mobile{display:block;}}
+.invest-widget-mobile-wrap{display:none;}
+@media(max-width:1200px){.invest-widget-mobile-wrap{display:block;}}
 
 /* FLOATING MENU */
 .fab-wrap{position:fixed;bottom:28px;right:28px;z-index:600;display:flex;flex-direction:column;align-items:flex-end;gap:8px;}
@@ -477,6 +482,30 @@ input[type=number]{-moz-appearance:textfield;}
 </section>
 <div class="invest-strip" style="background:var(--bg);"><a href="#invest" class="btn-primary" style="padding:16px 48px;font-size:16px;"><svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor"><path d="M13 2L4.5 13.5H11L9 22L19.5 10.5H13L13 2Z"/></svg>Invest Now</a></div>
 <div class="divider"></div>
+
+<!-- MOBILE INVEST WIDGET -->
+<div style="padding:32px 16px;background:var(--bg);" class="invest-widget-mobile-wrap">
+  <div class="invest-widget-mobile">
+    <div class="iw-header">
+      <div class="iw-title">Invest in EVII<br>Mission Hills, Inc.</div>
+      <div class="iw-total"><span class="iw-total-label">Total Invested:</span><span class="iw-total-val">Awaiting Data</span></div>
+      <div class="iw-security"><span>Security type: Common Stock</span></div>
+    </div>
+    <div class="iw-tags">
+      <span class="iw-tag green">$2.50/share</span>
+      <span class="iw-tag">$100 investor min.</span>
+      <span class="iw-tag">Min. raise $10k</span>
+      <span class="iw-tag">Max. raise $[X]M</span>
+    </div>
+    <div class="iw-actions">
+      <button class="iw-btn-invest" onclick="window.location.href='#invest'">Invest Now</button>
+      <div class="iw-btn-row">
+        <button class="iw-btn-sec">View Form C</button>
+        <button class="iw-btn-sec">View All Filings</button>
+      </div>
+    </div>
+  </div>
+</div>
 
 <!-- REVENUE STREAMS -->
 <section id="revenue" style="background:var(--bg-card);">
