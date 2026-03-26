@@ -168,7 +168,7 @@ footer{background:var(--bg);padding:48px 80px;display:flex;align-items:center;ju
 /* MEDIA / SOCIAL PROOF */
 /* SOCIAL PROOF */
 .sp-wrap{position:relative;height:380px;margin-top:48px;}
-.sp-scroll{position:absolute;top:0;left:0;right:0;bottom:0;display:flex;gap:16px;overflow-x:scroll;-webkit-overflow-scrolling:touch;scrollbar-width:none;padding-right:40px;}
+.sp-scroll{position:absolute;top:0;left:0;right:0;bottom:0;display:flex;gap:16px;overflow-x:scroll;overflow-y:hidden;-webkit-overflow-scrolling:touch;scrollbar-width:none;padding-right:40px;overscroll-behavior-x:contain;touch-action:pan-x pan-y;}
 .sp-scroll::-webkit-scrollbar{display:none;}
 .sp-card{flex:0 0 auto;width:200px;height:100%;border-radius:12px;overflow:hidden;position:relative;cursor:pointer;}
 .sp-card img{width:100%;height:100%;object-fit:cover;display:block;}
@@ -1551,11 +1551,16 @@ document.querySelectorAll('a[href^="#"]').forEach(function(a){
   var modal = document.getElementById('spModal');
   var frame = document.getElementById('spFrame');
   var close = document.getElementById('spClose');
-  if(!modal||!frame||!close) return;
+  var scroll = document.getElementById('spScroll');
+  if(!modal||!frame||!close||!scroll) return;
 
-  // Open: tap on card
+  var scrollStart = 0;
+  scroll.addEventListener('touchstart', function(){ scrollStart = scroll.scrollLeft; }, {passive:true});
+
+  // Open: tap on card (only if scroll didn't move)
   document.querySelectorAll('.sp-card').forEach(function(c){
     c.addEventListener('click', function(){
+      if(Math.abs(scroll.scrollLeft - scrollStart) > 10) return;
       var v = c.getAttribute('data-v');
       if(!v) return;
       frame.src = 'https://www.youtube-nocookie.com/embed/'+v+'?autoplay=1&rel=0&playsinline=1';
