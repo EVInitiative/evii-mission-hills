@@ -84,8 +84,7 @@ section{padding:100px 80px;}
 /* TEAM */
 .team-grid{display:grid;grid-template-columns:1fr 1fr;gap:2px;border-radius:12px;overflow:hidden;}
 .team-card{background:var(--bg);padding:48px;display:flex;gap:32px;}
-.team-avatar{width:120px;height:120px;border-radius:50%;background:var(--bg-green);border:2px solid var(--border-green);flex-shrink:0;display:flex;align-items:center;justify-content:center;font-family:'Bebas Neue',sans-serif;font-size:28px;color:var(--green);overflow:hidden;}
-.team-avatar img{width:100%;height:100%;object-fit:cover;}
+.team-avatar{width:72px;height:72px;border-radius:50%;background:var(--bg-green);border:2px solid var(--border-green);flex-shrink:0;display:flex;align-items:center;justify-content:center;font-family:'Bebas Neue',sans-serif;font-size:28px;color:var(--green);}
 .team-name{font-family:'Bebas Neue',sans-serif;font-size:28px;color:#fff;margin-bottom:2px;}
 .team-title{font-size:13px;color:var(--green);margin-bottom:16px;}
 .team-bio{font-size:14px;color:var(--text-muted);line-height:1.7;}
@@ -218,8 +217,7 @@ footer{background:var(--bg);padding:48px 80px;display:flex;align-items:center;ju
   /* returns — all inline grids override */
   /* team */
   .team-grid{grid-template-columns:1fr;}
-  .team-card{flex-direction:column;gap:16px;padding:28px 16px;align-items:center;text-align:center;}
-  .team-avatar{width:100px;height:100px;}
+  .team-card{flex-direction:column;gap:16px;padding:28px 16px;}
   /* terms */
   .terms-grid{grid-template-columns:1fr;}
   .term-row{flex-direction:column;align-items:flex-start;gap:4px;}
@@ -468,7 +466,7 @@ input[type=number]{-moz-appearance:textfield;}
   </div>
 
   <div class="rev-bar-wrap" id="revBars">
-    <div style="font-size:12px;letter-spacing:0.1em;text-transform:uppercase;color:var(--text-dim);margin-bottom:24px;">Projected Year 1 Revenue Breakdown — Hover to Explore</div>
+    <div style="font-size:12px;letter-spacing:0.1em;text-transform:uppercase;color:var(--text-dim);margin-bottom:24px;">Year 1 Revenue Breakdown — Hover to Explore</div>
     <div class="rev-bar-item" data-val="984960" data-max="1336262">
       <span class="rev-bar-label">EV Charging</span>
       <div class="rev-bar-track"><div class="rev-bar-fill" data-pct="73.7"></div></div>
@@ -509,7 +507,7 @@ input[type=number]{-moz-appearance:textfield;}
 <section id="returns" style="background:var(--bg);">
   <div class="section-label">Investor Returns</div>
   <h2 class="section-title">The Numbers.<br>From the Model.</h2>
-  <div class="section-body"><p>Semiannual dividends from operating profits. A projected 69% IRR. An asset with a projected payback in under 18 months. This is what makes EV Initiative different from everything else in this space.</p></div>
+  <div class="section-body"><p>Semiannual dividends from real operating profits. A 69% projected IRR. An asset that pays back in under 18 months. This is what makes EV Initiative different from everything else in this space.</p></div>
 
   <div style="display:grid;grid-template-columns:1fr 1fr 1fr;gap:2px;margin-top:48px;border-radius:12px;overflow:hidden;">
     <div style="background:var(--bg-card);padding:40px 32px;text-align:center;">
@@ -518,9 +516,9 @@ input[type=number]{-moz-appearance:textfield;}
       <div style="font-size:13px;color:var(--text-dim);">Reg CF — Closed · 3,436 investors</div>
     </div>
     <div style="background:var(--bg-green);padding:40px 32px;text-align:center;position:relative;overflow:hidden;">
-      <div style="position:absolute;top:16px;right:16px;background:var(--green);color:#000;font-size:11px;font-weight:700;padding:4px 10px;border-radius:100px;">+34%</div>
+      <div style="position:absolute;top:16px;right:16px;background:var(--green);color:#000;font-size:11px;font-weight:700;padding:4px 10px;border-radius:100px;">+79%</div>
       <div style="font-size:11px;letter-spacing:0.12em;text-transform:uppercase;color:var(--green);margin-bottom:12px;">Round 2 Share Price</div>
-      <div style="font-family:'Bebas Neue',sans-serif;font-size:60px;color:#fff;line-height:1;margin-bottom:8px;">$2.50</div>
+      <div style="font-family:'Bebas Neue',sans-serif;font-size:60px;color:#fff;line-height:1;margin-bottom:8px;">$3.33</div>
       <div style="font-size:13px;color:rgba(255,255,255,0.6);">Reg CF — Open Now</div>
     </div>
     <div style="background:var(--bg-card);padding:40px 32px;text-align:center;">
@@ -537,19 +535,19 @@ input[type=number]{-moz-appearance:textfield;}
       <div style="font-size:12px;color:rgba(255,255,255,0.5);">10-year · base case</div>
     </div>
     <div style="background:var(--bg-card);padding:36px 24px;text-align:center;">
-      <div style="font-size:11px;letter-spacing:0.1em;text-transform:uppercase;color:var(--text-dim);margin-bottom:12px;">Projected Payback Period</div>
+      <div style="font-size:11px;letter-spacing:0.1em;text-transform:uppercase;color:var(--text-dim);margin-bottom:12px;">Payback Period</div>
       <div style="font-family:'Bebas Neue',sans-serif;font-size:56px;color:var(--green);line-height:1;margin-bottom:6px;">~1.5</div>
-      <div style="font-size:12px;color:var(--text-dim);">Projected years to full capital return</div>
+      <div style="font-size:12px;color:var(--text-dim);">Years to full capital return</div>
     </div>
     <div style="background:var(--bg-card);padding:36px 24px;text-align:center;">
-      <div style="font-size:11px;letter-spacing:0.1em;text-transform:uppercase;color:var(--text-dim);margin-bottom:12px;">Projected Equity Multiple</div>
+      <div style="font-size:11px;letter-spacing:0.1em;text-transform:uppercase;color:var(--text-dim);margin-bottom:12px;">Equity Multiple</div>
       <div style="font-family:'Bebas Neue',sans-serif;font-size:56px;color:var(--green);line-height:1;margin-bottom:6px;">8.15x</div>
-      <div style="font-size:12px;color:var(--text-dim);">Projected over 10 years · base case</div>
+      <div style="font-size:12px;color:var(--text-dim);">Over 10 years · base case</div>
     </div>
     <div style="background:var(--bg-green);padding:36px 24px;text-align:center;">
-      <div style="font-size:11px;letter-spacing:0.1em;text-transform:uppercase;color:var(--green);margin-bottom:12px;">Projected 10-Year Total Profit</div>
+      <div style="font-size:11px;letter-spacing:0.1em;text-transform:uppercase;color:var(--green);margin-bottom:12px;">10-Year Total Profit</div>
       <div style="font-family:'Bebas Neue',sans-serif;font-size:56px;color:#fff;line-height:1;margin-bottom:6px;">$31.3M</div>
-      <div style="font-size:12px;color:rgba(255,255,255,0.5);">Projected cumulative net profit</div>
+      <div style="font-size:12px;color:rgba(255,255,255,0.5);">Cumulative net profit</div>
     </div>
   </div>
 
@@ -559,14 +557,14 @@ input[type=number]{-moz-appearance:textfield;}
       <h3 style="font-family:'Bebas Neue',sans-serif;font-size:36px;color:#fff;line-height:1.05;margin-bottom:20px;">Most Equity Crowdfunding Pays You Nothing Until an Exit.<br><span style="color:var(--green);">We Pay You Twice a Year.</span></h3>
       <p style="font-size:15px;color:rgba(255,255,255,0.7);line-height:1.7;margin-bottom:24px;">EVII Mission Hills, Inc. distributes profits to all shareholders semiannually — starting from when we open. Six revenue streams running simultaneously means the asset earns from multiple directions every single day.</p>
       <div style="display:grid;grid-template-columns:1fr 1fr;gap:12px;">
-        <div style="background:rgba(0,0,0,0.25);border-radius:10px;padding:16px 18px;"><div style="font-family:'Bebas Neue',sans-serif;font-size:28px;color:var(--green);">$1.57M</div><div style="font-size:12px;color:rgba(255,255,255,0.5);">Projected annual distributable cash</div></div>
+        <div style="background:rgba(0,0,0,0.25);border-radius:10px;padding:16px 18px;"><div style="font-family:'Bebas Neue',sans-serif;font-size:28px;color:var(--green);">$1.57M</div><div style="font-size:12px;color:rgba(255,255,255,0.5);">Annual distributable cash</div></div>
         <div style="background:rgba(0,0,0,0.25);border-radius:10px;padding:16px 18px;"><div style="font-family:'Bebas Neue',sans-serif;font-size:28px;color:var(--green);">2x/yr</div><div style="font-size:12px;color:rgba(255,255,255,0.5);">From operating profits</div></div>
-        <div style="background:rgba(0,0,0,0.25);border-radius:10px;padding:16px 18px;"><div style="font-family:'Bebas Neue',sans-serif;font-size:28px;color:var(--green);">$2.49M</div><div style="font-size:12px;color:rgba(255,255,255,0.5);">Projected Year 1 net profit</div></div>
-        <div style="background:rgba(0,0,0,0.25);border-radius:10px;padding:16px 18px;"><div style="font-family:'Bebas Neue',sans-serif;font-size:28px;color:var(--green);">$5.02M</div><div style="font-size:12px;color:rgba(255,255,255,0.5);">Projected annual gross revenue</div></div>
+        <div style="background:rgba(0,0,0,0.25);border-radius:10px;padding:16px 18px;"><div style="font-family:'Bebas Neue',sans-serif;font-size:28px;color:var(--green);">$2.49M</div><div style="font-size:12px;color:rgba(255,255,255,0.5);">Year 1 net profit</div></div>
+        <div style="background:rgba(0,0,0,0.25);border-radius:10px;padding:16px 18px;"><div style="font-family:'Bebas Neue',sans-serif;font-size:28px;color:var(--green);">$5.02M</div><div style="font-size:12px;color:rgba(255,255,255,0.5);">Annual gross revenue</div></div>
       </div>
     </div>
     <div style="background:var(--bg-card);padding:48px 40px;">
-      <div style="font-size:11px;letter-spacing:0.12em;text-transform:uppercase;color:var(--text-dim);margin-bottom:16px;">Projected Year 1 Revenue by Stream</div>
+      <div style="font-size:11px;letter-spacing:0.12em;text-transform:uppercase;color:var(--text-dim);margin-bottom:16px;">Year 1 Revenue by Stream</div>
       <div style="display:flex;flex-direction:column;gap:10px;">
         <div style="display:flex;align-items:center;justify-content:space-between;padding:12px 16px;background:var(--bg);border-radius:8px;"><span style="font-size:14px;color:var(--text-muted);">EV Charging</span><span style="font-family:'DM Mono',monospace;font-size:14px;color:var(--green);">$984,960</span></div>
         <div style="display:flex;align-items:center;justify-content:space-between;padding:12px 16px;background:var(--bg);border-radius:8px;"><span style="font-size:14px;color:var(--text-muted);">LCFS Carbon Credits</span><span style="font-family:'DM Mono',monospace;font-size:14px;color:var(--green);">$615,600</span></div>
@@ -574,7 +572,7 @@ input[type=number]{-moz-appearance:textfield;}
         <div style="display:flex;align-items:center;justify-content:space-between;padding:12px 16px;background:var(--bg);border-radius:8px;"><span style="font-size:14px;color:var(--text-muted);">Robotic Barista</span><span style="font-family:'DM Mono',monospace;font-size:14px;color:var(--green);">$351,630</span></div>
         <div style="display:flex;align-items:center;justify-content:space-between;padding:12px 16px;background:var(--bg);border-radius:8px;"><span style="font-size:14px;color:var(--text-muted);">Vending</span><span style="font-family:'DM Mono',monospace;font-size:14px;color:var(--green);">$53,352</span></div>
         <div style="display:flex;align-items:center;justify-content:space-between;padding:12px 16px;background:var(--bg);border-radius:8px;"><span style="font-size:14px;color:var(--text-muted);">App &amp; Digital Ecosystem</span><span style="font-family:'DM Mono',monospace;font-size:14px;color:var(--green);">$82,080</span></div>
-        <div style="display:flex;align-items:center;justify-content:space-between;padding:14px 16px;background:var(--bg-green);border-radius:8px;"><span style="font-size:14px;color:#fff;font-weight:600;">Projected Total Year 1 Net Profit</span><span style="font-family:'DM Mono',monospace;font-size:15px;color:var(--green);font-weight:600;">$2,488,501</span></div>
+        <div style="display:flex;align-items:center;justify-content:space-between;padding:14px 16px;background:var(--bg-green);border-radius:8px;"><span style="font-size:14px;color:#fff;font-weight:600;">Total Year 1 Net Profit</span><span style="font-family:'DM Mono',monospace;font-size:15px;color:var(--green);font-weight:600;">$2,488,501</span></div>
       </div>
     </div>
   </div>
@@ -599,7 +597,7 @@ input[type=number]{-moz-appearance:textfield;}
     <div class="term-row"><span class="term-label">Issuer</span><span class="term-value">EVII Mission Hills, Inc. (CA Corp)</span></div>
     <div class="term-row"><span class="term-label">Offering</span><span class="term-value highlight">Reg CF — Open to All Investors</span></div>
     <div class="term-row"><span class="term-label">Equity Offered</span><span class="term-value highlight">30% of EVII Mission Hills, Inc.</span></div>
-    <div class="term-row"><span class="term-label">Share Price</span><span class="term-value highlight">$2.50/share</span></div>
+    <div class="term-row"><span class="term-label">Share Price</span><span class="term-value highlight">$3.33/share</span></div>
     <div class="term-row"><span class="term-label">Minimum Investment</span><span class="term-value">$100</span></div>
     <div class="term-row"><span class="term-label">Dividends</span><span class="term-value highlight">Semiannual from Operating Profits</span></div>
     <div class="term-row"><span class="term-label">Capital Stack</span><span class="term-value">$10.75M ($4.75M C-PACE + $6M Equity)</span></div>
@@ -619,9 +617,6 @@ input[type=number]{-moz-appearance:textfield;}
   <div class="section-label">Our Vision</div>
   <h2 class="section-title">Mission Hills Is Hub #1.<br>The Platform Scales.</h2>
   <div class="section-body"><p>EV Initiative is building a network of destination charging hubs — each one a landmark, each one its own investment. Three tiers. One brand. A growing advertising network that compounds in value as every new location comes online.</p></div>
-  <div style="margin-top:48px;border-radius:16px;overflow:hidden;">
-    <img src="images/mission-hills-nighttime.jpg" alt="Mission Hills Hub at Night" style="width:100%;display:block;border-radius:16px;">
-  </div>
   <div style="margin-top:40px;padding:32px;background:var(--bg);border-radius:12px;border-left:3px solid var(--green);">
     <p style="font-size:16px;color:var(--text);font-weight:500;margin-bottom:8px;">Los Angeles needs more charging infrastructure. We build destinations people choose to come back to — not just out of utility.</p>
     <p style="font-size:14px;color:var(--text-muted);margin:0;">Next in the pipeline: Woodland Hills, Marina Del Rey, Orange County. Long-term: national. Each new location expands the EV Initiative Advertising Network — more screens, more reach, compounding value for every investor in every hub.</p>
@@ -644,9 +639,6 @@ input[type=number]{-moz-appearance:textfield;}
     <p style="font-size:16px;color:rgba(255,255,255,0.7);margin-bottom:16px;max-width:800px;"><strong style="color:#fff;">1 in 4 cars sold in California is already electric</strong> — driven by real consumer demand. The San Fernando Valley leads the region. And it has almost no destination-quality charging infrastructure to show for it.</p>
     <p style="font-size:16px;color:rgba(255,255,255,0.7);margin-bottom:16px;max-width:800px;">In the 20th century, the gas station corner lot built generational wealth. <strong style="color:#fff;">That transition is happening again, right now.</strong> The investors who move early will own the corners.</p>
     <p style="font-size:16px;color:rgba(255,255,255,0.7);max-width:800px;">This window is open. It will not stay open long.</p>
-  </div>
-  <div style="margin-top:48px;border-radius:16px;overflow:hidden;">
-    <img src="images/trade-map.png" alt="EVII Mission Hills Trade Map" style="width:100%;display:block;border-radius:16px;">
   </div>
 </section>
 <div class="invest-strip" style="background:var(--bg-green);"><a href="#invest" class="btn-primary" style="padding:16px 48px;font-size:16px;"><svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor"><path d="M13 2L4.5 13.5H11L9 22L19.5 10.5H13L13 2Z"/></svg>Invest Now</a></div>
@@ -746,23 +738,79 @@ input[type=number]{-moz-appearance:textfield;}
 <!-- DIGITAL INFRASTRUCTURE -->
 <section id="digital" style="background:var(--bg-card);">
   <div class="section-label">Digital Infrastructure</div>
-  <h2 class="section-title">Every Visit Builds<br>the Next One.</h2>
-  <div style="display:grid;grid-template-columns:1fr 1fr;gap:48px;margin-top:48px;align-items:start;">
-    <div style="display:flex;flex-direction:column;gap:32px;">
-      <div><div style="font-family:'Bebas Neue',sans-serif;font-size:22px;color:#fff;margin-bottom:8px;">Tap-to-Pay Everywhere</div><p style="font-size:14px;color:var(--text-muted);line-height:1.7;">Frictionless credit card transactions at every touchpoint. No app required to spend.</p></div>
-      <div><div style="font-family:'Bebas Neue',sans-serif;font-size:22px;color:#fff;margin-bottom:8px;">Mobile Rewards App</div><p style="font-size:14px;color:var(--text-muted);line-height:1.7;">Integrated loyalty platform with preloaded wallet functionality and personalized discounts. Rewards drive repeat visits.</p></div>
-      <div><div style="font-family:'Bebas Neue',sans-serif;font-size:22px;color:#fff;margin-bottom:8px;">Order Ahead</div><p style="font-size:14px;color:var(--text-muted);line-height:1.7;">Customers order food and drinks before they arrive. Reduces wait times, increases throughput, makes Mission Hills the obvious choice.</p></div>
-    </div>
-    <div style="background:var(--bg-green);border-radius:12px;padding:36px;">
-      <div style="font-family:'Bebas Neue',sans-serif;font-size:28px;color:#fff;margin-bottom:8px;">The VPOS Flywheel</div>
-      <p style="font-size:14px;color:rgba(255,255,255,0.6);margin-bottom:24px;">Powered by KioPay — every transaction compounds the next.</p>
-      <div style="display:flex;flex-direction:column;gap:10px;">
-        <div style="display:flex;align-items:center;gap:12px;padding:12px 16px;background:rgba(0,0,0,0.2);border-radius:8px;"><span style="color:var(--green);font-size:16px;">→</span><span style="font-size:14px;color:rgba(255,255,255,0.8);">Every transaction builds customer data</span></div>
-        <div style="display:flex;align-items:center;gap:12px;padding:12px 16px;background:rgba(0,0,0,0.2);border-radius:8px;"><span style="color:var(--green);font-size:16px;">→</span><span style="font-size:14px;color:rgba(255,255,255,0.8);">Rewards drive repeat visits</span></div>
-        <div style="display:flex;align-items:center;gap:12px;padding:12px 16px;background:rgba(0,0,0,0.2);border-radius:8px;"><span style="color:var(--green);font-size:16px;">→</span><span style="font-size:14px;color:rgba(255,255,255,0.8);">Preloaded wallets increase spend per visit</span></div>
-        <div style="display:flex;align-items:center;gap:12px;padding:12px 16px;background:rgba(0,0,0,0.2);border-radius:8px;"><span style="color:var(--green);font-size:16px;">→</span><span style="font-size:14px;color:rgba(255,255,255,0.8);">Order-ahead boosts operational efficiency</span></div>
-        <div style="margin-top:8px;padding:16px;background:rgba(46,204,113,0.15);border:1px solid rgba(46,204,113,0.3);border-radius:8px;"><p style="font-size:14px;color:#fff;font-weight:500;margin:0;">This creates repeat customers and recurring revenue from opening day.</p></div>
+  <h2 class="section-title">The Starbucks Rewards<br>Model. For EV Charging.</h2>
+  <div class="section-body">
+    <p>Starbucks Rewards is one of the most profitable loyalty programs in history. It doesn't just bring people back — it gets them to <strong>preload money, order ahead, and spend more per visit</strong>. Mission Hills runs the same playbook.</p>
+  </div>
+
+  <div style="display:grid;grid-template-columns:1fr 1fr;gap:2px;margin-top:48px;border-radius:12px;overflow:hidden;">
+
+    <!-- LEFT: Starbucks comparison -->
+    <div style="background:var(--bg);padding:48px 40px;">
+      <div style="font-size:11px;letter-spacing:0.12em;text-transform:uppercase;color:var(--text-dim);margin-bottom:20px;">Why Starbucks Rewards Works</div>
+      <p style="font-size:15px;color:var(--text-muted);line-height:1.8;margin-bottom:28px;">Starbucks Rewards has over 34 million active members. Members visit <strong style="color:var(--text);">3x more often</strong> than non-members and <strong style="color:var(--text);">spend 2x more</strong> per visit. The preloaded wallet alone holds billions of dollars in float — money customers have already committed to spending before they even walk in the door.</p>
+      <p style="font-size:15px;color:var(--text-muted);line-height:1.8;margin-bottom:32px;">The secret isn't the coffee. It's the <strong style="color:var(--text);">habit loop</strong>: earn points, get rewarded, come back, earn more. Each cycle deepens the relationship and increases the lifetime value of every customer.</p>
+
+      <div style="display:flex;flex-direction:column;gap:16px;">
+        <div style="display:flex;gap:16px;align-items:flex-start;">
+          <div style="width:36px;height:36px;border-radius:50%;background:var(--bg-green);border:1px solid var(--border-green);display:flex;align-items:center;justify-content:center;flex-shrink:0;font-size:16px;">☕</div>
+          <div><div style="font-size:14px;color:#fff;font-weight:500;margin-bottom:4px;">Starbucks: Coffee + Rewards</div><div style="font-size:13px;color:var(--text-muted);">You come for the coffee. You stay for the points. You come back for the free drink.</div></div>
+        </div>
+        <div style="display:flex;gap:16px;align-items:flex-start;">
+          <div style="width:36px;height:36px;border-radius:50%;background:var(--bg-green);border:1px solid var(--border-green);display:flex;align-items:center;justify-content:center;flex-shrink:0;font-size:16px;">⚡</div>
+          <div><div style="font-size:14px;color:var(--green);font-weight:500;margin-bottom:4px;">Mission Hills: Charging + Rewards</div><div style="font-size:13px;color:var(--text-muted);">You come to charge. You buy a coffee and a shawarma. You earn points. You come back — and you bring your wallet.</div></div>
+        </div>
       </div>
+    </div>
+
+    <!-- RIGHT: Our system -->
+    <div style="background:var(--bg-green);padding:48px 40px;">
+      <div style="font-size:11px;letter-spacing:0.12em;text-transform:uppercase;color:var(--green);margin-bottom:20px;">The EV Initiative Loyalty Engine</div>
+      <p style="font-size:15px;color:rgba(255,255,255,0.75);line-height:1.8;margin-bottom:28px;">Powered by the KioPay VPOS platform. Every transaction — coffee, tacos, vending — feeds a loyalty flywheel that turns one-time visitors into regulars.</p>
+
+      <div style="display:flex;flex-direction:column;gap:10px;margin-bottom:28px;">
+        <div style="display:flex;align-items:flex-start;gap:12px;padding:14px 16px;background:rgba(0,0,0,0.2);border-radius:8px;">
+          <span style="color:var(--green);font-weight:700;flex-shrink:0;width:20px;">01</span>
+          <div><div style="font-size:13px;color:#fff;font-weight:500;margin-bottom:2px;">Preloaded Wallet</div><div style="font-size:13px;color:rgba(255,255,255,0.6);">Customers load money in advance — just like Starbucks. That committed spend is revenue before they even arrive.</div></div>
+        </div>
+        <div style="display:flex;align-items:flex-start;gap:12px;padding:14px 16px;background:rgba(0,0,0,0.2);border-radius:8px;">
+          <span style="color:var(--green);font-weight:700;flex-shrink:0;width:20px;">02</span>
+          <div><div style="font-size:13px;color:#fff;font-weight:500;margin-bottom:2px;">Order Ahead</div><div style="font-size:13px;color:rgba(255,255,255,0.6);">Order your coffee and food before you arrive. Your robot barista drink is waiting when you plug in.</div></div>
+        </div>
+        <div style="display:flex;align-items:flex-start;gap:12px;padding:14px 16px;background:rgba(0,0,0,0.2);border-radius:8px;">
+          <span style="color:var(--green);font-weight:700;flex-shrink:0;width:20px;">03</span>
+          <div><div style="font-size:13px;color:#fff;font-weight:500;margin-bottom:2px;">Points and Rewards</div><div style="font-size:13px;color:rgba(255,255,255,0.6);">Every purchase earns points. Free drinks, discounts, and perks bring drivers back — and keep competitors out.</div></div>
+        </div>
+        <div style="display:flex;align-items:flex-start;gap:12px;padding:14px 16px;background:rgba(0,0,0,0.2);border-radius:8px;">
+          <span style="color:var(--green);font-weight:700;flex-shrink:0;width:20px;">04</span>
+          <div><div style="font-size:13px;color:#fff;font-weight:500;margin-bottom:2px;">Data Flywheel</div><div style="font-size:13px;color:rgba(255,255,255,0.6);">Every transaction builds a customer profile. Personalized offers increase spend per visit over time — automatically.</div></div>
+        </div>
+      </div>
+
+      <div style="padding:18px 20px;background:rgba(46,204,113,0.15);border:1px solid rgba(46,204,113,0.3);border-radius:10px;">
+        <p style="font-size:14px;color:#fff;font-weight:500;margin:0;line-height:1.6;">Starbucks made loyalty a profit center. We built the same system into a place EV drivers <em>have</em> to come anyway. That's the edge.</p>
+      </div>
+    </div>
+
+  </div>
+
+  <!-- Stats row -->
+  <div style="display:grid;grid-template-columns:repeat(4,1fr);gap:2px;margin-top:2px;border-radius:0 0 12px 12px;overflow:hidden;">
+    <div style="background:var(--bg-card2);padding:28px 24px;text-align:center;">
+      <div style="font-family:'Bebas Neue',sans-serif;font-size:36px;color:var(--green);margin-bottom:6px;">3x</div>
+      <div style="font-size:12px;color:var(--text-dim);">More frequent visits from loyalty members (Starbucks benchmark)</div>
+    </div>
+    <div style="background:var(--bg);padding:28px 24px;text-align:center;">
+      <div style="font-family:'Bebas Neue',sans-serif;font-size:36px;color:var(--green);margin-bottom:6px;">2x</div>
+      <div style="font-size:12px;color:var(--text-dim);">Higher spend per visit vs non-members</div>
+    </div>
+    <div style="background:var(--bg-card2);padding:28px 24px;text-align:center;">
+      <div style="font-family:'Bebas Neue',sans-serif;font-size:36px;color:var(--green);margin-bottom:6px;">15-40</div>
+      <div style="font-size:12px;color:var(--text-dim);">Minutes of captive dwell time every session</div>
+    </div>
+    <div style="background:var(--bg);padding:28px 24px;text-align:center;">
+      <div style="font-family:'Bebas Neue',sans-serif;font-size:36px;color:var(--green);margin-bottom:6px;">6</div>
+      <div style="font-size:12px;color:var(--text-dim);">Revenue streams all fed by one loyalty system</div>
     </div>
   </div>
 </section>
@@ -890,11 +938,11 @@ input[type=number]{-moz-appearance:textfield;}
   <h2 class="section-title">The People<br>Building This.</h2>
   <div class="team-grid">
     <div class="team-card">
-      <div class="team-avatar"><img src="images/aaron-profile.jpg" alt="Aaron Zeraldo"></div>
+      <div class="team-avatar">AZ</div>
       <div><div class="team-name">Aaron Zeraldo</div><div class="team-title">Chief Executive Officer, EV Initiative</div><div class="team-bio">Co-founder and CEO of EVI Infrastructure, Inc. Led the most successful EV charging crowdfunding campaign in history — $2.05M from 3,436 investors via Meta and TikTok alone. Drives business development, investor relations, and the national expansion of the EV Initiative platform.</div></div>
     </div>
     <div class="team-card" style="background:var(--bg-card2);">
-      <div class="team-avatar"><img src="images/warren-profile.jpg" alt="Warren Navarro"></div>
+      <div class="team-avatar">WN</div>
       <div><div class="team-name">Warren Navarro</div><div class="team-title">Chief Operating Officer, EV Initiative</div><div class="team-bio">COO of EV Initiative. Manages all development operations for EVII Mission Hills — GC procurement, capital stack, permitting, Tesla integration, and project timeline from groundbreaking through launch. Works directly with Coffman Engineers, LADWP, and the City of Los Angeles.</div></div>
     </div>
   </div>
@@ -941,7 +989,7 @@ input[type=number]{-moz-appearance:textfield;}
     <div class="iw-security"><span>Security type: Common Stock</span><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="#888" stroke-width="2"><polyline points="6 9 12 15 18 9"/></svg></div>
   </div>
   <div class="iw-tags">
-    <span class="iw-tag green">$2.50/share</span>
+    <span class="iw-tag green">$3.33/share</span>
     <span class="iw-tag">$100 investor min.</span>
     <span class="iw-tag">Min. raise $10k</span>
     <span class="iw-tag">Max. raise $[X]M</span>
@@ -958,18 +1006,18 @@ input[type=number]{-moz-appearance:textfield;}
 <!-- FLOATING SECTION MENU -->
 <div class="fab-wrap" id="fabWrap">
   <div class="fab-items" id="fabItems">
-    <a href="#opportunity" class="fab-item" onclick="closeFab()"><span>The Opportunity</span></a>
-    <a href="#revenue" class="fab-item" onclick="closeFab()"><span>Revenue Model</span></a>
-    <a href="#returns" class="fab-item" onclick="closeFab()"><span>Returns &amp; Dividends</span></a>
-    <a href="#investment" class="fab-item" onclick="closeFab()"><span>Investment Terms</span></a>
-    <a href="#vision" class="fab-item" onclick="closeFab()"><span>Our Vision</span></a>
-    <a href="#market" class="fab-item" onclick="closeFab()"><span>Market Opportunity</span></a>
-    <a href="#reasons" class="fab-item" onclick="closeFab()"><span>Why Invest</span></a>
-    <a href="#ecosystem" class="fab-item" onclick="closeFab()"><span>Destination Ecosystem</span></a>
-    <a href="#experience" class="fab-item" onclick="closeFab()"><span>Driver Experience</span></a>
-    <a href="#digital" class="fab-item" onclick="closeFab()"><span>Digital Infrastructure</span></a>
-    <a href="#about" class="fab-item" onclick="closeFab()"><span>About Us</span></a>
     <a href="#team" class="fab-item" onclick="closeFab()"><span>The Team</span></a>
+    <a href="#about" class="fab-item" onclick="closeFab()"><span>About Us</span></a>
+    <a href="#digital" class="fab-item" onclick="closeFab()"><span>Digital Infrastructure</span></a>
+    <a href="#experience" class="fab-item" onclick="closeFab()"><span>Driver Experience</span></a>
+    <a href="#ecosystem" class="fab-item" onclick="closeFab()"><span>Destination Ecosystem</span></a>
+    <a href="#reasons" class="fab-item" onclick="closeFab()"><span>Why Invest</span></a>
+    <a href="#market" class="fab-item" onclick="closeFab()"><span>Market Opportunity</span></a>
+    <a href="#vision" class="fab-item" onclick="closeFab()"><span>Our Vision</span></a>
+    <a href="#investment" class="fab-item" onclick="closeFab()"><span>Investment Terms</span></a>
+    <a href="#returns" class="fab-item" onclick="closeFab()"><span>Returns &amp; Dividends</span></a>
+    <a href="#revenue" class="fab-item" onclick="closeFab()"><span>Revenue Model</span></a>
+    <a href="#opportunity" class="fab-item" onclick="closeFab()"><span>The Opportunity</span></a>
     <a href="#invest" class="fab-item" onclick="closeFab()" style="margin-top:4px;"><span style="background:var(--green);color:#000;border-color:var(--green);font-weight:600;">⚡ Invest Now</span></a>
   </div>
   <button class="fab-btn" id="fabBtn" onclick="toggleFab()" aria-label="Navigate">
@@ -1114,7 +1162,7 @@ var scenarios = {
 // If raise = $6M, yield = 209344/6000000 = 3.49%
 // But model shows total raise could be less. Let's use simpler:
 // annual dividend = investment * ownership_pct * distributable / raise
-// ownership = investment / 2.50 shares * (total issued / 10M)
+// ownership = investment / 3.33 shares * (total issued / 10M)
 // Simplified yield rates per scenario:
 var yields = { low: 0.0302, base: 0.0349, high: 0.0436 };
 
@@ -1128,7 +1176,7 @@ function calcUpdate(){
   var inv = parseFloat(document.getElementById('calcInput').value)||0;
   var sc = scenarios[calcScenario];
   var yld = yields[calcScenario];
-  var shares = Math.floor(inv / 2.50);
+  var shares = Math.floor(inv / 3.33);
   var annual = inv * yld;
   var perPayout = annual / 2;
   var tenYear = inv * sc.mult;
@@ -1227,20 +1275,9 @@ var barIO = new IntersectionObserver(function(entries){
   entries.forEach(function(e){
     if(!e.isIntersecting) return;
     barIO.unobserve(e.target);
-    var bars = e.target.querySelectorAll('.rev-bar-item');
-    bars.forEach(function(item, i){
-      item.style.opacity = '0';
-      item.style.transform = 'translateX(-20px)';
-      item.style.transition = 'opacity 0.5s ease, transform 0.5s ease';
-      setTimeout(function(){
-        item.style.opacity = '1';
-        item.style.transform = 'translateX(0)';
-        var fill = item.querySelector('.rev-bar-fill');
-        if(fill){
-          var pct = fill.getAttribute('data-pct');
-          fill.style.width = pct+'%';
-        }
-      }, 200 + i * 180);
+    e.target.querySelectorAll('.rev-bar-fill').forEach(function(bar){
+      var pct = bar.getAttribute('data-pct');
+      setTimeout(function(){ bar.style.width = pct+'%'; },100);
     });
   });
 },{threshold:0.3});
