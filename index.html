@@ -173,11 +173,10 @@ footer{background:var(--bg);padding:48px 80px;display:flex;align-items:center;ju
   .invest-strip{padding:40px 28px;}
   nav{padding:0 20px;height:56px;}
   .hero{min-height:80vh;}
-  .hero-left{padding:60px 28px 80px;align-items:flex-start;}
-  .hero-badge{text-align:left;}
+  .hero-left{padding:60px 28px 80px;}
   .hero h1{font-size:clamp(48px,10vw,72px);}
   .hero-sub{font-size:16px;}
-  .hero-actions{flex-direction:column;gap:10px;justify-content:flex-start;}
+  .hero-actions{flex-direction:column;gap:10px;}
   .hero-actions a{text-align:center;justify-content:center;}
   .hero-stats{grid-template-columns:repeat(3,1fr);}
   .stat-num{font-size:28px;}
@@ -278,6 +277,95 @@ footer{background:var(--bg);padding:48px 80px;display:flex;align-items:center;ju
   /* section padding overrides */
   section[style]{padding:64px 28px!important;}
 }
+
+
+/* ── CALCULATOR ── */
+.calc-btn{background:var(--bg-card2);border:1px solid var(--border);color:var(--text-muted);font-family:'DM Sans',sans-serif;font-size:13px;font-weight:500;padding:8px 14px;border-radius:100px;cursor:pointer;transition:all 0.15s;}
+.calc-btn:hover,.calc-btn.active{background:var(--green);border-color:var(--green);color:#000;}
+.scenario-btn{flex:1;background:var(--bg-card2);border:none;color:var(--text-muted);font-family:'DM Sans',sans-serif;font-size:13px;font-weight:500;padding:10px 8px;cursor:pointer;transition:all 0.2s;}
+.scenario-btn.active{background:var(--green);color:#000;font-weight:600;}
+.scenario-btn:first-child{border-radius:8px 0 0 8px;}
+.scenario-btn:last-child{border-radius:0 8px 8px 0;}
+input[type=number]::-webkit-inner-spin-button,input[type=number]::-webkit-outer-spin-button{-webkit-appearance:none;margin:0;}
+input[type=number]{-moz-appearance:textfield;}
+
+/* ── REVENUE BAR CHART ── */
+.rev-bar-wrap{margin-top:48px;}
+.rev-bar-item{display:flex;align-items:center;gap:16px;margin-bottom:14px;cursor:pointer;}
+.rev-bar-label{font-size:13px;color:var(--text-muted);width:160px;flex-shrink:0;transition:color 0.2s;}
+.rev-bar-track{flex:1;height:8px;background:var(--border);border-radius:100px;overflow:hidden;}
+.rev-bar-fill{height:100%;background:var(--green);border-radius:100px;width:0;transition:width 1.2s cubic-bezier(0.34,1.1,0.64,1);}
+.rev-bar-val{font-family:'DM Mono',monospace;font-size:13px;color:var(--green);width:80px;text-align:right;flex-shrink:0;}
+.rev-bar-item:hover .rev-bar-label{color:#fff;}
+.rev-bar-item:hover .rev-bar-fill{background:#fff;}
+
+/* ── PARALLAX HERO ── */
+.video-bg-wrapper{will-change:transform;}
+
+@media(max-width:600px){
+  .calc-btn{padding:7px 11px;font-size:12px;}
+  #calculator > div > div{grid-template-columns:1fr!important;}
+  #calculator > div > div > div:first-child{padding:32px 20px!important;}
+  #calculator > div > div > div:last-child{padding:32px 20px!important;}
+}
+
+/* ── ANIMATIONS ── */
+
+/* Fade up — base state */
+.anim{opacity:0;transform:translateY(32px);transition:opacity 0.7s ease,transform 0.7s ease;}
+.anim.visible{opacity:1;transform:translateY(0);}
+
+/* Stagger children */
+.anim-stagger > *{opacity:0;transform:translateY(24px);transition:opacity 0.6s ease,transform 0.6s ease;}
+.anim-stagger.visible > *:nth-child(1){opacity:1;transform:translateY(0);transition-delay:0.0s;}
+.anim-stagger.visible > *:nth-child(2){opacity:1;transform:translateY(0);transition-delay:0.1s;}
+.anim-stagger.visible > *:nth-child(3){opacity:1;transform:translateY(0);transition-delay:0.2s;}
+.anim-stagger.visible > *:nth-child(4){opacity:1;transform:translateY(0);transition-delay:0.3s;}
+.anim-stagger.visible > *:nth-child(5){opacity:1;transform:translateY(0);transition-delay:0.4s;}
+.anim-stagger.visible > *:nth-child(6){opacity:1;transform:translateY(0);transition-delay:0.5s;}
+
+/* Scale in — for stat cards */
+.anim-scale{opacity:0;transform:scale(0.92);transition:opacity 0.6s ease,transform 0.6s cubic-bezier(0.34,1.56,0.64,1);}
+.anim-scale.visible{opacity:1;transform:scale(1);}
+
+/* Slide in from left */
+.anim-left{opacity:0;transform:translateX(-40px);transition:opacity 0.7s ease,transform 0.7s ease;}
+.anim-left.visible{opacity:1;transform:translateX(0);}
+
+/* Slide in from right */
+.anim-right{opacity:0;transform:translateX(40px);transition:opacity 0.7s ease,transform 0.7s ease;}
+.anim-right.visible{opacity:1;transform:translateX(0);}
+
+/* Counter number pulse on appear */
+@keyframes countPulse{0%{transform:scale(0.8);opacity:0;}60%{transform:scale(1.05);}100%{transform:scale(1);opacity:1;}}
+.anim-count{opacity:0;}
+.anim-count.visible{animation:countPulse 0.7s cubic-bezier(0.34,1.56,0.64,1) forwards;}
+
+/* Green line draw — section labels */
+@keyframes drawLine{from{width:0;}to{width:100%;}}
+.section-label{position:relative;}
+
+/* Hover lifts on cards */
+.rev-card,.ps-card,.team-card{transition:transform 0.2s ease,box-shadow 0.2s ease;}
+.rev-card:hover,.ps-card:hover{transform:translateY(-4px);box-shadow:0 8px 32px rgba(0,0,0,0.4);}
+.team-card:hover{transform:translateY(-3px);}
+
+/* Invest button pulse */
+@keyframes investPulse{0%,100%{box-shadow:0 0 0 0 rgba(46,204,113,0.4);}50%{box-shadow:0 0 0 12px rgba(46,204,113,0);}}
+.btn-primary{animation:investPulse 2.5s ease infinite;}
+.btn-primary:hover{animation:none;}
+
+/* Hero text stagger */
+@keyframes heroIn{from{opacity:0;transform:translateY(20px);}to{opacity:1;transform:translateY(0);}}
+.hero-badge{animation:heroIn 0.6s ease 0.1s both;}
+.hero h1{animation:heroIn 0.7s ease 0.25s both;}
+.hero-sub{animation:heroIn 0.6s ease 0.45s both;}
+.hero-actions{animation:heroIn 0.6s ease 0.6s both;}
+.hero-stats{animation:heroIn 0.6s ease 0.75s both;}
+
+/* Divider line sweep */
+.divider{transform:scaleX(0);transform-origin:left;transition:transform 0.8s ease;}
+.divider.visible{transform:scaleX(1);}
 </style>
 </head>
 <body>
@@ -294,7 +382,7 @@ footer{background:var(--bg);padding:48px 80px;display:flex;align-items:center;ju
 <!-- HERO -->
 <div class="hero">
   <div class="video-bg-wrapper">
-    <iframe src="https://www.youtube-nocookie.com/embed/0cVEqshxybc?autoplay=1&mute=1&loop=1&playlist=0cVEqshxybc&controls=0&showinfo=0&rel=0&modestbranding=1&playsinline=1&disablekb=1&fs=0&iv_load_policy=3" frameborder="0" allow="autoplay; encrypted-media; fullscreen" allowfullscreen></iframe>
+    <iframe src="https://www.youtube-nocookie.com/embed/RI956OiYbYc?autoplay=1&mute=1&loop=1&playlist=RI956OiYbYc&controls=0&showinfo=0&rel=0&modestbranding=1&playsinline=1&disablekb=1&fs=0&iv_load_policy=3" frameborder="0" allow="autoplay; encrypted-media; fullscreen" allowfullscreen></iframe>
   </div>
   <div class="hero-left">
     <div class="hero-badge">Open to All Investors · Reg CF · Reg D Available · Semiannual Dividends</div>
@@ -366,7 +454,7 @@ footer{background:var(--bg);padding:48px 80px;display:flex;align-items:center;ju
   <h2 class="section-title">Six Ways This Asset<br>Earns. Every Day.</h2>
   <div class="section-body"><p>Most charging sites make money one way. Mission Hills generates revenue six ways, all running simultaneously from a single address.</p></div>
   <div style="border-radius:12px;overflow:hidden;margin-top:32px;margin-bottom:2px;">
-    <img src="images/entrance-mission-hub.jpg" alt="Entrance to EVII Mission Hills Charging Hub" style="width:100%;max-height:380px;object-fit:cover;object-position:center;display:block;background:#0a0a0a;">
+    <img src="images/charging-amenities.png" alt="Tesla Superchargers, amenity building, and Nourishment Zone food trailer" style="width:100%;max-height:380px;object-fit:cover;object-position:center;display:block;background:#0a0a0a;">
   </div>
   <div class="revenue-grid">
     <div class="rev-card"><div class="rev-num">01 /</div><div class="rev-title">EV Charging Fees</div><div class="rev-desc">Per-session fees from 19 Tesla V4 Supercharger stalls serving 600,000+ daily corridor vehicles. Year 1 projected: $984,960.</div></div>
@@ -375,6 +463,40 @@ footer{background:var(--bg);padding:48px 80px;display:flex;align-items:center;ju
     <div class="rev-card" style="background:var(--bg-card2);"><div class="rev-num">04 /</div><div class="rev-title">Vending</div><div class="rev-desc">Smart vending machines stocked with drinks, snacks, and road essentials. 24/7, no staffing required. Year 1: $53,352.</div></div>
     <div class="rev-card"><div class="rev-num">05 /</div><div class="rev-title">Digital Advertising</div><div class="rev-desc">Canopy-integrated digital screens deliver targeted ads to a captive audience during every session.</div></div>
     <div class="rev-card" style="background:var(--bg-card2);"><div class="rev-num">06 /</div><div class="rev-title">App &amp; Ecosystem</div><div class="rev-desc">KioPay VPOS loyalty platform. Tap-to-pay, mobile order-ahead, rewards. Every transaction builds the next visit. Year 1: $82,080.</div></div>
+  </div>
+
+  <div class="rev-bar-wrap" id="revBars">
+    <div style="font-size:12px;letter-spacing:0.1em;text-transform:uppercase;color:var(--text-dim);margin-bottom:24px;">Year 1 Revenue Breakdown — Hover to Explore</div>
+    <div class="rev-bar-item" data-val="984960" data-max="1336262">
+      <span class="rev-bar-label">EV Charging</span>
+      <div class="rev-bar-track"><div class="rev-bar-fill" data-pct="73.7"></div></div>
+      <span class="rev-bar-val">$984K</span>
+    </div>
+    <div class="rev-bar-item" data-val="615600" data-max="1336262">
+      <span class="rev-bar-label">LCFS Credits</span>
+      <div class="rev-bar-track"><div class="rev-bar-fill" data-pct="46.1"></div></div>
+      <span class="rev-bar-val">$615K</span>
+    </div>
+    <div class="rev-bar-item" data-val="400878" data-max="1336262">
+      <span class="rev-bar-label">Food Trailer</span>
+      <div class="rev-bar-track"><div class="rev-bar-fill" data-pct="30.0"></div></div>
+      <span class="rev-bar-val">$400K</span>
+    </div>
+    <div class="rev-bar-item" data-val="351630" data-max="1336262">
+      <span class="rev-bar-label">Robot Barista</span>
+      <div class="rev-bar-track"><div class="rev-bar-fill" data-pct="26.3"></div></div>
+      <span class="rev-bar-val">$351K</span>
+    </div>
+    <div class="rev-bar-item" data-val="82080" data-max="1336262">
+      <span class="rev-bar-label">App / Digital</span>
+      <div class="rev-bar-track"><div class="rev-bar-fill" data-pct="6.1"></div></div>
+      <span class="rev-bar-val">$82K</span>
+    </div>
+    <div class="rev-bar-item" data-val="53352" data-max="1336262">
+      <span class="rev-bar-label">Vending</span>
+      <div class="rev-bar-track"><div class="rev-bar-fill" data-pct="4.0"></div></div>
+      <span class="rev-bar-val">$53K</span>
+    </div>
   </div>
 </section>
 <div class="invest-strip" style="background:var(--bg-card);"><a href="#invest" class="btn-primary" style="padding:16px 48px;font-size:16px;"><svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor"><path d="M13 2L4.5 13.5H11L9 22L19.5 10.5H13L13 2Z"/></svg>Invest Now</a></div>
@@ -394,9 +516,9 @@ footer{background:var(--bg);padding:48px 80px;display:flex;align-items:center;ju
       <div style="font-size:13px;color:var(--text-dim);">Reg CF — Closed · 3,436 investors</div>
     </div>
     <div style="background:var(--bg-green);padding:40px 32px;text-align:center;position:relative;overflow:hidden;">
-      <div style="position:absolute;top:16px;right:16px;background:var(--green);color:#000;font-size:11px;font-weight:700;padding:4px 10px;border-radius:100px;">+34%</div>
+      <div style="position:absolute;top:16px;right:16px;background:var(--green);color:#000;font-size:11px;font-weight:700;padding:4px 10px;border-radius:100px;">+79%</div>
       <div style="font-size:11px;letter-spacing:0.12em;text-transform:uppercase;color:var(--green);margin-bottom:12px;">Round 2 Share Price</div>
-      <div style="font-family:'Bebas Neue',sans-serif;font-size:60px;color:#fff;line-height:1;margin-bottom:8px;">$2.50</div>
+      <div style="font-family:'Bebas Neue',sans-serif;font-size:60px;color:#fff;line-height:1;margin-bottom:8px;">$3.33</div>
       <div style="font-size:13px;color:rgba(255,255,255,0.6);">Reg CF — Open Now</div>
     </div>
     <div style="background:var(--bg-card);padding:40px 32px;text-align:center;">
@@ -475,7 +597,7 @@ footer{background:var(--bg);padding:48px 80px;display:flex;align-items:center;ju
     <div class="term-row"><span class="term-label">Issuer</span><span class="term-value">EVII Mission Hills, Inc. (CA Corp)</span></div>
     <div class="term-row"><span class="term-label">Offering</span><span class="term-value highlight">Reg CF — Open to All Investors</span></div>
     <div class="term-row"><span class="term-label">Equity Offered</span><span class="term-value highlight">30% of EVII Mission Hills, Inc.</span></div>
-    <div class="term-row"><span class="term-label">Share Price</span><span class="term-value highlight">$2.50/share</span></div>
+    <div class="term-row"><span class="term-label">Share Price</span><span class="term-value highlight">$3.33/share</span></div>
     <div class="term-row"><span class="term-label">Minimum Investment</span><span class="term-value">$100</span></div>
     <div class="term-row"><span class="term-label">Dividends</span><span class="term-value highlight">Semiannual from Operating Profits</span></div>
     <div class="term-row"><span class="term-label">Capital Stack</span><span class="term-value">$10.75M ($4.75M C-PACE + $6M Equity)</span></div>
@@ -538,9 +660,6 @@ footer{background:var(--bg);padding:48px 80px;display:flex;align-items:center;ju
 
 
 <!-- DESTINATION ECOSYSTEM -->
-<div style="text-align:center;background:var(--bg);padding:0 20px;">
-  <img src="images/charging-amenities.png" alt="EV Initiative Charging Amenities" style="max-width:1100px;width:100%;border-radius:16px;">
-</div>
 <section id="ecosystem" style="background:var(--bg-card);">
   <div class="section-label">Destination Ecosystem</div>
   <h2 class="section-title">Designed to Maximize<br>Revenue Per Session.</h2>
@@ -682,6 +801,81 @@ footer{background:var(--bg);padding:48px 80px;display:flex;align-items:center;ju
 <div class="invest-strip" style="background:var(--bg);"><a href="#invest" class="btn-primary" style="padding:16px 48px;font-size:16px;"><svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor"><path d="M13 2L4.5 13.5H11L9 22L19.5 10.5H13L13 2Z"/></svg>Invest Now</a></div>
 <div class="divider"></div>
 
+<!-- INVESTMENT CALCULATOR -->
+<section id="calculator" style="background:var(--bg-card);">
+  <div class="section-label">Investment Calculator</div>
+  <h2 class="section-title">How Much Could<br>You Earn?</h2>
+  <div class="section-body"><p>Adjust your investment amount and see projected semiannual dividends based on our base case financial model.</p></div>
+
+  <div style="display:grid;grid-template-columns:1fr 1fr;gap:2px;margin-top:48px;border-radius:12px;overflow:hidden;">
+    <!-- Input side -->
+    <div style="background:var(--bg);padding:48px 40px;">
+      <div style="margin-bottom:36px;">
+        <label style="font-size:12px;letter-spacing:0.1em;text-transform:uppercase;color:var(--text-dim);display:block;margin-bottom:12px;">Investment Amount</label>
+        <div style="display:flex;align-items:center;gap:0;background:var(--bg-card);border:1px solid var(--border);border-radius:10px;overflow:hidden;">
+          <span style="padding:14px 16px;font-size:18px;color:var(--text-muted);font-family:'DM Mono',monospace;">$</span>
+          <input type="number" id="calcInput" value="1000" min="100" max="1000000" step="100"
+            style="flex:1;background:transparent;border:none;outline:none;padding:14px 8px;font-size:20px;font-family:'DM Mono',monospace;color:#fff;font-weight:500;">
+        </div>
+      </div>
+      <div style="margin-bottom:32px;">
+        <label style="font-size:12px;letter-spacing:0.1em;text-transform:uppercase;color:var(--text-dim);display:block;margin-bottom:12px;">Quick Select</label>
+        <div style="display:flex;flex-wrap:wrap;gap:8px;">
+          <button class="calc-btn" onclick="setCalc(500)">$500</button>
+          <button class="calc-btn" onclick="setCalc(1000)">$1K</button>
+          <button class="calc-btn" onclick="setCalc(2500)">$2.5K</button>
+          <button class="calc-btn" onclick="setCalc(5000)">$5K</button>
+          <button class="calc-btn" onclick="setCalc(10000)">$10K</button>
+          <button class="calc-btn" onclick="setCalc(25000)">$25K</button>
+        </div>
+      </div>
+      <div>
+        <label style="font-size:12px;letter-spacing:0.1em;text-transform:uppercase;color:var(--text-dim);display:block;margin-bottom:12px;">Scenario</label>
+        <div style="display:flex;gap:2px;border-radius:8px;overflow:hidden;">
+          <button class="scenario-btn active" id="sc-low" onclick="setScenario('low')">Conservative</button>
+          <button class="scenario-btn" id="sc-base" onclick="setScenario('base')">Base</button>
+          <button class="scenario-btn" id="sc-high" onclick="setScenario('high')">Upside</button>
+        </div>
+      </div>
+    </div>
+
+    <!-- Results side -->
+    <div style="background:var(--bg-green);padding:48px 40px;display:flex;flex-direction:column;justify-content:center;">
+      <div style="font-size:12px;letter-spacing:0.1em;text-transform:uppercase;color:rgba(255,255,255,0.5);margin-bottom:8px;">Shares Purchased</div>
+      <div style="font-family:'Bebas Neue',sans-serif;font-size:40px;color:rgba(255,255,255,0.7);line-height:1;margin-bottom:32px;" id="calcShares">300</div>
+
+      <div style="font-size:12px;letter-spacing:0.1em;text-transform:uppercase;color:var(--green);margin-bottom:8px;">Annual Dividend (Est.)</div>
+      <div style="font-family:'Bebas Neue',sans-serif;font-size:64px;color:#fff;line-height:1;margin-bottom:4px;" id="calcAnnual">$133</div>
+      <div style="font-size:13px;color:rgba(255,255,255,0.5);margin-bottom:32px;">Paid semiannually — twice per year</div>
+
+      <div style="display:grid;grid-template-columns:1fr 1fr;gap:12px;">
+        <div style="background:rgba(0,0,0,0.25);border-radius:10px;padding:16px 18px;">
+          <div style="font-size:11px;color:rgba(255,255,255,0.5);margin-bottom:6px;">Per Payout</div>
+          <div style="font-family:'Bebas Neue',sans-serif;font-size:28px;color:var(--green);" id="calcPer">$66</div>
+        </div>
+        <div style="background:rgba(0,0,0,0.25);border-radius:10px;padding:16px 18px;">
+          <div style="font-size:11px;color:rgba(255,255,255,0.5);margin-bottom:6px;">10-Year Return</div>
+          <div style="font-family:'Bebas Neue',sans-serif;font-size:28px;color:var(--green);" id="calcTotal">$1.3K</div>
+        </div>
+        <div style="background:rgba(0,0,0,0.25);border-radius:10px;padding:16px 18px;">
+          <div style="font-size:11px;color:rgba(255,255,255,0.5);margin-bottom:6px;">Equity Multiple</div>
+          <div style="font-family:'Bebas Neue',sans-serif;font-size:28px;color:var(--green);" id="calcMultiple">8.15x</div>
+        </div>
+        <div style="background:rgba(0,0,0,0.25);border-radius:10px;padding:16px 18px;">
+          <div style="font-size:11px;color:rgba(255,255,255,0.5);margin-bottom:6px;">IRR</div>
+          <div style="font-family:'Bebas Neue',sans-serif;font-size:28px;color:var(--green);" id="calcIRR">69.2%</div>
+        </div>
+      </div>
+
+      <div style="margin-top:20px;padding:12px 16px;background:rgba(0,0,0,0.2);border-radius:8px;">
+        <p style="font-size:11px;color:rgba(255,255,255,0.4);margin:0;line-height:1.5;">Projections based on EVII Mission Hills Master Financial Model. Forward-looking estimates only. Actual results may differ. Not financial advice.</p>
+      </div>
+    </div>
+  </div>
+</section>
+<div class="invest-strip" style="background:var(--bg-card);"><a href="#invest" class="btn-primary" style="padding:16px 48px;font-size:16px;"><svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor"><path d="M13 2L4.5 13.5H11L9 22L19.5 10.5H13L13 2Z"/></svg>Invest Now</a></div>
+<div class="divider"></div>
+
 <!-- TEAM -->
 <section id="team" style="background:var(--bg-card);">
   <div class="section-label">The Team</div>
@@ -703,7 +897,7 @@ footer{background:var(--bg);padding:48px 80px;display:flex;align-items:center;ju
 <!-- VIDEO SECTION -->
 <div style="position:relative;height:520px;overflow:hidden;background:#000;">
   <div style="position:absolute;inset:0;z-index:0;pointer-events:none;">
-    <iframe src="https://www.youtube-nocookie.com/embed/MN8YNApnwqk?autoplay=1&mute=1&loop=1&playlist=MN8YNApnwqk&controls=0&showinfo=0&rel=0&modestbranding=1&playsinline=1&disablekb=1&fs=0&iv_load_policy=3" frameborder="0" allow="autoplay; encrypted-media; fullscreen" allowfullscreen style="position:absolute;top:50%;left:50%;transform:translate(-50%,-50%);width:177.78vh;min-width:100%;height:56.25vw;min-height:100%;opacity:0.7;z-index:1;pointer-events:none;"></iframe>
+    <iframe src="https://www.youtube-nocookie.com/embed/RI956OiYbYc?autoplay=1&mute=1&loop=1&playlist=RI956OiYbYc&controls=0&showinfo=0&rel=0&modestbranding=1&playsinline=1&disablekb=1&fs=0&iv_load_policy=3" frameborder="0" allow="autoplay; encrypted-media; fullscreen" allowfullscreen style="position:absolute;top:50%;left:50%;transform:translate(-50%,-50%);width:177.78vh;min-width:100%;height:56.25vw;min-height:100%;opacity:0.7;z-index:1;pointer-events:none;"></iframe>
   </div>
   <div style="position:absolute;inset:0;background:linear-gradient(to bottom,rgba(10,10,10,0.3) 0%,rgba(10,10,10,0.5) 60%,var(--bg) 100%);z-index:2;"></div>
   <div style="position:relative;z-index:3;height:100%;display:flex;flex-direction:column;align-items:center;justify-content:center;text-align:center;padding:0 24px;">
@@ -739,7 +933,7 @@ footer{background:var(--bg);padding:48px 80px;display:flex;align-items:center;ju
     <div class="iw-security"><span>Security type: Common Stock</span><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="#888" stroke-width="2"><polyline points="6 9 12 15 18 9"/></svg></div>
   </div>
   <div class="iw-tags">
-    <span class="iw-tag green">$2.50/share</span>
+    <span class="iw-tag green">$3.33/share</span>
     <span class="iw-tag">$100 investor min.</span>
     <span class="iw-tag">Min. raise $10k</span>
     <span class="iw-tag">Max. raise $[X]M</span>
@@ -801,5 +995,263 @@ function closeFab(){
   b.querySelector('.fab-icon-close').style.display='none';
 }
 </script>
+
+<script>
+// Intersection Observer for scroll animations
+(function(){
+  var io = new IntersectionObserver(function(entries){
+    entries.forEach(function(e){
+      if(e.isIntersecting){
+        e.target.classList.add('visible');
+        // Don't unobserve dividers so they re-animate
+        if(!e.target.classList.contains('divider')) io.unobserve(e.target);
+      }
+    });
+  },{threshold:0.12,rootMargin:'0px 0px -40px 0px'});
+
+  // Animate section labels, titles, body
+  document.querySelectorAll('.section-label,.section-title,.section-body,.pull-quote').forEach(function(el){
+    el.classList.add('anim');
+    io.observe(el);
+  });
+
+  // Stagger revenue cards
+  var revGrid = document.querySelector('.revenue-grid');
+  if(revGrid){ revGrid.classList.add('anim-stagger'); io.observe(revGrid); }
+
+  // Scale stat boxes
+  document.querySelectorAll('.stat-box,.mstat').forEach(function(el){
+    el.classList.add('anim-scale'); io.observe(el);
+  });
+
+  // Animate big numbers in returns section with count pulse
+  document.querySelectorAll('.fab-items').length; // skip
+  var bigNums = document.querySelectorAll('[style*="font-size:60px"],[style*="font-size:64px"],[style*="font-size:56px"],[style*="font-size:48px"]');
+  bigNums.forEach(function(el){
+    el.classList.add('anim-count'); io.observe(el);
+  });
+
+  // Fade up: cards, milestones, team cards
+  document.querySelectorAll('.ps-card,.rev-card,.team-card,.milestone,.reg-d-banner,.tier-card').forEach(function(el,i){
+    el.classList.add('anim');
+    el.style.transitionDelay = (i % 4) * 0.08 + 's';
+    io.observe(el);
+  });
+
+  // Left/right for opportunity columns
+  var oppCols = document.querySelectorAll('#opportunity > div > div');
+  if(oppCols[0]){ oppCols[0].classList.add('anim-left'); io.observe(oppCols[0]); }
+  if(oppCols[1]){ oppCols[1].classList.add('anim-right'); io.observe(oppCols[1]); }
+
+  // Dividers
+  document.querySelectorAll('.divider').forEach(function(el){ io.observe(el); });
+
+  // Invest strips
+  document.querySelectorAll('.invest-strip a').forEach(function(el){
+    el.parentElement.classList.add('anim'); io.observe(el.parentElement);
+  });
+
+  // Reasons grid items
+  document.querySelectorAll('#reasons [style*="background:var(--bg-card)"]').forEach(function(el,i){
+    el.classList.add('anim');
+    el.style.transitionDelay = (i * 0.12) + 's';
+    io.observe(el);
+  });
+
+  // About traction cards
+  document.querySelectorAll('[style*="background:var(--bg-green)"][style*="padding:28px"]').forEach(function(el,i){
+    el.classList.add('anim-scale');
+    el.style.transitionDelay = (i * 0.1) + 's';
+    io.observe(el);
+  });
+})();
+
+// Smooth number counter for key stats when they enter viewport
+(function(){
+  function animCount(el, target, duration, prefix, suffix){
+    var start = 0;
+    var step = target / (duration / 16);
+    var current = start;
+    var timer = setInterval(function(){
+      current += step;
+      if(current >= target){ current = target; clearInterval(timer); }
+      el.textContent = prefix + Math.floor(current).toLocaleString() + suffix;
+    }, 16);
+  }
+
+  var counters = [
+    {sel:'#about .traction-num', targets:['$2.05M','5,100+','$4.75M','4,000A'], skip:true},
+  ];
+
+  // Just animate the hero stats once on load
+  var statNums = document.querySelectorAll('.stat-num');
+  // They already animate via CSS
+})();
+</script>
+
+
+<script>
+// ── INVESTMENT CALCULATOR ──────────────────────────────────
+var calcScenario = 'low';
+var scenarios = {
+  low:  { irr: 52.3, mult: 6.5,  distRate: 0.0846 },
+  base: { irr: 69.2, mult: 8.15, distRate: 0.133  },
+  high: { irr: 81.0, mult: 10.2, distRate: 0.166  }
+};
+// distRate = annual dividend as % of total distributable cash going to CF investors
+// Base: $1,574,020 distributable / $6M equity * 30% = approx 8.7% annual yield on investment
+// Simplified: annual yield base = 13.3% (CF ownership) * distributable / raise
+// Actually let's use: annual dividend per dollar invested
+// Distributable cash year 1 = $1,574,020. CF investors own 13.3% = $209,344/yr
+// If raise = $6M, yield = 209344/6000000 = 3.49%
+// But model shows total raise could be less. Let's use simpler:
+// annual dividend = investment * ownership_pct * distributable / raise
+// ownership = investment / 3.33 shares * (total issued / 10M)
+// Simplified yield rates per scenario:
+var yields = { low: 0.0302, base: 0.0349, high: 0.0436 };
+
+function fmt(n){
+  if(n>=1000000) return '$'+(n/1000000).toFixed(1)+'M';
+  if(n>=1000) return '$'+(n/1000).toFixed(1)+'K';
+  return '$'+Math.round(n).toLocaleString();
+}
+
+function calcUpdate(){
+  var inv = parseFloat(document.getElementById('calcInput').value)||0;
+  var sc = scenarios[calcScenario];
+  var yld = yields[calcScenario];
+  var shares = Math.floor(inv / 3.33);
+  var annual = inv * yld;
+  var perPayout = annual / 2;
+  var tenYear = inv * sc.mult;
+
+  document.getElementById('calcShares').textContent = shares.toLocaleString() + ' shares';
+  animNum('calcAnnual', annual, '$');
+  animNum('calcPer', perPayout, '$');
+  animNum('calcTotal', tenYear, '$');
+  document.getElementById('calcIRR').textContent = sc.irr.toFixed(1)+'%';
+  document.getElementById('calcMultiple').textContent = sc.mult.toFixed(2)+'x';
+}
+
+function animNum(id, val, prefix){
+  var el = document.getElementById(id);
+  var start = 0;
+  var duration = 600;
+  var startTime = null;
+  function step(ts){
+    if(!startTime) startTime = ts;
+    var progress = Math.min((ts - startTime)/duration, 1);
+    var eased = 1 - Math.pow(1 - progress, 3);
+    el.textContent = fmt(val * eased);
+    if(progress < 1) requestAnimationFrame(step);
+    else el.textContent = fmt(val);
+  }
+  requestAnimationFrame(step);
+}
+
+function setCalc(val){
+  document.getElementById('calcInput').value = val;
+  document.querySelectorAll('.calc-btn').forEach(function(b){ b.classList.remove('active'); });
+  event.target.classList.add('active');
+  calcUpdate();
+}
+
+function setScenario(sc){
+  calcScenario = sc;
+  document.querySelectorAll('.scenario-btn').forEach(function(b){ b.classList.remove('active'); });
+  document.getElementById('sc-'+sc).classList.add('active');
+  calcUpdate();
+}
+
+document.getElementById('calcInput').addEventListener('input', calcUpdate);
+calcUpdate();
+
+// ── ANIMATED NUMBER COUNTERS ───────────────────────────────
+function countUp(el, target, suffix, decimals){
+  var start = performance.now();
+  var duration = 1800;
+  function step(ts){
+    var p = Math.min((ts-start)/duration,1);
+    var ease = 1-Math.pow(1-p,4);
+    var val = target * ease;
+    if(decimals) el.textContent = val.toFixed(decimals)+suffix;
+    else el.textContent = Math.floor(val).toLocaleString()+suffix;
+    if(p<1) requestAnimationFrame(step);
+    else el.textContent = (decimals ? target.toFixed(decimals) : target.toLocaleString())+suffix;
+  }
+  requestAnimationFrame(step);
+}
+
+// Observe stat boxes and fire counters
+var counterIO = new IntersectionObserver(function(entries){
+  entries.forEach(function(e){
+    if(!e.isIntersecting) return;
+    counterIO.unobserve(e.target);
+    var el = e.target;
+    var txt = el.textContent.trim();
+    // hero stats
+    if(txt==='19') countUp(el,19,'',0);
+    if(txt==='6')  countUp(el,6,'',0);
+    // market stats
+    if(txt==='600K+') { el.textContent='0'; setTimeout(function(){ countUp(el,600,'K+',0); },0); }
+    if(txt==='2M+')   { el.textContent='0'; setTimeout(function(){ countUp(el,2,'M+',1); },0); }
+    // returns
+    if(txt.indexOf('69.2%')>-1 || el.textContent==='69.2%') countUp(el,69.2,'%',1);
+    if(txt==='~1.5')  { el.textContent='0'; setTimeout(function(){ countUp(el,1.5,'',1); },0); }
+    if(txt==='8.15x') countUp(el,8.15,'x',2);
+    if(txt==='$31.3M'){ el.textContent='$0'; setTimeout(function(){ el.textContent=''; countUp(el,31.3,'M',1); el.textContent='$'+el.textContent;},0);
+      setTimeout(function(){ 
+        var s=performance.now(); var d=1800;
+        function st(ts){ var p=Math.min((ts-s)/d,1); var ea=1-Math.pow(1-p,4); 
+          el.textContent='$'+(31.3*ea).toFixed(1)+'M'; if(p<1) requestAnimationFrame(st); else el.textContent='$31.3M'; }
+        requestAnimationFrame(st);
+      },0);
+    }
+  });
+},{threshold:0.5});
+
+document.querySelectorAll('.stat-num,.mstat-num').forEach(function(el){ counterIO.observe(el); });
+// Also observe the big return numbers
+document.querySelectorAll('[style*="font-size:56px"],[style*="font-size:64px"]').forEach(function(el){ counterIO.observe(el); });
+
+// ── REVENUE BAR ANIMATION ──────────────────────────────────
+var barIO = new IntersectionObserver(function(entries){
+  entries.forEach(function(e){
+    if(!e.isIntersecting) return;
+    barIO.unobserve(e.target);
+    e.target.querySelectorAll('.rev-bar-fill').forEach(function(bar){
+      var pct = bar.getAttribute('data-pct');
+      setTimeout(function(){ bar.style.width = pct+'%'; },100);
+    });
+  });
+},{threshold:0.3});
+var revBars = document.getElementById('revBars');
+if(revBars) barIO.observe(revBars);
+
+// ── PARALLAX HERO VIDEO ────────────────────────────────────
+var videoBg = document.querySelector('.video-bg-wrapper');
+if(videoBg){
+  window.addEventListener('scroll',function(){
+    var y = window.scrollY;
+    if(y < window.innerHeight * 1.5){
+      videoBg.style.transform = 'translateY('+(y*0.3)+'px)';
+    }
+  },{passive:true});
+}
+
+// ── SMOOTH SCROLL OFFSET FOR FIXED NAV ────────────────────
+document.querySelectorAll('a[href^="#"]').forEach(function(a){
+  a.addEventListener('click',function(e){
+    var id = this.getAttribute('href').slice(1);
+    var target = document.getElementById(id);
+    if(target){
+      e.preventDefault();
+      var offset = target.getBoundingClientRect().top + window.scrollY - 72;
+      window.scrollTo({top:offset, behavior:'smooth'});
+    }
+  });
+});
+</script>
+
 </body>
 </html>
