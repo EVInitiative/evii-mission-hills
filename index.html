@@ -166,13 +166,13 @@ footer{background:var(--bg);padding:48px 80px;display:flex;align-items:center;ju
 .fab-items.open .fab-item:nth-child(13){transition-delay:0.36s;}
 .fab-items.open .fab-item:nth-child(14){transition-delay:0.39s;}
 /* MEDIA / SOCIAL PROOF */
-.media-scroll{scrollbar-width:none;margin-left:-80px;margin-right:-80px;padding-left:80px;padding-right:80px;}
+.media-scroll{scrollbar-width:none;overflow-x:auto!important;overflow-y:hidden!important;cursor:grab;}
 .media-scroll::-webkit-scrollbar{display:none;}
-.media-thumb{position:relative;cursor:pointer;overflow:hidden;border-radius:12px;transition:transform 0.2s,box-shadow 0.2s;flex:0 0 200px;-webkit-user-select:none;user-select:none;}
-.media-thumb:hover{transform:translateY(-4px);box-shadow:0 8px 30px rgba(46,204,113,0.2);}
-.media-play{position:absolute;top:50%;left:50%;transform:translate(-50%,-50%);width:56px;height:56px;background:rgba(46,204,113,0.9);border-radius:50%;display:flex;align-items:center;justify-content:center;font-size:20px;color:#000;transition:transform 0.2s,background 0.2s;pointer-events:none;z-index:2;}
-.media-thumb img{pointer-events:none;}
-.media-thumb:hover .media-play{transform:translate(-50%,-50%) scale(1.1);background:var(--green);}
+.media-scroll.dragging{cursor:grabbing;scroll-behavior:auto;}
+.media-thumb{position:relative;cursor:pointer;overflow:hidden;border-radius:12px;flex:0 0 200px;-webkit-user-select:none;user-select:none;}
+.media-thumb:hover{box-shadow:0 8px 30px rgba(46,204,113,0.2);}
+.media-play{position:absolute;top:50%;left:50%;transform:translate(-50%,-50%);width:56px;height:56px;background:rgba(46,204,113,0.9);border-radius:50%;display:flex;align-items:center;justify-content:center;font-size:20px;color:#000;pointer-events:none;z-index:2;}
+.media-thumb img{pointer-events:none;-webkit-user-drag:none;}
 .fab-overlay{position:fixed;inset:0;z-index:500;opacity:0;pointer-events:none;transition:opacity 0.25s;}
 .fab-overlay.open{opacity:1;pointer-events:all;}
 
@@ -538,7 +538,7 @@ input[type=number]{-moz-appearance:textfield;}
 </section>
 
 <!-- SOCIAL PROOF -->
-<section id="media" style="background:var(--bg-card);">
+<section id="media" style="background:var(--bg-card);overflow:visible;">
   <div class="section-label">Social Proof</div>
   <h2 class="section-title">3,436 Investors Didn't<br>Wait. Neither Should You.</h2>
   <div class="media-scroll" style="display:flex;gap:16px;margin-top:48px;overflow-x:auto;-webkit-overflow-scrolling:touch;padding-bottom:16px;">
@@ -1577,31 +1577,55 @@ function closeVideoModal(){
   frame.src = '';
   modal.style.display = 'none';
   document.body.style.overflow = '';
-  document.body.style.overflowX = 'hidden';
 }
 document.addEventListener('keydown',function(e){if(e.key==='Escape')closeVideoModal();});
 
-// Touch-aware tap detection for media thumbs (distinguish tap from swipe)
+// ── MEDIA CAROUSEL: drag-to-scroll (desktop) + tap-to-play (all) ──
 (function(){
-  var startX, startY, startTime;
+  var scroll = document.querySelector('.media-scroll');
+  if(!scroll) return;
+  var isDragging = false, startX = 0, scrollStart = 0, moved = false;
+
+  // Desktop mouse drag
+  scroll.addEventListener('mousedown',function(e){
+    isDragging = true; moved = false;
+    startX = e.pageX; scrollStart = scroll.scrollLeft;
+    scroll.classList.add('dragging');
+    e.preventDefault();
+  });
+  document.addEventListener('mousemove',function(e){
+    if(!isDragging) return;
+    var dx = e.pageX - startX;
+    if(Math.abs(dx) > 5) moved = true;
+    scroll.scrollLeft = scrollStart - dx;
+  });
+  document.addEventListener('mouseup',function(){
+    isDragging = false;
+    scroll.classList.remove('dragging');
+  });
+
+  // Tap/click to play (works for both touch and mouse)
+  var touchStartX = 0;
+  scroll.addEventListener('touchstart',function(e){
+    touchStartX = e.touches[0].clientX;
+    moved = false;
+  },{passive:true});
+  scroll.addEventListener('touchmove',function(){
+    moved = true;
+  },{passive:true});
+
   document.querySelectorAll('.media-thumb').forEach(function(thumb){
-    thumb.removeAttribute('onclick');
-    thumb.addEventListener('touchstart',function(e){
-      startX = e.touches[0].clientX;
-      startY = e.touches[0].clientY;
-      startTime = Date.now();
-    },{passive:true});
+    // Touch tap
     thumb.addEventListener('touchend',function(e){
-      var dx = e.changedTouches[0].clientX - startX;
-      var dy = e.changedTouches[0].clientY - startY;
-      var dt = Date.now() - startTime;
-      if(Math.abs(dx)<15 && Math.abs(dy)<15 && dt<300){
+      var dx = Math.abs(e.changedTouches[0].clientX - touchStartX);
+      if(dx < 10 && !moved){
         var vid = thumb.getAttribute('data-vid');
         if(vid) openVideoModal(vid);
       }
     },{passive:true});
-    thumb.addEventListener('click',function(e){
-      if('ontouchstart' in window) return;
+    // Mouse click (only if not dragged)
+    thumb.addEventListener('click',function(){
+      if(moved) return;
       var vid = thumb.getAttribute('data-vid');
       if(vid) openVideoModal(vid);
     });
