@@ -516,9 +516,9 @@ input[type=number]{-moz-appearance:textfield;}
       <div style="font-size:13px;color:var(--text-dim);">Reg CF — Closed · 3,436 investors</div>
     </div>
     <div style="background:var(--bg-green);padding:40px 32px;text-align:center;position:relative;overflow:hidden;">
-      <div style="position:absolute;top:16px;right:16px;background:var(--green);color:#000;font-size:11px;font-weight:700;padding:4px 10px;border-radius:100px;">+79%</div>
+      <div style="position:absolute;top:16px;right:16px;background:var(--green);color:#000;font-size:11px;font-weight:700;padding:4px 10px;border-radius:100px;">+34%</div>
       <div style="font-size:11px;letter-spacing:0.12em;text-transform:uppercase;color:var(--green);margin-bottom:12px;">Round 2 Share Price</div>
-      <div style="font-family:'Bebas Neue',sans-serif;font-size:60px;color:#fff;line-height:1;margin-bottom:8px;">$3.33</div>
+      <div style="font-family:'Bebas Neue',sans-serif;font-size:60px;color:#fff;line-height:1;margin-bottom:8px;">$2.50</div>
       <div style="font-size:13px;color:rgba(255,255,255,0.6);">Reg CF — Open Now</div>
     </div>
     <div style="background:var(--bg-card);padding:40px 32px;text-align:center;">
@@ -597,7 +597,7 @@ input[type=number]{-moz-appearance:textfield;}
     <div class="term-row"><span class="term-label">Issuer</span><span class="term-value">EVII Mission Hills, Inc. (CA Corp)</span></div>
     <div class="term-row"><span class="term-label">Offering</span><span class="term-value highlight">Reg CF — Open to All Investors</span></div>
     <div class="term-row"><span class="term-label">Equity Offered</span><span class="term-value highlight">30% of EVII Mission Hills, Inc.</span></div>
-    <div class="term-row"><span class="term-label">Share Price</span><span class="term-value highlight">$3.33/share</span></div>
+    <div class="term-row"><span class="term-label">Share Price</span><span class="term-value highlight">$2.50/share</span></div>
     <div class="term-row"><span class="term-label">Minimum Investment</span><span class="term-value">$100</span></div>
     <div class="term-row"><span class="term-label">Dividends</span><span class="term-value highlight">Semiannual from Operating Profits</span></div>
     <div class="term-row"><span class="term-label">Capital Stack</span><span class="term-value">$10.75M ($4.75M C-PACE + $6M Equity)</span></div>
@@ -933,7 +933,7 @@ input[type=number]{-moz-appearance:textfield;}
     <div class="iw-security"><span>Security type: Common Stock</span><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="#888" stroke-width="2"><polyline points="6 9 12 15 18 9"/></svg></div>
   </div>
   <div class="iw-tags">
-    <span class="iw-tag green">$3.33/share</span>
+    <span class="iw-tag green">$2.50/share</span>
     <span class="iw-tag">$100 investor min.</span>
     <span class="iw-tag">Min. raise $10k</span>
     <span class="iw-tag">Max. raise $[X]M</span>
@@ -1106,7 +1106,7 @@ var scenarios = {
 // If raise = $6M, yield = 209344/6000000 = 3.49%
 // But model shows total raise could be less. Let's use simpler:
 // annual dividend = investment * ownership_pct * distributable / raise
-// ownership = investment / 3.33 shares * (total issued / 10M)
+// ownership = investment / 2.50 shares * (total issued / 10M)
 // Simplified yield rates per scenario:
 var yields = { low: 0.0302, base: 0.0349, high: 0.0436 };
 
@@ -1120,7 +1120,7 @@ function calcUpdate(){
   var inv = parseFloat(document.getElementById('calcInput').value)||0;
   var sc = scenarios[calcScenario];
   var yld = yields[calcScenario];
-  var shares = Math.floor(inv / 3.33);
+  var shares = Math.floor(inv / 2.50);
   var annual = inv * yld;
   var perPayout = annual / 2;
   var tenYear = inv * sc.mult;
