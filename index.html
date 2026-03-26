@@ -888,6 +888,79 @@ input[type=number]{-moz-appearance:textfield;}
 <div class="divider"></div>
 
 
+<!-- INVESTMENT CALCULATOR -->
+<section id="calculator" style="background:var(--bg-card);">
+  <div class="section-label">Investment Calculator</div>
+  <h2 class="section-title">How Much Could<br>You Earn?</h2>
+  <div class="section-body"><p>Adjust your investment amount and see projected semiannual dividends based on our base case financial model.</p></div>
+
+  <div style="display:grid;grid-template-columns:1fr 1fr;gap:2px;margin-top:48px;border-radius:12px;overflow:hidden;">
+    <!-- Input side -->
+    <div style="background:var(--bg);padding:48px 40px;">
+      <div style="margin-bottom:36px;">
+        <label style="font-size:12px;letter-spacing:0.1em;text-transform:uppercase;color:var(--text-dim);display:block;margin-bottom:12px;">Investment Amount</label>
+        <div style="display:flex;align-items:center;gap:0;background:var(--bg-card);border:1px solid var(--border);border-radius:10px;overflow:hidden;">
+          <span style="padding:14px 16px;font-size:18px;color:var(--text-muted);font-family:'DM Mono',monospace;">$</span>
+          <input type="number" id="calcInput" value="1000" min="100" max="1000000" step="100"
+            style="flex:1;background:transparent;border:none;outline:none;padding:14px 8px;font-size:20px;font-family:'DM Mono',monospace;color:#fff;font-weight:500;">
+        </div>
+      </div>
+      <div style="margin-bottom:32px;">
+        <label style="font-size:12px;letter-spacing:0.1em;text-transform:uppercase;color:var(--text-dim);display:block;margin-bottom:12px;">Quick Select</label>
+        <div style="display:flex;flex-wrap:wrap;gap:8px;">
+          <button class="calc-btn" onclick="setCalc(500)">$500</button>
+          <button class="calc-btn" onclick="setCalc(1000)">$1K</button>
+          <button class="calc-btn" onclick="setCalc(2500)">$2.5K</button>
+          <button class="calc-btn" onclick="setCalc(5000)">$5K</button>
+          <button class="calc-btn" onclick="setCalc(10000)">$10K</button>
+          <button class="calc-btn" onclick="setCalc(25000)">$25K</button>
+        </div>
+      </div>
+      <div>
+        <label style="font-size:12px;letter-spacing:0.1em;text-transform:uppercase;color:var(--text-dim);display:block;margin-bottom:12px;">Scenario</label>
+        <div class="scenario-wrap" style="display:flex;gap:2px;border-radius:8px;overflow:visible;">
+          <button class="scenario-btn" id="sc-low" onclick="setScenario('low')">Conservative</button>
+          <button class="scenario-btn active" id="sc-base" onclick="setScenario('base')">Base</button>
+          <button class="scenario-btn" id="sc-high" onclick="setScenario('high')">Upside</button>
+        </div>
+      </div>
+    </div>
+
+    <!-- Results side -->
+    <div style="background:var(--bg-green);padding:48px 40px;display:flex;flex-direction:column;justify-content:center;">
+      <div style="font-size:12px;letter-spacing:0.1em;text-transform:uppercase;color:rgba(255,255,255,0.5);margin-bottom:8px;">Shares Purchased</div>
+      <div style="font-family:'Bebas Neue',sans-serif;font-size:40px;color:rgba(255,255,255,0.7);line-height:1;margin-bottom:32px;" id="calcShares">300</div>
+
+      <div style="font-size:12px;letter-spacing:0.1em;text-transform:uppercase;color:var(--green);margin-bottom:8px;">Annual Dividend (Est.)</div>
+      <div style="font-family:'Bebas Neue',sans-serif;font-size:64px;color:#fff;line-height:1;margin-bottom:4px;" id="calcAnnual">$133</div>
+      <div style="font-size:13px;color:rgba(255,255,255,0.5);margin-bottom:32px;">Paid semiannually — twice per year</div>
+
+      <div style="display:grid;grid-template-columns:1fr 1fr;gap:12px;">
+        <div style="background:rgba(0,0,0,0.25);border-radius:10px;padding:16px 18px;">
+          <div style="font-size:11px;color:rgba(255,255,255,0.5);margin-bottom:6px;">Per Payout</div>
+          <div style="font-family:'Bebas Neue',sans-serif;font-size:28px;color:var(--green);" id="calcPer">$66</div>
+        </div>
+        <div style="background:rgba(0,0,0,0.25);border-radius:10px;padding:16px 18px;">
+          <div style="font-size:11px;color:rgba(255,255,255,0.5);margin-bottom:6px;">10-Year Return</div>
+          <div style="font-family:'Bebas Neue',sans-serif;font-size:28px;color:var(--green);" id="calcTotal">$1.3K</div>
+        </div>
+        <div style="background:rgba(0,0,0,0.25);border-radius:10px;padding:16px 18px;">
+          <div style="font-size:11px;color:rgba(255,255,255,0.5);margin-bottom:6px;">Equity Multiple</div>
+          <div style="font-family:'Bebas Neue',sans-serif;font-size:28px;color:var(--green);" id="calcMultiple">8.15x</div>
+        </div>
+        <div style="background:rgba(0,0,0,0.25);border-radius:10px;padding:16px 18px;">
+          <div style="font-size:11px;color:rgba(255,255,255,0.5);margin-bottom:6px;">IRR</div>
+          <div style="font-family:'Bebas Neue',sans-serif;font-size:28px;color:var(--green);" id="calcIRR">69.2%</div>
+        </div>
+      </div>
+
+      <div style="margin-top:20px;padding:12px 16px;background:rgba(0,0,0,0.2);border-radius:8px;">
+        <p style="font-size:11px;color:rgba(255,255,255,0.4);margin:0;line-height:1.5;">Projections based on EVII Mission Hills Master Financial Model. Forward-looking estimates only. Actual results may differ. Not financial advice.</p>
+      </div>
+    </div>
+  </div>
+</section>
+<div class="invest-strip" style="background:var(--bg-card);"><a href="#invest" class="btn-primary" style="padding:16px 48px;font-size:16px;"><svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor"><path d="M13 2L4.5 13.5H11L9 22L19.5 10.5H13L13 2Z"/></svg>Invest Now</a></div>
 <!-- ABOUT -->
 <section id="about" style="background:var(--bg);">
 
@@ -970,79 +1043,6 @@ input[type=number]{-moz-appearance:textfield;}
 <div class="invest-strip" style="background:var(--bg);"><a href="#invest" class="btn-primary" style="padding:16px 48px;font-size:16px;"><svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor"><path d="M13 2L4.5 13.5H11L9 22L19.5 10.5H13L13 2Z"/></svg>Invest Now</a></div>
 <div class="divider"></div>
 
-<!-- INVESTMENT CALCULATOR -->
-<section id="calculator" style="background:var(--bg-card);">
-  <div class="section-label">Investment Calculator</div>
-  <h2 class="section-title">How Much Could<br>You Earn?</h2>
-  <div class="section-body"><p>Adjust your investment amount and see projected semiannual dividends based on our base case financial model.</p></div>
-
-  <div style="display:grid;grid-template-columns:1fr 1fr;gap:2px;margin-top:48px;border-radius:12px;overflow:hidden;">
-    <!-- Input side -->
-    <div style="background:var(--bg);padding:48px 40px;">
-      <div style="margin-bottom:36px;">
-        <label style="font-size:12px;letter-spacing:0.1em;text-transform:uppercase;color:var(--text-dim);display:block;margin-bottom:12px;">Investment Amount</label>
-        <div style="display:flex;align-items:center;gap:0;background:var(--bg-card);border:1px solid var(--border);border-radius:10px;overflow:hidden;">
-          <span style="padding:14px 16px;font-size:18px;color:var(--text-muted);font-family:'DM Mono',monospace;">$</span>
-          <input type="number" id="calcInput" value="1000" min="100" max="1000000" step="100"
-            style="flex:1;background:transparent;border:none;outline:none;padding:14px 8px;font-size:20px;font-family:'DM Mono',monospace;color:#fff;font-weight:500;">
-        </div>
-      </div>
-      <div style="margin-bottom:32px;">
-        <label style="font-size:12px;letter-spacing:0.1em;text-transform:uppercase;color:var(--text-dim);display:block;margin-bottom:12px;">Quick Select</label>
-        <div style="display:flex;flex-wrap:wrap;gap:8px;">
-          <button class="calc-btn" onclick="setCalc(500)">$500</button>
-          <button class="calc-btn" onclick="setCalc(1000)">$1K</button>
-          <button class="calc-btn" onclick="setCalc(2500)">$2.5K</button>
-          <button class="calc-btn" onclick="setCalc(5000)">$5K</button>
-          <button class="calc-btn" onclick="setCalc(10000)">$10K</button>
-          <button class="calc-btn" onclick="setCalc(25000)">$25K</button>
-        </div>
-      </div>
-      <div>
-        <label style="font-size:12px;letter-spacing:0.1em;text-transform:uppercase;color:var(--text-dim);display:block;margin-bottom:12px;">Scenario</label>
-        <div class="scenario-wrap" style="display:flex;gap:2px;border-radius:8px;overflow:visible;">
-          <button class="scenario-btn" id="sc-low" onclick="setScenario('low')">Conservative</button>
-          <button class="scenario-btn active" id="sc-base" onclick="setScenario('base')">Base</button>
-          <button class="scenario-btn" id="sc-high" onclick="setScenario('high')">Upside</button>
-        </div>
-      </div>
-    </div>
-
-    <!-- Results side -->
-    <div style="background:var(--bg-green);padding:48px 40px;display:flex;flex-direction:column;justify-content:center;">
-      <div style="font-size:12px;letter-spacing:0.1em;text-transform:uppercase;color:rgba(255,255,255,0.5);margin-bottom:8px;">Shares Purchased</div>
-      <div style="font-family:'Bebas Neue',sans-serif;font-size:40px;color:rgba(255,255,255,0.7);line-height:1;margin-bottom:32px;" id="calcShares">300</div>
-
-      <div style="font-size:12px;letter-spacing:0.1em;text-transform:uppercase;color:var(--green);margin-bottom:8px;">Annual Dividend (Est.)</div>
-      <div style="font-family:'Bebas Neue',sans-serif;font-size:64px;color:#fff;line-height:1;margin-bottom:4px;" id="calcAnnual">$133</div>
-      <div style="font-size:13px;color:rgba(255,255,255,0.5);margin-bottom:32px;">Paid semiannually — twice per year</div>
-
-      <div style="display:grid;grid-template-columns:1fr 1fr;gap:12px;">
-        <div style="background:rgba(0,0,0,0.25);border-radius:10px;padding:16px 18px;">
-          <div style="font-size:11px;color:rgba(255,255,255,0.5);margin-bottom:6px;">Per Payout</div>
-          <div style="font-family:'Bebas Neue',sans-serif;font-size:28px;color:var(--green);" id="calcPer">$66</div>
-        </div>
-        <div style="background:rgba(0,0,0,0.25);border-radius:10px;padding:16px 18px;">
-          <div style="font-size:11px;color:rgba(255,255,255,0.5);margin-bottom:6px;">10-Year Return</div>
-          <div style="font-family:'Bebas Neue',sans-serif;font-size:28px;color:var(--green);" id="calcTotal">$1.3K</div>
-        </div>
-        <div style="background:rgba(0,0,0,0.25);border-radius:10px;padding:16px 18px;">
-          <div style="font-size:11px;color:rgba(255,255,255,0.5);margin-bottom:6px;">Equity Multiple</div>
-          <div style="font-family:'Bebas Neue',sans-serif;font-size:28px;color:var(--green);" id="calcMultiple">8.15x</div>
-        </div>
-        <div style="background:rgba(0,0,0,0.25);border-radius:10px;padding:16px 18px;">
-          <div style="font-size:11px;color:rgba(255,255,255,0.5);margin-bottom:6px;">IRR</div>
-          <div style="font-family:'Bebas Neue',sans-serif;font-size:28px;color:var(--green);" id="calcIRR">69.2%</div>
-        </div>
-      </div>
-
-      <div style="margin-top:20px;padding:12px 16px;background:rgba(0,0,0,0.2);border-radius:8px;">
-        <p style="font-size:11px;color:rgba(255,255,255,0.4);margin:0;line-height:1.5;">Projections based on EVII Mission Hills Master Financial Model. Forward-looking estimates only. Actual results may differ. Not financial advice.</p>
-      </div>
-    </div>
-  </div>
-</section>
-<div class="invest-strip" style="background:var(--bg-card);"><a href="#invest" class="btn-primary" style="padding:16px 48px;font-size:16px;"><svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor"><path d="M13 2L4.5 13.5H11L9 22L19.5 10.5H13L13 2Z"/></svg>Invest Now</a></div>
 <div class="divider"></div>
 
 <!-- TEAM -->
@@ -1151,8 +1151,8 @@ input[type=number]{-moz-appearance:textfield;}
     <a href="#ecosystem" class="fab-item" onclick="closeFab()"><span>Destination Ecosystem</span></a>
     <a href="#experience" class="fab-item" onclick="closeFab()"><span>Driver Experience</span></a>
     <a href="#digital" class="fab-item" onclick="closeFab()"><span>Digital Infrastructure</span></a>
-    <a href="#about" class="fab-item" onclick="closeFab()"><span>About Us</span></a>
     <a href="#calculator" class="fab-item" onclick="closeFab()"><span>Investment Calculator</span></a>
+    <a href="#about" class="fab-item" onclick="closeFab()"><span>About Us</span></a>
     <a href="#team" class="fab-item" onclick="closeFab()"><span>The Team</span></a>
     <a href="#invest" class="fab-item" onclick="closeFab()" style="margin-top:4px;"><span style="background:var(--green);color:#000;border-color:var(--green);font-weight:600;">⚡ Invest Now</span></a>
   </div>
