@@ -466,7 +466,7 @@ input[type=number]{-moz-appearance:textfield;}
   </div>
 
   <div class="rev-bar-wrap" id="revBars">
-    <div style="font-size:12px;letter-spacing:0.1em;text-transform:uppercase;color:var(--text-dim);margin-bottom:24px;">Year 1 Revenue Breakdown — Hover to Explore</div>
+    <div style="font-size:12px;letter-spacing:0.1em;text-transform:uppercase;color:var(--text-dim);margin-bottom:24px;">Projected Year 1 Revenue Breakdown — Hover to Explore</div>
     <div class="rev-bar-item" data-val="984960" data-max="1336262">
       <span class="rev-bar-label">EV Charging</span>
       <div class="rev-bar-track"><div class="rev-bar-fill" data-pct="73.7"></div></div>
@@ -950,18 +950,18 @@ input[type=number]{-moz-appearance:textfield;}
 <!-- FLOATING SECTION MENU -->
 <div class="fab-wrap" id="fabWrap">
   <div class="fab-items" id="fabItems">
-    <a href="#team" class="fab-item" onclick="closeFab()"><span>The Team</span></a>
-    <a href="#about" class="fab-item" onclick="closeFab()"><span>About Us</span></a>
-    <a href="#digital" class="fab-item" onclick="closeFab()"><span>Digital Infrastructure</span></a>
-    <a href="#experience" class="fab-item" onclick="closeFab()"><span>Driver Experience</span></a>
-    <a href="#ecosystem" class="fab-item" onclick="closeFab()"><span>Destination Ecosystem</span></a>
-    <a href="#reasons" class="fab-item" onclick="closeFab()"><span>Why Invest</span></a>
-    <a href="#market" class="fab-item" onclick="closeFab()"><span>Market Opportunity</span></a>
-    <a href="#vision" class="fab-item" onclick="closeFab()"><span>Our Vision</span></a>
-    <a href="#investment" class="fab-item" onclick="closeFab()"><span>Investment Terms</span></a>
-    <a href="#returns" class="fab-item" onclick="closeFab()"><span>Returns &amp; Dividends</span></a>
-    <a href="#revenue" class="fab-item" onclick="closeFab()"><span>Revenue Model</span></a>
     <a href="#opportunity" class="fab-item" onclick="closeFab()"><span>The Opportunity</span></a>
+    <a href="#revenue" class="fab-item" onclick="closeFab()"><span>Revenue Model</span></a>
+    <a href="#returns" class="fab-item" onclick="closeFab()"><span>Returns &amp; Dividends</span></a>
+    <a href="#investment" class="fab-item" onclick="closeFab()"><span>Investment Terms</span></a>
+    <a href="#vision" class="fab-item" onclick="closeFab()"><span>Our Vision</span></a>
+    <a href="#market" class="fab-item" onclick="closeFab()"><span>Market Opportunity</span></a>
+    <a href="#reasons" class="fab-item" onclick="closeFab()"><span>Why Invest</span></a>
+    <a href="#ecosystem" class="fab-item" onclick="closeFab()"><span>Destination Ecosystem</span></a>
+    <a href="#experience" class="fab-item" onclick="closeFab()"><span>Driver Experience</span></a>
+    <a href="#digital" class="fab-item" onclick="closeFab()"><span>Digital Infrastructure</span></a>
+    <a href="#about" class="fab-item" onclick="closeFab()"><span>About Us</span></a>
+    <a href="#team" class="fab-item" onclick="closeFab()"><span>The Team</span></a>
     <a href="#invest" class="fab-item" onclick="closeFab()" style="margin-top:4px;"><span style="background:var(--green);color:#000;border-color:var(--green);font-weight:600;">⚡ Invest Now</span></a>
   </div>
   <button class="fab-btn" id="fabBtn" onclick="toggleFab()" aria-label="Navigate">
@@ -1219,9 +1219,20 @@ var barIO = new IntersectionObserver(function(entries){
   entries.forEach(function(e){
     if(!e.isIntersecting) return;
     barIO.unobserve(e.target);
-    e.target.querySelectorAll('.rev-bar-fill').forEach(function(bar){
-      var pct = bar.getAttribute('data-pct');
-      setTimeout(function(){ bar.style.width = pct+'%'; },100);
+    var bars = e.target.querySelectorAll('.rev-bar-item');
+    bars.forEach(function(item, i){
+      item.style.opacity = '0';
+      item.style.transform = 'translateX(-20px)';
+      item.style.transition = 'opacity 0.5s ease, transform 0.5s ease';
+      setTimeout(function(){
+        item.style.opacity = '1';
+        item.style.transform = 'translateX(0)';
+        var fill = item.querySelector('.rev-bar-fill');
+        if(fill){
+          var pct = fill.getAttribute('data-pct');
+          fill.style.width = pct+'%';
+        }
+      }, 200 + i * 180);
     });
   });
 },{threshold:0.3});
