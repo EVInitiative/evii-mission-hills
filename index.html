@@ -69,7 +69,7 @@ section{padding:100px 80px;}
 .ps-card.solution .ps-card-label{color:var(--green);}
 .ps-card h3{font-family:'Bebas Neue',sans-serif;font-size:32px;color:#fff;margin-bottom:20px;}
 .ps-list{list-style:none;display:flex;flex-direction:column;gap:10px;}
-.ps-list li{display:flex;align-items:flex-start;gap:10px;font-size:15px;color:var(--text-muted);word-break:break-word;}
+.ps-list li{display:flex;align-items:flex-start;gap:10px;font-size:15px;color:var(--text-muted);overflow-wrap:break-word;}
 .ps-list li::before{content:'—';color:var(--text-dim);flex-shrink:0;}
 .ps-card.solution .ps-list li::before{content:'✓';color:var(--green);}
 .ps-card.solution .ps-list li{color:var(--text);}
@@ -290,8 +290,6 @@ footer{background:var(--bg);padding:48px 80px;display:flex;align-items:center;ju
   [style*="padding:32px 24px"]{padding:20px 16px!important;}
   /* ecosystem/experience/digital list items */
   li[style*="font-size:14px"]{font-size:13px!important;}
-  /* general word wrap */
-  *{word-break:break-word;}
 }
 
 @media(max-width:1024px){
@@ -307,7 +305,7 @@ footer{background:var(--bg);padding:48px 80px;display:flex;align-items:center;ju
 
 
 /* ── INLINE LINKS ── */
-.inline-link{color:inherit;text-decoration:none;border-bottom:1px solid rgba(46,204,113,0.3);transition:border-color 0.2s,opacity 0.2s;white-space:nowrap;}
+.inline-link{color:inherit;text-decoration:none;border-bottom:1px solid rgba(46,204,113,0.3);transition:border-color 0.2s,opacity 0.2s;}
 .inline-link:hover{border-color:var(--green);opacity:0.85;}
 
 /* ── TEAM PHOTOS ── */
@@ -436,6 +434,30 @@ input[type=number]{-moz-appearance:textfield;}
 </div>
 <div class="divider"></div>
 
+<!-- MOBILE INVEST WIDGET -->
+<div style="padding:32px 16px;background:var(--bg);" class="invest-widget-mobile-wrap">
+  <div class="invest-widget-mobile">
+    <div class="iw-header">
+      <div class="iw-title">Invest in EVII<br>Mission Hills, Inc.</div>
+      <div class="iw-total"><span class="iw-total-label">Total Invested:</span><span class="iw-total-val">Awaiting Data</span></div>
+      <div class="iw-security"><span>Security type: Common Stock</span></div>
+    </div>
+    <div class="iw-tags">
+      <span class="iw-tag green">$2.50/share</span>
+      <span class="iw-tag">$100 investor min.</span>
+      <span class="iw-tag">Min. raise $10k</span>
+      <span class="iw-tag">Max. raise $[X]M</span>
+    </div>
+    <div class="iw-actions">
+      <button class="iw-btn-invest" onclick="window.location.href='#invest'">Invest Now</button>
+      <div class="iw-btn-row">
+        <button class="iw-btn-sec">View Form C</button>
+        <button class="iw-btn-sec">View All Filings</button>
+      </div>
+    </div>
+  </div>
+</div>
+
 <!-- OPPORTUNITY -->
 <section id="opportunity">
   <div class="section-label">The Opportunity</div>
@@ -482,30 +504,6 @@ input[type=number]{-moz-appearance:textfield;}
 </section>
 <div class="invest-strip" style="background:var(--bg);"><a href="#invest" class="btn-primary" style="padding:16px 48px;font-size:16px;"><svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor"><path d="M13 2L4.5 13.5H11L9 22L19.5 10.5H13L13 2Z"/></svg>Invest Now</a></div>
 <div class="divider"></div>
-
-<!-- MOBILE INVEST WIDGET -->
-<div style="padding:32px 16px;background:var(--bg);" class="invest-widget-mobile-wrap">
-  <div class="invest-widget-mobile">
-    <div class="iw-header">
-      <div class="iw-title">Invest in EVII<br>Mission Hills, Inc.</div>
-      <div class="iw-total"><span class="iw-total-label">Total Invested:</span><span class="iw-total-val">Awaiting Data</span></div>
-      <div class="iw-security"><span>Security type: Common Stock</span></div>
-    </div>
-    <div class="iw-tags">
-      <span class="iw-tag green">$2.50/share</span>
-      <span class="iw-tag">$100 investor min.</span>
-      <span class="iw-tag">Min. raise $10k</span>
-      <span class="iw-tag">Max. raise $[X]M</span>
-    </div>
-    <div class="iw-actions">
-      <button class="iw-btn-invest" onclick="window.location.href='#invest'">Invest Now</button>
-      <div class="iw-btn-row">
-        <button class="iw-btn-sec">View Form C</button>
-        <button class="iw-btn-sec">View All Filings</button>
-      </div>
-    </div>
-  </div>
-</div>
 
 <!-- REVENUE STREAMS -->
 <section id="revenue" style="background:var(--bg-card);">
