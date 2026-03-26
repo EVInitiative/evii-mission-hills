@@ -1560,16 +1560,17 @@ document.addEventListener('keydown',function(e){if(e.key==='Escape')closeVideoMo
   var track = document.getElementById('mediaTrack');
   if(!el || !track) return;
 
-  var offset = 0, startX = 0, startOffset = 0, dragged = false;
-  var maxOffset = function(){ return Math.max(0, track.scrollWidth - el.offsetWidth); };
+  var offset = 0, startX = 0, startY = 0, startOffset = 0, dragged = false, locked = '';
+
+  function maxOff(){ return Math.max(0, track.scrollWidth - el.offsetWidth); }
 
   function setPos(x, animate){
-    offset = Math.max(0, Math.min(maxOffset(), x));
+    offset = Math.max(0, Math.min(maxOff(), x));
     track.style.transition = animate ? 'transform 0.3s ease' : 'none';
     track.style.transform = 'translateX(' + (-offset) + 'px)';
   }
 
-  // Mouse drag
+  // Mouse drag (desktop)
   el.addEventListener('mousedown', function(e){
     startX = e.clientX; startOffset = offset; dragged = false;
     el.classList.add('dragging');
@@ -1585,19 +1586,36 @@ document.addEventListener('keydown',function(e){if(e.key==='Escape')closeVideoMo
     el.classList.remove('dragging');
   });
 
-  // Touch drag
+  // Touch drag (mobile)
   el.addEventListener('touchstart', function(e){
-    startX = e.touches[0].clientX; startOffset = offset; dragged = false;
-    el.classList.add('dragging');
+    startX = e.touches[0].clientX;
+    startY = e.touches[0].clientY;
+    startOffset = offset;
+    dragged = false;
+    locked = '';
   }, {passive:true});
+
   el.addEventListener('touchmove', function(e){
-    var dx = startX - e.touches[0].clientX;
-    if(Math.abs(dx) > 5) dragged = true;
-    setPos(startOffset + dx, false);
+    var dx = e.touches[0].clientX - startX;
+    var dy = e.touches[0].clientY - startY;
+
+    // Decide direction on first significant move
+    if(!locked){
+      if(Math.abs(dx) < 8 && Math.abs(dy) < 8) return; // too small, wait
+      locked = Math.abs(dx) > Math.abs(dy) ? 'h' : 'v';
+    }
+
+    // Vertical scroll — let browser handle it, don't touch carousel
+    if(locked === 'v') return;
+
+    // Horizontal drag — move carousel
+    dragged = true;
+    setPos(startOffset - dx, false);
   }, {passive:true});
+
   el.addEventListener('touchend', function(){
-    el.classList.remove('dragging');
-    setPos(offset, true);
+    if(locked === 'h') setPos(offset, true);
+    locked = '';
   }, {passive:true});
 
   // Block click on play button if user dragged
