@@ -217,7 +217,8 @@ footer{background:var(--bg);padding:48px 80px;display:flex;align-items:center;ju
   /* returns — all inline grids override */
   /* team */
   .team-grid{grid-template-columns:1fr;}
-  .team-card{flex-direction:column;gap:16px;padding:28px 16px;}
+  .team-card{flex-direction:column;gap:16px;padding:28px 16px;align-items:center;text-align:center;}
+  .team-photo{width:100px;height:100px;}
   /* terms */
   .terms-grid{grid-template-columns:1fr;}
   .term-row{flex-direction:column;align-items:flex-start;gap:4px;}
@@ -282,7 +283,7 @@ footer{background:var(--bg);padding:48px 80px;display:flex;align-items:center;ju
 
 /* ── TEAM PHOTOS ── */
 .team-avatar-wrap{flex-shrink:0;}
-.team-photo{width:80px;height:80px;border-radius:50%;object-fit:cover;object-position:center top;border:2px solid var(--border-green);}
+.team-photo{width:120px;height:120px;border-radius:50%;object-fit:cover;object-position:center top;border:2px solid var(--border-green);}
 
 /* ── CALCULATOR ── */
 .calc-btn{background:var(--bg-card2);border:1px solid var(--border);color:var(--text-muted);font-family:'DM Sans',sans-serif;font-size:13px;font-weight:500;padding:8px 14px;border-radius:100px;cursor:pointer;transition:all 0.15s;}
@@ -644,6 +645,9 @@ input[type=number]{-moz-appearance:textfield;}
     <p style="font-size:16px;color:rgba(255,255,255,0.7);margin-bottom:16px;max-width:800px;"><strong style="color:#fff;">1 in 4 cars sold in California is already electric</strong> — driven by real consumer demand. The San Fernando Valley leads the region. And it has almost no destination-quality charging infrastructure to show for it.</p>
     <p style="font-size:16px;color:rgba(255,255,255,0.7);margin-bottom:16px;max-width:800px;">In the 20th century, the gas station corner lot built generational wealth. <strong style="color:#fff;">That transition is happening again, right now.</strong> The investors who move early will own the corners.</p>
     <p style="font-size:16px;color:rgba(255,255,255,0.7);max-width:800px;">This window is open. It will not stay open long.</p>
+  </div>
+  <div style="margin-top:48px;border-radius:16px;overflow:hidden;">
+    <img src="images/trade-map.png" alt="EVII Mission Hills Trade Map" style="width:100%;display:block;border-radius:16px;">
   </div>
 </section>
 <div class="invest-strip" style="background:var(--bg-green);"><a href="#invest" class="btn-primary" style="padding:16px 48px;font-size:16px;"><svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor"><path d="M13 2L4.5 13.5H11L9 22L19.5 10.5H13L13 2Z"/></svg>Invest Now</a></div>
