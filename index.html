@@ -182,7 +182,7 @@ footer{background:var(--bg);padding:48px 80px;display:flex;align-items:center;ju
   .divider{margin:0 28px;}
   .invest-strip{padding:40px 28px;}
   nav{padding:0 20px;height:56px;}
-  .hero{min-height:80vh;}
+  .hero{min-height:auto;}
   .hero-left{padding:60px 28px 80px;}
   .hero h1{font-size:clamp(48px,10vw,72px);}
   .hero-sub{font-size:16px;}
@@ -190,6 +190,9 @@ footer{background:var(--bg);padding:48px 80px;display:flex;align-items:center;ju
   .hero-actions a{text-align:center;justify-content:center;}
   .hero-stats{grid-template-columns:repeat(3,1fr);}
   .stat-num{font-size:28px;}
+  .hero-raise{font-size:80px!important;}
+  .hero-raise-label{font-size:13px!important;}
+  .hero-raise-sub{font-size:14px!important;}
   /* all 2-col grids go 1-col */
   .ps-grid,.team-grid,.terms-grid{grid-template-columns:1fr;}
   .revenue-grid{grid-template-columns:1fr 1fr;}
@@ -208,7 +211,7 @@ footer{background:var(--bg);padding:48px 80px;display:flex;align-items:center;ju
   nav{padding:0 16px;height:52px;}
   .btn-invest{padding:8px 16px;font-size:13px;}
   /* hero */
-  .hero{min-height:75vh;}
+  .hero{min-height:auto;}
   .hero-left{padding:40px 16px 64px;}
   .hero h1{font-size:clamp(40px,12vw,60px);}
   .hero-sub{font-size:15px;margin-bottom:28px;}
@@ -218,6 +221,9 @@ footer{background:var(--bg);padding:48px 80px;display:flex;align-items:center;ju
   .hero-stats{grid-template-columns:repeat(3,1fr);}
   .stat-num{font-size:22px;}
   .stat-label{font-size:9px;}
+  .hero-raise{font-size:64px!important;}
+  .hero-raise-label{font-size:11px!important;}
+  .hero-raise-sub{font-size:12px!important;}
   /* opportunity */
   .ps-grid{grid-template-columns:1fr;}
   .ps-card{padding:28px 20px;}
@@ -442,9 +448,9 @@ input[type=number]{-moz-appearance:textfield;}
       <div class="stat-box"><div class="stat-num">Q1 '27</div><div class="stat-label">Target Launch</div></div>
     </div>
     <div style="margin-top:24px;background:rgba(10,10,10,0.8);border:1px solid var(--border);border-radius:12px;padding:36px 32px;backdrop-filter:blur(8px);text-align:center;">
-      <div style="font-size:15px;letter-spacing:0.1em;text-transform:uppercase;color:var(--text-muted);margin-bottom:6px;">Round 1 Raise Reg CF — <span style="color:var(--green);font-weight:600;">Closed</span> · 3,436 investors</div>
-      <div style="font-size:16px;letter-spacing:0.08em;text-transform:uppercase;color:rgba(255,255,255,0.6);margin-bottom:12px;">Total Raised Round 1</div>
-      <div style="font-family:'Bebas Neue',sans-serif;font-size:120px;color:var(--green);line-height:1;letter-spacing:-0.02em;text-shadow:0 0 40px rgba(46,204,113,0.3);">$2.05M</div>
+      <div class="hero-raise-label" style="font-size:15px;letter-spacing:0.1em;text-transform:uppercase;color:var(--text-muted);margin-bottom:6px;">Round 1 Raise Reg CF — <span style="color:var(--green);font-weight:600;">Closed</span> · 3,436 investors</div>
+      <div class="hero-raise-sub" style="font-size:16px;letter-spacing:0.08em;text-transform:uppercase;color:rgba(255,255,255,0.6);margin-bottom:12px;">Total Raised Round 1</div>
+      <div class="hero-raise" style="font-family:'Bebas Neue',sans-serif;font-size:120px;color:var(--green);line-height:1;letter-spacing:-0.02em;text-shadow:0 0 40px rgba(46,204,113,0.3);">$2.05M</div>
     </div>
   </div>
 </div>
