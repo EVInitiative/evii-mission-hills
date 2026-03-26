@@ -1544,6 +1544,18 @@ function spClose(){
   document.body.style.overflow='';
 }
 document.addEventListener('keydown',function(e){if(e.key==='Escape')spClose();});
+// Mobile tap support — touchstart/end on each card
+(function(){
+  var sx,sy;
+  document.querySelectorAll('.sp-card').forEach(function(c){
+    c.addEventListener('touchstart',function(e){sx=e.touches[0].clientX;sy=e.touches[0].clientY;},{passive:true});
+    c.addEventListener('touchend',function(e){
+      var dx=Math.abs(e.changedTouches[0].clientX-sx);
+      var dy=Math.abs(e.changedTouches[0].clientY-sy);
+      if(dx<15&&dy<15){var fn=c.getAttribute('onclick');if(fn)eval(fn);}
+    },{passive:true});
+  });
+})();
 </script>
 
 <!-- VIDEO POPUP (outside all sections) -->
