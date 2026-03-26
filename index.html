@@ -1560,69 +1560,73 @@ document.addEventListener('keydown',function(e){if(e.key==='Escape')closeVideoMo
   var track = document.getElementById('mediaTrack');
   if(!el || !track) return;
 
-  var offset = 0, startX = 0, startY = 0, startOffset = 0, dragged = false, locked = '';
-
+  var offset = 0;
   function maxOff(){ return Math.max(0, track.scrollWidth - el.offsetWidth); }
-
   function setPos(x, animate){
     offset = Math.max(0, Math.min(maxOff(), x));
     track.style.transition = animate ? 'transform 0.3s ease' : 'none';
     track.style.transform = 'translateX(' + (-offset) + 'px)';
   }
 
-  // Mouse drag (desktop)
+  // ── Desktop mouse drag ──
+  var mDown = false, mStartX = 0, mStartOff = 0, mMoved = false;
   el.addEventListener('mousedown', function(e){
-    startX = e.clientX; startOffset = offset; dragged = false;
-    el.classList.add('dragging');
+    mDown = true; mMoved = false; mStartX = e.clientX; mStartOff = offset;
+    el.style.cursor = 'grabbing';
     e.preventDefault();
   });
   document.addEventListener('mousemove', function(e){
-    if(!el.classList.contains('dragging')) return;
-    var dx = startX - e.clientX;
-    if(Math.abs(dx) > 5) dragged = true;
-    setPos(startOffset + dx, false);
+    if(!mDown) return;
+    var dx = mStartX - e.clientX;
+    if(Math.abs(dx) > 5) mMoved = true;
+    setPos(mStartOff + dx, false);
   });
   document.addEventListener('mouseup', function(){
-    el.classList.remove('dragging');
+    if(!mDown) return;
+    mDown = false;
+    el.style.cursor = 'grab';
   });
 
-  // Touch drag (mobile)
+  // ── Mobile touch swipe ──
+  var tStartX = 0, tStartY = 0, tStartOff = 0, tDir = '', tMoved = false;
   el.addEventListener('touchstart', function(e){
-    startX = e.touches[0].clientX;
-    startY = e.touches[0].clientY;
-    startOffset = offset;
-    dragged = false;
-    locked = '';
+    tStartX = e.touches[0].clientX;
+    tStartY = e.touches[0].clientY;
+    tStartOff = offset;
+    tDir = '';
+    tMoved = false;
   }, {passive:true});
 
   el.addEventListener('touchmove', function(e){
-    var dx = e.touches[0].clientX - startX;
-    var dy = e.touches[0].clientY - startY;
-
-    // Decide direction on first significant move
-    if(!locked){
-      if(Math.abs(dx) < 8 && Math.abs(dy) < 8) return; // too small, wait
-      locked = Math.abs(dx) > Math.abs(dy) ? 'h' : 'v';
+    var dx = e.touches[0].clientX - tStartX;
+    var dy = e.touches[0].clientY - tStartY;
+    if(!tDir){
+      if(Math.abs(dx) < 10 && Math.abs(dy) < 10) return;
+      tDir = Math.abs(dx) > Math.abs(dy) ? 'h' : 'v';
     }
-
-    // Vertical scroll — let browser handle it, don't touch carousel
-    if(locked === 'v') return;
-
-    // Horizontal drag — move carousel
-    dragged = true;
-    setPos(startOffset - dx, false);
+    if(tDir === 'v') return;
+    tMoved = true;
+    setPos(tStartOff - dx, false);
   }, {passive:true});
 
   el.addEventListener('touchend', function(){
-    if(locked === 'h') setPos(offset, true);
-    locked = '';
+    if(tDir === 'h') setPos(offset, true);
+    tDir = '';
   }, {passive:true});
 
-  // Block click on play button if user dragged
-  el.addEventListener('click', function(e){
-    if(dragged){ e.stopPropagation(); e.preventDefault(); dragged = false; }
-  }, true);
+  // ── Play button: use onclick, block only if actually dragged ──
+  window._mediaDragged = function(){ return mMoved || tMoved; };
 })();
+
+// Override openVideoModal to check drag state
+var _origOpen = openVideoModal;
+openVideoModal = function(id){
+  if(window._mediaDragged && window._mediaDragged()){
+    window._mediaDragged = function(){ return false; };
+    return;
+  }
+  _origOpen(id);
+};
 </script>
 
 </body>
