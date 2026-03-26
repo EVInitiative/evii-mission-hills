@@ -168,9 +168,10 @@ footer{background:var(--bg);padding:48px 80px;display:flex;align-items:center;ju
 /* MEDIA / SOCIAL PROOF */
 .media-scroll{scrollbar-width:none;margin-left:-80px;margin-right:-80px;padding-left:80px;padding-right:80px;}
 .media-scroll::-webkit-scrollbar{display:none;}
-.media-thumb{position:relative;cursor:pointer;overflow:hidden;border-radius:12px;transition:transform 0.2s,box-shadow 0.2s;flex:0 0 200px;scroll-snap-align:start;touch-action:pan-x;}
+.media-thumb{position:relative;cursor:pointer;overflow:hidden;border-radius:12px;transition:transform 0.2s,box-shadow 0.2s;flex:0 0 200px;-webkit-user-select:none;user-select:none;}
 .media-thumb:hover{transform:translateY(-4px);box-shadow:0 8px 30px rgba(46,204,113,0.2);}
-.media-play{position:absolute;top:50%;left:50%;transform:translate(-50%,-50%);width:56px;height:56px;background:rgba(46,204,113,0.9);border-radius:50%;display:flex;align-items:center;justify-content:center;font-size:20px;color:#000;transition:transform 0.2s,background 0.2s;pointer-events:none;}
+.media-play{position:absolute;top:50%;left:50%;transform:translate(-50%,-50%);width:56px;height:56px;background:rgba(46,204,113,0.9);border-radius:50%;display:flex;align-items:center;justify-content:center;font-size:20px;color:#000;transition:transform 0.2s,background 0.2s;pointer-events:none;z-index:2;}
+.media-thumb img{pointer-events:none;}
 .media-thumb:hover .media-play{transform:translate(-50%,-50%) scale(1.1);background:var(--green);}
 .fab-overlay{position:fixed;inset:0;z-index:500;opacity:0;pointer-events:none;transition:opacity 0.25s;}
 .fab-overlay.open{opacity:1;pointer-events:all;}
@@ -540,36 +541,36 @@ input[type=number]{-moz-appearance:textfield;}
 <section id="media" style="background:var(--bg-card);">
   <div class="section-label">Social Proof</div>
   <h2 class="section-title">3,436 Investors Didn't<br>Wait. Neither Should You.</h2>
-  <div class="media-scroll" style="display:flex;gap:16px;margin-top:48px;overflow-x:auto;scroll-snap-type:x mandatory;-webkit-overflow-scrolling:touch;padding-bottom:16px;">
-    <div class="media-thumb" onclick="openVideoModal('_HpUz3-kvU4')">
+  <div class="media-scroll" style="display:flex;gap:16px;margin-top:48px;overflow-x:auto;-webkit-overflow-scrolling:touch;padding-bottom:16px;">
+    <div class="media-thumb" data-vid="_HpUz3-kvU4">
       <img src="https://img.youtube.com/vi/_HpUz3-kvU4/hqdefault.jpg" alt="EV Initiative Video" style="width:100%;aspect-ratio:9/16;object-fit:cover;border-radius:12px;display:block;">
       <div class="media-play">▶</div>
     </div>
-    <div class="media-thumb" onclick="openVideoModal('0eqst26wrX0')">
+    <div class="media-thumb" data-vid="0eqst26wrX0">
       <img src="https://img.youtube.com/vi/0eqst26wrX0/hqdefault.jpg" alt="EV Initiative Video" style="width:100%;aspect-ratio:9/16;object-fit:cover;border-radius:12px;display:block;">
       <div class="media-play">▶</div>
     </div>
-    <div class="media-thumb" onclick="openVideoModal('k-i6RPw9Uls')">
+    <div class="media-thumb" data-vid="k-i6RPw9Uls">
       <img src="https://img.youtube.com/vi/k-i6RPw9Uls/hqdefault.jpg" alt="EV Initiative Video" style="width:100%;aspect-ratio:9/16;object-fit:cover;border-radius:12px;display:block;">
       <div class="media-play">▶</div>
     </div>
-    <div class="media-thumb" onclick="openVideoModal('KH3nezRDahw')">
+    <div class="media-thumb" data-vid="KH3nezRDahw">
       <img src="https://img.youtube.com/vi/KH3nezRDahw/hqdefault.jpg" alt="EV Initiative Video" style="width:100%;aspect-ratio:9/16;object-fit:cover;border-radius:12px;display:block;">
       <div class="media-play">▶</div>
     </div>
-    <div class="media-thumb" onclick="openVideoModal('DDrIk4f_HQM')">
+    <div class="media-thumb" data-vid="DDrIk4f_HQM">
       <img src="https://img.youtube.com/vi/DDrIk4f_HQM/hqdefault.jpg" alt="EV Initiative Video" style="width:100%;aspect-ratio:9/16;object-fit:cover;border-radius:12px;display:block;">
       <div class="media-play">▶</div>
     </div>
-    <div class="media-thumb" onclick="openVideoModal('-J63w5K5Jfw')">
+    <div class="media-thumb" data-vid="-J63w5K5Jfw">
       <img src="https://img.youtube.com/vi/-J63w5K5Jfw/hqdefault.jpg" alt="EV Initiative Video" style="width:100%;aspect-ratio:9/16;object-fit:cover;border-radius:12px;display:block;">
       <div class="media-play">▶</div>
     </div>
-    <div class="media-thumb" onclick="openVideoModal('pijrLXKU7tM')">
+    <div class="media-thumb" data-vid="pijrLXKU7tM">
       <img src="https://img.youtube.com/vi/pijrLXKU7tM/hqdefault.jpg" alt="EV Initiative Video" style="width:100%;aspect-ratio:9/16;object-fit:cover;border-radius:12px;display:block;">
       <div class="media-play">▶</div>
     </div>
-    <div class="media-thumb" onclick="openVideoModal('uGsQo36Y-WM')">
+    <div class="media-thumb" data-vid="uGsQo36Y-WM">
       <img src="https://img.youtube.com/vi/uGsQo36Y-WM/hqdefault.jpg" alt="EV Initiative Video" style="width:100%;aspect-ratio:9/16;object-fit:cover;border-radius:12px;display:block;">
       <div class="media-play">▶</div>
     </div>
@@ -1566,7 +1567,7 @@ document.querySelectorAll('a[href^="#"]').forEach(function(a){
 function openVideoModal(id){
   var modal = document.getElementById('videoModal');
   var frame = document.getElementById('videoModalFrame');
-  frame.src = 'https://www.youtube-nocookie.com/embed/'+id+'?autoplay=1&rel=0';
+  frame.src = 'https://www.youtube-nocookie.com/embed/'+id+'?autoplay=1&rel=0&playsinline=1';
   modal.style.display = 'flex';
   document.body.style.overflow = 'hidden';
 }
@@ -1576,8 +1577,36 @@ function closeVideoModal(){
   frame.src = '';
   modal.style.display = 'none';
   document.body.style.overflow = '';
+  document.body.style.overflowX = 'hidden';
 }
 document.addEventListener('keydown',function(e){if(e.key==='Escape')closeVideoModal();});
+
+// Touch-aware tap detection for media thumbs (distinguish tap from swipe)
+(function(){
+  var startX, startY, startTime;
+  document.querySelectorAll('.media-thumb').forEach(function(thumb){
+    thumb.removeAttribute('onclick');
+    thumb.addEventListener('touchstart',function(e){
+      startX = e.touches[0].clientX;
+      startY = e.touches[0].clientY;
+      startTime = Date.now();
+    },{passive:true});
+    thumb.addEventListener('touchend',function(e){
+      var dx = e.changedTouches[0].clientX - startX;
+      var dy = e.changedTouches[0].clientY - startY;
+      var dt = Date.now() - startTime;
+      if(Math.abs(dx)<15 && Math.abs(dy)<15 && dt<300){
+        var vid = thumb.getAttribute('data-vid');
+        if(vid) openVideoModal(vid);
+      }
+    },{passive:true});
+    thumb.addEventListener('click',function(e){
+      if('ontouchstart' in window) return;
+      var vid = thumb.getAttribute('data-vid');
+      if(vid) openVideoModal(vid);
+    });
+  });
+})();
 </script>
 
 </body>
