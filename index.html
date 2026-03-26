@@ -166,13 +166,11 @@ footer{background:var(--bg);padding:48px 80px;display:flex;align-items:center;ju
 .fab-items.open .fab-item:nth-child(13){transition-delay:0.36s;}
 .fab-items.open .fab-item:nth-child(14){transition-delay:0.39s;}
 /* MEDIA / SOCIAL PROOF */
-.media-carousel{position:relative;overflow:hidden;padding-bottom:16px;}
+.media-carousel{position:relative;overflow:hidden;padding-bottom:16px;cursor:grab;-webkit-user-select:none;user-select:none;}
+.media-carousel.dragging{cursor:grabbing;}
+.media-carousel.dragging .media-carousel-track{transition:none;}
 .media-carousel-track{display:flex;gap:16px;transition:transform 0.3s ease;}
 .media-thumb{position:relative;border-radius:12px;overflow:hidden;width:200px;min-width:200px;}
-.media-nav{position:absolute;top:50%;transform:translateY(-50%);width:40px;height:40px;border-radius:50%;background:rgba(46,204,113,0.9);border:none;cursor:pointer;display:flex;align-items:center;justify-content:center;font-size:18px;color:#000;z-index:5;transition:background 0.15s;}
-.media-nav:hover{background:var(--green);}
-.media-nav.prev{left:8px;}
-.media-nav.next{right:8px;}
 .media-thumb:hover{box-shadow:0 8px 30px rgba(46,204,113,0.2);}
 .media-play-btn{position:absolute;top:50%;left:50%;transform:translate(-50%,-50%);width:56px;height:56px;background:rgba(46,204,113,0.9);border-radius:50%;border:none;cursor:pointer;display:flex;align-items:center;justify-content:center;font-size:20px;color:#000;z-index:2;-webkit-tap-highlight-color:transparent;}
 .media-play-btn:hover{background:var(--green);transform:translate(-50%,-50%) scale(1.1);}
@@ -242,7 +240,6 @@ footer{background:var(--bg);padding:48px 80px;display:flex;align-items:center;ju
   .ps-card{padding:28px 20px;}
   .pull-quote{font-size:clamp(22px,6vw,32px);}
   .media-thumb{width:140px!important;min-width:140px!important;}
-  .media-nav{width:32px!important;height:32px!important;font-size:14px!important;}
   /* revenue */
   .revenue-grid{grid-template-columns:1fr;}
   /* returns — all inline grids override */
@@ -545,8 +542,6 @@ input[type=number]{-moz-appearance:textfield;}
   <div class="section-label">Social Proof</div>
   <h2 class="section-title">3,436 Investors Didn't<br>Wait. Neither Should You.</h2>
     <div class="media-carousel" id="mediaCarousel" style="margin-top:48px;">
-      <button class="media-nav prev" onclick="slideMedia(-1)">◀</button>
-      <button class="media-nav next" onclick="slideMedia(1)">▶</button>
       <div class="media-carousel-track" id="mediaTrack">
         <div class="media-thumb"><img src="https://img.youtube.com/vi/_HpUz3-kvU4/hqdefault.jpg" alt="EV Initiative Video"><button class="media-play-btn" onclick="openVideoModal('_HpUz3-kvU4')">▶</button></div>
         <div class="media-thumb"><img src="https://img.youtube.com/vi/0eqst26wrX0/hqdefault.jpg" alt="EV Initiative Video"><button class="media-play-btn" onclick="openVideoModal('0eqst26wrX0')">▶</button></div>
@@ -1559,29 +1554,56 @@ function closeVideoModal(){
 }
 document.addEventListener('keydown',function(e){if(e.key==='Escape')closeVideoModal();});
 
-// ── MEDIA CAROUSEL (transform-based, no overflow scroll needed) ──
-var mediaPos = 0;
-var mediaTrack = document.getElementById('mediaTrack');
-var mediaCarousel = document.getElementById('mediaCarousel');
-function slideMedia(dir){
-  if(!mediaTrack || !mediaCarousel) return;
-  var thumbW = mediaTrack.querySelector('.media-thumb').offsetWidth + 16;
-  var visible = Math.floor(mediaCarousel.offsetWidth / thumbW);
-  var maxPos = mediaTrack.children.length - visible;
-  mediaPos = Math.max(0, Math.min(maxPos, mediaPos + dir));
-  mediaTrack.style.transform = 'translateX(-' + (mediaPos * thumbW) + 'px)';
-}
-// Touch swipe support
+// ── MEDIA CAROUSEL (drag + swipe with transform) ──
 (function(){
-  if(!mediaCarousel) return;
-  var sx=0, cx=0, swiping=false;
-  mediaCarousel.addEventListener('touchstart',function(e){sx=e.touches[0].clientX;cx=sx;swiping=true;},{passive:true});
-  mediaCarousel.addEventListener('touchmove',function(e){if(!swiping)return;cx=e.touches[0].clientX;},{passive:true});
-  mediaCarousel.addEventListener('touchend',function(){
-    if(!swiping)return;swiping=false;
-    var dx=sx-cx;
-    if(Math.abs(dx)>40){slideMedia(dx>0?1:-1);}
-  },{passive:true});
+  var el = document.getElementById('mediaCarousel');
+  var track = document.getElementById('mediaTrack');
+  if(!el || !track) return;
+
+  var offset = 0, startX = 0, startOffset = 0, dragged = false;
+  var maxOffset = function(){ return Math.max(0, track.scrollWidth - el.offsetWidth); };
+
+  function setPos(x, animate){
+    offset = Math.max(0, Math.min(maxOffset(), x));
+    track.style.transition = animate ? 'transform 0.3s ease' : 'none';
+    track.style.transform = 'translateX(' + (-offset) + 'px)';
+  }
+
+  // Mouse drag
+  el.addEventListener('mousedown', function(e){
+    startX = e.clientX; startOffset = offset; dragged = false;
+    el.classList.add('dragging');
+    e.preventDefault();
+  });
+  document.addEventListener('mousemove', function(e){
+    if(!el.classList.contains('dragging')) return;
+    var dx = startX - e.clientX;
+    if(Math.abs(dx) > 5) dragged = true;
+    setPos(startOffset + dx, false);
+  });
+  document.addEventListener('mouseup', function(){
+    el.classList.remove('dragging');
+  });
+
+  // Touch drag
+  el.addEventListener('touchstart', function(e){
+    startX = e.touches[0].clientX; startOffset = offset; dragged = false;
+    el.classList.add('dragging');
+  }, {passive:true});
+  el.addEventListener('touchmove', function(e){
+    var dx = startX - e.touches[0].clientX;
+    if(Math.abs(dx) > 5) dragged = true;
+    setPos(startOffset + dx, false);
+  }, {passive:true});
+  el.addEventListener('touchend', function(){
+    el.classList.remove('dragging');
+    setPos(offset, true);
+  }, {passive:true});
+
+  // Block click on play button if user dragged
+  el.addEventListener('click', function(e){
+    if(dragged){ e.stopPropagation(); e.preventDefault(); dragged = false; }
+  }, true);
 })();
 </script>
 
