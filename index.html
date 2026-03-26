@@ -69,7 +69,7 @@ section{padding:100px 80px;}
 .ps-card.solution .ps-card-label{color:var(--green);}
 .ps-card h3{font-family:'Bebas Neue',sans-serif;font-size:32px;color:#fff;margin-bottom:20px;}
 .ps-list{list-style:none;display:flex;flex-direction:column;gap:10px;}
-.ps-list li{display:flex;align-items:flex-start;gap:10px;font-size:15px;color:var(--text-muted);}
+.ps-list li{display:flex;align-items:flex-start;gap:10px;font-size:15px;color:var(--text-muted);word-break:break-word;}
 .ps-list li::before{content:'—';color:var(--text-dim);flex-shrink:0;}
 .ps-card.solution .ps-list li::before{content:'✓';color:var(--green);}
 .ps-card.solution .ps-list li{color:var(--text);}
@@ -269,6 +269,24 @@ footer{background:var(--bg);padding:48px 80px;display:flex;align-items:center;ju
   img[style*="max-height:480px"]{max-height:240px!important;}
   img[style*="max-height:320px"]{max-height:200px!important;}
   img[style*="max-height:240px"]{max-height:180px!important;}
+  /* text sizing on mobile */
+  .ps-card h3{font-size:26px!important;}
+  .ps-list li{font-size:14px!important;}
+  .rev-card{padding:24px 18px!important;}
+  .rev-desc{font-size:13px!important;}
+  /* inline grid text */
+  [style*="font-size:48px"]{font-size:32px!important;}
+  [style*="font-size:56px"]{font-size:36px!important;}
+  [style*="font-size:60px"]{font-size:40px!important;}
+  /* inline section text */
+  [style*="padding:48px 40px"]{padding:28px 18px!important;}
+  [style*="padding:40px 32px"]{padding:24px 18px!important;}
+  [style*="padding:36px 28px"]{padding:24px 16px!important;}
+  [style*="padding:32px 24px"]{padding:20px 16px!important;}
+  /* ecosystem/experience/digital list items */
+  li[style*="font-size:14px"]{font-size:13px!important;}
+  /* general word wrap */
+  *{word-break:break-word;}
 }
 
 @media(max-width:1024px){
@@ -284,7 +302,7 @@ footer{background:var(--bg);padding:48px 80px;display:flex;align-items:center;ju
 
 
 /* ── INLINE LINKS ── */
-.inline-link{color:var(--green);text-decoration:none;border-bottom:1px solid rgba(46,204,113,0.3);transition:border-color 0.2s,opacity 0.2s;}
+.inline-link{color:inherit;text-decoration:none;border-bottom:1px solid rgba(46,204,113,0.3);transition:border-color 0.2s,opacity 0.2s;white-space:nowrap;}
 .inline-link:hover{border-color:var(--green);opacity:0.85;}
 
 /* ── TEAM PHOTOS ── */
