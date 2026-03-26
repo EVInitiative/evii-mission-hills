@@ -279,6 +279,11 @@ footer{background:var(--bg);padding:48px 80px;display:flex;align-items:center;ju
 }
 
 
+
+/* ── TEAM PHOTOS ── */
+.team-avatar-wrap{flex-shrink:0;}
+.team-photo{width:80px;height:80px;border-radius:50%;object-fit:cover;object-position:center top;border:2px solid var(--border-green);}
+
 /* ── CALCULATOR ── */
 .calc-btn{background:var(--bg-card2);border:1px solid var(--border);color:var(--text-muted);font-family:'DM Sans',sans-serif;font-size:13px;font-weight:500;padding:8px 14px;border-radius:100px;cursor:pointer;transition:all 0.15s;}
 .calc-btn:hover,.calc-btn.active{background:var(--green);border-color:var(--green);color:#000;}
@@ -820,39 +825,82 @@ input[type=number]{-moz-appearance:textfield;}
 
 <!-- ABOUT -->
 <section id="about" style="background:var(--bg);">
+
+  <!-- About Us -->
   <div class="section-label">About Us</div>
-  <div style="display:grid;grid-template-columns:1fr 1fr;gap:80px;align-items:start;">
+  <div style="display:grid;grid-template-columns:1fr 1fr;gap:64px;align-items:center;margin-bottom:80px;">
     <div>
       <h2 class="section-title" style="font-size:clamp(32px,3.5vw,52px);">We Build Destinations,<br>Not Just Chargers.</h2>
       <p style="font-size:16px;color:var(--text-muted);margin-bottom:20px;line-height:1.8;">EV Initiative is the company creating Real Estate + Experience-Driven Charging™ — premium, freeway-accessible EV charging destinations that combine Tesla Supercharger infrastructure with on-site experiences that earn repeat visits and generate revenue six ways.</p>
       <p style="font-size:16px;color:var(--text-muted);margin-bottom:20px;line-height:1.8;"><strong style="color:var(--text);">Every location is its own California corporation with its own cap table.</strong> Investors in EVII Mission Hills, Inc. own this site specifically. Not a fund. Not a REIT. Direct equity. Semiannual dividends. One address.</p>
       <p style="font-size:16px;color:var(--text-muted);line-height:1.8;">Mission Hills is our flagship. Permits in weeks. Groundbreaking May 2026. Revenue begins Q1 2027.</p>
+      <div style="margin-top:24px;padding:16px 20px;background:rgba(46,204,113,0.08);border:1px solid rgba(46,204,113,0.2);border-radius:8px;font-size:13px;color:var(--text-muted);">Accredited investor? Our <strong style="color:var(--green);">Reg D offering</strong> gives you a larger direct position. Same asset. Same dividends. More ownership. Email <a href="mailto:azeraldo@evinitiative.com" style="color:var(--green);">azeraldo@evinitiative.com</a></div>
     </div>
     <div>
-      <div style="margin-bottom:48px;">
-        <div style="font-size:11px;letter-spacing:0.12em;text-transform:uppercase;color:var(--green);margin-bottom:16px;">Traction &amp; Milestones</div>
-        <div style="display:grid;grid-template-columns:1fr 1fr;gap:2px;border-radius:12px;overflow:hidden;">
-          <div style="background:var(--bg-green);padding:28px 24px;"><div style="font-family:'Bebas Neue',sans-serif;font-size:40px;color:var(--green);line-height:1;margin-bottom:6px;">$2.05M</div><div style="font-size:13px;color:rgba(255,255,255,0.6);"><strong style="color:#fff;display:block;margin-bottom:2px;">Raised in Round 1</strong>3,436 investors · zero brokers</div></div>
-          <div style="background:var(--bg-card);padding:28px 24px;"><div style="font-family:'Bebas Neue',sans-serif;font-size:40px;color:var(--green);line-height:1;margin-bottom:6px;">5,100+</div><div style="font-size:13px;color:var(--text-muted);"><strong style="color:var(--text);display:block;margin-bottom:2px;">Community Members</strong>at evinitiative.network</div></div>
-          <div style="background:var(--bg-card);padding:28px 24px;"><div style="font-family:'Bebas Neue',sans-serif;font-size:40px;color:var(--green);line-height:1;margin-bottom:6px;">$4.75M</div><div style="font-size:13px;color:var(--text-muted);"><strong style="color:var(--text);display:block;margin-bottom:2px;">C-PACE Secured</strong>Long-term fixed-rate debt</div></div>
-          <div style="background:var(--bg-green);padding:28px 24px;"><div style="font-family:'Bebas Neue',sans-serif;font-size:40px;color:var(--green);line-height:1;margin-bottom:6px;">4,000A</div><div style="font-size:13px;color:rgba(255,255,255,0.6);"><strong style="color:#fff;display:block;margin-bottom:2px;">LADWP Committed</strong>Tesla agreement in place</div></div>
-        </div>
-      </div>
-      <div>
-        <div style="font-size:11px;letter-spacing:0.12em;text-transform:uppercase;color:var(--green);margin-bottom:16px;">Business Model</div>
-        <img src="images/mission-entrance.jpg" alt="EVII Mission Hills entrance render at night" style="width:100%;max-height:240px;object-fit:cover;object-position:center 40%;display:block;border-radius:12px;margin-bottom:16px;">
-        <p style="font-size:15px;color:var(--text-muted);line-height:1.7;margin-bottom:12px;"><strong style="color:var(--text);">One site. One corporation. One cap table.</strong> You invest in this address — not a fund, not a portfolio.</p>
-        <p style="font-size:15px;color:var(--text-muted);line-height:1.7;">Six revenue streams from day one. Every car that plugs in triggers multiple revenue events. Semiannual dividends from operating profits. Built to own. Not to flip.</p>
-        <div style="margin-top:16px;padding:16px 20px;background:rgba(46,204,113,0.08);border:1px solid rgba(46,204,113,0.2);border-radius:8px;font-size:13px;color:var(--text-muted);">Accredited investor? Our <strong style="color:var(--green);">Reg D offering</strong> gives you a larger direct position. Same asset. Same dividends. More ownership. Email <a href="mailto:azeraldo@evinitiative.com" style="color:var(--green);">azeraldo@evinitiative.com</a></div>
-      </div>
+      <img src="images/mission-entrance.jpg" alt="EVII Mission Hills entrance render at night" style="width:100%;max-height:400px;object-fit:cover;object-position:center 40%;display:block;border-radius:16px;">
     </div>
   </div>
-  <ul style="margin-top:48px;list-style:none;">
-    <li class="milestone"><span class="milestone-date">Mar 2026</span><span class="milestone-text"><strong>Issue for Permit drawings filed</strong> with the City of Los Angeles — Civil, Electrical, Mechanical, Plumbing, Telecom, and Structural complete.</span></li>
-    <li class="milestone"><span class="milestone-date">Apr 2026</span><span class="milestone-text"><strong>Permits targeted.</strong> Tesla agreement in place. LADWP service committed.</span></li>
-    <li class="milestone"><span class="milestone-date">May 2026</span><span class="milestone-text"><strong>Groundbreaking.</strong> Site preparation and construction commencement.</span></li>
-    <li class="milestone"><span class="milestone-date">Q1 2027</span><span class="milestone-text"><strong>Operational launch.</strong> Revenue generation and semiannual dividends begin.</span></li>
-  </ul>
+
+  <div style="height:1px;background:var(--border);margin-bottom:80px;"></div>
+
+  <!-- Traction & Milestones -->
+  <div style="margin-bottom:80px;">
+    <div class="section-label">Traction &amp; Milestones</div>
+    <h3 style="font-family:'Bebas Neue',sans-serif;font-size:clamp(28px,3vw,44px);color:#fff;margin-bottom:40px;line-height:1;">We Are Not Starting From Zero.</h3>
+    <div style="display:grid;grid-template-columns:repeat(4,1fr);gap:2px;border-radius:12px;overflow:hidden;margin-bottom:40px;">
+      <div style="background:var(--bg-green);padding:32px 24px;">
+        <div style="font-family:'Bebas Neue',sans-serif;font-size:44px;color:var(--green);line-height:1;margin-bottom:8px;">$2.05M</div>
+        <div style="font-size:13px;color:rgba(255,255,255,0.6);"><strong style="color:#fff;display:block;margin-bottom:2px;">Raised in Round 1</strong>3,436 investors · zero brokers</div>
+      </div>
+      <div style="background:var(--bg-card);padding:32px 24px;">
+        <div style="font-family:'Bebas Neue',sans-serif;font-size:44px;color:var(--green);line-height:1;margin-bottom:8px;">5,100+</div>
+        <div style="font-size:13px;color:var(--text-muted);"><strong style="color:var(--text);display:block;margin-bottom:2px;">Community Members</strong>at evinitiative.network</div>
+      </div>
+      <div style="background:var(--bg-card);padding:32px 24px;">
+        <div style="font-family:'Bebas Neue',sans-serif;font-size:44px;color:var(--green);line-height:1;margin-bottom:8px;">$4.75M</div>
+        <div style="font-size:13px;color:var(--text-muted);"><strong style="color:var(--text);display:block;margin-bottom:2px;">C-PACE Secured</strong>Long-term fixed-rate debt</div>
+      </div>
+      <div style="background:var(--bg-green);padding:32px 24px;">
+        <div style="font-family:'Bebas Neue',sans-serif;font-size:44px;color:var(--green);line-height:1;margin-bottom:8px;">4,000A</div>
+        <div style="font-size:13px;color:rgba(255,255,255,0.6);"><strong style="color:#fff;display:block;margin-bottom:2px;">LADWP Committed</strong>Tesla agreement in place</div>
+      </div>
+    </div>
+    <ul style="list-style:none;">
+      <li class="milestone"><span class="milestone-date">Mar 2026</span><span class="milestone-text"><strong>Issue for Permit drawings filed</strong> with the City of Los Angeles — Civil, Electrical, Mechanical, Plumbing, Telecom, and Structural complete.</span></li>
+      <li class="milestone"><span class="milestone-date">Apr 2026</span><span class="milestone-text"><strong>Permits targeted.</strong> Tesla agreement in place. LADWP service committed.</span></li>
+      <li class="milestone"><span class="milestone-date">May 2026</span><span class="milestone-text"><strong>Groundbreaking.</strong> Site preparation and construction commencement.</span></li>
+      <li class="milestone"><span class="milestone-date">Q1 2027</span><span class="milestone-text"><strong>Operational launch.</strong> Revenue generation and semiannual dividends begin.</span></li>
+    </ul>
+  </div>
+
+  <div style="height:1px;background:var(--border);margin-bottom:80px;"></div>
+
+  <!-- Business Model -->
+  <div>
+    <div class="section-label">Business Model</div>
+    <h3 style="font-family:'Bebas Neue',sans-serif;font-size:clamp(28px,3vw,44px);color:#fff;margin-bottom:40px;line-height:1;">One Site. One Corporation.<br>One Cap Table.</h3>
+    <div style="display:grid;grid-template-columns:1fr 1fr 1fr;gap:2px;border-radius:12px;overflow:hidden;">
+      <div style="background:var(--bg-card);padding:36px 28px;">
+        <div style="font-size:28px;margin-bottom:14px;">⚡</div>
+        <div style="font-family:'Bebas Neue',sans-serif;font-size:22px;color:#fff;margin-bottom:10px;">Direct Equity</div>
+        <div style="font-size:14px;color:var(--text-muted);line-height:1.7;">Shares in EVII Mission Hills, Inc. — the specific California corporation that owns and operates this site. Your return is tied directly to this asset's performance.</div>
+      </div>
+      <div style="background:var(--bg-green);padding:36px 28px;">
+        <div style="font-size:28px;margin-bottom:14px;">💰</div>
+        <div style="font-family:'Bebas Neue',sans-serif;font-size:22px;color:#fff;margin-bottom:10px;">Semiannual Dividends</div>
+        <div style="font-size:14px;color:rgba(255,255,255,0.75);line-height:1.7;">Distributions from operating profits paid twice a year. Every car that plugs in triggers multiple revenue events simultaneously across six streams.</div>
+      </div>
+      <div style="background:var(--bg-card);padding:36px 28px;">
+        <div style="font-size:28px;margin-bottom:14px;">📡</div>
+        <div style="font-family:'Bebas Neue',sans-serif;font-size:22px;color:#fff;margin-bottom:10px;">Network Effect</div>
+        <div style="font-size:14px;color:var(--text-muted);line-height:1.7;">As the platform grows, the EV Initiative Advertising Network expands. More sites mean higher ad rates and more value for every investor in every hub.</div>
+      </div>
+    </div>
+    <div style="margin-top:2px;background:var(--bg-card2);border-radius:0 0 12px 12px;padding:20px 28px;text-align:center;">
+      <p style="font-size:14px;color:var(--text-muted);margin:0;">Built to own. Not to flip. <strong style="color:var(--text);">Six revenue streams from day one. Every car that plugs in triggers multiple revenue events.</strong></p>
+    </div>
+  </div>
+
 </section>
 <div class="invest-strip" style="background:var(--bg);"><a href="#invest" class="btn-primary" style="padding:16px 48px;font-size:16px;"><svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor"><path d="M13 2L4.5 13.5H11L9 22L19.5 10.5H13L13 2Z"/></svg>Invest Now</a></div>
 <div class="divider"></div>
@@ -938,12 +986,34 @@ input[type=number]{-moz-appearance:textfield;}
   <h2 class="section-title">The People<br>Building This.</h2>
   <div class="team-grid">
     <div class="team-card">
-      <div class="team-avatar">AZ</div>
-      <div><div class="team-name">Aaron Zeraldo</div><div class="team-title">Chief Executive Officer, EV Initiative</div><div class="team-bio">Co-founder and CEO of EVI Infrastructure, Inc. Led the most successful EV charging crowdfunding campaign in history — $2.05M from 3,436 investors via Meta and TikTok alone. Drives business development, investor relations, and the national expansion of the EV Initiative platform.</div></div>
+      <div class="team-avatar-wrap">
+        <img src="images/aaron-zeraldo.jpg" alt="Aaron Zeraldo" class="team-photo" onerror="this.style.display='none';this.nextElementSibling.style.display='flex';">
+        <div class="team-avatar" style="display:none;">AZ</div>
+      </div>
+      <div>
+        <div class="team-name">Aaron Zeraldo</div>
+        <div class="team-title">Chief Executive Officer, EV Initiative</div>
+        <div class="team-bio">Co-founder and CEO of EVI Infrastructure, Inc. Led the most successful EV charging crowdfunding campaign in history — $2.05M from 3,436 investors via Meta and TikTok alone. Drives business development, investor relations, and the national expansion of the EV Initiative platform.</div>
+        <a href="https://www.linkedin.com/in/aaron-zeraldo-075t610a/" target="_blank" style="display:inline-flex;align-items:center;gap:6px;margin-top:16px;font-size:13px;color:var(--green);text-decoration:none;">
+          <svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor"><path d="M16 8a6 6 0 016 6v7h-4v-7a2 2 0 00-2-2 2 2 0 00-2 2v7h-4v-7a6 6 0 016-6zM2 9h4v12H2z"/><circle cx="4" cy="4" r="2"/></svg>
+          LinkedIn
+        </a>
+      </div>
     </div>
     <div class="team-card" style="background:var(--bg-card2);">
-      <div class="team-avatar">WN</div>
-      <div><div class="team-name">Warren Navarro</div><div class="team-title">Chief Operating Officer, EV Initiative</div><div class="team-bio">COO of EV Initiative. Manages all development operations for EVII Mission Hills — GC procurement, capital stack, permitting, Tesla integration, and project timeline from groundbreaking through launch. Works directly with Coffman Engineers, LADWP, and the City of Los Angeles.</div></div>
+      <div class="team-avatar-wrap">
+        <img src="images/warren-navarro.jpg" alt="Warren Navarro" class="team-photo" onerror="this.style.display='none';this.nextElementSibling.style.display='flex';">
+        <div class="team-avatar" style="display:none;">WN</div>
+      </div>
+      <div>
+        <div class="team-name">Warren Navarro</div>
+        <div class="team-title">Chief Operating Officer, EV Initiative</div>
+        <div class="team-bio">COO of EV Initiative. Manages all development operations for EVII Mission Hills — GC procurement, capital stack, permitting, Tesla integration, and project timeline from groundbreaking through launch. Works directly with Coffman Engineers, LADWP, and the City of Los Angeles.</div>
+        <a href="https://www.linkedin.com/in/warren-navarro/" target="_blank" style="display:inline-flex;align-items:center;gap:6px;margin-top:16px;font-size:13px;color:var(--green);text-decoration:none;">
+          <svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor"><path d="M16 8a6 6 0 016 6v7h-4v-7a2 2 0 00-2-2 2 2 0 00-2 2v7h-4v-7a6 6 0 016-6zM2 9h4v12H2z"/><circle cx="4" cy="4" r="2"/></svg>
+          LinkedIn
+        </a>
+      </div>
     </div>
   </div>
 </section>
@@ -1162,7 +1232,7 @@ var scenarios = {
 // If raise = $6M, yield = 209344/6000000 = 3.49%
 // But model shows total raise could be less. Let's use simpler:
 // annual dividend = investment * ownership_pct * distributable / raise
-// ownership = investment / 3.33 shares * (total issued / 10M)
+// ownership = investment / 2.50 shares * (total issued / 10M)
 // Simplified yield rates per scenario:
 var yields = { low: 0.0302, base: 0.0349, high: 0.0436 };
 
