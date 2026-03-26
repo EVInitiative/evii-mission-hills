@@ -340,6 +340,10 @@ input[type=number]{-moz-appearance:textfield;}
 @media(max-width:600px){
   .calc-btn{padding:7px 11px;font-size:12px;}
   .scenario-btn{padding:14px 8px;font-size:14px;min-height:44px;}
+  .scenario-wrap{flex-direction:column!important;border-radius:8px!important;}
+  .scenario-btn:first-child{border-radius:8px 8px 0 0!important;}
+  .scenario-btn:last-child{border-radius:0 0 8px 8px!important;}
+  .scenario-btn:not(:first-child):not(:last-child){border-radius:0!important;}
   #calculator > div > div{grid-template-columns:1fr!important;overflow:visible!important;}
   #calculator > div > div > div:first-child{padding:32px 20px!important;overflow:visible!important;}
   #calculator > div > div > div:last-child{padding:32px 20px!important;}
@@ -993,7 +997,7 @@ input[type=number]{-moz-appearance:textfield;}
       </div>
       <div>
         <label style="font-size:12px;letter-spacing:0.1em;text-transform:uppercase;color:var(--text-dim);display:block;margin-bottom:12px;">Scenario</label>
-        <div style="display:flex;gap:2px;border-radius:8px;overflow:visible;">
+        <div class="scenario-wrap" style="display:flex;gap:2px;border-radius:8px;overflow:visible;">
           <button class="scenario-btn active" id="sc-low" onclick="setScenario('low')">Conservative</button>
           <button class="scenario-btn" id="sc-base" onclick="setScenario('base')">Base</button>
           <button class="scenario-btn" id="sc-high" onclick="setScenario('high')">Upside</button>
