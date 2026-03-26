@@ -1219,9 +1219,14 @@ input[type=number]{-moz-appearance:textfield;}
 <div class="fab-overlay" id="fabOverlay" onclick="closeFab()"></div>
 
 <script>
-// Sticky widget
+// Sticky widget — remove from DOM on mobile
 (function(){
   var w=document.getElementById('investWidget');
+  if(!w) return;
+  if(window.innerWidth <= 1200){
+    w.parentNode.removeChild(w);
+    return;
+  }
   window.addEventListener('scroll',function(){
     w.classList.toggle('hidden', window.scrollY < 300);
   });
@@ -1231,13 +1236,14 @@ function toggleFab(){
   var i=document.getElementById('fabItems'),b=document.getElementById('fabBtn'),o=document.getElementById('fabOverlay');
   var open=i.classList.toggle('open');
   b.classList.toggle('open',open);
-  o.classList.toggle('open',open);
+  if(o){o.style.display=open?'block':'none';o.classList.toggle('open',open);}
   b.querySelector('.fab-icon-open').style.display=open?'none':'block';
   b.querySelector('.fab-icon-close').style.display=open?'block':'none';
 }
 function closeFab(){
   var i=document.getElementById('fabItems'),b=document.getElementById('fabBtn'),o=document.getElementById('fabOverlay');
-  i.classList.remove('open');b.classList.remove('open');o.classList.remove('open');
+  i.classList.remove('open');b.classList.remove('open');
+  if(o){o.classList.remove('open');o.style.display='none';}
   b.querySelector('.fab-icon-open').style.display='block';
   b.querySelector('.fab-icon-close').style.display='none';
 }
