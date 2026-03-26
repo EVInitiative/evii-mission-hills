@@ -315,7 +315,7 @@ footer{background:var(--bg);padding:48px 80px;display:flex;align-items:center;ju
 /* ── CALCULATOR ── */
 .calc-btn{background:var(--bg-card2);border:1px solid var(--border);color:var(--text-muted);font-family:'DM Sans',sans-serif;font-size:13px;font-weight:500;padding:8px 14px;border-radius:100px;cursor:pointer;transition:all 0.15s;}
 .calc-btn:hover,.calc-btn.active{background:var(--green);border-color:var(--green);color:#000;}
-.scenario-btn{flex:1;background:var(--bg-card2);border:none;color:var(--text-muted);font-family:'DM Sans',sans-serif;font-size:13px;font-weight:500;padding:10px 8px;cursor:pointer;transition:all 0.2s;}
+.scenario-btn{flex:1;background:var(--bg-card2);border:none;color:var(--text-muted);font-family:'DM Sans',sans-serif;font-size:13px;font-weight:500;padding:12px 8px;cursor:pointer;transition:all 0.2s;-webkit-tap-highlight-color:transparent;touch-action:manipulation;position:relative;z-index:1;}
 .scenario-btn.active{background:var(--green);color:#000;font-weight:600;}
 .scenario-btn:first-child{border-radius:8px 0 0 8px;}
 .scenario-btn:last-child{border-radius:0 8px 8px 0;}
@@ -337,6 +337,7 @@ input[type=number]{-moz-appearance:textfield;}
 
 @media(max-width:600px){
   .calc-btn{padding:7px 11px;font-size:12px;}
+  .scenario-btn{padding:14px 8px;font-size:14px;min-height:44px;}
   #calculator > div > div{grid-template-columns:1fr!important;}
   #calculator > div > div > div:first-child{padding:32px 20px!important;}
   #calculator > div > div > div:last-child{padding:32px 20px!important;}
@@ -990,7 +991,7 @@ input[type=number]{-moz-appearance:textfield;}
       </div>
       <div>
         <label style="font-size:12px;letter-spacing:0.1em;text-transform:uppercase;color:var(--text-dim);display:block;margin-bottom:12px;">Scenario</label>
-        <div style="display:flex;gap:2px;border-radius:8px;overflow:hidden;">
+        <div style="display:flex;gap:2px;border-radius:8px;overflow:visible;">
           <button class="scenario-btn active" id="sc-low" onclick="setScenario('low')">Conservative</button>
           <button class="scenario-btn" id="sc-base" onclick="setScenario('base')">Base</button>
           <button class="scenario-btn" id="sc-high" onclick="setScenario('high')">Upside</button>
