@@ -166,7 +166,7 @@ footer{background:var(--bg);padding:48px 80px;display:flex;align-items:center;ju
 .fab-items.open .fab-item:nth-child(13){transition-delay:0.36s;}
 .fab-items.open .fab-item:nth-child(14){transition-delay:0.39s;}
 /* MEDIA / SOCIAL PROOF */
-.media-scroll{scrollbar-width:none;overflow-x:auto!important;overflow-y:hidden!important;cursor:grab;}
+.media-scroll{scrollbar-width:none;overflow-x:scroll!important;overflow-y:hidden!important;cursor:grab;-webkit-overflow-scrolling:touch;}
 .media-scroll::-webkit-scrollbar{display:none;}
 .media-scroll.dragging{cursor:grabbing;scroll-behavior:auto;}
 .media-thumb{position:relative;cursor:pointer;overflow:hidden;border-radius:12px;flex:0 0 200px;-webkit-user-select:none;user-select:none;}
@@ -205,7 +205,6 @@ footer{background:var(--bg);padding:48px 80px;display:flex;align-items:center;ju
   .ps-grid,.team-grid,.terms-grid{grid-template-columns:1fr;}
   .revenue-grid{grid-template-columns:1fr 1fr;}
   .media-thumb{flex:0 0 160px!important;}
-  .media-scroll{margin-left:-40px!important;margin-right:-40px!important;padding-left:40px!important;padding-right:40px!important;}
   /* inline style grids — override via class */
   .reg-d-banner{flex-direction:column;padding:24px;}
   footer{padding:32px 28px;flex-direction:column;align-items:flex-start;}
@@ -238,7 +237,6 @@ footer{background:var(--bg);padding:48px 80px;display:flex;align-items:center;ju
   .ps-grid{grid-template-columns:1fr;}
   .ps-card{padding:28px 20px;}
   .pull-quote{font-size:clamp(22px,6vw,32px);}
-  .media-scroll{margin-left:-16px!important;margin-right:-16px!important;padding-left:16px!important;padding-right:16px!important;}
   .media-thumb{flex:0 0 140px!important;}
   /* revenue */
   .revenue-grid{grid-template-columns:1fr;}
@@ -541,7 +539,8 @@ input[type=number]{-moz-appearance:textfield;}
 <section id="media" style="background:var(--bg-card);overflow:visible;">
   <div class="section-label">Social Proof</div>
   <h2 class="section-title">3,436 Investors Didn't<br>Wait. Neither Should You.</h2>
-  <div class="media-scroll" style="display:flex;gap:16px;margin-top:48px;overflow-x:auto;-webkit-overflow-scrolling:touch;padding-bottom:16px;">
+  <div style="overflow:hidden;margin-top:48px;">
+  <div class="media-scroll" style="display:flex;gap:16px;overflow-x:scroll;-webkit-overflow-scrolling:touch;padding-bottom:16px;">
     <div class="media-thumb" data-vid="_HpUz3-kvU4">
       <img src="https://img.youtube.com/vi/_HpUz3-kvU4/hqdefault.jpg" alt="EV Initiative Video" style="width:100%;aspect-ratio:9/16;object-fit:cover;border-radius:12px;display:block;">
       <div class="media-play">▶</div>
@@ -574,6 +573,7 @@ input[type=number]{-moz-appearance:textfield;}
       <img src="https://img.youtube.com/vi/uGsQo36Y-WM/hqdefault.jpg" alt="EV Initiative Video" style="width:100%;aspect-ratio:9/16;object-fit:cover;border-radius:12px;display:block;">
       <div class="media-play">▶</div>
     </div>
+  </div>
   </div>
 </section>
 
