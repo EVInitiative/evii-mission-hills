@@ -17,7 +17,7 @@
   --border:#222; --border-green:#1a4a28;
 }
 *{margin:0;padding:0;box-sizing:border-box;}
-html{scroll-behavior:smooth;}
+html{scroll-behavior:smooth;overflow-anchor:auto;}
 body{background:var(--bg);color:var(--text);font-family:'DM Sans',sans-serif;font-weight:300;line-height:1.7;overflow-x:hidden;}
 
 /* NAV */
@@ -1427,6 +1427,23 @@ if(videoBg){
     }
   },{passive:true});
 }
+
+// ── PREVENT ORIENTATION CHANGE JUMP ───────────────────────
+(function(){
+  var scrollPct = 0;
+  var docH = 0;
+  window.addEventListener('orientationchange', function(){
+    docH = document.documentElement.scrollHeight - window.innerHeight;
+    if(docH > 0) scrollPct = window.scrollY / docH;
+  });
+  window.addEventListener('resize', function(){
+    if(scrollPct > 0){
+      var newDocH = document.documentElement.scrollHeight - window.innerHeight;
+      if(newDocH > 0) window.scrollTo(0, scrollPct * newDocH);
+      scrollPct = 0;
+    }
+  });
+})();
 
 // ── SMOOTH SCROLL OFFSET FOR FIXED NAV ────────────────────
 document.querySelectorAll('a[href^="#"]').forEach(function(a){
