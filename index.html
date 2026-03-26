@@ -84,7 +84,8 @@ section{padding:100px 80px;}
 /* TEAM */
 .team-grid{display:grid;grid-template-columns:1fr 1fr;gap:2px;border-radius:12px;overflow:hidden;}
 .team-card{background:var(--bg);padding:48px;display:flex;gap:32px;}
-.team-avatar{width:72px;height:72px;border-radius:50%;background:var(--bg-green);border:2px solid var(--border-green);flex-shrink:0;display:flex;align-items:center;justify-content:center;font-family:'Bebas Neue',sans-serif;font-size:28px;color:var(--green);}
+.team-avatar{width:120px;height:120px;border-radius:50%;background:var(--bg-green);border:2px solid var(--border-green);flex-shrink:0;display:flex;align-items:center;justify-content:center;font-family:'Bebas Neue',sans-serif;font-size:28px;color:var(--green);overflow:hidden;}
+.team-avatar img{width:100%;height:100%;object-fit:cover;}
 .team-name{font-family:'Bebas Neue',sans-serif;font-size:28px;color:#fff;margin-bottom:2px;}
 .team-title{font-size:13px;color:var(--green);margin-bottom:16px;}
 .team-bio{font-size:14px;color:var(--text-muted);line-height:1.7;}
@@ -217,7 +218,8 @@ footer{background:var(--bg);padding:48px 80px;display:flex;align-items:center;ju
   /* returns — all inline grids override */
   /* team */
   .team-grid{grid-template-columns:1fr;}
-  .team-card{flex-direction:column;gap:16px;padding:28px 16px;}
+  .team-card{flex-direction:column;gap:16px;padding:28px 16px;align-items:center;text-align:center;}
+  .team-avatar{width:100px;height:100px;}
   /* terms */
   .terms-grid{grid-template-columns:1fr;}
   .term-row{flex-direction:column;align-items:flex-start;gap:4px;}
@@ -888,11 +890,11 @@ input[type=number]{-moz-appearance:textfield;}
   <h2 class="section-title">The People<br>Building This.</h2>
   <div class="team-grid">
     <div class="team-card">
-      <div class="team-avatar">AZ</div>
+      <div class="team-avatar"><img src="images/aaron-profile.jpg" alt="Aaron Zeraldo"></div>
       <div><div class="team-name">Aaron Zeraldo</div><div class="team-title">Chief Executive Officer, EV Initiative</div><div class="team-bio">Co-founder and CEO of EVI Infrastructure, Inc. Led the most successful EV charging crowdfunding campaign in history — $2.05M from 3,436 investors via Meta and TikTok alone. Drives business development, investor relations, and the national expansion of the EV Initiative platform.</div></div>
     </div>
     <div class="team-card" style="background:var(--bg-card2);">
-      <div class="team-avatar">WN</div>
+      <div class="team-avatar"><img src="images/warren-profile.jpg" alt="Warren Navarro"></div>
       <div><div class="team-name">Warren Navarro</div><div class="team-title">Chief Operating Officer, EV Initiative</div><div class="team-bio">COO of EV Initiative. Manages all development operations for EVII Mission Hills — GC procurement, capital stack, permitting, Tesla integration, and project timeline from groundbreaking through launch. Works directly with Coffman Engineers, LADWP, and the City of Los Angeles.</div></div>
     </div>
   </div>
