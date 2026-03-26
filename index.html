@@ -155,6 +155,8 @@ footer{background:var(--bg);padding:48px 80px;display:flex;align-items:center;ju
 .fab-items.open .fab-item:nth-child(10){transition-delay:0.27s;}
 .fab-items.open .fab-item:nth-child(11){transition-delay:0.30s;}
 .fab-items.open .fab-item:nth-child(12){transition-delay:0.33s;}
+.fab-items.open .fab-item:nth-child(13){transition-delay:0.36s;}
+.fab-items.open .fab-item:nth-child(14){transition-delay:0.39s;}
 .fab-overlay{position:fixed;inset:0;z-index:500;opacity:0;pointer-events:none;transition:opacity 0.25s;}
 .fab-overlay.open{opacity:1;pointer-events:all;}
 
@@ -280,6 +282,10 @@ footer{background:var(--bg);padding:48px 80px;display:flex;align-items:center;ju
 }
 
 
+
+/* ── INLINE LINKS ── */
+.inline-link{color:var(--green);text-decoration:none;border-bottom:1px solid rgba(46,204,113,0.3);transition:border-color 0.2s,opacity 0.2s;}
+.inline-link:hover{border-color:var(--green);opacity:0.85;}
 
 /* ── TEAM PHOTOS ── */
 .team-avatar-wrap{flex-shrink:0;}
@@ -443,7 +449,7 @@ input[type=number]{-moz-appearance:textfield;}
             <li>Shawarma, tacos, salads</li>
             <li>High-end washrooms, skylight finishes</li>
             <li>Full-service commissary</li>
-            <li>Volt.ai AI security, CatStrap protection</li>
+            <li><a href="https://volt.ai" target="_blank" rel="noopener" class="inline-link">Volt.ai</a> AI security, <a href="https://www.catstrap.net/ev-charging-cable-anti-theft-protection?srsltid=AfmBOoocpGQKO5p6HC9PSR72KzjhJ7VLtaljNHvCfRkG5nqIP2mL5uIM" target="_blank" rel="noopener" class="inline-link">CatStrap</a> protection</li>
             <li>Iconic canopy — visible from the freeway</li>
           </ul>
         </div>
@@ -468,7 +474,7 @@ input[type=number]{-moz-appearance:textfield;}
     <div class="rev-card"><div class="rev-num">03 /</div><div class="rev-title">Food &amp; Beverage</div><div class="rev-desc">Robot barista with 35+ drinks. Food trailer: shawarma, tacos, salads. High-margin spend during the natural 15-40 minute dwell window. Year 1: $752,508.</div></div>
     <div class="rev-card" style="background:var(--bg-card2);"><div class="rev-num">04 /</div><div class="rev-title">Vending</div><div class="rev-desc">Smart vending machines stocked with drinks, snacks, and road essentials. 24/7, no staffing required. Year 1: $53,352.</div></div>
     <div class="rev-card"><div class="rev-num">05 /</div><div class="rev-title">Digital Advertising</div><div class="rev-desc">Canopy-integrated digital screens deliver targeted ads to a captive audience during every session.</div></div>
-    <div class="rev-card" style="background:var(--bg-card2);"><div class="rev-num">06 /</div><div class="rev-title">App &amp; Ecosystem</div><div class="rev-desc">KioPay VPOS loyalty platform. Tap-to-pay, mobile order-ahead, rewards. Every transaction builds the next visit. Year 1: $82,080.</div></div>
+    <div class="rev-card" style="background:var(--bg-card2);"><div class="rev-num">06 /</div><div class="rev-title">App &amp; Ecosystem</div><div class="rev-desc"><a href="https://www.kiocafe.com/" target="_blank" rel="noopener" class="inline-link">KioCafe</a> VPOS loyalty platform. Tap-to-pay, mobile order-ahead, rewards. Every transaction builds the next visit. Year 1: $82,080.</div></div>
   </div>
 
   <div class="rev-bar-wrap" id="revBars">
@@ -675,7 +681,7 @@ input[type=number]{-moz-appearance:textfield;}
   <div class="section-body"><p>A 20-40 minute charging session is a predictable, captive window. Mission Hills is engineered to monetize every minute of it.</p></div>
   <div style="display:grid;grid-template-columns:repeat(3,1fr);gap:2px;margin-top:48px;border-radius:12px;overflow:hidden;">
     <div style="background:var(--bg);padding:36px 28px;">
-      <div style="font-size:11px;letter-spacing:0.12em;text-transform:uppercase;color:var(--green);margin-bottom:12px;">⚡ Tesla Infrastructure</div>
+      <div style="font-size:11px;letter-spacing:0.12em;text-transform:uppercase;color:var(--green);margin-bottom:12px;">⚡ <a href="https://www.tesla.com/supercharger" target="_blank" rel="noopener" class="inline-link" style="color:var(--green);">Tesla</a> Infrastructure</div>
       <div style="font-family:'Bebas Neue',sans-serif;font-size:24px;color:#fff;margin-bottom:12px;">19 V4 Superchargers</div>
       <ul style="list-style:none;display:flex;flex-direction:column;gap:8px;">
         <li style="font-size:14px;color:var(--text-muted);display:flex;gap:8px;"><span style="color:var(--green);flex-shrink:0;">✓</span>NACS and CCS — both standards, 2 ADA stalls</li>
@@ -688,7 +694,7 @@ input[type=number]{-moz-appearance:textfield;}
       <div style="font-size:11px;letter-spacing:0.12em;text-transform:uppercase;color:var(--green);margin-bottom:12px;">☕ Hydration Zone</div>
       <div style="font-family:'Bebas Neue',sans-serif;font-size:24px;color:#fff;margin-bottom:12px;">Robot Barista</div>
       <ul style="list-style:none;display:flex;flex-direction:column;gap:8px;">
-        <li style="font-size:14px;color:rgba(255,255,255,0.75);display:flex;gap:8px;"><span style="color:var(--green);flex-shrink:0;">✓</span>KioSoft KioCafe 3.5E — 35+ drinks, capped and presented</li>
+        <li style="font-size:14px;color:rgba(255,255,255,0.75);display:flex;gap:8px;"><span style="color:var(--green);flex-shrink:0;">✓</span><a href="https://www.kiocafe.com/" target="_blank" rel="noopener" class="inline-link" style="color:rgba(255,255,255,0.75);">KioSoft KioCafe</a> 3.5E — 35+ drinks, capped and presented</li>
         <li style="font-size:14px;color:rgba(255,255,255,0.75);display:flex;gap:8px;"><span style="color:var(--green);flex-shrink:0;">✓</span>Tap-to-pay and mobile order-ahead</li>
         <li style="font-size:14px;color:rgba(255,255,255,0.75);display:flex;gap:8px;"><span style="color:var(--green);flex-shrink:0;">✓</span>Smart vending: water, energy drinks, snacks</li>
         <li style="font-size:14px;color:rgba(255,255,255,0.75);display:flex;gap:8px;"><span style="color:var(--green);flex-shrink:0;">✓</span>Converts dwell time into impulse purchases</li>
@@ -735,8 +741,8 @@ input[type=number]{-moz-appearance:textfield;}
       <div style="font-family:'Bebas Neue',sans-serif;font-size:22px;color:var(--green);margin-bottom:12px;">Safe + Illuminated</div>
       <ul style="list-style:none;display:flex;flex-direction:column;gap:10px;">
         <li style="font-size:14px;color:var(--text-muted);display:flex;gap:8px;"><span style="color:var(--green);flex-shrink:0;">✓</span>Iconic branded canopy with full LED illumination</li>
-        <li style="font-size:14px;color:var(--text-muted);display:flex;gap:8px;"><span style="color:var(--green);flex-shrink:0;">✓</span>18 Volt.ai AI-monitored cameras, 24/7</li>
-        <li style="font-size:14px;color:var(--text-muted);display:flex;gap:8px;"><span style="color:var(--green);flex-shrink:0;">✓</span>CatStrap cable protectors with blue-dye anti-vandal burst</li>
+        <li style="font-size:14px;color:var(--text-muted);display:flex;gap:8px;"><span style="color:var(--green);flex-shrink:0;">✓</span>18 <a href="https://volt.ai" target="_blank" rel="noopener" class="inline-link">Volt.ai</a> AI-monitored cameras, 24/7</li>
+        <li style="font-size:14px;color:var(--text-muted);display:flex;gap:8px;"><span style="color:var(--green);flex-shrink:0;">✓</span><a href="https://www.catstrap.net/ev-charging-cable-anti-theft-protection?srsltid=AfmBOoocpGQKO5p6HC9PSR72KzjhJ7VLtaljNHvCfRkG5nqIP2mL5uIM" target="_blank" rel="noopener" class="inline-link">CatStrap</a> cable protectors with blue-dye anti-vandal burst</li>
       </ul>
     </div>
   </div>
@@ -775,7 +781,7 @@ input[type=number]{-moz-appearance:textfield;}
     <!-- RIGHT: Our system -->
     <div style="background:var(--bg-green);padding:48px 40px;">
       <div style="font-size:11px;letter-spacing:0.12em;text-transform:uppercase;color:var(--green);margin-bottom:20px;">The EV Initiative Loyalty Engine</div>
-      <p style="font-size:15px;color:rgba(255,255,255,0.75);line-height:1.8;margin-bottom:28px;">Powered by the KioPay VPOS platform. Every transaction — coffee, tacos, vending — feeds a loyalty flywheel that turns one-time visitors into regulars.</p>
+      <p style="font-size:15px;color:rgba(255,255,255,0.75);line-height:1.8;margin-bottom:28px;">Powered by the <a href="https://www.kiocafe.com/" target="_blank" rel="noopener" class="inline-link" style="color:rgba(255,255,255,0.75);">KioCafe</a> VPOS platform. Every transaction — coffee, tacos, vending — feeds a loyalty flywheel that turns one-time visitors into regulars.</p>
 
       <div style="display:flex;flex-direction:column;gap:10px;margin-bottom:28px;">
         <div style="display:flex;align-items:flex-start;gap:12px;padding:14px 16px;background:rgba(0,0,0,0.2);border-radius:8px;">
@@ -1080,18 +1086,19 @@ input[type=number]{-moz-appearance:textfield;}
 <!-- FLOATING SECTION MENU -->
 <div class="fab-wrap" id="fabWrap">
   <div class="fab-items" id="fabItems">
-    <a href="#team" class="fab-item" onclick="closeFab()"><span>The Team</span></a>
-    <a href="#about" class="fab-item" onclick="closeFab()"><span>About Us</span></a>
-    <a href="#digital" class="fab-item" onclick="closeFab()"><span>Digital Infrastructure</span></a>
-    <a href="#experience" class="fab-item" onclick="closeFab()"><span>Driver Experience</span></a>
-    <a href="#ecosystem" class="fab-item" onclick="closeFab()"><span>Destination Ecosystem</span></a>
-    <a href="#reasons" class="fab-item" onclick="closeFab()"><span>Why Invest</span></a>
-    <a href="#market" class="fab-item" onclick="closeFab()"><span>Market Opportunity</span></a>
-    <a href="#vision" class="fab-item" onclick="closeFab()"><span>Our Vision</span></a>
-    <a href="#investment" class="fab-item" onclick="closeFab()"><span>Investment Terms</span></a>
-    <a href="#returns" class="fab-item" onclick="closeFab()"><span>Returns &amp; Dividends</span></a>
-    <a href="#revenue" class="fab-item" onclick="closeFab()"><span>Revenue Model</span></a>
     <a href="#opportunity" class="fab-item" onclick="closeFab()"><span>The Opportunity</span></a>
+    <a href="#revenue" class="fab-item" onclick="closeFab()"><span>Revenue Model</span></a>
+    <a href="#returns" class="fab-item" onclick="closeFab()"><span>Returns &amp; Dividends</span></a>
+    <a href="#investment" class="fab-item" onclick="closeFab()"><span>Investment Terms</span></a>
+    <a href="#vision" class="fab-item" onclick="closeFab()"><span>Our Vision</span></a>
+    <a href="#market" class="fab-item" onclick="closeFab()"><span>Market Opportunity</span></a>
+    <a href="#reasons" class="fab-item" onclick="closeFab()"><span>Why Invest</span></a>
+    <a href="#ecosystem" class="fab-item" onclick="closeFab()"><span>Destination Ecosystem</span></a>
+    <a href="#experience" class="fab-item" onclick="closeFab()"><span>Driver Experience</span></a>
+    <a href="#digital" class="fab-item" onclick="closeFab()"><span>Digital Infrastructure</span></a>
+    <a href="#about" class="fab-item" onclick="closeFab()"><span>About Us</span></a>
+    <a href="#calculator" class="fab-item" onclick="closeFab()"><span>Investment Calculator</span></a>
+    <a href="#team" class="fab-item" onclick="closeFab()"><span>The Team</span></a>
     <a href="#invest" class="fab-item" onclick="closeFab()" style="margin-top:4px;"><span style="background:var(--green);color:#000;border-color:var(--green);font-weight:600;">⚡ Invest Now</span></a>
   </div>
   <button class="fab-btn" id="fabBtn" onclick="toggleFab()" aria-label="Navigate">
