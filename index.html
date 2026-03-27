@@ -1232,34 +1232,63 @@ input[type=number]{-moz-appearance:textfield;}
 </div>
 
 <!-- FLOATING SECTION MENU -->
-<div class="fab-wrap" id="fabWrap">
-  <div class="fab-items" id="fabItems">
-    <a href="#opportunity" class="fab-item" onclick="closeFab()"><span>The Opportunity</span></a>
-    <a href="#media" class="fab-item" onclick="closeFab()"><span>Social Proof</span></a>
-    <a href="#revenue" class="fab-item" onclick="closeFab()"><span>Revenue Model</span></a>
-    <a href="#returns" class="fab-item" onclick="closeFab()"><span>Returns &amp; Dividends</span></a>
-    <a href="#investment" class="fab-item" onclick="closeFab()"><span>Investment Terms</span></a>
-    <a href="#vision" class="fab-item" onclick="closeFab()"><span>Our Vision</span></a>
-    <a href="#market" class="fab-item" onclick="closeFab()"><span>Market Opportunity</span></a>
-    <a href="#reasons" class="fab-item" onclick="closeFab()"><span>Why Invest</span></a>
-    <a href="#ecosystem" class="fab-item" onclick="closeFab()"><span>Destination Ecosystem</span></a>
-    <a href="#experience" class="fab-item" onclick="closeFab()"><span>Driver Experience</span></a>
-    <a href="#digital" class="fab-item" onclick="closeFab()"><span>Digital Infrastructure</span></a>
-    <a href="#business-model" class="fab-item" onclick="closeFab()"><span>Business Model</span></a>
-    <a href="#calculator" class="fab-item" onclick="closeFab()"><span>Investment Calculator</span></a>
-    <a href="#about" class="fab-item" onclick="closeFab()"><span>About Us</span></a>
-    <a href="#team" class="fab-item" onclick="closeFab()"><span>The Team</span></a>
-    <a href="#invest" class="fab-item" onclick="closeFab()" style="margin-top:4px;"><span style="background:var(--green);color:#000;border-color:var(--green);font-weight:600;">⚡ Invest Now</span></a>
-  </div>
-  <button class="fab-btn" id="fabBtn" onclick="toggleFab()" aria-label="Navigate">
-    <svg class="fab-icon-open" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"><line x1="4" y1="6" x2="20" y2="6"/><line x1="4" y1="12" x2="20" y2="12"/><line x1="4" y1="18" x2="20" y2="18"/></svg>
-    <svg class="fab-icon-close" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" style="display:none;"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg>
-  </button>
-</div>
+<button class="fab-btn" id="fabBtn" onclick="toggleFab()" aria-label="Navigate sections">
+  <svg class="fab-icon-open" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round">
+    <line x1="4" y1="6" x2="20" y2="6"/><line x1="4" y1="12" x2="20" y2="12"/><line x1="4" y1="18" x2="20" y2="18"/>
+  </svg>
+  <svg class="fab-icon-close" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" style="display:none;">
+    <line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/>
+  </svg>
+</button>
 <div class="fab-overlay" id="fabOverlay" onclick="closeFab()"></div>
+<div class="fab-panel" id="fabPanel">
+  <div class="fab-panel-header"><span>Sections</span><button onclick="closeFab()" class="fab-panel-close"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg></button></div>
+  <div class="fab-panel-links">
+    <a href="#opportunity" onclick="closeFab()"><span class="fab-num">01</span>The Opportunity</a>
+    <a href="#media" onclick="closeFab()"><span class="fab-num">02</span>Social Proof</a>
+    <a href="#revenue" onclick="closeFab()"><span class="fab-num">03</span>Revenue Model</a>
+    <a href="#returns" onclick="closeFab()"><span class="fab-num">04</span>Returns &amp; Dividends</a>
+    <a href="#investment" onclick="closeFab()"><span class="fab-num">05</span>Investment Terms</a>
+    <a href="#vision" onclick="closeFab()"><span class="fab-num">06</span>Our Vision</a>
+    <a href="#market" onclick="closeFab()"><span class="fab-num">07</span>Market Opportunity</a>
+    <a href="#reasons" onclick="closeFab()"><span class="fab-num">08</span>Why Invest</a>
+    <a href="#ecosystem" onclick="closeFab()"><span class="fab-num">09</span>Destination Ecosystem</a>
+    <a href="#experience" onclick="closeFab()"><span class="fab-num">10</span>Driver Experience</a>
+    <a href="#digital" onclick="closeFab()"><span class="fab-num">11</span>Digital Infrastructure</a>
+    <a href="#business-model" onclick="closeFab()"><span class="fab-num">12</span>Business Model</a>
+    <a href="#calculator" onclick="closeFab()"><span class="fab-num">13</span>Investment Calculator</a>
+    <a href="#about" onclick="closeFab()"><span class="fab-num">14</span>About Us</a>
+    <a href="#team" onclick="closeFab()"><span class="fab-num">15</span>The Team</a>
+    <a href="#invest" onclick="closeFab()" class="fab-invest-link"><svg width="13" height="13" viewBox="0 0 24 24" fill="currentColor"><path d="M13 2L4.5 13.5H11L9 22L19.5 10.5H13L13 2Z"/></svg>Invest Now</a>
+  </div>
+</div>
+<style>
+.fab-btn{position:fixed;bottom:28px;right:28px;z-index:600;width:48px;height:48px;border-radius:50%;background:var(--green);border:none;cursor:pointer;display:flex;align-items:center;justify-content:center;color:#000;box-shadow:0 4px 20px rgba(46,204,113,0.4);transition:transform 0.2s,background 0.2s;}
+.fab-btn:hover{transform:scale(1.07);}
+.fab-btn.open{background:#fff;}
+.fab-overlay{position:fixed;inset:0;z-index:500;background:rgba(0,0,0,0.55);backdrop-filter:blur(3px);opacity:0;pointer-events:none;transition:opacity 0.25s;}
+.fab-overlay.open{opacity:1;pointer-events:all;}
+.fab-panel{position:fixed;bottom:88px;right:28px;z-index:600;width:256px;background:#111;border:1px solid #222;border-radius:14px;overflow:hidden;opacity:0;pointer-events:none;transform:translateY(12px) scale(0.97);transform-origin:bottom right;transition:opacity 0.22s ease,transform 0.22s cubic-bezier(0.34,1.4,0.64,1);box-shadow:0 20px 60px rgba(0,0,0,0.7);}
+.fab-panel.open{opacity:1;pointer-events:all;transform:translateY(0) scale(1);}
+.fab-panel-header{display:flex;align-items:center;justify-content:space-between;padding:14px 18px 10px;border-bottom:1px solid #1e1e1e;font-size:10px;font-weight:600;letter-spacing:0.14em;text-transform:uppercase;color:#444;}
+.fab-panel-close{background:none;border:none;color:#444;cursor:pointer;padding:2px;display:flex;align-items:center;transition:color 0.15s;}
+.fab-panel-close:hover{color:#888;}
+.fab-panel-links{padding:6px;display:flex;flex-direction:column;gap:1px;max-height:68vh;overflow-y:auto;}
+.fab-panel-links::-webkit-scrollbar{width:3px;}
+.fab-panel-links::-webkit-scrollbar-thumb{background:#2a2a2a;border-radius:2px;}
+.fab-panel-links a{display:flex;align-items:center;gap:12px;padding:9px 12px;border-radius:8px;text-decoration:none;color:#666;font-size:13px;font-family:'DM Sans',sans-serif;transition:background 0.12s,color 0.12s;}
+.fab-panel-links a:hover{background:#1a1a1a;color:#ccc;}
+.fab-panel-links a.active{color:var(--green);}
+.fab-panel-links a.active .fab-num{color:var(--green);}
+.fab-num{font-family:'DM Mono',monospace;font-size:10px;color:#333;width:18px;flex-shrink:0;transition:color 0.12s;}
+.fab-invest-link{margin-top:6px;background:var(--green)!important;color:#000!important;font-weight:600!important;justify-content:center;gap:7px!important;border-radius:8px;}
+.fab-invest-link:hover{background:#fff!important;}
+.fab-invest-link .fab-num{display:none;}
+@media(max-width:600px){.fab-btn{bottom:20px;right:20px;}.fab-panel{right:20px;bottom:80px;width:calc(100vw - 40px);max-width:280px;}}
+</style>
 
 <script>
-// Sticky widget — remove from DOM on mobile
+// Sticky widget
 (function(){
   var w=document.getElementById('investWidget');
   if(!w) return;
@@ -1271,22 +1300,41 @@ input[type=number]{-moz-appearance:textfield;}
     w.classList.toggle('hidden', window.scrollY < 300);
   });
 })();
-// FAB menu
+</script>
+
+<script>
 function toggleFab(){
-  var i=document.getElementById('fabItems'),b=document.getElementById('fabBtn'),o=document.getElementById('fabOverlay');
-  var open=i.classList.toggle('open');
-  b.classList.toggle('open',open);
-  if(o){o.style.display=open?'block':'none';o.classList.toggle('open',open);}
-  b.querySelector('.fab-icon-open').style.display=open?'none':'block';
-  b.querySelector('.fab-icon-close').style.display=open?'block':'none';
+  var btn=document.getElementById('fabBtn'),panel=document.getElementById('fabPanel'),overlay=document.getElementById('fabOverlay');
+  var open=panel.classList.toggle('open');
+  overlay.classList.toggle('open',open);
+  btn.classList.toggle('open',open);
+  btn.querySelector('.fab-icon-open').style.display=open?'none':'flex';
+  btn.querySelector('.fab-icon-close').style.display=open?'flex':'none';
 }
 function closeFab(){
-  var i=document.getElementById('fabItems'),b=document.getElementById('fabBtn'),o=document.getElementById('fabOverlay');
-  i.classList.remove('open');b.classList.remove('open');
-  if(o){o.classList.remove('open');o.style.display='none';}
-  b.querySelector('.fab-icon-open').style.display='block';
-  b.querySelector('.fab-icon-close').style.display='none';
+  document.getElementById('fabPanel').classList.remove('open');
+  document.getElementById('fabOverlay').classList.remove('open');
+  document.getElementById('fabBtn').classList.remove('open');
+  document.getElementById('fabBtn').querySelector('.fab-icon-open').style.display='flex';
+  document.getElementById('fabBtn').querySelector('.fab-icon-close').style.display='none';
 }
+document.addEventListener('click',function(e){if(!e.target.closest('.fab-btn')&&!e.target.closest('.fab-panel'))closeFab();});
+(function(){
+  var links=document.querySelectorAll('.fab-panel-links a[href^="#"]');
+  window.addEventListener('scroll',function(){
+    var scrollY=window.scrollY+120;
+    var current='';
+    links.forEach(function(link){
+      var id=link.getAttribute('href').slice(1);
+      var section=document.getElementById(id);
+      if(section&&section.offsetTop<=scrollY) current=id;
+    });
+    links.forEach(function(link){
+      var id=link.getAttribute('href').slice(1);
+      link.classList.toggle('active',id===current);
+    });
+  },{passive:true});
+})();
 </script>
 
 <script>
