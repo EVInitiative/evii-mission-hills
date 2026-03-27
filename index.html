@@ -13,7 +13,7 @@
 :root {
   --green:#2ECC71; --green-dark:#1a7a3f; --green-deep:#0d3d20;
   --bg:#0a0a0a; --bg-card:#111111; --bg-card2:#161616; --bg-green:#0d2818;
-  --text:#f0f0f0; --text-muted:#888; --text-dim:#555;
+  --text:#f2f2f2; --text-muted:#aaa; --text-dim:#777;
   --border:#222; --border-green:#1a4a28;
 }
 *{margin:0;padding:0;box-sizing:border-box;}
@@ -94,12 +94,12 @@ section{padding:100px 80px;}
 /* TERMS */
 .terms-grid{display:grid;grid-template-columns:1fr 1fr;gap:2px;border-radius:12px;overflow:hidden;}
 .term-row{background:rgba(0,0,0,0.3);padding:24px 32px;display:flex;justify-content:space-between;align-items:center;gap:20px;}
-.term-label{font-size:13px;color:rgba(255,255,255,0.5);text-transform:uppercase;letter-spacing:0.08em;}
+.term-label{font-size:13px;color:rgba(255,255,255,0.65);text-transform:uppercase;letter-spacing:0.08em;}
 .term-value{font-size:15px;color:#fff;font-weight:500;text-align:right;}
 .term-value.highlight{color:var(--green);font-weight:600;}
 .reg-d-banner{background:rgba(46,204,113,0.08);border:1px solid rgba(46,204,113,0.2);border-radius:12px;padding:32px 40px;margin-top:48px;display:flex;align-items:center;justify-content:space-between;gap:32px;}
 .reg-d-text h4{font-family:'Bebas Neue',sans-serif;font-size:24px;color:var(--green);margin-bottom:6px;}
-.reg-d-text p{font-size:14px;color:rgba(255,255,255,0.6);max-width:600px;}
+.reg-d-text p{font-size:14px;color:rgba(255,255,255,0.72);max-width:600px;}
 
 /* CTA */
 #cta{background:var(--bg-card);text-align:center;padding:120px 80px;position:relative;overflow:hidden;}
@@ -460,7 +460,7 @@ input[type=number]{-moz-appearance:textfield;}
     </div>
     <div style="margin-top:24px;background:rgba(10,10,10,0.8);border:1px solid var(--border);border-radius:12px;padding:36px 32px;backdrop-filter:blur(8px);text-align:center;">
       <div class="hero-raise-label" style="font-size:15px;letter-spacing:0.1em;text-transform:uppercase;color:var(--text-muted);margin-bottom:6px;">Round 1 Raise Reg CF — <span style="color:var(--green);font-weight:600;">Closed</span> · 3,436 investors</div>
-      <div class="hero-raise-sub" style="font-size:16px;letter-spacing:0.08em;text-transform:uppercase;color:rgba(255,255,255,0.6);margin-bottom:12px;">Total Raised Round 1</div>
+      <div class="hero-raise-sub" style="font-size:16px;letter-spacing:0.08em;text-transform:uppercase;color:rgba(255,255,255,0.72);margin-bottom:12px;">Total Raised Round 1</div>
       <div class="hero-raise" style="font-family:'Bebas Neue',sans-serif;font-size:120px;color:var(--green);line-height:1;letter-spacing:-0.02em;text-shadow:0 0 40px rgba(46,204,113,0.3);">$2.05M</div>
     </div>
   </div>
@@ -634,7 +634,7 @@ input[type=number]{-moz-appearance:textfield;}
       <div style="position:absolute;top:16px;right:16px;background:var(--green);color:#000;font-size:11px;font-weight:700;padding:4px 10px;border-radius:100px;">+34%</div>
       <div style="font-size:11px;letter-spacing:0.12em;text-transform:uppercase;color:var(--green);margin-bottom:12px;">Round 2 Share Price</div>
       <div style="font-family:'Bebas Neue',sans-serif;font-size:60px;color:#fff;line-height:1;margin-bottom:8px;">$2.50</div>
-      <div style="font-size:13px;color:rgba(255,255,255,0.6);">Reg CF — Open Now · SEC-Qualified</div>
+      <div style="font-size:13px;color:rgba(255,255,255,0.72);">Reg CF — Open Now · SEC-Qualified</div>
     </div>
     <div style="background:var(--bg-card);padding:40px 32px;text-align:center;">
       <div style="font-size:11px;letter-spacing:0.12em;text-transform:uppercase;color:var(--text-dim);margin-bottom:12px;">Total Raised Round 1</div>
@@ -661,7 +661,7 @@ input[type=number]{-moz-appearance:textfield;}
     <div style="background:var(--bg-green);padding:36px 24px;text-align:center;">
       <div style="font-size:11px;letter-spacing:0.1em;text-transform:uppercase;color:var(--green);margin-bottom:12px;">Projected IRR — Upside Case</div>
       <div style="font-family:'Bebas Neue',sans-serif;font-size:56px;color:#fff;line-height:1;margin-bottom:6px;">69.2%</div>
-      <div style="font-size:12px;color:rgba(255,255,255,0.5);">10-year horizon · 20 sessions/stall/day</div>
+      <div style="font-size:12px;color:rgba(255,255,255,0.65);">10-year horizon · 20 sessions/stall/day</div>
     </div>
     <div style="background:var(--bg-card);padding:36px 24px;text-align:center;">
       <div style="font-size:11px;letter-spacing:0.1em;text-transform:uppercase;color:var(--text-dim);margin-bottom:12px;">Payback Period — Base Case</div>
@@ -676,7 +676,7 @@ input[type=number]{-moz-appearance:textfield;}
     <div style="background:var(--bg-green);padding:36px 24px;text-align:center;">
       <div style="font-size:11px;letter-spacing:0.1em;text-transform:uppercase;color:var(--green);margin-bottom:12px;">10-Year Total Profit — Base Case</div>
       <div style="font-family:'Bebas Neue',sans-serif;font-size:56px;color:#fff;line-height:1;margin-bottom:6px;">$31.3M</div>
-      <div style="font-size:12px;color:rgba(255,255,255,0.5);">Projected cumulative net profit</div>
+      <div style="font-size:12px;color:rgba(255,255,255,0.65);">Projected cumulative net profit</div>
     </div>
   </div>
 
@@ -684,12 +684,12 @@ input[type=number]{-moz-appearance:textfield;}
     <div style="background:var(--bg-green);padding:48px 40px;">
       <div style="font-size:11px;letter-spacing:0.12em;text-transform:uppercase;color:var(--green);margin-bottom:16px;">Why Dividends Change Everything</div>
       <h3 style="font-family:'Bebas Neue',sans-serif;font-size:36px;color:#fff;line-height:1.05;margin-bottom:20px;">Most Equity Crowdfunding Pays You Nothing Until an Exit.<br><span style="color:var(--green);">We Pay You Twice a Year.</span></h3>
-      <p style="font-size:15px;color:rgba(255,255,255,0.7);line-height:1.7;margin-bottom:24px;">EVII Mission Hills, Inc. distributes profits to all shareholders semiannually — starting from when we open. Six revenue streams running simultaneously means the asset earns from multiple directions every single day.</p>
+      <p style="font-size:15px;color:rgba(255,255,255,0.8);line-height:1.7;margin-bottom:24px;">EVII Mission Hills, Inc. distributes profits to all shareholders semiannually — starting from when we open. Six revenue streams running simultaneously means the asset earns from multiple directions every single day.</p>
       <div style="display:grid;grid-template-columns:1fr 1fr;gap:12px;">
-        <div style="background:rgba(0,0,0,0.25);border-radius:10px;padding:16px 18px;"><div style="font-family:'Bebas Neue',sans-serif;font-size:28px;color:var(--green);">$1.57M</div><div style="font-size:12px;color:rgba(255,255,255,0.5);">Projected annual distributable cash</div></div>
-        <div style="background:rgba(0,0,0,0.25);border-radius:10px;padding:16px 18px;"><div style="font-family:'Bebas Neue',sans-serif;font-size:28px;color:var(--green);">2x/yr</div><div style="font-size:12px;color:rgba(255,255,255,0.5);">From operating profits</div></div>
-        <div style="background:rgba(0,0,0,0.25);border-radius:10px;padding:16px 18px;"><div style="font-family:'Bebas Neue',sans-serif;font-size:28px;color:var(--green);">$2.49M</div><div style="font-size:12px;color:rgba(255,255,255,0.5);">Projected Year 1 net profit</div></div>
-        <div style="background:rgba(0,0,0,0.25);border-radius:10px;padding:16px 18px;"><div style="font-family:'Bebas Neue',sans-serif;font-size:28px;color:var(--green);">$5.02M</div><div style="font-size:12px;color:rgba(255,255,255,0.5);">Projected annual gross revenue</div></div>
+        <div style="background:rgba(0,0,0,0.25);border-radius:10px;padding:16px 18px;"><div style="font-family:'Bebas Neue',sans-serif;font-size:28px;color:var(--green);">$1.57M</div><div style="font-size:12px;color:rgba(255,255,255,0.65);">Projected annual distributable cash</div></div>
+        <div style="background:rgba(0,0,0,0.25);border-radius:10px;padding:16px 18px;"><div style="font-family:'Bebas Neue',sans-serif;font-size:28px;color:var(--green);">2x/yr</div><div style="font-size:12px;color:rgba(255,255,255,0.65);">From operating profits</div></div>
+        <div style="background:rgba(0,0,0,0.25);border-radius:10px;padding:16px 18px;"><div style="font-family:'Bebas Neue',sans-serif;font-size:28px;color:var(--green);">$2.49M</div><div style="font-size:12px;color:rgba(255,255,255,0.65);">Projected Year 1 net profit</div></div>
+        <div style="background:rgba(0,0,0,0.25);border-radius:10px;padding:16px 18px;"><div style="font-family:'Bebas Neue',sans-serif;font-size:28px;color:var(--green);">$5.02M</div><div style="font-size:12px;color:rgba(255,255,255,0.65);">Projected annual gross revenue</div></div>
       </div>
     </div>
     <div style="background:var(--bg-card);padding:48px 40px;">
@@ -708,7 +708,7 @@ input[type=number]{-moz-appearance:textfield;}
 
   <div style="display:grid;grid-template-columns:repeat(3,1fr);gap:2px;margin-top:32px;border-radius:12px;overflow:hidden;">
     <div style="background:var(--bg-card2);padding:32px 28px;text-align:center;"><div style="font-size:11px;letter-spacing:0.1em;text-transform:uppercase;color:var(--text-dim);margin-bottom:12px;">Conservative</div><div style="font-family:'Bebas Neue',sans-serif;font-size:40px;color:var(--text-muted);margin-bottom:8px;line-height:1;">52.3%<br><span style="font-size:22px;">IRR</span></div><div style="font-size:13px;color:var(--green);font-weight:500;margin-bottom:6px;">~10 sessions/stall/day</div><div style="font-size:12px;color:var(--text-dim);">Slower ramp, lower utilization. Still profitable from year one.</div></div>
-    <div style="background:var(--bg-green);padding:32px 28px;text-align:center;"><div style="font-size:11px;letter-spacing:0.1em;text-transform:uppercase;color:var(--green);margin-bottom:12px;">Base Case</div><div style="font-family:'Bebas Neue',sans-serif;font-size:40px;color:#fff;margin-bottom:8px;line-height:1;">69.2%<br><span style="font-size:22px;">IRR</span></div><div style="font-size:13px;color:var(--green);font-weight:500;margin-bottom:6px;">~15 sessions/stall/day</div><div style="font-size:12px;color:rgba(255,255,255,0.5);">Benchmarked against Tesla Diner Hollywood utilization (~18 sessions/day).</div></div>
+    <div style="background:var(--bg-green);padding:32px 28px;text-align:center;"><div style="font-size:11px;letter-spacing:0.1em;text-transform:uppercase;color:var(--green);margin-bottom:12px;">Base Case</div><div style="font-family:'Bebas Neue',sans-serif;font-size:40px;color:#fff;margin-bottom:8px;line-height:1;">69.2%<br><span style="font-size:22px;">IRR</span></div><div style="font-size:13px;color:var(--green);font-weight:500;margin-bottom:6px;">~15 sessions/stall/day</div><div style="font-size:12px;color:rgba(255,255,255,0.65);">Benchmarked against Tesla Diner Hollywood utilization (~18 sessions/day).</div></div>
     <div style="background:var(--bg-card2);padding:32px 28px;text-align:center;"><div style="font-size:11px;letter-spacing:0.1em;text-transform:uppercase;color:var(--text-dim);margin-bottom:12px;">Upside</div><div style="font-family:'Bebas Neue',sans-serif;font-size:40px;color:var(--green);margin-bottom:8px;line-height:1;">80%+<br><span style="font-size:22px;">IRR</span></div><div style="font-size:13px;color:var(--green);font-weight:500;margin-bottom:6px;">~20 sessions/stall/day</div><div style="font-size:12px;color:var(--text-dim);">Full utilization, all revenue streams firing. On par with top Tesla destination sites.</div></div>
   </div>
   <!-- CREDIBILITY BADGES -->
@@ -776,15 +776,15 @@ input[type=number]{-moz-appearance:textfield;}
   <div class="section-label">Market Opportunity</div>
   <h2 class="section-title" style="display:flex;align-items:center;gap:20px;flex-wrap:wrap;"><span>The Biggest EV<br>Market in America.<br>Underserved.</span><img src="images/cali-usa-flag.png" alt="California and USA flags" style="height:120px;object-fit:contain;flex-shrink:0;"></h2>
   <div style="display:grid;grid-template-columns:repeat(4,1fr);gap:2px;margin-top:48px;border-radius:12px;overflow:hidden;">
-    <div style="background:rgba(0,0,0,0.3);padding:32px 24px;text-align:center;"><div style="font-family:'Bebas Neue',sans-serif;font-size:48px;color:var(--green);line-height:1;margin-bottom:8px;">1 in 4</div><div style="font-size:12px;color:rgba(255,255,255,0.5);letter-spacing:0.06em;">Cars Sold in CA Already Electric</div></div>
-    <div style="background:rgba(0,0,0,0.3);padding:32px 24px;text-align:center;"><div style="font-family:'Bebas Neue',sans-serif;font-size:48px;color:var(--green);line-height:1;margin-bottom:8px;">600K+</div><div style="font-size:12px;color:rgba(255,255,255,0.5);letter-spacing:0.06em;">Vehicles/Day on the Corridor</div></div>
-    <div style="background:rgba(0,0,0,0.3);padding:32px 24px;text-align:center;"><div style="font-family:'Bebas Neue',sans-serif;font-size:48px;color:var(--green);line-height:1;margin-bottom:8px;">2M+</div><div style="font-size:12px;color:rgba(255,255,255,0.5);letter-spacing:0.06em;">Residents Within 10 Miles</div></div>
-    <div style="background:rgba(0,0,0,0.3);padding:32px 24px;text-align:center;"><div style="font-family:'Bebas Neue',sans-serif;font-size:48px;color:var(--green);line-height:1;margin-bottom:8px;">#1</div><div style="font-size:12px;color:rgba(255,255,255,0.5);letter-spacing:0.06em;">Los Angeles EV Adoption Nationally</div></div>
+    <div style="background:rgba(0,0,0,0.3);padding:32px 24px;text-align:center;"><div style="font-family:'Bebas Neue',sans-serif;font-size:48px;color:var(--green);line-height:1;margin-bottom:8px;">1 in 4</div><div style="font-size:12px;color:rgba(255,255,255,0.65);letter-spacing:0.06em;">Cars Sold in CA Already Electric</div></div>
+    <div style="background:rgba(0,0,0,0.3);padding:32px 24px;text-align:center;"><div style="font-family:'Bebas Neue',sans-serif;font-size:48px;color:var(--green);line-height:1;margin-bottom:8px;">600K+</div><div style="font-size:12px;color:rgba(255,255,255,0.65);letter-spacing:0.06em;">Vehicles/Day on the Corridor</div></div>
+    <div style="background:rgba(0,0,0,0.3);padding:32px 24px;text-align:center;"><div style="font-family:'Bebas Neue',sans-serif;font-size:48px;color:var(--green);line-height:1;margin-bottom:8px;">2M+</div><div style="font-size:12px;color:rgba(255,255,255,0.65);letter-spacing:0.06em;">Residents Within 10 Miles</div></div>
+    <div style="background:rgba(0,0,0,0.3);padding:32px 24px;text-align:center;"><div style="font-family:'Bebas Neue',sans-serif;font-size:48px;color:var(--green);line-height:1;margin-bottom:8px;">#1</div><div style="font-size:12px;color:rgba(255,255,255,0.65);letter-spacing:0.06em;">Los Angeles EV Adoption Nationally</div></div>
   </div>
   <div style="margin-top:48px;">
-    <p style="font-size:16px;color:rgba(255,255,255,0.7);margin-bottom:16px;max-width:800px;"><strong style="color:#fff;">1 in 4 cars sold in California is already electric</strong> — driven by real consumer demand. The San Fernando Valley leads the region. And it has almost no destination-quality charging infrastructure to show for it.</p>
-    <p style="font-size:16px;color:rgba(255,255,255,0.7);margin-bottom:16px;max-width:800px;">In the 20th century, the gas station corner lot built generational wealth. <strong style="color:#fff;">That transition is happening again, right now.</strong> The investors who move early will own the corners.</p>
-    <p style="font-size:16px;color:rgba(255,255,255,0.7);max-width:800px;">This window is open. It will not stay open long.</p>
+    <p style="font-size:16px;color:rgba(255,255,255,0.8);margin-bottom:16px;max-width:800px;"><strong style="color:#fff;">1 in 4 cars sold in California is already electric</strong> — driven by real consumer demand. The San Fernando Valley leads the region. And it has almost no destination-quality charging infrastructure to show for it.</p>
+    <p style="font-size:16px;color:rgba(255,255,255,0.8);margin-bottom:16px;max-width:800px;">In the 20th century, the gas station corner lot built generational wealth. <strong style="color:#fff;">That transition is happening again, right now.</strong> The investors who move early will own the corners.</p>
+    <p style="font-size:16px;color:rgba(255,255,255,0.8);max-width:800px;">This window is open. It will not stay open long.</p>
   </div>
   <div class="reveal-on-scroll" style="margin-top:48px;border-radius:16px;overflow:hidden;opacity:0;transform:translateY(40px);transition:opacity 0.8s ease,transform 0.8s ease;">
     <img src="images/trade-map.png" alt="EVII Mission Hills Trade Map" style="width:100%;display:block;border-radius:16px;">
@@ -930,19 +930,19 @@ input[type=number]{-moz-appearance:textfield;}
       <div style="display:flex;flex-direction:column;gap:10px;margin-bottom:28px;">
         <div style="display:flex;align-items:flex-start;gap:12px;padding:14px 16px;background:rgba(0,0,0,0.2);border-radius:8px;">
           <span style="color:var(--green);font-weight:700;flex-shrink:0;width:20px;">01</span>
-          <div><div style="font-size:13px;color:#fff;font-weight:500;margin-bottom:2px;">Preloaded Wallet</div><div style="font-size:13px;color:rgba(255,255,255,0.6);">Customers load money in advance — just like Starbucks. That committed spend is revenue before they even arrive.</div></div>
+          <div><div style="font-size:13px;color:#fff;font-weight:500;margin-bottom:2px;">Preloaded Wallet</div><div style="font-size:13px;color:rgba(255,255,255,0.72);">Customers load money in advance — just like Starbucks. That committed spend is revenue before they even arrive.</div></div>
         </div>
         <div style="display:flex;align-items:flex-start;gap:12px;padding:14px 16px;background:rgba(0,0,0,0.2);border-radius:8px;">
           <span style="color:var(--green);font-weight:700;flex-shrink:0;width:20px;">02</span>
-          <div><div style="font-size:13px;color:#fff;font-weight:500;margin-bottom:2px;">Order Ahead</div><div style="font-size:13px;color:rgba(255,255,255,0.6);">Order your coffee and food before you arrive. Your robot barista drink is waiting when you plug in.</div></div>
+          <div><div style="font-size:13px;color:#fff;font-weight:500;margin-bottom:2px;">Order Ahead</div><div style="font-size:13px;color:rgba(255,255,255,0.72);">Order your coffee and food before you arrive. Your robot barista drink is waiting when you plug in.</div></div>
         </div>
         <div style="display:flex;align-items:flex-start;gap:12px;padding:14px 16px;background:rgba(0,0,0,0.2);border-radius:8px;">
           <span style="color:var(--green);font-weight:700;flex-shrink:0;width:20px;">03</span>
-          <div><div style="font-size:13px;color:#fff;font-weight:500;margin-bottom:2px;">Points and Rewards</div><div style="font-size:13px;color:rgba(255,255,255,0.6);">Every purchase earns points. Free drinks, discounts, and perks bring drivers back — and keep competitors out.</div></div>
+          <div><div style="font-size:13px;color:#fff;font-weight:500;margin-bottom:2px;">Points and Rewards</div><div style="font-size:13px;color:rgba(255,255,255,0.72);">Every purchase earns points. Free drinks, discounts, and perks bring drivers back — and keep competitors out.</div></div>
         </div>
         <div style="display:flex;align-items:flex-start;gap:12px;padding:14px 16px;background:rgba(0,0,0,0.2);border-radius:8px;">
           <span style="color:var(--green);font-weight:700;flex-shrink:0;width:20px;">04</span>
-          <div><div style="font-size:13px;color:#fff;font-weight:500;margin-bottom:2px;">Data Flywheel</div><div style="font-size:13px;color:rgba(255,255,255,0.6);">Every transaction builds a customer profile. Personalized offers increase spend per visit over time — automatically.</div></div>
+          <div><div style="font-size:13px;color:#fff;font-weight:500;margin-bottom:2px;">Data Flywheel</div><div style="font-size:13px;color:rgba(255,255,255,0.72);">Every transaction builds a customer profile. Personalized offers increase spend per visit over time — automatically.</div></div>
         </div>
       </div>
 
@@ -1048,28 +1048,28 @@ input[type=number]{-moz-appearance:textfield;}
 
     <!-- Results side -->
     <div style="background:var(--bg-green);padding:48px 40px;display:flex;flex-direction:column;justify-content:center;">
-      <div style="font-size:12px;letter-spacing:0.1em;text-transform:uppercase;color:rgba(255,255,255,0.5);margin-bottom:8px;">Shares Purchased</div>
-      <div style="font-family:'Bebas Neue',sans-serif;font-size:40px;color:rgba(255,255,255,0.7);line-height:1;margin-bottom:32px;" id="calcShares">300</div>
+      <div style="font-size:12px;letter-spacing:0.1em;text-transform:uppercase;color:rgba(255,255,255,0.65);margin-bottom:8px;">Shares Purchased</div>
+      <div style="font-family:'Bebas Neue',sans-serif;font-size:40px;color:rgba(255,255,255,0.8);line-height:1;margin-bottom:32px;" id="calcShares">300</div>
 
       <div style="font-size:12px;letter-spacing:0.1em;text-transform:uppercase;color:var(--green);margin-bottom:8px;">Annual Dividend (Est.)</div>
       <div style="font-family:'Bebas Neue',sans-serif;font-size:64px;color:#fff;line-height:1;margin-bottom:4px;" id="calcAnnual">$133</div>
-      <div style="font-size:13px;color:rgba(255,255,255,0.5);margin-bottom:32px;">Paid semiannually — twice per year</div>
+      <div style="font-size:13px;color:rgba(255,255,255,0.65);margin-bottom:32px;">Paid semiannually — twice per year</div>
 
       <div style="display:grid;grid-template-columns:1fr 1fr;gap:12px;">
         <div style="background:rgba(0,0,0,0.25);border-radius:10px;padding:16px 18px;">
-          <div style="font-size:11px;color:rgba(255,255,255,0.5);margin-bottom:6px;">Per Payout</div>
+          <div style="font-size:11px;color:rgba(255,255,255,0.65);margin-bottom:6px;">Per Payout</div>
           <div style="font-family:'Bebas Neue',sans-serif;font-size:28px;color:var(--green);" id="calcPer">$66</div>
         </div>
         <div style="background:rgba(0,0,0,0.25);border-radius:10px;padding:16px 18px;">
-          <div style="font-size:11px;color:rgba(255,255,255,0.5);margin-bottom:6px;">10-Year Return</div>
+          <div style="font-size:11px;color:rgba(255,255,255,0.65);margin-bottom:6px;">10-Year Return</div>
           <div style="font-family:'Bebas Neue',sans-serif;font-size:28px;color:var(--green);" id="calcTotal">$1.3K</div>
         </div>
         <div style="background:rgba(0,0,0,0.25);border-radius:10px;padding:16px 18px;">
-          <div style="font-size:11px;color:rgba(255,255,255,0.5);margin-bottom:6px;">Equity Multiple</div>
+          <div style="font-size:11px;color:rgba(255,255,255,0.65);margin-bottom:6px;">Equity Multiple</div>
           <div style="font-family:'Bebas Neue',sans-serif;font-size:28px;color:var(--green);" id="calcMultiple">8.15x</div>
         </div>
         <div style="background:rgba(0,0,0,0.25);border-radius:10px;padding:16px 18px;">
-          <div style="font-size:11px;color:rgba(255,255,255,0.5);margin-bottom:6px;">IRR</div>
+          <div style="font-size:11px;color:rgba(255,255,255,0.65);margin-bottom:6px;">IRR</div>
           <div style="font-family:'Bebas Neue',sans-serif;font-size:28px;color:var(--green);" id="calcIRR">69.2%</div>
         </div>
       </div>
@@ -1108,7 +1108,7 @@ input[type=number]{-moz-appearance:textfield;}
     <div style="display:grid;grid-template-columns:repeat(4,1fr);gap:2px;border-radius:12px;overflow:hidden;margin-bottom:40px;">
       <div style="background:var(--bg-green);padding:32px 24px;">
         <div style="font-family:'Bebas Neue',sans-serif;font-size:44px;color:var(--green);line-height:1;margin-bottom:8px;">$2.05M</div>
-        <div style="font-size:13px;color:rgba(255,255,255,0.6);"><strong style="color:#fff;display:block;margin-bottom:2px;">Raised in Round 1</strong>3,436 investors · zero brokers</div>
+        <div style="font-size:13px;color:rgba(255,255,255,0.72);"><strong style="color:#fff;display:block;margin-bottom:2px;">Raised in Round 1</strong>3,436 investors · zero brokers</div>
       </div>
       <div style="background:var(--bg-card);padding:32px 24px;">
         <div style="font-family:'Bebas Neue',sans-serif;font-size:44px;color:var(--green);line-height:1;margin-bottom:8px;">5,100+</div>
@@ -1120,7 +1120,7 @@ input[type=number]{-moz-appearance:textfield;}
       </div>
       <div style="background:var(--bg-green);padding:32px 24px;">
         <div style="font-family:'Bebas Neue',sans-serif;font-size:44px;color:var(--green);line-height:1;margin-bottom:8px;">4,000A</div>
-        <div style="font-size:13px;color:rgba(255,255,255,0.6);"><strong style="color:#fff;display:block;margin-bottom:2px;">LADWP Committed</strong>Tesla agreement in place</div>
+        <div style="font-size:13px;color:rgba(255,255,255,0.72);"><strong style="color:#fff;display:block;margin-bottom:2px;">LADWP Committed</strong>Tesla agreement in place</div>
       </div>
     </div>
     <ul style="list-style:none;">
