@@ -427,6 +427,25 @@ input[type=number]{-moz-appearance:textfield;}
 /* Divider line sweep */
 .divider{transform:scaleX(0);transform-origin:left;transition:transform 0.8s ease;}
 .divider.visible{transform:scaleX(1);}
+
+/* FAQ / ASK FOUNDERS */
+.faq-group{margin-bottom:32px;}
+.faq-group-title{font-family:'Bebas Neue',sans-serif;font-size:22px;color:var(--green);letter-spacing:0.04em;margin-bottom:12px;padding-left:4px;}
+.faq-item{border:1px solid var(--border);border-radius:12px;margin-bottom:8px;overflow:hidden;background:var(--bg-card);transition:border-color 0.2s;}
+.faq-item.open{border-color:var(--border-green);}
+.faq-q{display:flex;align-items:center;justify-content:space-between;padding:16px 20px;cursor:pointer;font-weight:500;font-size:15px;color:var(--text);transition:color 0.2s;gap:12px;}
+.faq-q:hover{color:var(--green);}
+.faq-chevron{width:20px;height:20px;flex-shrink:0;transition:transform 0.25s;color:var(--text-dim);}
+.faq-item.open .faq-chevron{transform:rotate(180deg);color:var(--green);}
+.faq-a{max-height:0;overflow:hidden;transition:max-height 0.35s ease,padding 0.35s ease;padding:0 20px;font-size:14px;color:var(--text-muted);line-height:1.7;}
+.faq-item.open .faq-a{max-height:600px;padding:0 20px 18px;}
+.founders-section{max-width:800px;margin:0 auto;padding:80px 24px;}
+.founders-section h2{font-family:'Bebas Neue',sans-serif;font-size:clamp(32px,4vw,48px);color:#fff;text-align:center;margin-bottom:8px;}
+.founders-lead{text-align:center;color:var(--text-muted);font-size:15px;max-width:500px;margin:0 auto 40px;}
+#disqus_thread{background:var(--bg-card);border:1px solid var(--border);border-radius:16px;padding:24px;min-height:200px;}
+.faq-section{max-width:800px;margin:0 auto;padding:80px 24px;}
+.faq-section h2{font-family:'Bebas Neue',sans-serif;font-size:clamp(32px,4vw,48px);color:#fff;text-align:center;margin-bottom:8px;}
+.faq-lead{text-align:center;color:var(--text-muted);font-size:15px;max-width:500px;margin:0 auto 40px;}
 </style>
 </head>
 <body>
@@ -1177,6 +1196,105 @@ input[type=number]{-moz-appearance:textfield;}
 <div class="invest-strip" style="background:var(--bg-card);"><a href="#invest" class="btn-primary" style="padding:16px 48px;font-size:16px;"><svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor"><path d="M13 2L4.5 13.5H11L9 22L19.5 10.5H13L13 2Z"/></svg>Invest Now</a></div>
 <div class="divider"></div>
 
+<!-- ASK THE FOUNDERS -->
+<section id="ask-founders" class="founders-section">
+  <div style="font-size:11px;font-weight:500;letter-spacing:0.16em;text-transform:uppercase;color:var(--green);text-align:center;margin-bottom:12px;">Community</div>
+  <h2>Ask the <span style="color:var(--green);">Founders</span></h2>
+  <p class="founders-lead">Have a question about EVII Mission Hills? Ask Aaron and Warren directly — they answer every question personally.</p>
+  <div id="disqus_thread"></div>
+</section>
+<script>
+var disqus_config=function(){this.page.url=window.location.href;this.page.identifier='evii-mission-hills';};
+(function(){var d=document,s=d.createElement('script');s.src='https://SHORTNAME.disqus.com/embed.js';s.setAttribute('data-timestamp',+new Date());(d.head||d.body).appendChild(s);})();
+</script>
+<div class="invest-strip" style="background:var(--bg-card);"><a href="#invest" class="btn-primary" style="padding:16px 48px;font-size:16px;"><svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor"><path d="M13 2L4.5 13.5H11L9 22L19.5 10.5H13L13 2Z"/></svg>Invest Now</a></div>
+<div class="divider"></div>
+
+<!-- INVESTOR FAQ -->
+<section id="faq" class="faq-section">
+  <div style="font-size:11px;font-weight:500;letter-spacing:0.16em;text-transform:uppercase;color:var(--green);text-align:center;margin-bottom:12px;">Questions &amp; Answers</div>
+  <h2>Investor <span style="color:var(--green);">FAQ</span></h2>
+  <p class="faq-lead">Everything you need to know before investing in EVII Mission Hills.</p>
+
+  <!-- Investment Process -->
+  <div class="faq-group">
+    <div class="faq-group-title">Investment Process</div>
+    <div class="faq-item">
+      <div class="faq-q" onclick="toggleFaq(this)">How do I invest?<svg class="faq-chevron" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"><polyline points="6 9 12 15 18 9"/></svg></div>
+      <div class="faq-a">Click any <strong>"Invest Now"</strong> button on this page. You'll be directed to our offering on PicMii Crowdfunding LLC, a FINRA/SEC-registered funding portal. The process takes about 5 minutes — you'll create an account, verify your identity, and complete your investment.</div>
+    </div>
+    <div class="faq-item">
+      <div class="faq-q" onclick="toggleFaq(this)">What is the minimum investment?<svg class="faq-chevron" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"><polyline points="6 9 12 15 18 9"/></svg></div>
+      <div class="faq-a">The minimum investment is <strong>$300</strong>, which gets you 120 shares of Class B Non-Voting Common Stock at $2.50 per share.</div>
+    </div>
+    <div class="faq-item">
+      <div class="faq-q" onclick="toggleFaq(this)">Who can invest?<svg class="faq-chevron" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"><polyline points="6 9 12 15 18 9"/></svg></div>
+      <div class="faq-a">Anyone 18 or older can invest. This is a Regulation Crowdfunding (Reg CF) offering — open to both accredited and non-accredited investors. There are annual investment limits based on your income and net worth, as required by the SEC.</div>
+    </div>
+    <div class="faq-item">
+      <div class="faq-q" onclick="toggleFaq(this)">When does the offering close?<svg class="faq-chevron" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"><polyline points="6 9 12 15 18 9"/></svg></div>
+      <div class="faq-a">The offering deadline is <strong>April 30, 2026</strong>. However, the offering may close early if the maximum raise of $3,500,000 is reached before that date.</div>
+    </div>
+    <div class="faq-item">
+      <div class="faq-q" onclick="toggleFaq(this)">Can I cancel my investment?<svg class="faq-chevron" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"><polyline points="6 9 12 15 18 9"/></svg></div>
+      <div class="faq-a">Yes. Under Reg CF rules, you can cancel your investment for any reason up to 48 hours before the offering deadline. After that window, cancellations are only permitted if there is a material change to the offering.</div>
+    </div>
+  </div>
+
+  <!-- The Offering -->
+  <div class="faq-group">
+    <div class="faq-group-title">The Offering</div>
+    <div class="faq-item">
+      <div class="faq-q" onclick="toggleFaq(this)">What am I actually buying?<svg class="faq-chevron" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"><polyline points="6 9 12 15 18 9"/></svg></div>
+      <div class="faq-a">You're purchasing <strong>Class B Non-Voting Common Stock</strong> in EVII Mission Hills, Inc., a California corporation. This gives you direct equity ownership in the project — including rights to semiannual dividend distributions from operating profits.</div>
+    </div>
+    <div class="faq-item">
+      <div class="faq-q" onclick="toggleFaq(this)">What is the capital structure?<svg class="faq-chevron" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"><polyline points="6 9 12 15 18 9"/></svg></div>
+      <div class="faq-a">The total capital stack is <strong>$10.75M</strong>, consisting of $4.75M in C-PACE financing (a property-assessed clean energy loan) and $6M in equity. The C-PACE loan is repaid through property tax assessments, keeping operating cash flow available for dividends.</div>
+    </div>
+    <div class="faq-item">
+      <div class="faq-q" onclick="toggleFaq(this)">Is this SEC-qualified?<svg class="faq-chevron" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"><polyline points="6 9 12 15 18 9"/></svg></div>
+      <div class="faq-a">Yes. This offering is conducted under Regulation Crowdfunding (Reg CF) through PicMii Crowdfunding LLC, a FINRA/SEC-registered funding portal. All offering documents are filed with the SEC.</div>
+    </div>
+  </div>
+
+  <!-- Risks and Returns -->
+  <div class="faq-group">
+    <div class="faq-group-title">Risks &amp; Returns</div>
+    <div class="faq-item">
+      <div class="faq-q" onclick="toggleFaq(this)">What are the projected returns?<svg class="faq-chevron" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"><polyline points="6 9 12 15 18 9"/></svg></div>
+      <div class="faq-a">Projected returns vary by scenario. Our base case projects approximately 14.3% annual dividend yield with a 5-year projected return of 162%. Conservative and upside scenarios are also modeled. All projections are based on disclosed assumptions — see the Returns section above for full methodology.</div>
+    </div>
+    <div class="faq-item">
+      <div class="faq-q" onclick="toggleFaq(this)">What are the risks?<svg class="faq-chevron" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"><polyline points="6 9 12 15 18 9"/></svg></div>
+      <div class="faq-a">As with any investment, there are risks including but not limited to: construction delays, lower-than-projected utilization, regulatory changes, competition, and general market conditions. You could lose your entire investment. Please read the full offering circular on PicMii for a complete discussion of risk factors.</div>
+    </div>
+    <div class="faq-item">
+      <div class="faq-q" onclick="toggleFaq(this)">How liquid is this investment?<svg class="faq-chevron" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"><polyline points="6 9 12 15 18 9"/></svg></div>
+      <div class="faq-a">Shares purchased under Reg CF are subject to a one-year holding period before they can be resold. After that period, resale options may be limited as there is currently no public trading market for these shares. This should be considered a long-term investment.</div>
+    </div>
+  </div>
+
+  <!-- After You Invest -->
+  <div class="faq-group">
+    <div class="faq-group-title">After You Invest</div>
+    <div class="faq-item">
+      <div class="faq-q" onclick="toggleFaq(this)">When will I receive dividends?<svg class="faq-chevron" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"><polyline points="6 9 12 15 18 9"/></svg></div>
+      <div class="faq-a">Projected semiannual dividends begin after operations launch (target Q1 2027). Dividends are distributed from operating profits and are not guaranteed — they depend on the financial performance of the project.</div>
+    </div>
+    <div class="faq-item">
+      <div class="faq-q" onclick="toggleFaq(this)">How will I track my investment?<svg class="faq-chevron" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"><polyline points="6 9 12 15 18 9"/></svg></div>
+      <div class="faq-a">You'll receive regular updates through PicMii's investor portal, including construction progress, financial reports, and dividend notifications. We also send updates via email and through our investor community channels.</div>
+    </div>
+    <div class="faq-item">
+      <div class="faq-q" onclick="toggleFaq(this)">How do I contact the team?<svg class="faq-chevron" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"><polyline points="6 9 12 15 18 9"/></svg></div>
+      <div class="faq-a">Email us at <a href="mailto:invest@eviimission.com" style="color:var(--green);text-decoration:underline;">invest@eviimission.com</a>. You can also ask questions directly in the <a href="#ask-founders" style="color:var(--green);text-decoration:underline;">Ask the Founders</a> section above — Aaron and Warren respond personally.</div>
+    </div>
+  </div>
+</section>
+<div class="invest-strip" style="background:var(--bg-card);"><a href="#invest" class="btn-primary" style="padding:16px 48px;font-size:16px;"><svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor"><path d="M13 2L4.5 13.5H11L9 22L19.5 10.5H13L13 2Z"/></svg>Invest Now</a></div>
+<div class="divider"></div>
+
 <!-- VIDEO SECTION -->
 <div style="position:relative;height:520px;overflow:hidden;background:#000;">
   <div style="position:absolute;inset:0;z-index:0;pointer-events:none;">
@@ -1259,6 +1377,8 @@ input[type=number]{-moz-appearance:textfield;}
     <a href="#calculator" onclick="closeFab()"><span class="fab-num">13</span>Investment Calculator</a>
     <a href="#about" onclick="closeFab()"><span class="fab-num">14</span>About Us</a>
     <a href="#team" onclick="closeFab()"><span class="fab-num">15</span>The Team</a>
+    <a href="#ask-founders" onclick="closeFab()"><span class="fab-num">16</span>Ask the Founders</a>
+    <a href="#faq" onclick="closeFab()"><span class="fab-num">17</span>Investor FAQ</a>
   </div>
   <div style="padding:6px;border-top:1px solid #1e1e1e;"><a href="#invest" onclick="closeFab()" class="fab-invest-link"><svg width="22" height="22" viewBox="0 0 24 24" fill="currentColor"><path d="M13 2L4.5 13.5H11L9 22L19.5 10.5H13L13 2Z"/></svg>Invest Now</a></div>
 </div>
@@ -1653,5 +1773,8 @@ document.addEventListener('keydown',function(e){if(e.key==='Escape')spClose();})
   <button class="sp-close" onclick="event.stopPropagation();spClose()">✕</button>
   <div class="sp-modal-inner" onclick="event.stopPropagation()"><iframe id="spFrame" src="" allow="autoplay;encrypted-media" allowfullscreen></iframe></div>
 </div>
+<script>
+function toggleFaq(el){var item=el.parentElement;item.classList.toggle('open');}
+</script>
 </body>
 </html>
