@@ -1399,6 +1399,7 @@ var disqus_config=function(){this.page.url=window.location.href;this.page.identi
 .fab-invest-link{display:flex;width:100%;padding:7px 8px!important;background:var(--green)!important;color:#000!important;font-weight:700!important;font-size:22px!important;letter-spacing:0.02em;justify-content:center;align-items:center;gap:8px!important;border-radius:8px;box-shadow:0 0 20px rgba(46,204,113,0.5),0 0 8px rgba(46,204,113,0.3);animation:investGlow 2s ease infinite;}
 .fab-invest-link:hover{background:#fff!important;box-shadow:0 0 28px rgba(46,204,113,0.6),0 0 12px rgba(46,204,113,0.4);}
 @keyframes investGlow{0%,100%{box-shadow:0 0 20px rgba(46,204,113,0.5),0 0 8px rgba(46,204,113,0.3);}50%{box-shadow:0 0 28px rgba(46,204,113,0.65),0 0 12px rgba(46,204,113,0.4);}}
+@keyframes rewardsGlow{0%,100%{filter:drop-shadow(0 0 32px rgba(46,204,113,0.35)) drop-shadow(0 12px 40px rgba(46,204,113,0.2));}50%{filter:drop-shadow(0 0 56px rgba(46,204,113,0.6)) drop-shadow(0 12px 48px rgba(46,204,113,0.4));}}
 .fab-invest-link .fab-num{display:none;}
 @media(max-width:600px){.fab-btn{bottom:24px;right:16px;}.fab-panel{right:16px;bottom:84px;width:calc(100vw - 40px);max-width:280px;}}
 </style>
@@ -1694,7 +1695,7 @@ var revealIO = new IntersectionObserver(function(entries){
     e.target.style.opacity = '1';
     e.target.style.transform = 'translateY(0) scale(1)';
     if(e.target.classList.contains('evi-rewards-reveal')){
-      e.target.querySelector('img').style.filter='drop-shadow(0 0 48px rgba(46,204,113,0.5)) drop-shadow(0 12px 40px rgba(46,204,113,0.3))';
+      var img=e.target.querySelector('img');img.style.animation='rewardsGlow 3s ease-in-out infinite';
     }
   });
 },{threshold:0.15});
