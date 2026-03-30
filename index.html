@@ -268,6 +268,8 @@ footer{background:var(--bg);padding:48px 80px;display:flex;align-items:center;ju
   .milestone-date{width:72px;font-size:11px;}
   /* invest widget hidden on mobile always */
   .invest-widget{display:none!important;}
+  /* center rewards image on mobile portrait */
+  .evi-rewards-reveal{margin:24px auto 0;max-width:220px!important;}
 }
 
 /* ── INLINE GRID MOBILE OVERRIDES ── */
@@ -912,7 +914,7 @@ input[type=number]{-moz-appearance:textfield;}
         <p>Starbucks Rewards is one of the most profitable loyalty programs in history. It doesn't just bring people back — it gets them to <strong>preload money, order ahead, and spend more per visit</strong>. Mission Hills runs the same playbook.</p>
       </div>
     </div>
-    <div class="reveal-on-scroll" style="flex-shrink:0;max-width:280px;opacity:0;transform:translateY(120px);transition:opacity 1.2s cubic-bezier(0.16,1,0.3,1),transform 1.2s cubic-bezier(0.16,1,0.3,1);">
+    <div class="reveal-on-scroll evi-rewards-reveal" style="flex-shrink:0;max-width:280px;opacity:0;transform:translateY(120px) scale(0.85);transition:opacity 1.2s cubic-bezier(0.16,1,0.3,1),transform 1.2s cubic-bezier(0.16,1,0.3,1),filter 1.4s ease;">
       <img src="images/evi-rewards.png" alt="EV Initiative Rewards App" style="width:100%;border-radius:16px;filter:drop-shadow(0 8px 32px rgba(46,204,113,0.2));">
     </div>
   </div>
@@ -1690,7 +1692,10 @@ var revealIO = new IntersectionObserver(function(entries){
     if(!e.isIntersecting) return;
     revealIO.unobserve(e.target);
     e.target.style.opacity = '1';
-    e.target.style.transform = 'translateY(0)';
+    e.target.style.transform = 'translateY(0) scale(1)';
+    if(e.target.classList.contains('evi-rewards-reveal')){
+      e.target.querySelector('img').style.filter='drop-shadow(0 0 48px rgba(46,204,113,0.5)) drop-shadow(0 12px 40px rgba(46,204,113,0.3))';
+    }
   });
 },{threshold:0.15});
 document.querySelectorAll('.reveal-on-scroll').forEach(function(el){ revealIO.observe(el); });
