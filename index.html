@@ -1362,10 +1362,12 @@ input[type=number]{-moz-appearance:textfield;}
     w.parentNode.removeChild(w);
     return;
   }
+  var revSection=document.getElementById('revenue');
   window.addEventListener('scroll',function(){
     var y = window.scrollY;
-    w.classList.toggle('hidden', y < 300);
-    w.classList.toggle('scrolled', y > 500);
+    var revTop = revSection ? revSection.getBoundingClientRect().top : Infinity;
+    w.classList.toggle('hidden', y < 300 || revTop <= 80);
+    w.classList.toggle('scrolled', y > 500 && revTop > 80);
   });
 })();
 </script>
