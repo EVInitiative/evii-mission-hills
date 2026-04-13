@@ -1533,12 +1533,13 @@ input[type=number]{-moz-appearance:textfield;}
     w.parentNode.removeChild(w);
     return;
   }
-  var revSection=document.getElementById('revenue');
+  var oppSection=document.getElementById('opportunity');
+  var oppImg=oppSection ? oppSection.querySelector('img') : null;
   window.addEventListener('scroll',function(){
     var y = window.scrollY;
-    var revTop = revSection ? revSection.getBoundingClientRect().top : Infinity;
-    w.classList.toggle('hidden', y < 300 || revTop <= 80);
-    w.classList.toggle('scrolled', y > 500 && revTop > 80);
+    var triggerTop = oppImg ? oppImg.getBoundingClientRect().top : Infinity;
+    w.classList.toggle('hidden', y < 300 || triggerTop <= 80);
+    w.classList.toggle('scrolled', y > 500 && triggerTop > 80);
   });
 })();
 </script>
