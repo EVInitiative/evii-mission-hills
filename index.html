@@ -673,7 +673,7 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
 <!-- HERO -->
 <div class="hero">
   <div class="video-bg-wrapper">
-    <iframe id="heroVideo" src="https://www.youtube-nocookie.com/embed/0cVEqshxybc?autoplay=1&mute=1&loop=1&playlist=0cVEqshxybc&controls=0&showinfo=0&rel=0&modestbranding=1&playsinline=1&disablekb=1&fs=0&iv_load_policy=3&vq=hd1080&hd=1&enablejsapi=1" frameborder="0" allow="autoplay; encrypted-media; fullscreen" allowfullscreen></iframe>
+    <iframe id="heroVideo" src="https://www.youtube.com/embed/0cVEqshxybc?autoplay=1&mute=1&loop=1&playlist=0cVEqshxybc&controls=0&showinfo=0&rel=0&modestbranding=1&playsinline=1&disablekb=1&fs=0&iv_load_policy=3&vq=hd1080&hd=1&enablejsapi=1" frameborder="0" allow="autoplay; encrypted-media; fullscreen" allowfullscreen></iframe>
   </div>
   <div class="hero-left">
     <div class="hero-badge">Open to All Investors · Reg CF</div>
@@ -1422,7 +1422,7 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
 <!-- VIDEO SECTION -->
 <div style="position:relative;height:520px;overflow:hidden;background:#000;">
   <div style="position:absolute;inset:0;z-index:0;pointer-events:none;">
-    <iframe src="https://www.youtube-nocookie.com/embed/MN8YNApnwqk?autoplay=1&mute=1&loop=1&playlist=MN8YNApnwqk&controls=0&showinfo=0&rel=0&modestbranding=1&playsinline=1&disablekb=1&fs=0&iv_load_policy=3" frameborder="0" allow="autoplay; encrypted-media; fullscreen" allowfullscreen style="position:absolute;top:50%;left:50%;transform:translate(-50%,-50%);width:177.78vh;min-width:100%;height:56.25vw;min-height:100%;opacity:0.7;z-index:1;pointer-events:none;"></iframe>
+    <iframe id="secondaryVideo" src="https://www.youtube.com/embed/MN8YNApnwqk?autoplay=1&mute=1&loop=1&playlist=MN8YNApnwqk&controls=0&showinfo=0&rel=0&modestbranding=1&playsinline=1&disablekb=1&fs=0&iv_load_policy=3&enablejsapi=1&vq=hd1080&hd=1" frameborder="0" allow="autoplay; encrypted-media; fullscreen" allowfullscreen style="position:absolute;top:50%;left:50%;transform:translate(-50%,-50%);width:177.78vh;min-width:100%;height:56.25vw;min-height:100%;opacity:0.7;z-index:1;pointer-events:none;"></iframe>
   </div>
   <div style="position:absolute;inset:0;background:linear-gradient(to bottom,rgba(10,10,10,0.3) 0%,rgba(10,10,10,0.5) 60%,var(--bg) 100%);z-index:2;"></div>
   <div style="position:relative;z-index:3;height:100%;display:flex;flex-direction:column;align-items:center;justify-content:center;text-align:center;padding:0 24px;">
@@ -1871,6 +1871,47 @@ function toggleFaq(el){var item=el.parentElement;item.classList.toggle('open');}
   </div>
 </div>
 <script>
+// Force YouTube background videos to serve HD. YouTube's auto-quality
+// often starts at 480p; postMessage API lets us request hd1080/highres
+// on load and whenever the player state changes (it re-downgrades on buffering).
+(function(){
+  var ids = ['heroVideo','secondaryVideo'];
+  var frames = ids.map(function(id){return document.getElementById(id);}).filter(Boolean);
+  if(!frames.length) return;
+  function cmd(frame, func, args){
+    try{
+      frame.contentWindow.postMessage(
+        JSON.stringify({event:'command', func:func, args:args||[]}), '*'
+      );
+    }catch(e){}
+  }
+  function pushHd(){
+    frames.forEach(function(f){
+      cmd(f,'setPlaybackQuality',['hd1080']);
+      cmd(f,'setPlaybackQuality',['highres']);
+      cmd(f,'playVideo',[]);
+    });
+  }
+  // Initial pushes after the player bootstraps
+  setTimeout(pushHd, 1200);
+  setTimeout(pushHd, 3500);
+  // Re-assert periodically in case YouTube auto-downgraded
+  setInterval(pushHd, 15000);
+  // Subscribe to state changes so we can re-push on buffering / play
+  frames.forEach(function(f){
+    try{
+      f.contentWindow.postMessage(JSON.stringify({event:'listening', id:f.id}), '*');
+      f.contentWindow.postMessage(JSON.stringify({event:'command', func:'addEventListener', args:['onStateChange']}), '*');
+    }catch(e){}
+  });
+  window.addEventListener('message', function(e){
+    if(typeof e.data !== 'string') return;
+    try{
+      var d = JSON.parse(e.data);
+      if(d && (d.event === 'onStateChange' || d.event === 'infoDelivery')) pushHd();
+    }catch(err){}
+  });
+})();
 (function(){
   var bar=document.getElementById('stickyBar');
   if(!bar) return;
