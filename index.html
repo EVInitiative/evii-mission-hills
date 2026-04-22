@@ -1848,6 +1848,10 @@ function toggleFaq(el){var item=el.parentElement;item.classList.toggle('open');}
   #stickyBar .sb-mobile .sb-cta{padding:10px 24px;flex:1;max-width:200px;text-align:center;}
   #stickyBar .sb-mobile .sb-pill{padding:8px 14px;}
   @keyframes sbPulse{0%,100%{opacity:1;transform:scale(1);}50%{opacity:0.5;transform:scale(1.3);}}
+  /* Lift floating section menu above the sticky bar when it's visible */
+  .fab-btn,.fab-panel{transition:bottom 0.35s cubic-bezier(0.4,0,0.2,1),transform 0.2s,background 0.2s,opacity 0.22s ease;}
+  body.sticky-visible .fab-btn{bottom:calc(28px + var(--sticky-bar-h,64px));}
+  body.sticky-visible .fab-panel{bottom:calc(88px + var(--sticky-bar-h,64px));}
 </style>
 <div id="stickyBar" role="region" aria-label="Invest in EVII Mission Hills">
   <div class="sb-desktop">
@@ -1875,7 +1879,14 @@ function toggleFaq(el){var item=el.parentElement;item.classList.toggle('open');}
     var shown;
     if(!hero){shown=window.scrollY>window.innerHeight;}
     else{var heroBottom=hero.offsetTop+hero.offsetHeight;shown=window.scrollY>heroBottom-100;}
-    if(shown) bar.classList.add('visible'); else bar.classList.remove('visible');
+    if(shown){
+      bar.classList.add('visible');
+      document.body.classList.add('sticky-visible');
+      document.documentElement.style.setProperty('--sticky-bar-h', bar.offsetHeight + 'px');
+    } else {
+      bar.classList.remove('visible');
+      document.body.classList.remove('sticky-visible');
+    }
   }
   window.addEventListener('scroll',onScroll,{passive:true});
   onScroll();
