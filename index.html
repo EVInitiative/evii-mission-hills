@@ -1826,5 +1826,60 @@ document.addEventListener('keydown',function(e){if(e.key==='Escape')spClose();})
 <script>
 function toggleFaq(el){var item=el.parentElement;item.classList.toggle('open');}
 </script>
+
+<!-- STICKY BOTTOM BAR -->
+<style>
+  #stickyBar{position:fixed;left:0;right:0;bottom:0;z-index:90;background:rgba(10,10,10,0.95);-webkit-backdrop-filter:blur(12px);backdrop-filter:blur(12px);border-top:1px solid #2a2a2a;transform:translateY(100%);transition:transform 0.35s cubic-bezier(0.4,0,0.2,1);will-change:transform;}
+  #stickyBar.visible{transform:translateY(0);}
+  #stickyBar .sb-desktop{display:none;max-width:1280px;margin:0 auto;padding:12px 32px calc(12px + env(safe-area-inset-bottom,8px));align-items:center;justify-content:space-between;gap:20px;}
+  #stickyBar .sb-mobile{display:flex;padding:10px 16px calc(10px + env(safe-area-inset-bottom,8px));align-items:center;justify-content:center;gap:10px;}
+  @media(min-width:768px){
+    #stickyBar .sb-desktop{display:flex;}
+    #stickyBar .sb-mobile{display:none;}
+  }
+  #stickyBar .sb-left{display:flex;align-items:center;gap:16px;flex-wrap:wrap;}
+  #stickyBar .sb-dot{width:8px;height:8px;border-radius:50%;background:#2ECC71;flex-shrink:0;animation:sbPulse 2s ease-in-out infinite;}
+  #stickyBar .sb-label{font-family:'DM Sans',sans-serif;font-size:14px;font-weight:500;color:#fff;white-space:nowrap;}
+  #stickyBar .sb-accent{font-family:'DM Sans',sans-serif;font-size:14px;font-weight:600;color:#2ECC71;white-space:nowrap;}
+  #stickyBar .sb-pill{font-family:'DM Sans',sans-serif;font-size:11px;font-weight:500;color:#ccc;border:1px solid #2a2a2a;padding:6px 14px;border-radius:9999px;text-decoration:none;white-space:nowrap;transition:border-color 0.2s;}
+  #stickyBar .sb-pill:hover{border-color:#21c163;}
+  #stickyBar .sb-cta{font-family:'DM Sans',sans-serif;font-size:13px;font-weight:600;letter-spacing:0.05em;text-transform:uppercase;color:#0a0a0a;background:#2ECC71;border:none;padding:10px 28px;border-radius:9999px;cursor:pointer;white-space:nowrap;transition:transform 0.2s;flex-shrink:0;text-decoration:none;display:inline-block;}
+  #stickyBar .sb-cta:hover{transform:translateY(-1px);}
+  #stickyBar .sb-mobile .sb-cta{padding:10px 24px;flex:1;max-width:200px;text-align:center;}
+  #stickyBar .sb-mobile .sb-pill{padding:8px 14px;}
+  @keyframes sbPulse{0%,100%{opacity:1;transform:scale(1);}50%{opacity:0.5;transform:scale(1.3);}}
+</style>
+<div id="stickyBar" role="region" aria-label="Invest in EVII Mission Hills">
+  <div class="sb-desktop">
+    <div class="sb-left">
+      <span class="sb-dot" aria-hidden="true"></span>
+      <span class="sb-label">Be First to Invest —</span>
+      <span class="sb-accent">Round 2 Opening Soon</span>
+      <a class="sb-pill" href="sms:+14247865281">Text Us</a>
+      <a class="sb-pill" href="tel:+18003223159">Call Us</a>
+    </div>
+    <a class="sb-cta" href="https://invest.highlander.ai/evi" target="_blank" rel="noopener noreferrer">Reserve My Spot</a>
+  </div>
+  <div class="sb-mobile">
+    <a class="sb-cta" href="https://invest.highlander.ai/evi" target="_blank" rel="noopener noreferrer">Reserve My Spot</a>
+    <a class="sb-pill" href="sms:+14247865281">Text</a>
+    <a class="sb-pill" href="tel:+18003223159">Call</a>
+  </div>
+</div>
+<script>
+(function(){
+  var bar=document.getElementById('stickyBar');
+  if(!bar) return;
+  var hero=document.querySelector('.hero');
+  function onScroll(){
+    var shown;
+    if(!hero){shown=window.scrollY>window.innerHeight;}
+    else{var heroBottom=hero.offsetTop+hero.offsetHeight;shown=window.scrollY>heroBottom-100;}
+    if(shown) bar.classList.add('visible'); else bar.classList.remove('visible');
+  }
+  window.addEventListener('scroll',onScroll,{passive:true});
+  onScroll();
+})();
+</script>
 </body>
 </html>
