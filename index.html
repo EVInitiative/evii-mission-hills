@@ -1838,8 +1838,7 @@ function toggleFaq(el){var item=el.parentElement;item.classList.toggle('open');}
     #stickyBar .sb-mobile{display:none;}
   }
   #stickyBar .sb-left{display:flex;align-items:center;gap:16px;flex-wrap:wrap;}
-  #stickyBar .sb-dot{width:8px;height:8px;border-radius:50%;background:#2ECC71;flex-shrink:0;animation:sbPulse 2s ease-in-out infinite;}
-  #stickyBar .sb-label{font-family:'DM Sans',sans-serif;font-size:14px;font-weight:500;color:#fff;white-space:nowrap;}
+  #stickyBar .sb-dot{width:8px;height:8px;border-radius:50%;background:#2ECC71;flex-shrink:0;box-shadow:0 0 8px 2px rgba(46,204,113,0.7);animation:sbPulse 2s ease-in-out infinite;}
   #stickyBar .sb-accent{font-family:'DM Sans',sans-serif;font-size:14px;font-weight:600;color:#2ECC71;white-space:nowrap;}
   #stickyBar .sb-pill{font-family:'DM Sans',sans-serif;font-size:11px;font-weight:500;color:#ccc;border:1px solid #2a2a2a;padding:6px 14px;border-radius:9999px;text-decoration:none;white-space:nowrap;transition:border-color 0.2s;}
   #stickyBar .sb-pill:hover{border-color:#21c163;}
@@ -1847,7 +1846,10 @@ function toggleFaq(el){var item=el.parentElement;item.classList.toggle('open');}
   #stickyBar .sb-cta:hover{transform:translateY(-1px);}
   #stickyBar .sb-mobile .sb-cta{padding:10px 24px;flex:1;max-width:200px;text-align:center;}
   #stickyBar .sb-mobile .sb-pill{padding:8px 14px;}
-  @keyframes sbPulse{0%,100%{opacity:1;transform:scale(1);}50%{opacity:0.5;transform:scale(1.3);}}
+  @keyframes sbPulse{
+    0%,100%{opacity:1;transform:scale(1);box-shadow:0 0 0 0 rgba(46,204,113,0.9),0 0 8px 2px rgba(46,204,113,0.7);}
+    50%{opacity:0.75;transform:scale(1.35);box-shadow:0 0 0 8px rgba(46,204,113,0),0 0 16px 4px rgba(46,204,113,0.55);}
+  }
   /* Lift floating section menu above the sticky bar when it's visible */
   .fab-btn,.fab-panel{transition:bottom 0.35s cubic-bezier(0.4,0,0.2,1),transform 0.2s,background 0.2s,opacity 0.22s ease;}
   body.sticky-visible .fab-btn{bottom:calc(28px + var(--sticky-bar-h,64px));}
@@ -1857,8 +1859,7 @@ function toggleFaq(el){var item=el.parentElement;item.classList.toggle('open');}
   <div class="sb-desktop">
     <div class="sb-left">
       <span class="sb-dot" aria-hidden="true"></span>
-      <span class="sb-label">Be First to Invest —</span>
-      <span class="sb-accent">Round 2 Opening Soon</span>
+      <span class="sb-accent">Round 2 Open Now!</span>
       <a class="sb-pill" href="sms:+14247865281">Text Us</a>
       <a class="sb-pill" href="tel:+18003223159">Call Us</a>
     </div>
