@@ -706,14 +706,15 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
   <div class="invest-widget-mobile">
     <div class="iw-header">
       <div class="iw-title">Invest in EVII<br>Mission Hills, Inc. Round 2</div>
-      <div class="iw-total"><span class="iw-total-label">Total Invested:</span><span class="iw-total-val">Awaiting Data</span></div>
+      <div class="iw-total"><span class="iw-total-label">Total Invested:</span><span class="iw-total-val">{{ total_raised }}</span></div>
+      <div class="iw-total"><span class="iw-total-label">Investors:</span><span class="iw-total-val">{{ total_investments }}</span></div>
       <div class="iw-security"><span>Security type: Common Stock</span></div>
     </div>
     <div class="iw-tags">
       <span class="iw-tag green">$2.85/share</span>
       <span class="iw-tag">$300 min. investment</span>
       <span class="iw-tag">Min. raise $10k</span>
-      <span class="iw-tag">Max. raise $[X]M</span>
+      <span class="iw-tag">Max. raise $1.5M</span>
     </div>
     <div class="iw-actions">
       <a class="iw-btn-invest" href="{{ invest_now_link }}" style="display:block;text-align:center;text-decoration:none;box-sizing:border-box;">Invest Now</a>
@@ -974,8 +975,8 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
     <div class="term-row"><span class="term-label">Capital Stack</span><span class="term-value">$10.75M ($4.75M C-PACE + $6M Equity)</span></div>
     <div class="term-row"><span class="term-label">Target Operations</span><span class="term-value highlight">Q1 2027</span></div>
     <div class="term-row"><span class="term-label">Platform</span><span class="term-value">PicMii Crowdfunding, LLC (d/b/a Highlander Crowdfunding) — FINRA/SEC Registered Funding Portal</span></div>
-    <div class="term-row"><span class="term-label">Raise Target</span><span class="term-value">$10,000 minimum target · $3,500,000 maximum · Offering deadline April 30, 2026. The minimum individual purchase is $300. If the minimum target is not reached by the deadline, all investment commitments will be cancelled and committed funds will be returned in full.</span></div>
-    <div class="term-row"><span class="term-label">Offering Deadline</span><span class="term-value">April 30, 2026</span></div>
+    <div class="term-row"><span class="term-label">Raise Target</span><span class="term-value">$10,000 minimum target · $3,500,000 maximum · Offering deadline October 31, 2026. The minimum individual purchase is $300. If the minimum target is not reached by the deadline, all investment commitments will be cancelled and committed funds will be returned in full.</span></div>
+    <div class="term-row"><span class="term-label">Offering Deadline</span><span class="term-value">October 31, 2026</span></div>
     <div class="term-row"><span class="term-label">SEC Filing</span><span class="term-value" style="color:var(--green);">Available on SEC EDGAR (CIK 0002016816)</span></div>
   </div>
 </section>
@@ -1357,7 +1358,7 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
     </div>
     <div class="faq-item">
       <div class="faq-q" onclick="toggleFaq(this)">When does the offering close?<svg class="faq-chevron" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"><polyline points="6 9 12 15 18 9"/></svg></div>
-      <div class="faq-a">The offering deadline is <strong>April 30, 2026</strong>. However, the offering may close early if the maximum raise of $3,500,000 is reached before that date.</div>
+      <div class="faq-a">The offering deadline is <strong>October 31, 2026</strong>. However, the offering may close early if the maximum raise of $3,500,000 is reached before that date.</div>
     </div>
     <div class="faq-item">
       <div class="faq-q" onclick="toggleFaq(this)">Can I cancel my investment?<svg class="faq-chevron" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"><polyline points="6 9 12 15 18 9"/></svg></div>
@@ -1436,7 +1437,7 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
   <div class="section-label">Get In Early</div>
   <h2 class="section-title" style="font-size:clamp(48px,6vw,80px);max-width:800px;margin:0 auto 24px;">The Electric Gas Station<br>Is Being Built.<br><span style="color:var(--green);">Come Own It.</span></h2>
   <div class="section-body" style="margin:0 auto 48px;text-align:center;"><p>Mission Hills is a direct ownership stake in next-generation transportation infrastructure serving Los Angeles. Open to all investors. Potential semiannual distributions. Permits in weeks.</p></div>
-  <p style="font-size:13px;color:var(--text-dim);text-align:center;max-width:700px;margin:0 auto 32px;line-height:1.7;">This offering is conducted through PicMii Crowdfunding, LLC (d/b/a Highlander Crowdfunding), a FINRA/SEC registered funding portal. Minimum investment: $300. Maximum raise: $3,500,000. Offering deadline: April 30, 2026.</p>
+  <p style="font-size:13px;color:var(--text-dim);text-align:center;max-width:700px;margin:0 auto 32px;line-height:1.7;">This offering is conducted through PicMii Crowdfunding, LLC (d/b/a Highlander Crowdfunding), a FINRA/SEC registered funding portal. Minimum investment: $300. Maximum raise: $3,500,000. Offering deadline: October 31, 2026.</p>
   <div class="cta-actions" id="invest">
     <a href="{{ invest_now_link }}" class="btn-primary" style="padding:18px 48px;font-size:17px;"><svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor"><path d="M13 2L4.5 13.5H11L9 22L19.5 10.5H13L13 2Z"/></svg>Invest Now — Reg CF</a>
   </div>
@@ -1454,14 +1455,15 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
 <div class="invest-widget hidden" id="investWidget">
   <div class="iw-header">
     <div class="iw-title">Invest in EVII<br>Mission Hills, Inc. Round 2</div>
-    <div class="iw-total"><span class="iw-total-label">Total Invested:</span><span class="iw-total-val">Awaiting Data</span></div>
+    <div class="iw-total"><span class="iw-total-label">Total Invested:</span><span class="iw-total-val">{{ total_raised }}</span></div>
+    <div class="iw-total"><span class="iw-total-label">Investors:</span><span class="iw-total-val">{{ total_investments }}</span></div>
     <div class="iw-security"><span>Security type: Common Stock</span><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="#888" stroke-width="2"><polyline points="6 9 12 15 18 9"/></svg></div>
   </div>
   <div class="iw-tags">
     <span class="iw-tag green">$2.85/share</span>
     <span class="iw-tag">$300 min. investment</span>
     <span class="iw-tag">Min. raise $10k</span>
-    <span class="iw-tag">Max. raise $[X]M</span>
+    <span class="iw-tag">Max. raise $1.5M</span>
   </div>
   <div class="iw-actions">
     <a class="iw-btn-invest" href="{{ invest_now_link }}" style="display:block;text-align:center;text-decoration:none;box-sizing:border-box;">Invest Now</a>
