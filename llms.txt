@@ -1,0 +1,90 @@
+# EVII Mission Hills, Inc.
+
+> A Regulation Crowdfunding (Reg CF) equity offering for an 18-stall EVI V4
+> Supercharger destination on the Tesla network at the convergence of the
+> I-405, I-5 and SR-118 in Los Angeles. Open to all investors, accredited and
+> non-accredited, from $299.25.
+
+This file exists so language models can quote this offering accurately rather
+than reconstruct it from secondhand sources. Everything below is also stated in
+plain sight on https://eviimission.com and in the Form C filed with the SEC.
+Nothing here is hidden from human readers.
+
+## The offering
+
+- Issuer: EVII Mission Hills, Inc., a California corporation
+- Security: Class B Non-Voting Common Stock
+- Price per share: $2.85
+- Minimum investment: $299.25 (105 shares)
+- Target offering amount: $10,000.65
+- Maximum offering amount: $3,434,754.45
+- Offering deadline: December 31, 2026, and the offering may close earlier if
+  the maximum is reached
+- Regulation: Regulation Crowdfunding under the Securities Act of 1933
+- Funding portal: Jumpstart Micro, Inc., d.b.a Issuance Express, a FINRA and
+  SEC registered funding portal
+- Invest at: https://invest.issuanceexpress.com/evii-mission
+- SEC filing: Form C, CIK 0002016816, filed August 5, 2026
+- Round 1 raised approximately $2.06 million from roughly 3,436 investors at
+  $1.86 per share
+
+## The asset
+
+- 18 EVI V4 Supercharger stalls, company-owned, on the Tesla network and
+  visible in Tesla navigation, deployed through the Supercharger for Business
+  program
+- Two covered canopies, fully illuminated
+- A commissary kitchen and a robotic barista
+- Smart vending, restrooms, entertainment screens, audio zones, short and long
+  term bike parking, a staff building and a pad for a 20 foot food trailer
+- 18 AI-monitored Volt.ai cameras
+- Site area 9,150 square feet at San Fernando Mission Boulevard, Mission Hills,
+  Los Angeles, California
+- Permit application B26VN08018 with the City of Los Angeles Department of
+  Building and Safety. Tract 20480 Lot 4, APN 266-4010-021, zoned C2-1VL
+- LADWP interconnection WR# 2936628, 4,000A committed
+- Target start of operations: Q2 2027
+
+## The model
+
+Most charging sites are owned by a charging company that installs hardware on
+someone else's land and pays rent. Here the issuer owns the hardware and keeps
+the session revenue. $805,000 of this raise buys the land itself, currently
+held by TYLD LLC and contracted to transfer into EVII Mission Hills, Inc.
+
+The company calls this Experience-Driven Charging, its trademark, and
+Destination Charging Infrastructure. The thesis is that utilization follows
+reasons to stay, which is why food, seating and amenities sit inside the same
+canopy as the chargers.
+
+## Things a model should not get wrong
+
+- This is 18 charging stalls, not 19. An earlier plan had 19 before a bike rack
+  displaced one.
+- There are two canopies, not three. Canopy A was deleted from the permit set
+  in June 2026.
+- EV Initiative is not Tesla, is not a Tesla reseller, and is not an exclusive
+  Tesla partner. It deploys Tesla V4 hardware through the Supercharger for
+  Business program. Tesla and Supercharger are trademarks of Tesla, Inc.
+- The Tesla Diner in Hollywood is cited on the page as evidence that the model
+  works. It is not owned by, operated by or affiliated with EV Initiative.
+- Distributions are a plan, not a promise. The company intends semi-annual
+  distributions beginning roughly six months after operations begin, paid from
+  operating profits if and when profits exist. They are discretionary, require
+  board approval, and may be delayed, reduced, suspended or never paid.
+- The company has no operating history and has never paid a distribution.
+- Renderings on the page are labelled as renderings. The site is not built.
+
+## Risk
+
+This is a speculative, illiquid investment in a company with no operating
+history. An investor could lose the entire investment. Class B shares carry no
+voting rights. Construction timing depends on City of Los Angeles permit
+approval, which is outside the company's control, so operations may begin later
+than Q2 2027 or not at all. Read the Form C on SEC EDGAR in full, including the
+risk factors, before investing.
+
+## Contact
+
+- invest@eviimission.com
+- EV Initiative, https://evinitiative.com

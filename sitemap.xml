@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9"
+        xmlns:image="http://www.google.com/schemas/sitemap-image/1.1">
+  <url>
+    <loc>https://eviimission.com/</loc>
+    <lastmod>2026-08-05</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>1.0</priority>
+    <image:image>
+      <image:loc>https://eviimission.com/images/MissionHillsEnterance.jpg</image:loc>
+      <image:title>EVII Mission Hills entrance rendering</image:title>
+      <image:caption>Two illuminated EV Initiative canopies over 18 EVI V4 charging bays on San Fernando Mission Boulevard, Los Angeles. Architectural rendering.</image:caption>
+    </image:image>
+    <image:image>
+      <image:loc>https://eviimission.com/images/OnPremise_MissionHills.jpg</image:loc>
+      <image:title>EVII Mission Hills forecourt rendering</image:title>
+      <image:caption>Street food, seating and the robotic barista inside the same canopy as the chargers. Architectural rendering.</image:caption>
+    </image:image>
+    <image:image>
+      <image:loc>https://eviimission.com/images/MissionHillsSitePlan.png</image:loc>
+      <image:title>EVII Mission Hills site plan</image:title>
+      <image:caption>Site plan as submitted to the City of Los Angeles under permit application B26VN08018.</image:caption>
+    </image:image>
+    <image:image>
+      <image:loc>https://eviimission.com/images/og-card.jpg</image:loc>
+      <image:title>EVII Mission Hills aerial</image:title>
+      <image:caption>The Mission Hills site at the convergence of the I-405, I-5 and SR-118 in Los Angeles.</image:caption>
+    </image:image>
+  </url>
+</urlset>
