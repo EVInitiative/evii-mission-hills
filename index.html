@@ -157,14 +157,6 @@
     },
     {
       "@type": "Question",
-      "name": "What is the minimum investment?",
-      "acceptedAnswer": {
-        "@type": "Answer",
-        "text": "The minimum investment is $299.25, which gets you 105 shares of Class B Non-Voting Common Stock at $2.85 per share."
-      }
-    },
-    {
-      "@type": "Question",
       "name": "Who can invest?",
       "acceptedAnswer": {
         "@type": "Answer",
@@ -173,18 +165,26 @@
     },
     {
       "@type": "Question",
-      "name": "When does the offering close?",
-      "acceptedAnswer": {
-        "@type": "Answer",
-        "text": "The offering deadline is December 31, 2026. However, the offering may close early if the maximum raise of $3,434,754.45 is reached before that date."
-      }
-    },
-    {
-      "@type": "Question",
       "name": "Can I cancel my investment?",
       "acceptedAnswer": {
         "@type": "Answer",
         "text": "Yes. Under Reg CF rules, you can cancel your investment for any reason up to 48 hours before the offering deadline. After that window, cancellations are only permitted if there is a material change to the offering."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "What is the minimum investment?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "The minimum investment is $299.25, which gets you 105 shares of Class B Non-Voting Common Stock at $2.85 per share."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "When does the offering close?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "The offering deadline is December 31, 2026. However, the offering may close early if the maximum raise of $3,434,754.45 is reached before that date."
       }
     },
     {
@@ -2382,16 +2382,8 @@ html[data-theme="light"] div[style*="background:#000"] span[style*="var(--green)
       <div class="faq-a">Click any <strong>"Invest Now"</strong> button on this page. You'll be directed to our offering on Jumpstart Micro, Inc, d.b.a Issuance Express, a FINRA/SEC-registered funding portal. The process takes about 5 minutes — you'll create an account, verify your identity, and complete your investment.</div>
     </div>
     <div class="faq-item">
-      <div class="faq-q" onclick="toggleFaq(this)">What is the minimum investment?<svg class="faq-chevron" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"><polyline points="6 9 12 15 18 9"/></svg></div>
-      <div class="faq-a">The minimum investment is <strong>$299.25</strong>, which gets you 105 shares of Class B Non-Voting Common Stock at $2.85 per share.</div>
-    </div>
-    <div class="faq-item">
       <div class="faq-q" onclick="toggleFaq(this)">Who can invest?<svg class="faq-chevron" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"><polyline points="6 9 12 15 18 9"/></svg></div>
       <div class="faq-a">Anyone 18 or older can invest. This is a Regulation Crowdfunding (Reg CF) offering — open to both accredited and non-accredited investors. There are annual investment limits based on your income and net worth, as required by the SEC.</div>
-    </div>
-    <div class="faq-item">
-      <div class="faq-q" onclick="toggleFaq(this)">When does the offering close?<svg class="faq-chevron" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"><polyline points="6 9 12 15 18 9"/></svg></div>
-      <div class="faq-a">The offering deadline is <strong>December 31, 2026</strong>. However, the offering may close early if the maximum raise of $3,434,754.45 is reached before that date.</div>
     </div>
     <div class="faq-item">
       <div class="faq-q" onclick="toggleFaq(this)">Can I cancel my investment?<svg class="faq-chevron" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"><polyline points="6 9 12 15 18 9"/></svg></div>
@@ -2402,6 +2394,14 @@ html[data-theme="light"] div[style*="background:#000"] span[style*="var(--green)
   <!-- The Offering -->
   <div class="faq-group">
     <div class="faq-group-title">The Offering</div>
+    <div class="faq-item">
+      <div class="faq-q" onclick="toggleFaq(this)">What is the minimum investment?<svg class="faq-chevron" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"><polyline points="6 9 12 15 18 9"/></svg></div>
+      <div class="faq-a">The minimum investment is <strong>$299.25</strong>, which gets you 105 shares of Class B Non-Voting Common Stock at $2.85 per share.</div>
+    </div>
+    <div class="faq-item">
+      <div class="faq-q" onclick="toggleFaq(this)">When does the offering close?<svg class="faq-chevron" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"><polyline points="6 9 12 15 18 9"/></svg></div>
+      <div class="faq-a">The offering deadline is <strong>December 31, 2026</strong>. However, the offering may close early if the maximum raise of $3,434,754.45 is reached before that date.</div>
+    </div>
     
     
     
@@ -3612,6 +3612,79 @@ html[data-theme="light"] .dl-dot.dl-on{
   if(document.fonts && document.fonts.ready) document.fonts.ready.then(schedule);
   /* the hero grows as the reveal animations settle and images land */
   if(window.ResizeObserver) new ResizeObserver(schedule).observe(wrap);
+})();
+</script>
+
+<style>
+/* ==========================================================================
+   FAQ ACCORDION
+   Two things were wrong. toggleFaq() was called by all eight questions and
+   never defined anywhere, so every click threw a ReferenceError and nothing
+   ever opened. And a later mobile rule set `.faq-a{padding:0 14px 16px
+   !important}` unscoped, so the collapsed answer still had 16px of bottom
+   padding. overflow:hidden clips at the padding edge, which is why a sliver
+   of every answer was visible under every closed question.
+   ========================================================================== */
+.faq-a{max-height:0;overflow:hidden;
+  padding-top:0 !important;padding-bottom:0 !important;
+  transition:max-height .32s ease, padding .32s ease;}
+.faq-item.open > .faq-a{padding-bottom:18px !important;}
+@media (max-width:600px){
+  .faq-item.open > .faq-a{padding-bottom:16px !important;}}
+.faq-q{user-select:none;}
+.faq-q:focus-visible{outline:2px solid var(--green);outline-offset:-2px;border-radius:10px;}
+@media (prefers-reduced-motion:reduce){.faq-a{transition:none;}}
+</style>
+<script>
+/* Opens to the answer's real height rather than a fixed max-height, so the
+   animation finishes when the panel does instead of stalling. Multiple
+   answers can be open at once, which is what people expect from an FAQ. */
+(function(){
+  function panelOf(q){ var i=q.closest('.faq-item'); return i? i.querySelector('.faq-a') : null; }
+
+  window.toggleFaq = function(q){
+    var item = q.closest && q.closest('.faq-item');
+    if(!item) return;
+    var a = item.querySelector('.faq-a');
+    var open = item.classList.toggle('open');
+    q.setAttribute('aria-expanded', open ? 'true' : 'false');
+    if(!a) return;
+    if(open){
+      a.style.maxHeight = (a.scrollHeight + 24) + 'px';
+    } else {
+      a.style.maxHeight = a.scrollHeight + 'px';   /* from its real height */
+      requestAnimationFrame(function(){ a.style.maxHeight = '0px'; });
+    }
+  };
+
+  var qs = [].slice.call(document.querySelectorAll('.faq-q'));
+  qs.forEach(function(q, i){
+    var a = panelOf(q);
+    q.setAttribute('role','button');
+    q.setAttribute('tabindex','0');
+    q.setAttribute('aria-expanded','false');
+    if(a){
+      if(!a.id) a.id = 'faq-a-' + (i+1);
+      q.setAttribute('aria-controls', a.id);
+      a.setAttribute('role','region');
+    }
+    q.addEventListener('keydown', function(e){
+      if(e.key === 'Enter' || e.key === ' ' || e.key === 'Spacebar'){
+        e.preventDefault(); window.toggleFaq(q);
+      }
+    });
+  });
+
+  /* a reflow changes how tall an open answer needs to be */
+  var raf = 0;
+  function remeasure(){
+    raf = 0;
+    document.querySelectorAll('.faq-item.open > .faq-a').forEach(function(a){
+      a.style.maxHeight = (a.scrollHeight + 24) + 'px';
+    });
+  }
+  window.addEventListener('resize', function(){ if(!raf) raf = requestAnimationFrame(remeasure); });
+  if(document.fonts && document.fonts.ready) document.fonts.ready.then(remeasure);
 })();
 </script>
 </body>
