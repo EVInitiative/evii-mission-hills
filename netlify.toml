@@ -12,3 +12,11 @@
   for = "/index.html"
   [headers.values]
     Cache-Control = "public, max-age=0, must-revalidate"
+
+# Two no-op stubs stand in for the Issuance Express platform scripts, which only
+# exist on their host. Serving an empty 200 keeps a blocking 404 out of the head
+# on this domain while index.html stays byte-identical on both hosts.
+[[headers]]
+  for = "/js/*"
+  [headers.values]
+    Cache-Control = "public, max-age=86400"

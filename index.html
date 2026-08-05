@@ -344,6 +344,9 @@ footer{background:var(--bg);padding:48px 80px;display:flex;align-items:center;ju
 .iw-header{padding:20px 20px 12px;}
 .iw-title{font-family:'DM Sans',sans-serif;font-size:18px;font-weight:600;color:#111;line-height:1.3;margin-bottom:12px;}
 .iw-total{background:#f0faf4;border-radius:8px;padding:10px 14px;display:flex;justify-content:space-between;align-items:center;margin-bottom:12px;max-height:50px;overflow:hidden;transition:max-height 0.3s ease,opacity 0.3s ease,margin 0.3s ease,padding 0.3s ease;}
+/* a live-data row with nothing in it reads as a broken page, so it stays out
+   of the layout until the platform script puts a real number in it */
+.iw-total.iw-pending{display:none;}
 .iw-total-label{font-size:13px;font-weight:500;color:#111;}
 .iw-total-val{font-size:13px;color:#888;}
 .iw-security{display:flex;justify-content:space-between;align-items:center;padding:0 0 12px;font-size:13px;color:#333;border-bottom:1px solid #f0f0f0;max-height:40px;overflow:hidden;transition:max-height 0.3s ease,opacity 0.3s ease,padding 0.3s ease;}
@@ -684,6 +687,10 @@ input[type=number]{-moz-appearance:textfield;}
 .tier-note{font-size:11px;color:var(--text-dim);margin-top:4px;line-height:1.4;}
 .tier-stack{font-size:13px;color:var(--text-muted);text-align:center;margin:0 0 30px;}
 .tier-stack strong{color:var(--green);font-weight:600;}
+/* states exactly what the portal will open with, so the pre-fill is never a
+   surprise on the far side of the click */
+.cta-prefill{font-size:12.5px;line-height:1.65;color:var(--text-muted);text-align:center;margin:13px 0 0;}
+.cta-prefill strong{color:var(--green);font-weight:600;}
 /* closing window */
 .urg-why{background:rgba(0,0,0,0.4);border:1px solid var(--border);border-left:3px solid var(--green);border-radius:12px;padding:24px 26px;margin-bottom:30px;}
 .urg-why h4{font-size:15px;color:#fff;margin:0 0 12px;font-weight:600;}
@@ -1511,6 +1518,7 @@ html{transition:background-color .35s ease;}
 [data-theme="light"] .section-body strong,[data-theme="light"] .section-body p strong,
 [data-theme="light"] .co-total .co-lab,[data-theme="light"] .ps-l strong,
 [data-theme="light"] .tier-stack strong,[data-theme="light"] .alloc-val,
+[data-theme="light"] .cta-prefill strong,
 [data-theme="light"] .faq-a strong,[data-theme="light"] .cta-legal strong,
 [data-theme="light"] .milestone-text strong,[data-theme="light"] .iw-title,
 [data-theme="light"] .iw-security span,[data-theme="light"] .iw-total-val,
@@ -1571,22 +1579,13 @@ html[data-theme="light"] div[style*="background:#000"] p,
 html[data-theme="light"] div[style*="background:#000"] span{color:#fff !important;}
 html[data-theme="light"] div[style*="background:#000"] span[style*="var(--green)"]{color:#2ECC71 !important;}
 </style>
-<!-- Issuance Express platform scripts (live raise data, tracking IDs, Disqus) -->
-<script>
-/* The Issuance Express platform scripts live at /js/ on their host. This same
-   file is also served from eviimission.com, where those two paths 404 on every
-   single page load. Skip them on our own domain only, so anywhere Issuance
-   hosts this file the scripts still load without them having to edit it. */
-(function(){
-  if(/(^|\.)eviimission\.com$/i.test(location.hostname)) return;
-  var srcs=[['/js/issuance-combined.js',true],['/js/tracking-ids.js',false]];
-  srcs.forEach(function(pair){
-    var t=document.createElement('script');
-    t.src=pair[0]; if(pair[1]) t.defer=true;
-    document.head.appendChild(t);
-  });
-})();
-</script>
+<!-- Issuance Express platform scripts (live raise data, tracking IDs, Disqus).
+     Written exactly as Ben specified. No host detection, no injection.
+     On the Issuance host these resolve to their real files. On eviimission.com
+     they resolve to the two no-op stubs shipped in that repo, which keeps the
+     markup identical on both hosts and keeps a blocking 404 out of the head. -->
+<script src="/js/tracking-ids.js"></script>
+<script src="/js/issuance-combined.js" defer=""></script>
 <script type="application/ld+json">
 {
   "@context": "https://schema.org",
@@ -1731,7 +1730,7 @@ html[data-theme="light"] div[style*="background:#000"] span[style*="var(--green)
 
 <!-- NAV -->
 <nav>
-  <div class="nav-logo"><img src="images/ev-initiative-mark.png" alt="EV Initiative" width="45" height="40" decoding="async" alt="EV Initiative" style="height:40px;width:auto;object-fit:contain;"><span>MISSION HILLS</span></div>
+  <div class="nav-logo"><img src="images/ev-initiative-mark.png" alt="EV Initiative" width="45" height="40" decoding="async" style="height:40px;width:auto;object-fit:contain;"><span>MISSION HILLS</span></div>
   <div class="nav-right"><button class="thm" id="thmBtn" data-theme-toggle aria-label="Switch between dark and light" title="Toggle theme">
   <svg class="thm-moon" width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 12.8A9 9 0 1111.2 3a7 7 0 009.8 9.8z"/></svg>
   <svg class="thm-sun" width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><circle cx="12" cy="12" r="4.2"/><path d="M12 2v2M12 20v2M2 12h2M20 12h2M4.9 4.9l1.5 1.5M17.6 17.6l1.5 1.5M19.1 4.9l-1.5 1.5M6.4 17.6l-1.5 1.5"/></svg>
@@ -1781,8 +1780,8 @@ html[data-theme="light"] div[style*="background:#000"] span[style*="var(--green)
   <div class="invest-widget-mobile">
     <div class="iw-header">
       <div class="iw-title">Invest in EVII<br>Mission Hills, Inc. Round 3</div>
-      <div class="iw-total"><span class="iw-total-label">Total Invested:</span><span class="iw-total-val"><span class="total_amount_display"></span></span></div>
-      <!-- OPEN ITEM: investor-count row hidden pending an Issuance class for it. -->
+      <div class="iw-total iw-pending"><span class="iw-total-label">Total Invested:</span><span class="iw-total-val"><span class="total_amount_display"></span></span></div>
+      <div class="iw-total iw-pending"><span class="iw-total-label">Investors:</span><span class="iw-total-val"><span class="number_investors_display"></span></span></div>
       <div class="iw-security"><span>Security type: Class B Non-Voting Common Stock</span></div>
     </div>
     <div class="iw-tags">
@@ -1924,8 +1923,9 @@ html[data-theme="light"] div[style*="background:#000"] span[style*="var(--green)
 </div>
 
     <div class="urg-cta-row">
-      <a href="https://invest.issuanceexpress.com/evii-mission" class="btn-primary" style="padding:17px 40px;font-size:16px;"><svg width="17" height="17" viewBox="0 0 24 24" fill="currentColor"><path d="M13 2L4.5 13.5H11L9 22L19.5 10.5H13L13 2Z"/></svg>Invest Now &middot; $299.25 Minimum</a>
+      <a id="calcCta" href="https://invest.issuanceexpress.com/evii-mission" class="btn-primary" style="padding:17px 40px;font-size:16px;"><svg width="17" height="17" viewBox="0 0 24 24" fill="currentColor"><path d="M13 2L4.5 13.5H11L9 22L19.5 10.5H13L13 2Z"/></svg><span id="calcCtaLabel">Invest Now &middot; 1,754 Shares</span></a>
     </div>
+    <p class="cta-prefill" id="calcPrefill">The portal opens with <strong>1,754 shares</strong> at $2.85, which is $4,998.90, already filled in. You can change it there before you sign anything.</p>
 
     <p class="urg-fine">Bonus shares have a dilutive effect on shareholders who do not participate in them. See the Form C Risk Disclosures. The Company may end the Offering early once the target amount is reached. Offering deadline December 31, 2026. Permit approval timing is an estimate and is not within the Company&rsquo;s control.</p>
   </div>
@@ -2474,8 +2474,8 @@ html[data-theme="light"] div[style*="background:#000"] span[style*="var(--green)
 <div class="invest-widget hidden" id="investWidget">
   <div class="iw-header">
     <div class="iw-title">Invest in EVII<br>Mission Hills, Inc. Round 3</div>
-    <div class="iw-total"><span class="iw-total-label">Total Invested:</span><span class="iw-total-val"><span class="total_amount_display"></span></span></div>
-    <!-- OPEN ITEM: investor-count row hidden pending an Issuance class for it. -->
+    <div class="iw-total iw-pending"><span class="iw-total-label">Total Invested:</span><span class="iw-total-val"><span class="total_amount_display"></span></span></div>
+    <div class="iw-total iw-pending"><span class="iw-total-label">Investors:</span><span class="iw-total-val"><span class="number_investors_display"></span></span></div>
     <div class="iw-security"><span>Security type: Class B Non-Voting Common Stock</span><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="#888" stroke-width="2"><polyline points="6 9 12 15 18 9"/></svg></div>
   </div>
   <div class="iw-tags">
@@ -2832,6 +2832,26 @@ var OFFER = {
   tick(); setInterval(tick,1000);
 })();
 
+/* -------- widget live-data rows -----------------------------------------
+   Issuance fills .total_amount_display and .number_investors_display from
+   their platform script, formatting included. We do not control when that
+   lands, and on a host where it never lands the rows would read "Investors:"
+   followed by nothing, which looks like a broken page rather than a pending
+   one. So each row stays out of the layout until it holds a real number.
+   A literal zero counts as no number, same rule the allocation bar uses. */
+(function(){
+  var rows=[].slice.call(document.querySelectorAll('.iw-total'));
+  if(!rows.length) return;
+  function sweep(){
+    rows.forEach(function(r){
+      var v=r.querySelector('.total_amount_display,.number_investors_display');
+      var t=v?(v.textContent||'').trim():'';
+      r.classList.toggle('iw-pending', !(t && /[1-9]/.test(t)));
+    });
+  }
+  sweep(); setInterval(sweep,15000);
+})();
+
 /* -------- allocation bar: reads the live total Issuance injects -------- */
 (function(){
   var fill=document.getElementById('allocFill'), src=document.getElementById('allocRaised'),
@@ -2858,15 +2878,60 @@ var OFFER = {
       tot=document.getElementById('coTotal'), eff=document.getElementById('coEff'),
       tag=document.getElementById('coTag'), next=document.getElementById('calcNext'),
       chips=[].slice.call(document.querySelectorAll('#calcChips .chip'));
+  var cta=document.getElementById('calcCta'), ctaLab=document.getElementById('calcCtaLabel'),
+      pre=document.getElementById('calcPrefill');
   var TIERS=[{min:25000,pct:15},{min:10000,pct:10},{min:5000,pct:5},{min:0,pct:0}];
+
+  /* ---- portal deep link -------------------------------------------------
+     Issuance pre-populates the investment when ?amount=N is appended to the
+     portal link, and N is a SHARE COUNT, not dollars. Two things follow.
+
+     Base shares only, never the bonus-inclusive total. Bonus shares are issued
+     by the Company under the Form C, not purchased. Passing the total would ask
+     the investor to pay for up to 20% of shares they are meant to receive.
+
+     Integer cents, not float division. v/2.85 in floating point drops a share
+     on roughly a fifth of exact dollar amounts: $304.95 buys exactly 107 shares
+     and the float says 106. Harmless while the number only lit up a panel on
+     our page. Not harmless once the same number pre-fills a purchase on theirs.
+     ---------------------------------------------------------------------- */
+  var PORTAL='https://invest.issuanceexpress.com/evii-mission';
+  var CENTS=Math.round(OFFER.sharePrice*100);
+  function sharesFor(v){
+    return v>=OFFER.minInvest ? Math.floor(Math.round(v*100)/CENTS) : 0;
+  }
+  function money(n){
+    return '$'+n.toLocaleString(undefined,{minimumFractionDigits:2,maximumFractionDigits:2});
+  }
+  function wireCta(shares){
+    if(!cta) return;
+    if(shares>0){
+      cta.href=PORTAL+'/login?amount='+shares;
+      if(ctaLab) ctaLab.textContent='Invest Now · '+shares.toLocaleString()+' Shares';
+      if(pre){
+        pre.style.display='';
+        pre.innerHTML='The portal opens with <strong>'+shares.toLocaleString()+
+          ' shares</strong> at $2.85, which is '+money(shares*CENTS/100)+
+          ', already filled in. You can change it there before you sign anything.';
+      }
+    } else {
+      /* below the minimum there is no valid share count to send, so the link
+         falls back to the plain offering page rather than pre-filling zero */
+      cta.href=PORTAL;
+      if(ctaLab) ctaLab.textContent='Invest Now · $299.25 Minimum';
+      if(pre) pre.style.display='none';
+    }
+  }
   function tierFor(v){ for(var i=0;i<TIERS.length;i++) if(v>=TIERS[i].min) return TIERS[i]; return TIERS[3]; }
   function nextTier(v){ for(var i=TIERS.length-1;i>=0;i--) if(TIERS[i].min>v) return TIERS[i]; return null; }
   function ebOn(){ return OFFER.earlyBirdOn && new Date(OFFER.earlyBirdEnds).getTime()>Date.now(); }
   function pulse(el){ el.classList.remove('co-pop'); void el.offsetWidth; el.classList.add('co-pop'); }
   function run(){
     var v=parseFloat((amt.value||'').replace(/[^0-9.]/g,''))||0;
+    var over=v>OFFER.maxRaise;
+    if(over) v=OFFER.maxRaise;   // nobody can buy more than the whole offering
     var t=tierFor(v), eb=ebOn()?5:0, pct=t.pct+eb;
-    var shares=v>=OFFER.minInvest?Math.floor(v/OFFER.sharePrice):0;
+    var shares=sharesFor(v);
     var bshares=Math.floor(shares*pct/100), total=shares+bshares;
     base.textContent=shares.toLocaleString();
     bon.textContent=bshares.toLocaleString();
@@ -2875,7 +2940,11 @@ var OFFER = {
     tag.textContent='+'+pct+'%';
     tag.style.display=pct?'inline-block':'none';
     [base,bon,tot,eff].forEach(pulse);
-    if(v>0 && v<OFFER.minInvest){
+    wireCta(shares);
+    if(over){
+      next.className='calc-next warn';
+      next.textContent='The maximum offering is $3,434,754.45. Showing the largest allocation available.';
+    } else if(v>0 && v<OFFER.minInvest){
       next.className='calc-next warn';
       next.textContent='Minimum investment is $299.25 (105 shares).';
     } else {
@@ -2891,7 +2960,8 @@ var OFFER = {
     }
   }
   function setVal(v){
-    amt.value=Number(v).toLocaleString(undefined,{maximumFractionDigits:2});
+    v=Math.min(Number(v)||0,OFFER.maxRaise);
+    amt.value=v.toLocaleString(undefined,{maximumFractionDigits:2});
     run();
   }
   chips.forEach(function(c){ c.addEventListener('click',function(){
