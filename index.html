@@ -3569,5 +3569,50 @@ html[data-theme="light"] .dl-dot.dl-on{
   });
 })();
 </script>
+
+<style>
+/* ==========================================================================
+   HERO VIDEO COVER
+   Below 600px there is a blanket `img,iframe,table{max-width:100% !important}`
+   responsive guard. It was clamping the hero background iframe from 2110px
+   wide down to the viewport width while leaving its height at 1187px, so
+   YouTube letterboxed a 16:9 video into a tall narrow box. That is why the
+   phone showed a thin band of video with black above and below it while
+   desktop looked right: the guard only applies under 600px.
+
+   The vmax sizing was also marginally short on mobile even without the clamp.
+   The hero is 1208px tall there, and covering that at 16:9 needs 2148x1208,
+   where 250vmax / 140.625vmax gives 2110x1187. So the size is now computed
+   from the wrapper's real dimensions instead of from the viewport.
+   ========================================================================== */
+.video-bg-wrapper iframe{max-width:none !important;max-height:none !important;}
+</style>
+<script>
+(function(){
+  var wrap = document.querySelector('.video-bg-wrapper');
+  var f = document.getElementById('heroVideo');
+  if(!wrap || !f) return;
+  var raf = 0;
+  function size(){
+    raf = 0;
+    var W = wrap.offsetWidth, H = wrap.offsetHeight;
+    if(!W || !H) return;
+    var w = W, h = W * 9 / 16;          /* cover on width first */
+    if(h < H){ h = H; w = H * 16 / 9; } /* not tall enough, cover on height */
+    w += 4; h = w * 9 / 16;             /* a little overscan so subpixel
+                                           rounding can never leave a hairline */
+    f.style.width  = Math.ceil(w) + 'px';
+    f.style.height = Math.ceil(h) + 'px';
+  }
+  function schedule(){ if(!raf) raf = requestAnimationFrame(size); }
+  size();
+  window.addEventListener('resize', schedule);
+  window.addEventListener('orientationchange', schedule);
+  window.addEventListener('load', schedule);
+  if(document.fonts && document.fonts.ready) document.fonts.ready.then(schedule);
+  /* the hero grows as the reveal animations settle and images land */
+  if(window.ResizeObserver) new ResizeObserver(schedule).observe(wrap);
+})();
+</script>
 </body>
 </html>
