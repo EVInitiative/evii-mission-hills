@@ -1,1 +1,10 @@
-/*  https://invest.highlander.ai/evi  301!
+# eviimission.com serves the Round 3 deal page at /.
+# Highlander is gone. Every legacy path that used to land there now points at
+# the Issuance Express offering.
+
+/evi        https://invest.issuanceexpress.com/evii-mission  301!
+/evi/*      https://invest.issuanceexpress.com/evii-mission  301!
+/invest     https://invest.issuanceexpress.com/evii-mission  301!
+/invest/*   https://invest.issuanceexpress.com/evii-mission  301!
+/round3     https://invest.issuanceexpress.com/evii-mission  301!
+/highlander https://invest.issuanceexpress.com/evii-mission  301!
