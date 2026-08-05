@@ -1698,11 +1698,11 @@ html[data-theme="light"] div[style*="background:#000"] span[style*="var(--green)
     },
     {
       "@type": "VideoObject",
-      "name": "EVII Mission Hills site flythrough",
-      "description": "Background flythrough of the EVII Mission Hills EV charging destination in Los Angeles.",
+      "name": "EV Mission Hills Charging Hub | Future Site Preview",
+      "description": "Site preview of the EVII Mission Hills EV charging destination in Los Angeles, an 18-stall EVI V4 Supercharger hub on the Tesla network at the I-405, I-5 and SR-118.",
       "thumbnailUrl": "https://eviimission.com/images/og-card.jpg",
       "uploadDate": "2026-08-05",
-      "embedUrl": "https://www.youtube.com/embed/0cVEqshxybc",
+      "embedUrl": "https://www.youtube.com/embed/MN8YNApnwqk",
       "publisher": {
         "@type": "Organization",
         "name": "EV Initiative"
@@ -1744,7 +1744,7 @@ html[data-theme="light"] div[style*="background:#000"] span[style*="var(--green)
 <!-- HERO -->
 <div class="hero">
   <div class="video-bg-wrapper">
-    <iframe id="heroVideo" src="https://www.youtube.com/embed/0cVEqshxybc?autoplay=1&mute=1&loop=1&playlist=0cVEqshxybc&controls=0&showinfo=0&rel=0&modestbranding=1&playsinline=1&disablekb=1&fs=0&iv_load_policy=3&vq=hd1080&hd=1&enablejsapi=1&origin=https%3A%2F%2Feviimission.com" frameborder="0" allow="autoplay; encrypted-media; picture-in-picture" allowfullscreen></iframe>
+    <iframe id="heroVideo" src="https://www.youtube.com/embed/MN8YNApnwqk?autoplay=1&mute=1&loop=1&playlist=MN8YNApnwqk&controls=0&rel=0&modestbranding=1&playsinline=1&disablekb=1&fs=0&iv_load_policy=3&vq=hd1080&hd=1&enablejsapi=1" frameborder="0" allow="autoplay; encrypted-media; picture-in-picture" allowfullscreen></iframe>
   </div>
   <div class="hero-left">
     <div class="hero-badge"><span class="urg-dot"></span>Round 3 Open Now · Reg CF · Open to All Investors</div>
@@ -2429,7 +2429,7 @@ html[data-theme="light"] div[style*="background:#000"] span[style*="var(--green)
 <!-- VIDEO SECTION -->
 <div style="position:relative;height:520px;overflow:hidden;background:#000;">
   <div style="position:absolute;inset:0;z-index:0;pointer-events:none;">
-    <iframe id="secondaryVideo" src="https://www.youtube.com/embed/MN8YNApnwqk?autoplay=1&mute=1&loop=1&playlist=MN8YNApnwqk&controls=0&showinfo=0&rel=0&modestbranding=1&playsinline=1&disablekb=1&fs=0&iv_load_policy=3&enablejsapi=1&vq=hd1080&hd=1" frameborder="0" allow="autoplay; encrypted-media; fullscreen" allowfullscreen style="position:absolute;top:50%;left:50%;transform:translate(-50%,-50%);width:177.78vh;min-width:100%;height:56.25vw;min-height:100%;opacity:0.7;z-index:1;pointer-events:none;"></iframe>
+    <iframe id="secondaryVideo" src="https://www.youtube.com/embed/0cVEqshxybc?autoplay=1&mute=1&loop=1&playlist=0cVEqshxybc&controls=0&rel=0&modestbranding=1&playsinline=1&disablekb=1&fs=0&iv_load_policy=3&vq=hd1080&hd=1&enablejsapi=1" frameborder="0" allow="autoplay; encrypted-media; fullscreen" allowfullscreen style="position:absolute;top:50%;left:50%;transform:translate(-50%,-50%);width:177.78vh;min-width:100%;height:56.25vw;min-height:100%;opacity:0.7;z-index:1;pointer-events:none;"></iframe>
   </div>
   <div style="position:absolute;inset:0;background:linear-gradient(to bottom,rgba(10,10,10,0.3) 0%,rgba(10,10,10,0.5) 60%,var(--bg) 100%);z-index:2;"></div>
   <div style="position:relative;z-index:3;height:100%;display:flex;flex-direction:column;align-items:center;justify-content:center;text-align:center;padding:0 24px;">
@@ -3369,30 +3369,90 @@ html[data-theme="light"] .issuance-bar-logo img{filter:invert(1);}
 })();
 </script>
 
+
+<style>
+/* The poster carries the hero until the player confirms it is actually
+   playing. Before that the iframe is transparent, so a blocked or slow embed
+   shows the aerial rather than a dark rectangle sitting on top of it. */
+.video-bg-wrapper iframe{opacity:0 !important;transition:opacity .8s ease;}
+.video-bg-wrapper.vid-on iframe{opacity:.62 !important;}
+@media (prefers-reduced-motion:reduce){
+  .video-bg-wrapper iframe{transition:none;}}
+</style>
 <script>
-/* HD, muted, autoplaying. Two things decide whether that happens:
-   mute=1 in the src, which is what every browser requires before it will
-   start a video without a click, and allow="autoplay" on the frame, which
-   delegates the permission. Quality is chosen by YouTube from the player
-   size, and this player is deliberately far larger than the viewport.
-   setPlaybackQuality is asked for as well, though YouTube now mostly ignores
-   it. If the embed is blocked, the still poster underneath simply stays. */
+/* Autoplay, muted, in HD.
+   Three things decide whether a browser will start a background video:
+     1. mute=1 in the src. Unmuted autoplay is refused everywhere.
+     2. playsinline=1, or iOS opens it fullscreen instead.
+     3. allow="autoplay" on the frame, which delegates the permission inward.
+   All three are set. Quality is chosen by YouTube from the rendered player
+   size, and this player is deliberately far larger than the viewport, so HD
+   follows from the geometry. setPlaybackQuality is asked for too, though
+   YouTube now largely ignores it.
+   What cannot be controlled from here: Low Power Mode, Data Saver, and
+   in-app browsers that block embeds outright. So rather than assume, the
+   player is asked to report in, and the poster stays until it does. */
 (function(){
-  var f=document.getElementById('heroVideo');
-  if(!f) return;
-  function send(func,args){
+  var frames = ['heroVideo','secondaryVideo']
+    .map(function(id){ return document.getElementById(id); }).filter(Boolean);
+  if(!frames.length) return;
+
+  function cmd(f, func, args){
     try{ f.contentWindow.postMessage(JSON.stringify(
-      {event:'command',func:func,args:args||[]}),'*'); }catch(e){}
+      {event:'command', func:func, args:args||[]}), '*'); }catch(e){}
   }
-  function kick(){ send('mute'); send('playVideo'); send('setPlaybackQuality',['hd1080']); }
-  f.addEventListener('load', function(){ setTimeout(kick,600); setTimeout(kick,2600); });
-  /* some browsers only release autoplay after the first interaction */
-  ['pointerdown','touchstart','keydown'].forEach(function(ev){
-    window.addEventListener(ev, function once(){ kick();
-      window.removeEventListener(ev, once); }, {once:true, passive:true});
+  function subscribe(f){
+    try{ f.contentWindow.postMessage(JSON.stringify(
+      {event:'listening', id:f.id}), '*');
+      f.contentWindow.postMessage(JSON.stringify(
+      {event:'command', func:'addEventListener', args:['onStateChange']}), '*');
+    }catch(e){}
+  }
+  function kick(f){
+    cmd(f,'mute'); cmd(f,'playVideo'); cmd(f,'setPlaybackQuality',['hd1080']);
+  }
+  function wrapOf(f){ return f.closest ? f.closest('.video-bg-wrapper') : f.parentNode; }
+
+  frames.forEach(function(f){
+    f.addEventListener('load', function(){
+      subscribe(f);
+      setTimeout(function(){ kick(f); }, 400);
+      setTimeout(function(){ kick(f); }, 2200);
+      /* Safety valve. If the player is playing but its postMessage never
+         reaches us, which happens in in-app browsers that strip the API,
+         waiting for confirmation would hide a working video. So reveal
+         anyway after five seconds. The worst case then is a paused frame
+         under an 86% scrim, which reads as a slightly darker hero rather
+         than a broken one. Hiding a video that works is the worse failure. */
+      setTimeout(function(){
+        var w = wrapOf(f); if(w) w.classList.add('vid-on');
+      }, 5000);
+    });
+  });
+
+  /* PLAYING is state 1. Only then does the video get revealed. */
+  window.addEventListener('message', function(e){
+    if(typeof e.data !== 'string') return;
+    if(e.origin.indexOf('youtube') === -1) return;
+    var d; try{ d = JSON.parse(e.data); }catch(err){ return; }
+    if(!d || d.event !== 'onStateChange') return;
+    var playing = (d.info === 1);
+    frames.forEach(function(f){
+      var w = wrapOf(f);
+      if(!w) return;
+      if(playing) w.classList.add('vid-on');
+    });
+  });
+
+  /* browsers that only release autoplay after a gesture, and tab refocus */
+  ['pointerdown','touchstart','keydown','scroll'].forEach(function(ev){
+    window.addEventListener(ev, function once(){
+      frames.forEach(kick);
+      window.removeEventListener(ev, once);
+    }, {once:true, passive:true});
   });
   document.addEventListener('visibilitychange', function(){
-    if(!document.hidden) kick();
+    if(!document.hidden) frames.forEach(kick);
   });
 })();
 </script>
