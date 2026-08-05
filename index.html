@@ -1644,6 +1644,25 @@ html[data-theme="light"] div[style*="background:#000"] span[style*="var(--green)
   </div>
 </section>
 
+<!-- OPPORTUNITY -->
+<section id="opportunity">
+  <div class="section-label">The Opportunity</div>
+  <div style="display:grid;grid-template-columns:1fr 1fr;gap:80px;align-items:start;margin-top:0;">
+    <div>
+      <h2 class="section-title">Own What No Stock Can Give You</h2>
+      <div class="pull-quote">Most charging sites are owned by a corporation while the landowner just collects rent. Here you own the hardware, and the revenue every session produces.</div>
+      <div class="section-body">
+        <p>EVII Mission Hills, Inc. is a California corporation that will own and operate an EVI V4 Supercharger destination on the Tesla network at the convergence of the I-405, I-5, and SR-118 in Los Angeles. <strong>This offering is open to everyone.</strong> No accreditation required.</p>
+        <p>Investors receive <strong>potential semiannual distributions from operating profits, based on the performance of the location and not guaranteed.</strong> This is a new category in real estate. We are creating it.</p>
+      </div>
+    </div>
+    <div>
+      <img src="images/drone-aerial.jpg" alt="EVII Mission Hills aerial view at the I-405 corridor" style="width:100%;border-radius:12px;object-fit:cover;max-height:320px;margin-bottom:2px;object-position:center 75%;">
+      
+    </div>
+  </div>
+</section>
+
 <!-- ROUND 3 URGENCY / BONUS SHARES -->
 <section class="urgency" id="why-now">
   <div class="urg-wrap">
@@ -1780,25 +1799,6 @@ html[data-theme="light"] div[style*="background:#000"] span[style*="var(--green)
     <li><span>04</span><div><strong>The revenue is ours.</strong> Charging fees, LCFS credits, food, coffee and vending all bill to the company you own shares in.</div></li>
   </ol>
   <p class="hiw-fine"><strong style="color:#ffb43c;">Related party disclosure:</strong> TYLD LLC, the current holder of the project site, is an entity affiliated with Tadhe Hovsepian, who serves as CFO and a Director of EVII Mission Hills, Inc. The purchase price is $1,150,000. Investors should review the related-party and conflict-of-interest sections of the Form C before investing.<br><br>EV Initiative is a customer of Tesla&rsquo;s Supercharger for Business program. It is not a reseller, distributor or exclusive partner of Tesla, and nothing here implies any partnership beyond that program. Tesla continues to own and operate its own Supercharger network separately. Tesla and Supercharger are trademarks of Tesla, Inc., used here for identification only.</p>
-</section>
-
-<!-- OPPORTUNITY -->
-<section id="opportunity">
-  <div class="section-label">The Opportunity</div>
-  <div style="display:grid;grid-template-columns:1fr 1fr;gap:80px;align-items:start;margin-top:0;">
-    <div>
-      <h2 class="section-title">Own What No Stock Can Give You</h2>
-      <div class="pull-quote">Most charging sites are owned by a corporation while the landowner just collects rent. Here you own the hardware, and the revenue every session produces.</div>
-      <div class="section-body">
-        <p>EVII Mission Hills, Inc. is a California corporation that will own and operate an EVI V4 Supercharger destination on the Tesla network at the convergence of the I-405, I-5, and SR-118 in Los Angeles. <strong>This offering is open to everyone.</strong> No accreditation required.</p>
-        <p>Investors receive <strong>potential semiannual distributions from operating profits, based on the performance of the location and not guaranteed.</strong> This is a new category in real estate. We are creating it.</p>
-      </div>
-    </div>
-    <div>
-      <img src="images/drone-aerial.jpg" alt="EVII Mission Hills aerial view at the I-405 corridor" style="width:100%;border-radius:12px;object-fit:cover;max-height:320px;margin-bottom:2px;object-position:center 75%;">
-      
-    </div>
-  </div>
 </section>
 
 <!-- SOCIAL PROOF -->
@@ -2302,10 +2302,10 @@ html[data-theme="light"] div[style*="background:#000"] span[style*="var(--green)
   </div>
   <div class="nv-list">
       <a href="#distributions" data-nav="distributions"><span class="nv-n">01</span><span class="nv-l">Distributions</span><span class="nv-dot"></span></a>
-      <a href="#why-now" data-nav="why-now"><span class="nv-n">02</span><span class="nv-l">Why This Round Closes</span><span class="nv-dot"></span></a>
-      <a href="#proof" data-nav="proof"><span class="nv-n">03</span><span class="nv-l">The Proof</span><span class="nv-dot"></span></a>
-      <a href="#how-it-works" data-nav="how-it-works"><span class="nv-n">04</span><span class="nv-l">How This Works</span><span class="nv-dot"></span></a>
-      <a href="#opportunity" data-nav="opportunity"><span class="nv-n">05</span><span class="nv-l">The Opportunity</span><span class="nv-dot"></span></a>
+      <a href="#opportunity" data-nav="opportunity"><span class="nv-n">02</span><span class="nv-l">The Opportunity</span><span class="nv-dot"></span></a>
+      <a href="#why-now" data-nav="why-now"><span class="nv-n">03</span><span class="nv-l">Why This Round Closes</span><span class="nv-dot"></span></a>
+      <a href="#proof" data-nav="proof"><span class="nv-n">04</span><span class="nv-l">The Proof</span><span class="nv-dot"></span></a>
+      <a href="#how-it-works" data-nav="how-it-works"><span class="nv-n">05</span><span class="nv-l">How This Works</span><span class="nv-dot"></span></a>
       <a href="#media" data-nav="media"><span class="nv-n">06</span><span class="nv-l">Social Proof</span><span class="nv-dot"></span></a>
       <a href="#the-build" data-nav="the-build"><span class="nv-n">07</span><span class="nv-l">What We Built</span><span class="nv-dot"></span></a>
       <a href="#future" data-nav="future"><span class="nv-n">08</span><span class="nv-l">Built Forward</span><span class="nv-dot"></span></a>
@@ -2801,8 +2801,21 @@ var OFFER = {
   function get(){ try{ return localStorage.getItem(KEY); }catch(e){ return null; } }
   function put(v){ try{ localStorage.setItem(KEY,v); }catch(e){} }
   var saved=get();
-  var start = saved || (window.matchMedia && window.matchMedia('(prefers-color-scheme: light)').matches ? 'light':'dark');
-  root.setAttribute('data-theme', start);
+  /* Follow the operating system. Dark when it has no opinion, since the brand
+     is a dark page and that is the safer default on a night-time charging site. */
+  function sys(){
+    if(!window.matchMedia) return 'dark';
+    if(window.matchMedia('(prefers-color-scheme: light)').matches) return 'light';
+    return 'dark';
+  }
+  root.setAttribute('data-theme', saved || sys());
+  /* if they have never picked one, keep tracking the system live */
+  if(!saved && window.matchMedia){
+    var mq=window.matchMedia('(prefers-color-scheme: light)');
+    var onSys=function(){ if(!get()) root.setAttribute('data-theme', sys()); };
+    if(mq.addEventListener) mq.addEventListener('change', onSys);
+    else if(mq.addListener) mq.addListener(onSys);
+  }
   [].forEach.call(document.querySelectorAll('[data-theme-toggle]'), function(btn){
     btn.addEventListener('click', function(e){
       e.preventDefault(); e.stopPropagation();
@@ -2978,6 +2991,139 @@ var OFFER = {
   /* give the platform scripts a fair chance first */
   if(document.readyState==='complete') setTimeout(settle,3500);
   else window.addEventListener('load', function(){ setTimeout(settle,3500); });
+})();
+</script>
+
+<!-- SOCIAL PROOF LIGHTBOX. The stylesheet for #spModal / .sp-modal-inner /
+     .sp-close was already in the page, but the markup and the spOpen()
+     function it needs were not. Every one of the 16 thumbnails called a
+     function that did not exist. -->
+<div id="spModal" role="dialog" aria-modal="true" aria-label="Video">
+  <button class="sp-close" id="spClose" type="button" aria-label="Close video">&times;</button>
+  <div class="sp-modal-inner" id="spInner"></div>
+</div>
+<style>
+/* horizontal rail: arrows on pointer devices, native swipe on touch */
+.sp-rail{position:relative;}
+.sp-rail-btn{position:absolute;top:50%;transform:translateY(-50%);z-index:5;
+  width:46px;height:46px;border-radius:50%;border:1px solid rgba(255,255,255,.22);
+  background:rgba(10,10,10,.72);backdrop-filter:blur(10px);color:#fff;font-size:20px;
+  line-height:1;cursor:pointer;display:flex;align-items:center;justify-content:center;
+  transition:opacity .2s ease, background .2s ease;}
+.sp-rail-btn:hover{background:var(--green);color:#04140a;border-color:var(--green);}
+.sp-rail-btn[disabled]{opacity:0;pointer-events:none;}
+.sp-rail-prev{left:6px;} .sp-rail-next{right:6px;}
+html[data-theme="light"] .sp-rail-btn{background:rgba(255,255,255,.86);color:#0d1410;
+  border-color:rgba(20,60,38,.18);}
+@media (hover:none),(max-width:720px){.sp-rail-btn{display:none;}}
+#spScrollWrap::-webkit-scrollbar{display:none;}
+#spScrollWrap.sp-dragging{cursor:grabbing;user-select:none;}
+#spScrollWrap.sp-dragging img{pointer-events:none;}
+</style>
+<script>
+(function(){
+  var wrap=document.getElementById('spScrollWrap');
+  var modal=document.getElementById('spModal');
+  var inner=document.getElementById('spInner');
+  var closeBtn=document.getElementById('spClose');
+
+  /* ---------------- lightbox ---------------- */
+  var lastFocus=null;
+  window.spOpen=function(id){
+    if(!id||!modal||!inner) return;
+    lastFocus=document.activeElement;
+    inner.innerHTML='<iframe src="https://www.youtube.com/embed/'+id+
+      '?autoplay=1&playsinline=1&rel=0&modestbranding=1" allow="autoplay; encrypted-media; picture-in-picture; fullscreen" allowfullscreen title="EV Initiative video"></iframe>';
+    modal.classList.add('open');
+    document.body.style.overflow='hidden';
+    closeBtn && closeBtn.focus();
+  };
+  function spClose(){
+    if(!modal.classList.contains('open')) return;
+    modal.classList.remove('open');
+    inner.innerHTML='';                 /* tears the player down, stops the audio */
+    document.body.style.overflow='';
+    if(lastFocus && lastFocus.focus) lastFocus.focus();
+  }
+  window.spClose=spClose;
+  closeBtn && closeBtn.addEventListener('click', spClose);
+  modal && modal.addEventListener('click', function(e){ if(e.target===modal) spClose(); });
+  document.addEventListener('keydown', function(e){ if(e.key==='Escape') spClose(); });
+
+  if(!wrap) return;
+
+  /* ---------------- horizontal rail ----------------
+     The wrap had overflow-x:auto and cursor:grab but nothing to drive it, so a
+     mouse user had no way to move it at all. */
+  var rail=document.createElement('div');
+  rail.className='sp-rail';
+  wrap.parentNode.insertBefore(rail, wrap);
+  rail.appendChild(wrap);
+
+  function mkBtn(cls,label,glyph){
+    var b=document.createElement('button');
+    b.type='button'; b.className='sp-rail-btn '+cls;
+    b.setAttribute('aria-label',label); b.innerHTML=glyph;
+    rail.appendChild(b); return b;
+  }
+  var prev=mkBtn('sp-rail-prev','Previous videos','&#8249;');
+  var next=mkBtn('sp-rail-next','More videos','&#8250;');
+
+  function page(dir){
+    var card=wrap.querySelector('button');
+    var step=(card?card.offsetWidth+16:216)*Math.max(1,Math.floor(wrap.clientWidth/232));
+    wrap.scrollBy({left:dir*step, behavior:'smooth'});
+  }
+  prev.addEventListener('click',function(){ page(-1); });
+  next.addEventListener('click',function(){ page(1); });
+
+  function sync(){
+    var max=wrap.scrollWidth-wrap.clientWidth-2;
+    prev.disabled = wrap.scrollLeft<=2;
+    next.disabled = wrap.scrollLeft>=max;
+  }
+  wrap.addEventListener('scroll',sync,{passive:true});
+  window.addEventListener('resize',sync);
+  window.addEventListener('load',sync);
+  sync();
+
+  /* drag to scroll, with a click guard so a drag never opens a video */
+  var down=false,moved=0,startX=0,startScroll=0;
+  wrap.addEventListener('pointerdown',function(e){
+    if(e.pointerType==='touch') return;      /* let touch scroll natively */
+    down=true; moved=0; startX=e.clientX; startScroll=wrap.scrollLeft;
+  });
+  wrap.addEventListener('pointermove',function(e){
+    if(!down) return;
+    var dx=e.clientX-startX;
+    if(Math.abs(dx)>3){ moved=Math.abs(dx); wrap.classList.add('sp-dragging'); }
+    wrap.scrollLeft=startScroll-dx;
+  });
+  function end(){ down=false; wrap.classList.remove('sp-dragging'); }
+  wrap.addEventListener('pointerup',end);
+  wrap.addEventListener('pointercancel',end);
+  wrap.addEventListener('pointerleave',end);
+  wrap.addEventListener('click',function(e){
+    if(moved>6){ e.preventDefault(); e.stopPropagation(); moved=0; }
+  },true);
+
+  /* a plain vertical wheel should move the rail while the cursor is over it */
+  wrap.addEventListener('wheel',function(e){
+    var d = Math.abs(e.deltaX)>Math.abs(e.deltaY) ? e.deltaX : e.deltaY;
+    if(!d) return;
+    var max=wrap.scrollWidth-wrap.clientWidth;
+    if((d<0 && wrap.scrollLeft<=0) || (d>0 && wrap.scrollLeft>=max)) return; /* hand back to the page */
+    e.preventDefault(); wrap.scrollLeft += d;
+  },{passive:false});
+
+  /* keyboard */
+  wrap.setAttribute('tabindex','0');
+  wrap.setAttribute('role','region');
+  wrap.setAttribute('aria-label','Investor and community videos');
+  wrap.addEventListener('keydown',function(e){
+    if(e.key==='ArrowRight'){ e.preventDefault(); page(1); }
+    if(e.key==='ArrowLeft'){ e.preventDefault(); page(-1); }
+  });
 })();
 </script>
 </body>
