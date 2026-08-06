@@ -889,6 +889,35 @@ input[type=number]{-moz-appearance:textfield;}
 
 /* ================= EARLY BIRD (failsafe) ================= */
 .eb{margin-bottom:26px;}
+/* ---- offering state ----
+   The Early Bird tile is a claim about something you can still get. Once the
+   window lapses it stays on the page for context, but it must not read as
+   available. Muted, not deleted. */
+html.eb-over .tier.early{opacity:.5;filter:saturate(.35);}
+html.eb-over .tier.early .tier-pct{color:var(--text-muted) !important;}
+
+/* Shown only when the round is shut, by OFFER.offerOpen or by the filed
+   deadline passing. Amber rather than green: this is not good news. */
+.offer-closed-note{background:rgba(255,180,60,.10);border:1px solid rgba(255,180,60,.38);
+  border-radius:12px;padding:16px 20px;margin:0 0 26px;font-size:14.5px;line-height:1.65;
+  color:var(--text-muted);}
+.offer-closed-note strong{display:block;margin-bottom:4px;color:#ffb43c;font-weight:600;}
+.offer-closed-note[hidden]{display:none;}
+html[data-theme="light"] .offer-closed-note{background:rgba(190,120,20,.10) !important;
+  border-color:rgba(190,120,20,.42) !important;}
+html[data-theme="light"] .offer-closed-note strong{color:#8a5200 !important;}
+
+/* A closed round should not have a bright green button urging you into it. */
+html.offer-closed .btn-primary.cta-closed,
+html.offer-closed .sb-cta.cta-closed,
+html.offer-closed .nv-cta.cta-closed,
+html.offer-closed .btn-invest.cta-closed,
+html.offer-closed .iw-btn-invest.cta-closed{
+  background:rgba(120,128,124,.92) !important;border-color:rgba(120,128,124,.92) !important;
+  color:#fff !important;box-shadow:none !important;}
+html.offer-closed .hero-badge::before,
+html.offer-closed .urg-dot{animation:none !important;background:#9aa3a0 !important;}
+
 .eb-closed{display:none;background:rgba(0,0,0,0.4);border:1px solid var(--border);border-radius:12px;padding:18px 20px;}
 .eb-closed-in{font-size:14px;line-height:1.65;color:var(--text-muted);}
 .eb-closed-in strong{color:#fff;display:block;margin-bottom:4px;}
@@ -1755,7 +1784,7 @@ html[data-theme="light"] div[style*="background:#000"] span[style*="var(--green)
     <iframe id="heroVideo" src="https://www.youtube.com/embed/MN8YNApnwqk?autoplay=1&mute=1&loop=1&playlist=MN8YNApnwqk&controls=0&rel=0&modestbranding=1&playsinline=1&disablekb=1&fs=0&iv_load_policy=3&vq=hd1080&hd=1&enablejsapi=1" frameborder="0" allow="autoplay; encrypted-media; picture-in-picture" allowfullscreen></iframe>
   </div>
   <div class="hero-left">
-    <div class="hero-badge"><span class="urg-dot"></span>Round 3 Open Now · Reg CF · Open to All Investors</div>
+    <div class="hero-badge" id="heroBadge"><span class="urg-dot"></span><span id="heroBadgeTxt">Round 3 Open Now · Reg CF · Open to All Investors</span></div>
     <h1>Own The Dirt.<br>Own The Chargers.<br>Own The <span>Whole Future.</span></h1>
     <div class="hero-tm">Experience-Driven Charging&trade; &middot; Destination Charging Infrastructure&trade;</div>
     <p class="hero-sub">18 EVI V4 Superchargers. A robotic barista pulling 35+ drinks. A commissary kitchen. A lit, camera-covered lot where the 405, the 5 and the 118 all meet. <strong>$805,000 of this raise buys the land itself.</strong> Round 1 investors got in at $1.86. This one is $2.85, from $299.25.</p>
@@ -1848,9 +1877,17 @@ html[data-theme="light"] div[style*="background:#000"] span[style*="var(--green)
 <!-- ROUND 3 URGENCY / BONUS SHARES -->
 <section class="urgency" id="why-now">
   <div class="urg-wrap">
-    <div class="urg-kicker"><span class="urg-dot"></span>Round 3 Open &middot; Early Bird Live</div>
+    <div class="urg-kicker" id="urgKicker"><span class="urg-dot"></span>Round 3 Open &middot; Early Bird Live</div>
     <h2 class="urg-h">This Round Closes When<br><span>The Permits Land.</span></h2>
-    <p class="urg-sub">Round 1 sold out to 3,436 investors. Round 3 is open now at $2.85 a share, and it has a hard stop that has nothing to do with hitting a target.</p>
+    <p class="urg-sub" id="urgSub">Round 1 sold out to 3,436 investors. Round 3 is open now at $2.85 a share, and it has a hard stop that has nothing to do with hitting a target.</p>
+
+    <!-- Shown only when OFFER.offerOpen is false or the filed deadline has
+         passed. Hidden by default; nothing reveals it while the round is open. -->
+    <div class="offer-closed-note" id="offerClosedNote" hidden>
+      <strong>This offering is closed.</strong>
+      The Round 3 Regulation CF offering is no longer accepting investments. The figures
+      below are kept for reference and are not an offer to sell securities.
+    </div>
 
     <!-- EARLY BIRD STATUS. Fails safe: if the date passes and nobody updates it,
      this flips to a closed state instead of showing a dead 00:00:00 clock. -->
@@ -2809,14 +2846,107 @@ html[data-theme="light"] .pl-note{color:#525c55 !important;}
    NOTE: there is deliberately no countdown on the round close itself.
    That depends on City permit approval, which we do not control, so the
    page states it qualitatively instead of promising a date.
+
+   offerEnds     : the offering deadline as filed on the Form C. There is
+                   no clock on it, but the page must stop calling itself
+                   open once it passes. Without this the page would still
+                   read "Round 3 Open Now" on January 1, 2027.
+   offerOpen     : the manual switch. Set false the moment the round
+                   actually closes, whether that is on the deadline, early
+                   because the target was hit, or for any other reason.
+                   It wins over the date in both directions.
    ====================================================================== */
 var OFFER = {
   earlyBirdEnds : '2026-09-04T23:59:00-07:00',
   earlyBirdOn   : true,
+  offerEnds     : '2026-12-31T23:59:00-08:00',
+  offerOpen     : true,
   maxRaise      : 3434754.45,
   sharePrice    : 2.85,
   minInvest     : 299.25
 };
+
+/* ------------- offering state, resolved once for the whole page --------
+   Two clocks, two switches. Resolved in one place and published as classes
+   on <html>, so the hero cannot claim the round is open while the
+   calculator quietly disagrees. Everything downstream reads these.
+   ---------------------------------------------------------------------- */
+window.EVII_STATE = (function(){
+  function past(iso){ var t=new Date(iso).getTime(); return !isNaN(t) && Date.now()>t; }
+  var st={
+    ebOver : !OFFER.earlyBirdOn || past(OFFER.earlyBirdEnds),
+    closed : !OFFER.offerOpen   || past(OFFER.offerEnds)
+  };
+  var root=document.documentElement;
+  root.classList.toggle('eb-over', st.ebOver);
+  root.classList.toggle('offer-closed', st.closed);
+  return st;
+})();
+
+/* ------------- apply that state to the copy that makes claims ----------
+   CSS can dim a tile. It cannot correct a sentence. Every line below is a
+   quantitative or availability claim that goes stale on its own, which on a
+   live securities page is the kind of stale that matters.
+   ---------------------------------------------------------------------- */
+window.EVII_APPLY_STATE = (function(){
+  var st=window.EVII_STATE, $=function(id){ return document.getElementById(id); };
+  function apply(){
+
+  if(st.ebOver){
+    /* The Early Bird tile advertises a bonus that is no longer available.
+       The countdown already hides itself; this tile never did. */
+    var early=document.querySelector('.tier.early');
+    if(early){
+      var note=early.querySelector('.tier-note');
+      if(note) note.textContent='Window closed';
+      early.setAttribute('aria-disabled','true');
+    }
+    /* "Up to 20% at $25,000 in the first 30 days" is only true while Early
+       Bird stacks on top. Once it lapses the real maximum is 15%. */
+    var stack=document.querySelector('.tier-stack');
+    if(stack){
+      stack.innerHTML='The Early Bird window has closed. Amount-based tiers are still open, '+
+                      '<strong>up to 15% bonus shares</strong> at $25,000.';
+    }
+    var kick=$('urgKicker');
+    if(kick) kick.innerHTML='<span class="urg-dot"></span>Round 3 Open &middot; Amount Tiers Live';
+  }
+
+  if(st.closed){
+    var badge=$('heroBadgeTxt');
+    if(badge) badge.textContent='Round 3 Closed · Reg CF · For Reference Only';
+    var kick2=$('urgKicker');
+    if(kick2) kick2.innerHTML='<span class="urg-dot"></span>Round 3 Closed';
+    var sub=$('urgSub');
+    if(sub) sub.textContent='Round 1 sold out to 3,436 investors. Round 3 has closed and is no longer accepting investments.';
+    var note2=$('offerClosedNote');
+    if(note2) note2.hidden=false;
+
+    /* Twelve buttons say "Invest Now". None of them should say that once the
+       round is shut. The hrefs stay, so anyone who clicks still lands on the
+       offering page rather than a dead end. */
+    [].forEach.call(document.querySelectorAll('a[href*="invest.issuanceexpress.com"]'), function(a){
+      a.classList.add('cta-closed');
+      var lab=a.querySelector('#calcCtaLabel');
+      if(lab){ lab.textContent='View the offering'; return; }
+      [].forEach.call(a.childNodes, function(n){
+        if(n.nodeType===3 && n.textContent.trim()) n.textContent=' View the offering';
+      });
+    });
+    var pre=$('calcPrefill');
+    if(pre){ pre.innerHTML='<strong>This round is closed.</strong> The figures above are kept for reference and are not an offer to sell securities.'; pre.style.display=''; }
+  }
+  }
+
+  /* Run now for everything already in the document, then again on load. The
+     second pass exists because two things arrive after this script: the
+     calculator, which rewrites its own CTA label on every keystroke, and the
+     Ask The Founders fallback, which injects a twelfth portal link. A closed
+     round cannot have one button that still says Invest Now. */
+  apply();
+  if(st.closed) window.addEventListener('load', apply);
+  return apply;
+})();
 
 /* ---------------- early bird: counts down, then fails safe ------------- */
 (function(){
@@ -2914,6 +3044,10 @@ var OFFER = {
   }
   function wireCta(shares){
     if(!cta) return;
+    /* When the round is shut the offering-state pass owns this button's label
+       and the line under it. Rewriting them here on every keystroke would put
+       "Invest Now" back on a closed offering. */
+    if(window.EVII_STATE && window.EVII_STATE.closed) return;
     if(shares>0){
       cta.href=PORTAL+'/login?amount='+shares;
       if(ctaLab) ctaLab.textContent='Invest Now · '+shares.toLocaleString()+' Shares';
@@ -3273,6 +3407,10 @@ var OFFER = {
           'href="https://invest.issuanceexpress.com/evii-mission">Ask on the offering page</a>'+
           '<a class="btn-ghost" href="mailto:invest@eviimission.com">invest@eviimission.com</a>'+
           '</div></div>';
+        /* This runs 3.5s after load and adds a twelfth portal link. If the
+           round is shut, that link would be the only one still inviting an
+           investment, so re-run the offering-state pass over it. */
+        if(window.EVII_APPLY_STATE) window.EVII_APPLY_STATE();
       }
     }
   }
@@ -3774,5 +3912,172 @@ html[data-theme="light"] .dl-dot.dl-on{
   if(document.fonts && document.fonts.ready) document.fonts.ready.then(remeasure);
 })();
 </script>
+<style>
+/* ==========================================================================
+   SCROLL CHOREOGRAPHY
+   Sections arrive rather than appear.
+
+   The hiding class is added by JavaScript, never written into the markup.
+   That is deliberate and it is the opposite of the older .reveal class, which
+   hides in CSS and needs JS to undo it. If this script never runs, throws, or
+   the browser has no IntersectionObserver, nothing is ever hidden and the page
+   is simply static. A page that animates is nice. A page that is blank because
+   an observer failed is a dead offering.
+
+   Only opacity and transform. Both composite on the GPU and neither triggers
+   layout, which matters on a page that already carries a mobile render budget.
+   ========================================================================== */
+.rv{opacity:0;transform:translateY(16px);
+    transition:opacity .62s cubic-bezier(.22,1,.36,1),transform .62s cubic-bezier(.22,1,.36,1);}
+.rv-in{opacity:1;transform:none;}
+/* Sideways for the two horizontal ladders, so the motion follows the reading
+   direction of the row rather than fighting it. */
+.rv-x{transform:translateX(-18px);}
+.rv-x.rv-in{transform:none;}
+@media (prefers-reduced-motion:reduce){
+  .rv,.rv-x{opacity:1 !important;transform:none !important;transition:none !important;}}
+</style>
+<script>
+(function(){
+  if(!('IntersectionObserver' in window)) return;
+  if(window.matchMedia && matchMedia('(prefers-reduced-motion: reduce)').matches) return;
+
+  /* Single beats. Each fades and rises on its own. */
+  var SINGLES = ['.section-label','.section-title','.section-body','.pf-fig',
+    '.proof-punch','.fut-tail','.dist-warn','.build-claim','.permit-strip',
+    '.calc','.alloc','.urg-why','.eb','.tier-stack','.urg-cta-row','.cta-prefill',
+    '.credibility-card','.faq-group-title','.faq-lead','.invest-strip','.urg-h',
+    '.urg-sub','.pull-quote','.section-fine','.proof-fine'].join(',');
+
+  /* Cascades. The container is the trigger, the children arrive in sequence. */
+  var GROUPS = [
+    ['.tiers','.tier'], ['.proof-stats','.ps'], ['.team-grid','.team-card'],
+    ['.revenue-grid','.rev-card'], ['.fut-grid','.fc'], ['.build-grid','.bc'],
+    ['.dist-line','.dl-step'], ['.price-ladder','.pl-cell'],
+    ['.hiw-steps','li'], ['.faq-group','.faq-item'], ['.milestones','.milestone'],
+    ['.hiw-grid','.hiw-card']
+  ];
+
+  /* Never touch: the hero runs its own entrance, the fixed chrome must not
+     fade, and anything the page shows or hides on a condition would be left
+     stuck at opacity 0 if it were tagged while display:none and so never
+     intersected. That is the exact bug class this page has already shipped
+     five times. */
+  function skip(el){
+    return !!(el.closest('.hero') || el.closest('#stickyBar') || el.closest('.nav-sheet') ||
+              el.closest('nav') || el.closest('.invest-widget') || el.closest('.eb-live') ||
+              el.closest('.eb-closed') || el.closest('#offerClosedNote') ||
+              el.closest('.disqus-wrap') || el.closest('.sp-rail') || el.closest('footer'));
+  }
+
+  var vh = window.innerHeight, tagged = [];
+  function tag(el, delay, sideways){
+    if(!el || el.classList.contains('rv') || skip(el)) return;
+    /* The older .reveal class hides in CSS and is un-hidden by its own
+       observer. Tagging one of those elements stacks two hiding mechanisms on
+       it and needs both to fire. One owner per element. */
+    if(el.classList.contains('reveal')) return;
+    /* Already on screen at load: leave it alone. Tagging it would flash it out
+       and back in, which reads as a glitch rather than an entrance. */
+    var r = el.getBoundingClientRect();
+    if(r.top < vh && r.bottom > 0) return;
+    el.classList.add('rv');
+    if(sideways) el.classList.add('rv-x');
+    if(delay) el.style.transitionDelay = delay + 'ms';
+    tagged.push(el);
+  }
+
+  [].forEach.call(document.querySelectorAll(SINGLES), function(el){ tag(el, 0, false); });
+
+  GROUPS.forEach(function(pair){
+    [].forEach.call(document.querySelectorAll(pair[0]), function(box){
+      var kids = box.querySelectorAll(':scope > ' + pair[1]);
+      var sideways = box.classList.contains('price-ladder');
+      [].forEach.call(kids, function(kid, i){
+        /* Cap the stagger. Eight FAQ rows at 55ms each would make the last one
+           arrive nearly half a second late, which reads as lag, not rhythm. */
+        tag(kid, Math.min(i, 6) * 55, sideways);
+      });
+    });
+  });
+
+  var pending = tagged.slice();
+  function reveal(el){
+    el.classList.add('rv-in');
+    var i = pending.indexOf(el);
+    if(i > -1) pending.splice(i, 1);
+  }
+
+  /* Primary trigger. Held on window because an observer whose only reference
+     lives in a closure that has already returned is not something to rely on
+     for correctness on a page whose recurring failure is invisible content. */
+  window.__rvIO = new IntersectionObserver(function(entries){
+    entries.forEach(function(e){
+      if(!e.isIntersecting) return;
+      reveal(e.target);
+      window.__rvIO.unobserve(e.target);
+    });
+  }, {threshold:0.08, rootMargin:'0px 0px -5% 0px'});
+  tagged.forEach(function(el){ window.__rvIO.observe(el); });
+
+  /* Backstop, and the reason this cannot strand a section.
+
+     The observer stopped firing partway down this page in testing, on a
+     document whose height moves while you scroll it because several images
+     reserve no space until they load. Rather than tune thresholds against a
+     moving target, sweep whatever is still pending.
+
+     Reads are batched before writes. Interleaving getBoundingClientRect with
+     classList.add would force a layout per element, which is the thrash this
+     page was already tuned to avoid. Throttled to 4Hz, and the list only ever
+     shrinks, so the cost trends to zero as the reader moves down the page. */
+  /* Reads are batched before writes. Interleaving getBoundingClientRect with
+     classList.add forces a layout per element, which is the thrash this page
+     was already tuned to avoid. */
+  function sweep(){
+    if(!pending.length) return stop();
+    var vh2 = window.innerHeight, due = [], i;
+    for(i = 0; i < pending.length; i++){                 // read
+      /* Top edge only, deliberately. An earlier version also required the
+         element to still be on screen, which stranded anything the reader
+         scrolled straight past between two checks: once its bottom went
+         negative it could never qualify again. If it has been reached, it has
+         been reached. */
+      if(pending[i].getBoundingClientRect().top < vh2 * 0.96) due.push(pending[i]);
+    }
+    for(i = 0; i < due.length; i++) reveal(due[i]);      // write
+    if(!pending.length) stop();
+  }
+
+  /* Time-throttled, not per-frame. An earlier version coalesced on
+     requestAnimationFrame, which meant reading 105 rects on every frame of
+     every scroll and forcing a layout each time. Measured cost on desktop was
+     a median frame of 66.6ms against a 50ms baseline. The observer is the
+     primary trigger; this only has to catch what it drops, so 150ms is plenty
+     and the reader cannot perceive the difference. */
+  var queued = false;
+  function onScroll(){
+    if(queued) return;
+    queued = true;
+    setTimeout(function(){ queued = false; sweep(); }, 150);
+  }
+  /* The interval is the part that makes this safe rather than merely likely.
+     Scroll events can stop arriving (momentum handed to the compositor, a
+     programmatic jump, a resize that reflows everything at once) and the
+     observer was already caught going quiet partway down this document. A
+     poll over a list that only ever shrinks costs nothing and ends itself. */
+  var iv = setInterval(sweep, 400);
+  function stop(){
+    clearInterval(iv);
+    window.removeEventListener('scroll', onScroll);
+    window.removeEventListener('resize', onScroll);
+  }
+  window.addEventListener('scroll', onScroll, {passive:true});
+  window.addEventListener('resize', onScroll, {passive:true});
+  window.addEventListener('load', sweep);
+  sweep();
+})();
+</script>
+
 </body>
 </html>
