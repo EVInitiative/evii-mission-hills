@@ -268,7 +268,13 @@ nav{position:sticky;top:0;z-index:100;background:rgba(10,10,10,0.92);backdrop-fi
 .btn-primary:hover{background:#fff;transform:translateY(-2px);box-shadow:0 0 40px rgba(46,204,113,0.55),0 0 16px rgba(46,204,113,0.35),0 0 80px rgba(46,204,113,0.15);}
 .btn-secondary{background:transparent;color:var(--text);padding:14px 32px;border-radius:100px;font-weight:500;font-size:15px;text-decoration:none;border:1px solid var(--border);transition:all 0.2s;}
 .btn-secondary:hover{border-color:var(--green);color:var(--green);}
-.hero-stats{display:grid;grid-template-columns:repeat(3,1fr);gap:1px;background:var(--border);border:1px solid var(--border);border-radius:12px;overflow:hidden;}
+/* The grid used to paint an opaque fill so its 1px gaps would read as divider
+   lines. That fill also sat directly behind every .stat-box, so each tile's
+   translucent glass composited over a solid colour instead of the video, and
+   backdrop-filter had a flat colour to blur, which does nothing. Three grey
+   slabs where the glass should be. Each tile carries its own 1px border, so
+   the dividers survive without the grid painting anything. */
+.hero-stats{display:grid;grid-template-columns:repeat(3,1fr);gap:1px;background:transparent;border:1px solid var(--border);border-radius:12px;overflow:hidden;}
 .stat-box{background:rgba(10,10,10,0.8);padding:20px 24px;text-align:center;backdrop-filter:blur(8px);}
 .stat-num{font-family:'Bebas Neue',sans-serif;font-size:36px;color:var(--green);line-height:1;margin-bottom:4px;}
 .stat-label{font-size:11px;color:var(--text-dim);letter-spacing:0.08em;text-transform:uppercase;}
@@ -738,7 +744,10 @@ input[type=number]{-moz-appearance:textfield;}
   .section-body p{font-size:15px !important;line-height:1.65 !important;}
   h1{font-size:clamp(40px,13vw,62px) !important;line-height:0.98 !important;}
   .hero-sub{font-size:15.5px !important;line-height:1.6 !important;}
-  .hero-stats{gap:8px !important;}
+  /* 8px made sense while the grid painted a solid fill, where the gaps read as
+     divider bars. With the fill gone they became 8px strips of raw unblurred
+     video between the tiles. Back to a hairline, same as desktop. */
+  .hero-stats{gap:1px !important;}
   .stat-num{font-size:26px !important;}
   .stat-label{font-size:9.5px !important;letter-spacing:0.05em !important;}
   /* stacked grids everywhere */
@@ -3174,6 +3183,28 @@ var OFFER = {
   .hero-guards{margin:30px 0 30px !important;}}
 @media (max-width:600px){
   .hero-guards{margin:26px 0 26px !important;}}
+
+/* ==========================================================================
+   HERO STAT TILES: consequences of letting the video back through
+   Once .hero-stats stopped painting an opaque fill behind them, the tiles
+   became real glass, and two things that had been hiding behind that fill
+   surfaced.
+   ========================================================================== */
+
+/* The hero sits on video in BOTH themes, so its labels should take an
+   over-video colour, not the theme's body palette. --text-dim is tuned for
+   reading on a panel; at 10px over a moving frame it measured 3.89:1. Light
+   mode already special-cased this. Dark mode never did, because the opaque
+   grid fill was quietly acting as its panel. */
+.hero .stat-label{color:rgba(255,255,255,.92) !important;}
+
+/* Below 900px the render budget turns backdrop-filter off, so the tile's own
+   fill is the only thing between 10px uppercase type and a moving video frame.
+   4.3% white is not a backdrop. Give it a real scrim, the same move light mode
+   already makes. */
+@media (max-width:900px){
+  .hero .stat-box{background:rgba(8,14,11,.62) !important;}
+}
 </style>
 <script>
 /* Hiding the hero iframe with CSS still downloads and runs the whole YouTube
