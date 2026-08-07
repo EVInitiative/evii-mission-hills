@@ -1045,6 +1045,45 @@ html.offer-closed .urg-dot{animation:none !important;background:#9aa3a0 !importa
 .hero-guards{list-style:none;padding:0;margin:20px 0 0;display:flex;flex-direction:column;gap:9px;}
 .hero-guards li{display:flex;align-items:center;gap:10px;font-size:13.5px;color:var(--text-muted);line-height:1.35;}
 .hero-guards svg{width:16px;height:16px;flex:0 0 16px;color:var(--green);}
+/* The hero sits on video in both themes, so these are white regardless and
+   need no light-mode override. That is why the close-button bug happened. */
+.fv-frame{display:block;width:100%;max-width:900px;margin:34px 0 0;padding:0;position:relative;
+  border:1px solid var(--border);border-radius:16px;overflow:hidden;background:#0b0f0d;cursor:pointer;
+  -webkit-tap-highlight-color:rgba(46,204,113,.3);}
+.fv-frame img{width:100%;height:auto;aspect-ratio:16/9;object-fit:cover;display:block;}
+.fv-play{position:absolute;top:50%;left:50%;transform:translate(-50%,-50%);width:78px;height:78px;
+  background:rgba(46,204,113,.94);border-radius:50%;display:flex;align-items:center;justify-content:center;
+  font-size:27px;color:#06120c;padding-left:5px;box-shadow:0 6px 26px rgba(0,0,0,.45);transition:transform .2s;}
+.fv-frame:hover .fv-play{transform:translate(-50%,-50%) scale(1.07);}
+.fv-frame:focus-visible{outline:3px solid var(--green);outline-offset:3px;}
+.fv-meta{position:absolute;right:13px;bottom:12px;font-size:11.5px;font-weight:600;letter-spacing:.03em;
+  color:#fff;background:rgba(0,0,0,.72);padding:6px 11px;border-radius:7px;}
+.fv-note{font-size:12px;line-height:1.7;color:var(--text-dim);max-width:900px;margin:15px 0 0;}
+@media (max-width:600px){.fv-play{width:58px;height:58px;font-size:21px;}.fv-meta{font-size:10.5px;}}
+.hero-filings{display:flex;align-items:center;gap:9px;flex-wrap:wrap;margin:20px 0 0;}
+.hf-lab{font-size:10px;letter-spacing:.14em;text-transform:uppercase;color:rgba(255,255,255,.55);}
+.hf-link{display:inline-flex;align-items:center;gap:7px;font-size:12.5px;font-weight:600;
+  color:rgba(255,255,255,.94);text-decoration:none;padding:8px 13px;border-radius:9px;
+  background:rgba(8,12,10,.74);border:1px solid rgba(255,255,255,.24);
+  backdrop-filter:blur(8px);transition:background .18s,border-color .18s;}
+/* `hidden` on these anchors is load-bearing: it is the whole reason a
+   missing Form C URL shows nothing instead of a button pointing at "#".
+   The rule above sets display, and author CSS beats the UA stylesheet's
+   [hidden]{display:none} no matter the specificity, so without this line
+   the attribute does nothing at all and two dead buttons render in the
+   hero. !important is correct here: this states an invariant that no
+   future rule should be able to break. Second time on this page that an
+   HTML attribute has been silently cancelled by CSS; the first was
+   width/height on img. */
+.hf-link[hidden]{display:none !important;}
+.hf-link:hover{background:rgba(8,12,10,.92);border-color:var(--green);}
+.hf-link:focus-visible{outline:2px solid var(--green);outline-offset:2px;}
+.hf-link svg{width:14px;height:14px;flex:0 0 14px;color:var(--green);}
+.hf-primary{border-color:rgba(46,204,113,.6);}
+@media (max-width:600px){
+  .hf-lab{width:100%;margin-bottom:1px;}
+  .hf-link{font-size:12px;padding:9px 12px;}
+}
 @media (max-width:600px){
   .hero-tm{font-size:10.5px;letter-spacing:0.1em;margin:-2px 0 15px;}
   .hero-guards{gap:7px;margin-top:16px;}
@@ -1851,6 +1890,15 @@ html[data-theme="light"] div[style*="background:#000"] span[style*="var(--green)
       <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2"><rect x="3" y="11" width="18" height="10" rx="2"/><path d="M7 11V7a5 5 0 0110 0v4"/></svg>Funds held in escrow at North Capital</li>
       <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2"><path d="M3 12a9 9 0 109-9"/><path d="M3 3v6h6"/></svg>Cancel any time up to 48h before close</li>
     </ul>
+    <!-- SEC filings. Steve wants the Form C prominent because every investor
+         has to acknowledge receipt of it. The two Form C links start hidden
+         and are revealed by script only when FILINGS carries a real URL. -->
+    <div class="hero-filings" id="heroFilings">
+      <span class="hf-lab">SEC Filings</span>
+      <a class="hf-link hf-primary" id="hfFormC" href="#" target="_blank" rel="noopener noreferrer" hidden><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.1" stroke-linecap="round" stroke-linejoin="round"><path d="M14 2H6a2 2 0 00-2 2v16a2 2 0 002 2h12a2 2 0 002-2V8z"/><path d="M14 2v6h6"/></svg>Form C (PDF)</a>
+      <a class="hf-link" id="hfIndex" href="#" target="_blank" rel="noopener noreferrer" hidden>Complete filing &amp; exhibits</a>
+      <a class="hf-link" id="hfAll" href="https://www.sec.gov/edgar/browse/?CIK=2016816" target="_blank" rel="noopener noreferrer">All SEC filings</a>
+    </div>
     <div class="hero-stats">
       <div class="stat-box"><div class="stat-num">18</div><div class="stat-label">EVI V4 Stalls</div></div>
       <div class="stat-box"><div class="stat-num">6</div><div class="stat-label">Revenue Streams</div></div>
@@ -1889,6 +1937,28 @@ html[data-theme="light"] div[style*="background:#000"] span[style*="var(--green)
   </div>
 </div>
 
+
+<!-- ============================================================
+     AMERICA'S NEXT INVESTMENT
+     Click-to-play facade, not an embed. A 20 minute episode this high
+     on the page would otherwise pull a YouTube player on every load.
+     No iframe exists until the reader asks for one, and it reuses
+     spOpen(), the same lightbox as the Social Proof carousel, so there
+     is one player teardown path rather than two.
+     ============================================================ -->
+<section id="feature-video" style="background:var(--bg);">
+  <div class="section-label">As Seen On</div>
+  <h2 class="section-title">America's Next Investment,<br><span style="color:var(--green);">Filmed On The Lot.</span></h2>
+  <div class="section-body" style="max-width:760px;"><p>Louise Houghton spent a day at the corner of the 405, the 5 and the 118 with the people building this. Aaron on why this site and how the network scales, Warren on what a charging stop should feel like, Todd on the numbers, and a walk of the lot itself, stall by stall.</p></div>
+
+  <button class="fv-frame" type="button" onclick="spOpen('Vz9TVHU6aZY')" aria-label="Play video: EV INITIATIVE America's Next Investment (Full Episode)">
+    <img src="https://img.youtube.com/vi/Vz9TVHU6aZY/maxresdefault.jpg" alt="" width="1280" height="720" loading="lazy" onerror="if(!this.dataset.f){this.dataset.f=1;this.src='https://img.youtube.com/vi/Vz9TVHU6aZY/hqdefault.jpg';}">
+    <span class="fv-play">&#9654;</span>
+    <span class="fv-meta">Full episode &middot; 20 min</span>
+  </button>
+
+  <p class="fv-note">Filmed before the permit set was final. The site is <strong>18 stalls</strong> today, not 19: a bike rack displaced one. The episode also points viewers to evinitiative.com and a phone number, which is where it originally aired. To invest in this round, use the button on this page. Forward-looking statements in the episode are estimates, not guarantees, and distributions are a plan subject to board approval and actual profitability. Read the Form C before investing.</p>
+</section>
 
 <!-- DISTRIBUTIONS. Cadence and timing are the plan, not a promise. -->
 <section id="distributions" style="background:var(--bg-card);">
@@ -2609,22 +2679,23 @@ html[data-theme="light"] div[style*="background:#000"] span[style*="var(--green)
       <button class="nv-x" id="navX" aria-label="Close menu"><svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg></button></div>
   </div>
   <div class="nv-list">
-      <a href="#distributions" data-nav="distributions"><span class="nv-n">01</span><span class="nv-l">Distributions</span><span class="nv-dot"></span></a>
-      <a href="#opportunity" data-nav="opportunity"><span class="nv-n">02</span><span class="nv-l">The Opportunity</span><span class="nv-dot"></span></a>
-      <a href="#why-now" data-nav="why-now"><span class="nv-n">03</span><span class="nv-l">Why This Round Closes</span><span class="nv-dot"></span></a>
-      <a href="#proof" data-nav="proof"><span class="nv-n">04</span><span class="nv-l">The Proof</span><span class="nv-dot"></span></a>
-      <a href="#how-it-works" data-nav="how-it-works"><span class="nv-n">05</span><span class="nv-l">How This Works</span><span class="nv-dot"></span></a>
-      <a href="#media" data-nav="media"><span class="nv-n">06</span><span class="nv-l">Social Proof</span><span class="nv-dot"></span></a>
-      <a href="#the-build" data-nav="the-build"><span class="nv-n">07</span><span class="nv-l">What We Built</span><span class="nv-dot"></span></a>
-      <a href="#future" data-nav="future"><span class="nv-n">08</span><span class="nv-l">Built Forward</span><span class="nv-dot"></span></a>
-      <a href="#revenue" data-nav="revenue"><span class="nv-n">09</span><span class="nv-l">Revenue Model</span><span class="nv-dot"></span></a>
-      <a href="#returns" data-nav="returns"><span class="nv-n">10</span><span class="nv-l">Share Price</span><span class="nv-dot"></span></a>
-      <a href="#investment" data-nav="investment"><span class="nv-n">11</span><span class="nv-l">Investment Terms</span><span class="nv-dot"></span></a>
-      <a href="#market" data-nav="market"><span class="nv-n">12</span><span class="nv-l">Market Opportunity</span><span class="nv-dot"></span></a>
-      <a href="#about" data-nav="about"><span class="nv-n">13</span><span class="nv-l">About Us</span><span class="nv-dot"></span></a>
-      <a href="#team" data-nav="team"><span class="nv-n">14</span><span class="nv-l">The Team</span><span class="nv-dot"></span></a>
-      <a href="#ask-the-founders" data-nav="ask-the-founders"><span class="nv-n">15</span><span class="nv-l">Ask The Founders</span><span class="nv-dot"></span></a>
-      <a href="#faq" data-nav="faq"><span class="nv-n">16</span><span class="nv-l">Investor FAQ</span><span class="nv-dot"></span></a>
+      <a href="#feature-video" data-nav="feature-video"><span class="nv-n">01</span><span class="nv-l">As Seen On</span><span class="nv-dot"></span></a>
+      <a href="#distributions" data-nav="distributions"><span class="nv-n">02</span><span class="nv-l">Distributions</span><span class="nv-dot"></span></a>
+      <a href="#opportunity" data-nav="opportunity"><span class="nv-n">03</span><span class="nv-l">The Opportunity</span><span class="nv-dot"></span></a>
+      <a href="#why-now" data-nav="why-now"><span class="nv-n">04</span><span class="nv-l">Why This Round Closes</span><span class="nv-dot"></span></a>
+      <a href="#proof" data-nav="proof"><span class="nv-n">05</span><span class="nv-l">The Proof</span><span class="nv-dot"></span></a>
+      <a href="#how-it-works" data-nav="how-it-works"><span class="nv-n">06</span><span class="nv-l">How This Works</span><span class="nv-dot"></span></a>
+      <a href="#media" data-nav="media"><span class="nv-n">07</span><span class="nv-l">Social Proof</span><span class="nv-dot"></span></a>
+      <a href="#the-build" data-nav="the-build"><span class="nv-n">08</span><span class="nv-l">What We Built</span><span class="nv-dot"></span></a>
+      <a href="#future" data-nav="future"><span class="nv-n">09</span><span class="nv-l">Built Forward</span><span class="nv-dot"></span></a>
+      <a href="#revenue" data-nav="revenue"><span class="nv-n">10</span><span class="nv-l">Revenue Model</span><span class="nv-dot"></span></a>
+      <a href="#returns" data-nav="returns"><span class="nv-n">11</span><span class="nv-l">Share Price</span><span class="nv-dot"></span></a>
+      <a href="#investment" data-nav="investment"><span class="nv-n">12</span><span class="nv-l">Investment Terms</span><span class="nv-dot"></span></a>
+      <a href="#market" data-nav="market"><span class="nv-n">13</span><span class="nv-l">Market Opportunity</span><span class="nv-dot"></span></a>
+      <a href="#about" data-nav="about"><span class="nv-n">14</span><span class="nv-l">About Us</span><span class="nv-dot"></span></a>
+      <a href="#team" data-nav="team"><span class="nv-n">15</span><span class="nv-l">The Team</span><span class="nv-dot"></span></a>
+      <a href="#ask-the-founders" data-nav="ask-the-founders"><span class="nv-n">16</span><span class="nv-l">Ask The Founders</span><span class="nv-dot"></span></a>
+      <a href="#faq" data-nav="faq"><span class="nv-n">17</span><span class="nv-l">Investor FAQ</span><span class="nv-dot"></span></a>
   </div>
   <a class="nv-cta" href="https://invest.issuanceexpress.com/evii-mission"><svg width="15" height="15" viewBox="0 0 24 24" fill="currentColor"><path d="M13 2L4.5 13.5H11L9 22L19.5 10.5H13L13 2Z"/></svg>Invest Now &middot; from $299.25</a>
 </div>
@@ -2928,6 +2999,33 @@ html[data-theme="light"] .pl-note{color:#525c55 !important;}
    with the real Pacific offset for the date, so a bad edit surfaces the first
    time anyone loads the page.
    ====================================================================== */
+/* ======================================================================
+   SEC FILINGS  --  the second block anyone needs to edit
+
+   Ben Young and Steve Catanzano, Aug 7 2026. Steve: "There needs to be a
+   link to the Form C as a pdf... In some cases the SEC site doesn't display
+   the full filing, or it's in pieces, so it needs to be checked. All
+   investors need to acknowledge receipt, so it should be prominent. A
+   second link to All security filings going to the SEC filings."
+
+   It IS in pieces. The prior filing is an offering_statement.pdf plus six
+   separate exhibit PDFs plus a primary_doc.xml, so "the Form C" is three
+   links, not one: the statement itself, the complete filing with every
+   exhibit, and the company's whole filing history.
+
+   formCPdf and formCIndex are EMPTY ON PURPOSE. Draft v7 is not filed yet.
+   While they are empty the two links do not render at all, because a dead
+   SEC link on a Reg CF page is worse than a missing one. Paste the real
+   URLs here the moment Aaron files and both appear. Nothing else to change.
+   ====================================================================== */
+var FILINGS = {
+  formCPdf   : '',   /* e.g. https://www.sec.gov/Archives/edgar/data/2016816/000201681626000004/offering_statement.pdf */
+  formCIndex : '',   /* e.g. https://www.sec.gov/Archives/edgar/data/2016816/000201681626000004/0002016816-26-000004-index.html */
+  /* Ben's preferred URL. It is a JavaScript app; the server-rendered
+     equivalent is /cgi-bin/browse-edgar?action=getcompany&CIK=0002016816 */
+  allFilings : 'https://www.sec.gov/edgar/browse/?CIK=2016816'
+};
+
 var OFFER = {
   earlyBirdEnds : '2026-09-04T23:59:59.999-07:00',
   earlyBirdOn   : true,
@@ -2937,6 +3035,42 @@ var OFFER = {
   sharePrice    : 2.85,
   minInvest     : 299.25
 };
+
+/* ------------- SEC filing links --------------------------------------
+   Reveal, never construct. The two Form C anchors ship hidden with a dead
+   href; this is the only thing that can give them a real one. So the
+   failure mode of a missing URL, a typo, or this script never running is
+   "the link is not there", not "the link goes nowhere". On a Reg CF page
+   pointing at a 404 instead of the offering statement is the worse half.
+
+   "All SEC filings" is hardcoded in the markup as well, because the
+   company's filing history exists whatever state the offering is in.
+   --------------------------------------------------------------------- */
+(function(){
+  function apply(){
+   try{
+    var F = window.FILINGS || {};
+    function wire(id, url){
+      var a = document.getElementById(id);
+      if(!a || !url || !/^https:\/\/www\.sec\.gov\//.test(url)) return;
+      a.href = url; a.hidden = false;
+    }
+    /* reset first, so re-running after clearing a URL hides it again */
+    ['hfFormC','hfIndex'].forEach(function(id){
+      var a=document.getElementById(id); if(a){ a.hidden=true; a.href='#'; }
+    });
+    wire('hfFormC',  F.formCPdf);
+    wire('hfIndex',  F.formCIndex);
+    var all = document.getElementById('hfAll');
+    if(all && F.allFilings) all.href = F.allFilings;
+   }catch(e){}
+  }
+  apply();
+  /* Exported so a reviewer can set FILINGS and re-run without reloading.
+     Reloading re-parses the file and resets FILINGS to the shipped empty
+     strings, which made the v21 test recipe impossible to follow. */
+  window.EVII_APPLY_FILINGS = apply;
+})();
 
 /* ------------- offering state, resolved once for the whole page --------
    Two clocks, two switches. Resolved in one place and published as classes
