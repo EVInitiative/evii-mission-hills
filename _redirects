@@ -1,10 +1,20 @@
-# eviimission.com serves the Round 3 deal page at /.
-# Highlander is gone. Every legacy path that used to land there now points at
-# the Issuance Express offering.
+# eviimission.com forwards to the offering on Issuance Express.
+# Ben Young, Issuance Express, Aug 6 2026: the deal page cannot be displayed
+# on our domain, it must be an actual forwarding, because the investor has to
+# look up at their browser and see that they are on Issuance Express.
+#
+# index.html and images/ stay in the repo. That file is still what we hand to
+# Issuance. The forced catch-all below shadows it rather than deleting it.
+#
+# The legacy paths are redundant while the catch-all exists, but if the
+# catch-all is ever removed to restore the page, these still resolve.
 
-/evi        https://invest.issuanceexpress.com/evii-mission  301!
-/evi/*      https://invest.issuanceexpress.com/evii-mission  301!
-/invest     https://invest.issuanceexpress.com/evii-mission  301!
-/invest/*   https://invest.issuanceexpress.com/evii-mission  301!
-/round3     https://invest.issuanceexpress.com/evii-mission  301!
-/highlander https://invest.issuanceexpress.com/evii-mission  301!
+/evi        https://issuanceexpress.com/evii-mission  301!
+/evi/*      https://issuanceexpress.com/evii-mission  301!
+/invest     https://issuanceexpress.com/evii-mission  301!
+/invest/*   https://issuanceexpress.com/evii-mission  301!
+/round3     https://issuanceexpress.com/evii-mission  301!
+/highlander https://issuanceexpress.com/evii-mission  301!
+
+# Everything else, including /. The ! forces it ahead of any real file.
+/*          https://issuanceexpress.com/evii-mission  301!
