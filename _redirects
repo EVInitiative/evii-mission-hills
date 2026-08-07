@@ -9,6 +9,20 @@
 # The legacy paths are redundant while the catch-all exists, but if the
 # catch-all is ever removed to restore the page, these still resolve.
 
+# Images are exempt, and this rule must stay above the catch-all, because the
+# engine takes the first matching rule reading top to bottom.
+#
+# og:image, og:image:secure_url, twitter:image, three JSON-LD contentUrls and a
+# VideoObject thumbnailUrl are all absolute to this domain. Without this rule
+# the catch-all's ! shadows the real files, so every one of those URLs answers
+# with an HTML redirect instead of an image and every share preview renders
+# blank: LinkedIn, X, iMessage, WhatsApp, Slack, Facebook.
+#
+# Ben's rule is that the deal PAGE cannot be displayed here. A JPEG is not the
+# deal page. Assets stay on a domain we control so the card cannot break if
+# Issuance reorganises their paths.
+/images/*   /images/:splat   200
+
 /evi        https://issuanceexpress.com/evii-mission  301!
 /evi/*      https://issuanceexpress.com/evii-mission  301!
 /invest     https://issuanceexpress.com/evii-mission  301!
