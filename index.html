@@ -399,7 +399,17 @@ footer{background:var(--bg);padding:48px 80px;display:flex;align-items:center;ju
 #spModal.open{display:flex;}
 .sp-modal-inner{position:relative;width:90%;max-width:400px;max-height:85vh;aspect-ratio:9/16;}
 .sp-modal-inner iframe{width:100%;height:100%;border:0;border-radius:16px;}
-.sp-close{position:fixed;top:16px;right:16px;width:44px;height:44px;border-radius:50%;background:#1a1a1a;border:1px solid rgba(255,255,255,0.2);color:#fff;font-size:22px;cursor:pointer;display:flex;align-items:center;justify-content:center;z-index:10001;}
+/* The lightbox backdrop is rgba(0,0,0,.92) in BOTH themes, so this button
+   always sits on near-black and should be styled for that, not for the page
+   theme. It used to be #1a1a1a with a white glyph, and the light-mode rule
+   recoloured only the glyph, leaving #0d1410 on #1a1a1a: 1.07:1, invisible.
+   A solid light button with a dark glyph is unmistakable on that backdrop. */
+.sp-close{position:fixed;top:18px;right:18px;width:48px;height:48px;border-radius:50%;
+  background:rgba(255,255,255,.94);border:none;color:#0d1410;font-size:26px;line-height:1;
+  cursor:pointer;display:flex;align-items:center;justify-content:center;z-index:10001;
+  box-shadow:0 2px 14px rgba(0,0,0,.55);transition:background .18s,transform .18s;}
+.sp-close:hover{background:#fff;transform:scale(1.06);}
+.sp-close:focus-visible{outline:3px solid var(--green);outline-offset:3px;}
 
 
 /* MILESTONE */
@@ -571,7 +581,11 @@ input[type=number]{-moz-appearance:textfield;}
 .rev-bar-item{display:flex;align-items:center;gap:16px;margin-bottom:14px;cursor:pointer;}
 .rev-bar-label{font-size:13px;color:var(--text-muted);width:160px;flex-shrink:0;transition:color 0.2s;}
 .rev-bar-track{flex:1;height:8px;background:var(--border);border-radius:100px;}
-.rev-bar-fill{height:100%;background:var(--green);border-radius:100px;width:0;box-shadow:0 0 4px rgba(46,204,113,0.9),0 0 14px rgba(46,204,113,0.7),0 0 28px rgba(46,204,113,0.45);transition:width 1.8s cubic-bezier(0.22,1,0.36,1),background 0.2s,box-shadow 0.2s;}
+/* The width lives in the markup, not here. Six data bars that render empty
+   when a script fails are worse than six bars that simply do not animate,
+   and this page has shipped that failure five times already. JS collapses
+   them and animates back up; if it never runs, the data still shows. */
+.rev-bar-fill{height:100%;background:var(--green);border-radius:100px;box-shadow:0 0 4px rgba(46,204,113,0.9),0 0 14px rgba(46,204,113,0.7),0 0 28px rgba(46,204,113,0.45);transition:width 1.8s cubic-bezier(0.22,1,0.36,1),background 0.2s,box-shadow 0.2s;}
 .rev-bar-val{font-family:'DM Mono',monospace;font-size:13px;color:var(--green);width:80px;text-align:right;flex-shrink:0;}
 .rev-bar-item:hover .rev-bar-label{color:#fff;}
 .rev-bar-item:hover .rev-bar-fill{background:#fff;box-shadow:0 0 4px rgba(255,255,255,0.95),0 0 18px rgba(255,255,255,0.75),0 0 34px rgba(255,255,255,0.5);}
@@ -1563,7 +1577,9 @@ html{transition:background-color .35s ease;}
 [data-theme="light"] .rev-bar-item:hover .rev-bar-label{color:var(--text) !important;}
 [data-theme="light"] .rev-title{color:var(--text) !important;}
 [data-theme="light"] .section-title{color:var(--text) !important;}
-[data-theme="light"] .sp-close{color:var(--text) !important;}
+/* .sp-close is deliberately theme-independent: it sits on the lightbox
+   backdrop, which is near-black regardless of theme. Recolouring it for
+   light mode is what made it invisible. */
 [data-theme="light"] .team-name{color:var(--text) !important;}
 [data-theme="light"] .term-value{color:var(--text) !important;}
 [data-theme="light"] .urg-h{color:var(--text) !important;}
@@ -2211,32 +2227,32 @@ html[data-theme="light"] div[style*="background:#000"] span[style*="var(--green)
     <div style="font-size:12px;letter-spacing:0.1em;text-transform:uppercase;color:var(--text-dim);margin-bottom:24px;">Projected Year 1 Revenue Breakdown — Hover to Explore</div>
     <div class="rev-bar-item" data-val="3029208" data-max="3029208">
       <span class="rev-bar-label">EV Charging</span>
-      <div class="rev-bar-track"><div class="rev-bar-fill" data-pct="100"></div></div>
+      <div class="rev-bar-track"><div class="rev-bar-fill" style="width:100%" data-pct="100"></div></div>
       <span class="rev-bar-val">$3.03M</span>
     </div>
     <div class="rev-bar-item" data-val="1580625" data-max="3029208">
       <span class="rev-bar-label">Food &amp; Beverage</span>
-      <div class="rev-bar-track"><div class="rev-bar-fill" data-pct="52.2"></div></div>
+      <div class="rev-bar-track"><div class="rev-bar-fill" style="width:52.2%" data-pct="52.2"></div></div>
       <span class="rev-bar-val">$1.58M</span>
     </div>
     <div class="rev-bar-item" data-val="663408" data-max="3029208">
       <span class="rev-bar-label">LCFS Credits</span>
-      <div class="rev-bar-track"><div class="rev-bar-fill" data-pct="21.9"></div></div>
+      <div class="rev-bar-track"><div class="rev-bar-fill" style="width:21.9%" data-pct="21.9"></div></div>
       <span class="rev-bar-val">$663K</span>
     </div>
     <div class="rev-bar-item" data-val="489334" data-max="3029208">
       <span class="rev-bar-label">Robo-Barista</span>
-      <div class="rev-bar-track"><div class="rev-bar-fill" data-pct="16.2"></div></div>
+      <div class="rev-bar-track"><div class="rev-bar-fill" style="width:16.2%" data-pct="16.2"></div></div>
       <span class="rev-bar-val">$489K</span>
     </div>
     <div class="rev-bar-item" data-val="126217" data-max="3029208">
       <span class="rev-bar-label">Smart Vending</span>
-      <div class="rev-bar-track"><div class="rev-bar-fill" data-pct="4.2"></div></div>
+      <div class="rev-bar-track"><div class="rev-bar-fill" style="width:4.2%" data-pct="4.2"></div></div>
       <span class="rev-bar-val">$126K</span>
     </div>
     <div class="rev-bar-item" data-val="9709" data-max="3029208">
       <span class="rev-bar-label">App / Digital</span>
-      <div class="rev-bar-track"><div class="rev-bar-fill" data-pct="0.3"></div></div>
+      <div class="rev-bar-track"><div class="rev-bar-fill" style="width:0.3%" data-pct="0.3"></div></div>
       <span class="rev-bar-val">$10K</span>
     </div>
   </div>
@@ -4197,6 +4213,78 @@ html[data-theme="light"] .dl-dot.dl-on{
   window.addEventListener('resize', onScroll, {passive:true});
   window.addEventListener('load', sweep);
   sweep();
+})();
+</script>
+
+<script>
+/* ==========================================================================
+   REVENUE BARS
+   The markup carried data-pct on six bars and nothing ever read it, so every
+   track rendered empty. Sixth instance on this page of the same shape: a value
+   sitting in the HTML with no code behind it.
+
+   The widths now live in the markup as inline styles, so the failure mode is
+   "did not animate" rather than "shows no data". This script collapses them
+   and animates back up, and only for bars that start below the fold, because
+   collapsing something already on screen reads as a glitch rather than an
+   entrance.
+   ========================================================================== */
+(function(){
+  var bars = [].slice.call(document.querySelectorAll('.rev-bar-fill[data-pct]'));
+  if(!bars.length) return;
+  if(!('IntersectionObserver' in window)) return;
+  if(window.matchMedia && matchMedia('(prefers-reduced-motion: reduce)').matches) return;
+
+  var vh = window.innerHeight, pending = [];
+  bars.forEach(function(f){
+    var r = f.getBoundingClientRect();
+    if(r.top < vh && r.bottom > 0) return;      // already visible, leave it alone
+    f.dataset.target = f.style.width;
+    f.style.width = '0';
+    pending.push(f);
+  });
+  if(!pending.length) return;
+
+  function fill(f){
+    /* stagger so the six read as a sequence rather than one block moving */
+    var i = pending.indexOf(f);
+    setTimeout(function(){ f.style.width = f.dataset.target; }, Math.max(0,i) * 90);
+    var k = pending.indexOf(f);
+    if(k > -1) pending.splice(k, 1);
+  }
+
+  var io = new IntersectionObserver(function(entries){
+    entries.forEach(function(e){ if(e.isIntersecting){ fill(e.target); io.unobserve(e.target); } });
+  }, {threshold:0.2});
+  bars.forEach(function(f){ if(f.dataset.target !== undefined) io.observe(f); });
+
+  /* Same backstop as the reveal sweep, for the same reason: the observer on
+     this page has been caught going quiet partway down a document whose height
+     moves while you scroll it. Top edge only, so a bar scrolled straight past
+     still fills. */
+  function sweep(){
+    if(!pending.length) return stop();
+    var h = window.innerHeight, due = [];
+    for(var i = 0; i < pending.length; i++)
+      if(pending[i].getBoundingClientRect().top < h * 0.96) due.push(pending[i]);
+    due.forEach(fill);
+    if(!pending.length) stop();
+  }
+  var queued = false;
+  function onScroll(){
+    if(queued) return;
+    queued = true;
+    setTimeout(function(){ queued = false; sweep(); }, 150);
+  }
+  var iv = setInterval(sweep, 400);
+  function stop(){
+    clearInterval(iv);
+    window.removeEventListener('scroll', onScroll);
+    window.removeEventListener('resize', onScroll);
+  }
+  window.addEventListener('scroll', onScroll, {passive:true});
+  window.addEventListener('resize', onScroll, {passive:true});
+  window.addEventListener('load', sweep);
 })();
 </script>
 
