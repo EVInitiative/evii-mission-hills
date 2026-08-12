@@ -3027,7 +3027,14 @@ var FILINGS = {
 };
 
 var OFFER = {
-  earlyBirdEnds : '2026-09-04T23:59:59.999-07:00',
+  /* Round 3 opened on Issuance Express Aug 10 2026. The Form C defines the
+     Early Bird as "the first 30 days of launch", so Aug 10 + 30 = Sep 9,
+     inclusive through 11:59pm Pacific per Ben Young's convention.
+     This replaces 2026-09-04, which was an invented placeholder from
+     before the launch date existed. It would have closed the window four
+     to five days early and handed Sept 5-9 investors 15% where the filing
+     entitles them to 20%. September is daylight time, so -07:00. */
+  earlyBirdEnds : '2026-09-09T23:59:59.999-07:00',
   earlyBirdOn   : true,
   offerEnds     : '2026-12-31T23:59:59.999-08:00',
   offerOpen     : true,
